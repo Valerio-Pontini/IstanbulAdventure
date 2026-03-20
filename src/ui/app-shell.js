@@ -44,6 +44,8 @@ export function createAppShell(model, options = {}) {
   shell.className = `app-shell${showOpening ? " is-opening-active" : ""}`;
 
   shell.innerHTML = `
+    <div class="app-shell__background" aria-hidden="true"></div>
+
     <section
       class="opening-screen"
       data-opening-screen
@@ -68,7 +70,6 @@ export function createAppShell(model, options = {}) {
 
     <div class="app-frame">
       <main class="main-screen" aria-label="Schermata principale">
-        <div class="main-screen__background" aria-hidden="true"></div>
         ${createMissionScreen(model, !showMission)}
       </main>
     </div>
