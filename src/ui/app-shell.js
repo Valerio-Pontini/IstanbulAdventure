@@ -84,35 +84,42 @@ export const createQuizResult = (result) => `
   </section>
 `;
 
-export function createAppShell(model) {
+export function createAppShell(model, options = {}) {
+  const { showOpening = false } = options;
   const shell = document.createElement("div");
-  shell.className = "app-shell";
+  shell.className = `app-shell${showOpening ? " is-opening-active" : ""}`;
 
   shell.innerHTML = `
+    <button
+      class="opening-screen"
+      type="button"
+      data-opening-screen
+      aria-label="Apri la schermata principale"
+      ${showOpening ? "" : "hidden"}
+    >
+      <div class="opening-screen__media" aria-hidden="true">
+        <img
+          class="opening-screen__image"
+          src="./src/assets/hero-onboarding.png"
+          alt=""
+        />
+      </div>
+      <div class="opening-screen__content">
+        ${createLogo()}
+        <p class="opening-screen__text">${model.brand.intro}</p>
+      </div>
+      <div class="opening-screen__hint" aria-hidden="true">
+        <span class="opening-screen__hint-line"></span>
+        <span class="opening-screen__hint-text">Tocca per entrare</span>
+      </div>
+    </button>
+
     <div class="app-frame">
       <div class="app-frame__glow app-frame__glow--top"></div>
       <div class="app-frame__glow app-frame__glow--bottom"></div>
 
       <main class="content">
-        <section class="home-intro" data-home-intro>
-          <div class="home-intro__media" aria-hidden="true">
-            <img
-              class="home-intro__image"
-              src="./src/assets/hero-onboarding.png"
-              alt=""
-            />
-          </div>
-          <div class="home-intro__content">
-            ${createLogo()}
-            <p class="home-intro__text">${model.brand.intro}</p>
-          </div>
-          <div class="home-intro__hint" aria-hidden="true">
-            <span class="home-intro__hint-line"></span>
-            <span class="home-intro__hint-text">Scorri per entrare</span>
-          </div>
-        </section>
-
-        <section class="hero panel" data-content-start>
+        <section class="hero panel">
           <div class="quiz-card" data-onboarding-quiz hidden>
             <div class="quiz-card__progress" data-quiz-progress>
               <span class="quiz-card__progress-bar"></span>

@@ -24,6 +24,10 @@ body {
   background-size: cover;
 }
 
+body.is-opening-active {
+  overflow: hidden;
+}
+
 button,
 input,
 textarea,

@@ -30,29 +30,23 @@
   text-transform: uppercase;
 }
 
-.home-intro .brand-lockup__name {
+.opening-screen .brand-lockup__name {
   color: white;
 }
 
-.home-intro .brand-lockup__tagline,
-.home-intro__text {
+.opening-screen .brand-lockup__tagline,
+.opening-screen__text {
   color: rgba(255, 255, 255, 0.86);
 }
 
-.home-intro__text {
+.opening-screen__text {
   max-width: 28ch;
   text-align: center;
   font-size: 1rem;
   line-height: 1.6;
 }
 
-.home-intro__hint-line {
-  width: 1px;
-  height: 36px;
-  background: linear-gradient(180deg, rgba(128, 61, 39, 0), rgba(128, 61, 39, 0.7));
-}
-
-.home-intro__hint-text {
+.opening-screen__hint-text {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.7rem;
   font-weight: 700;

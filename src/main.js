@@ -15,16 +15,14 @@ if (!root) {
   throw new Error("Root container #app non trovato.");
 }
 
-const appShell = createAppShell(homeViewModel);
+const hasVisitedHome = window.localStorage.getItem(HOME_VISITED_KEY) === "true";
+const appShell = createAppShell(homeViewModel, { showOpening: !hasVisitedHome });
 root.append(appShell);
 
-const introSection = appShell.querySelector("[data-home-intro]");
-const frame = appShell.querySelector(".app-frame");
-const contentStart = appShell.querySelector("[data-content-start]");
+const openingScreen = appShell.querySelector("[data-opening-screen]");
 const quizRoot = appShell.querySelector("[data-onboarding-quiz]");
 const quizStage = appShell.querySelector("[data-quiz-stage]");
 const quizProgress = appShell.querySelector("[data-quiz-progress]");
-const hasVisitedHome = window.localStorage.getItem(HOME_VISITED_KEY) === "true";
 const storedQuizResult = window.localStorage.getItem(ONBOARDING_RESULT_KEY);
 const shouldShowQuiz = !storedQuizResult;
 
@@ -121,48 +119,13 @@ if (quizRoot && quizStage && shouldShowQuiz) {
   });
 }
 
-if (introSection && frame) {
-  const updateScrollProgress = () => {
-    const introHeight = introSection.offsetHeight || 1;
-    const progress = Math.min(window.scrollY / (introHeight * 0.72), 1);
-    frame.style.setProperty("--home-progress", progress.toFixed(3));
-  };
+if (openingScreen && !hasVisitedHome) {
+  document.body.classList.add("is-opening-active");
 
-  updateScrollProgress();
-
-  if (hasVisitedHome && contentStart) {
-    window.requestAnimationFrame(() => {
-      const contentTop = contentStart.getBoundingClientRect().top + window.scrollY;
-
-      window.scrollTo({
-        top: Math.max(contentTop - 12, 0),
-        behavior: "auto",
-      });
-
-      updateScrollProgress();
-    });
-  } else {
+  openingScreen.addEventListener("click", () => {
+    appShell.classList.remove("is-opening-active");
+    openingScreen.hidden = true;
+    document.body.classList.remove("is-opening-active");
     window.localStorage.setItem(HOME_VISITED_KEY, "true");
-  }
-
-  let ticking = false;
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (ticking) {
-        return;
-      }
-
-      ticking = true;
-
-      window.requestAnimationFrame(() => {
-        updateScrollProgress();
-        ticking = false;
-      });
-    },
-    { passive: true },
-  );
-
-  window.addEventListener("resize", updateScrollProgress);
+  });
 }
