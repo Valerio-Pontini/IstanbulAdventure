@@ -25,3 +25,11 @@ if (openingScreen && !hasVisitedHome) {
     window.localStorage.setItem(HOME_VISITED_KEY, "true");
   });
 }
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch((error) => {
+      console.error("Registrazione service worker fallita:", error);
+    });
+  });
+}
