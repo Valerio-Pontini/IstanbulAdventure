@@ -12,6 +12,7 @@ body {
   margin: 0;
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   font-family: var(--font-body);
   color: var(--color-ink-900);
   background:
@@ -47,4 +48,5 @@ p {
 #app {
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
 }
