@@ -24,8 +24,8 @@ body {
   font-family: var(--font-body);
   color: var(--color-ink-900);
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.32), transparent 28%),
-    linear-gradient(180deg, rgba(11, 22, 19, 0.1), rgba(11, 22, 19, 0.46)),
+    radial-gradient(circle at top, rgba(111, 150, 138, 0.28), transparent 30%),
+    linear-gradient(180deg, rgba(47, 79, 72, 0.18), rgba(11, 22, 19, 0.52)),
     url("../assets/app-background.png");
   background-position: center top;
   background-repeat: no-repeat;
