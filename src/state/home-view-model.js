@@ -5,6 +5,14 @@ export const homeViewModel = {
     intro:
       "Una home pensata per aprirsi con un logo immersivo e trasformarsi, con lo scroll, in una testata elegante pronta a ospitare contenuti dinamici.",
   },
+  missionZero: {
+    eyebrow: "Missione 0",
+    title: "Pensavi di poter entrare subito nell'avventura?",
+    description:
+      "Prima di farlo devi dimostrare di essere pronto e scoprire a quale tribù appartieni. Bastano poche scelte: il viaggio inizierà da lì.",
+    cta: "Avvia la Missione 0",
+    completeCta: "Entra nell'avventura",
+  },
   highlights: [
     { value: "19:9", label: "mobile ratio" },
     { value: "Sticky", label: "header flow" },
@@ -47,19 +55,19 @@ export const homeViewModel = {
     results: {
       explorer: {
         eyebrow: "Profilo",
-        title: "Sei un Esploratore",
+        title: "Tribu dell'Esploratore",
         description:
           "Ti guidano curiosita e scoperta. Possiamo costruire per te una home piena di mappe, percorsi e punti d'interesse.",
       },
       challenger: {
         eyebrow: "Profilo",
-        title: "Sei un Challenger",
+        title: "Tribu del Challenger",
         description:
           "Cerchi ritmo, obiettivi e progressione. La home potra valorizzare missioni, streak, ricompense e attivita giornaliere.",
       },
       dreamer: {
         eyebrow: "Profilo",
-        title: "Sei un Dreamer",
+        title: "Tribu del Dreamer",
         description:
           "Ti ispira il lato narrativo del viaggio. Possiamo dare priorita a contenuti editoriali, suggestioni e percorsi tematici.",
       },
