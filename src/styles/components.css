@@ -36,9 +36,9 @@
   font-size: clamp(3.6rem, 16vw, 6rem);
   font-weight: 700;
   line-height: 0.82;
-  letter-spacing: 0.16em;
-  color: #b08d57;
-  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  letter-spacing: 0.09em;
+  color: #e1bf78;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
 }
 
 .opening-screen__text {
@@ -81,7 +81,7 @@
 
 .mission-zero__title {
   max-width: 100%;
-  margin: 0;
+  margin: 0 0 var(--space-4);
   color: var(--color-title);
   text-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
 }
@@ -94,7 +94,7 @@
   height: 100%;
   min-height: var(--app-min-height);
   padding:
-    max(120px, calc(env(safe-area-inset-top) + 92px))
+    max(148px, calc(env(safe-area-inset-top) + 118px))
     var(--space-4)
     calc(var(--space-8) + 32px);
 }
@@ -107,7 +107,7 @@
   display: grid;
   align-content: stretch;
   gap: var(--space-5);
-  width: 90%;
+  width: 94%;
   margin: 0 auto;
 }
 
@@ -117,7 +117,7 @@
   align-content: start;
   justify-items: start;
   gap: var(--space-5);
-  min-height: calc(var(--app-min-height) - max(120px, calc(env(safe-area-inset-top) + 92px)));
+  min-height: calc(var(--app-min-height) - max(148px, calc(env(safe-area-inset-top) + 118px)));
 }
 
 .mission-zero__copy {
