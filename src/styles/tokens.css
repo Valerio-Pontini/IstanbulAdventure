@@ -7,13 +7,16 @@
   --color-forest-700: #22473d;
   --color-ink-900: #15201d;
   --color-ink-700: #31433f;
+  --color-title: #2f4a5c;
+  --color-text: #2b2b28;
   --color-surface: rgba(255, 250, 244, 0.18);
   --color-surface-strong: rgba(255, 252, 247, 0.28);
   --color-line: rgba(255, 255, 255, 0.26);
   --color-shadow: rgba(23, 31, 28, 0.2);
 
-  --font-display: "Fraunces", serif;
-  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Cinzel Decorative", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --font-cover: "Cinzel Decorative", serif;
 
   --radius-xs: 14px;
   --radius-sm: 20px;

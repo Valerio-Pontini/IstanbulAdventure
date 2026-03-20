@@ -1,5 +1,5 @@
 import { createAppShell } from "./ui/app-shell.js";
-import { homeViewModel } from "./state/home-view-model.js";
+import { gameText } from "./content/game-text.js";
 
 const MISSION_ZERO_COMPLETED_KEY = "travelgame-mission-zero-completed";
 const PLAYER_TRIBE_KEY = "travelgame-player-tribe";
@@ -12,7 +12,7 @@ if (!root) {
 
 const hasCompletedMissionZero =
   window.localStorage.getItem(MISSION_ZERO_COMPLETED_KEY) === "true";
-const appShell = createAppShell(homeViewModel, {
+const appShell = createAppShell(gameText, {
   showOpening: !hasCompletedMissionZero,
   showMission: !hasCompletedMissionZero,
 });
@@ -21,22 +21,11 @@ root.append(appShell);
 const openingScreen = appShell.querySelector("[data-opening-screen]");
 const missionZeroScreen = appShell.querySelector("[data-mission-zero]");
 const quizStage = appShell.querySelector("[data-quiz-stage]");
-const startQuizButton = appShell.querySelector("[data-start-quiz]");
-const progressBar = appShell.querySelector("[data-quiz-progress-bar]");
-
-const { onboardingQuiz } = homeViewModel;
+const { missionZero } = gameText;
 
 let currentQuestionIndex = 0;
 const answers = [];
 let currentProfile = null;
-
-const updateProgress = (value) => {
-  if (!progressBar) {
-    return;
-  }
-
-  progressBar.style.width = `${value * 100}%`;
-};
 
 const hideOpening = () => {
   if (!openingScreen) {
@@ -80,9 +69,7 @@ const renderQuestion = (index) => {
     return;
   }
 
-  const question = onboardingQuiz.questions[index];
-
-  updateProgress((index + 1) / onboardingQuiz.questions.length);
+  const question = missionZero.questions[index];
 
   quizStage.innerHTML = `
     <section class="quiz-step">
@@ -112,8 +99,7 @@ const renderResult = (profile) => {
     return;
   }
 
-  const result = onboardingQuiz.results[profile];
-  updateProgress(1);
+  const result = missionZero.results[profile];
 
   quizStage.innerHTML = `
     <section class="quiz-step quiz-step--result">
@@ -121,7 +107,7 @@ const renderResult = (profile) => {
       <h2 class="mission-zero__title">${result.title}</h2>
       <p class="quiz-step__text">${result.description}</p>
       <button class="quiz-cta" type="button" data-complete-mission>
-        ${homeViewModel.missionZero.completeCta}
+        ${missionZero.completeCta}
       </button>
     </section>
   `;
@@ -137,28 +123,27 @@ if (openingScreen && !hasCompletedMissionZero) {
   openingScreen.addEventListener("click", () => {
     hideOpening();
     showMission();
-    updateProgress(0);
-  });
-}
-
-if (startQuizButton && !hasCompletedMissionZero) {
-  startQuizButton.addEventListener("click", () => {
-    currentQuestionIndex = 0;
-    answers.length = 0;
-    renderQuestion(currentQuestionIndex);
   });
 }
 
 if (quizStage && !hasCompletedMissionZero) {
   quizStage.addEventListener("click", (event) => {
+    const startButton = event.target.closest("[data-start-quiz]");
     const answerButton = event.target.closest("[data-answer-profile]");
     const finishButton = event.target.closest("[data-complete-mission]");
+
+    if (startButton) {
+      currentQuestionIndex = 0;
+      answers.length = 0;
+      renderQuestion(currentQuestionIndex);
+      return;
+    }
 
     if (answerButton) {
       answers.push(answerButton.dataset.answerProfile);
       currentQuestionIndex += 1;
 
-      if (currentQuestionIndex < onboardingQuiz.questions.length) {
+      if (currentQuestionIndex < missionZero.questions.length) {
         renderQuestion(currentQuestionIndex);
         return;
       }

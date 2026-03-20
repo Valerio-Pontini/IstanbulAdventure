@@ -1,11 +1,11 @@
-const CACHE_NAME = "travelgame-shell-v2";
+const CACHE_NAME = "travelgame-shell-v3";
 const APP_SHELL = [
   "/",
   "/index.html",
   "/manifest.webmanifest",
   "/src/main.js",
+  "/src/content/game-text.js",
   "/src/ui/app-shell.js",
-  "/src/state/home-view-model.js",
   "/src/styles/index.css",
   "/src/styles/tokens.css",
   "/src/styles/base.css",

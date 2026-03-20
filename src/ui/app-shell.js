@@ -1,37 +1,22 @@
-const createLogo = () => `
-  <div class="brand-lockup">
-    <span class="brand-lockup__name">TravelGame</span>
-    <span class="brand-lockup__tagline">Viaggia. Scopri. Gioca.</span>
-  </div>
-`;
-
 const createMissionScreen = (model, hidden = false) => {
-  const { missionZero, onboardingQuiz } = model;
+  const { welcome } = model;
 
   return `
     <section class="mission-zero${hidden ? " is-hidden" : ""}" data-mission-zero ${
       hidden ? "hidden" : ""
     }>
       <div class="mission-zero__panel">
-        <div class="section-heading">
-          <span class="section-heading__eyebrow">${missionZero.eyebrow}</span>
-          <h1 class="mission-zero__title">${missionZero.title}</h1>
-          <p class="mission-zero__description">${missionZero.description}</p>
-        </div>
-
-        <div class="quiz-card" data-quiz-card>
-          <div class="quiz-card__progress" aria-hidden="true">
-            <span class="quiz-card__progress-bar" data-quiz-progress-bar></span>
-          </div>
-
-          <div class="quiz-stage" data-quiz-stage>
-            <section class="quiz-step" data-quiz-intro>
-              <span class="section-heading__eyebrow">${onboardingQuiz.intro.eyebrow}</span>
-              <h2 class="mission-zero__title">${onboardingQuiz.intro.title}</h2>
-              <p class="quiz-step__text">${onboardingQuiz.intro.description}</p>
-              <button class="quiz-cta" type="button" data-start-quiz>${missionZero.cta}</button>
-            </section>
-          </div>
+        <div class="quiz-stage" data-quiz-stage>
+          <section class="mission-zero__welcome">
+            <span class="section-heading__eyebrow">${welcome.eyebrow}</span>
+            <h2 class="mission-zero__title">${welcome.title}</h2>
+            <div class="mission-zero__copy">
+              ${welcome.body
+                .map((paragraph) => `<p class="quiz-step__text">${paragraph}</p>`)
+                .join("")}
+            </div>
+            <button class="quiz-cta" type="button" data-start-quiz>${welcome.cta}</button>
+          </section>
         </div>
       </div>
     </section>
@@ -57,12 +42,8 @@ export function createAppShell(model, options = {}) {
           alt=""
         />
       </div>
-      <div class="opening-screen__content">
-        ${createLogo()}
-      </div>
-      <div class="opening-screen__hint" aria-hidden="true">
-        <span class="opening-screen__hint-line"></span>
-        <span class="opening-screen__hint-text">Tocca per iniziare</span>
+      <div class="opening-screen__content opening-screen__content--title">
+        <h1 class="opening-screen__title opening-screen__title--cover">${model.cover.title}</h1>
       </div>
     </section>
 
