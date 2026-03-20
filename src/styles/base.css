@@ -26,7 +26,7 @@ body {
   background:
     radial-gradient(circle at top, rgba(111, 150, 138, 0.28), transparent 30%),
     linear-gradient(180deg, rgba(47, 79, 72, 0.18), rgba(11, 22, 19, 0.52)),
-    url("../assets/app-background.png");
+    url("../assets/hero-onboarding-2.png");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;

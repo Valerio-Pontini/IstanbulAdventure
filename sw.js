@@ -1,4 +1,4 @@
-const CACHE_NAME = "travelgame-shell-v1";
+const CACHE_NAME = "travelgame-shell-v2";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -13,6 +13,7 @@ const APP_SHELL = [
   "/src/styles/components.css",
   "/src/assets/app-background.png",
   "/src/assets/hero-onboarding.png",
+  "/src/assets/hero-onboarding-2.png",
   "/icons/icon-192.png",
   "/icons/icon-512.png"
 ];
