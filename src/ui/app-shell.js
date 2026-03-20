@@ -44,8 +44,6 @@ export function createAppShell(model, options = {}) {
   shell.className = `app-shell${showOpening ? " is-opening-active" : ""}`;
 
   shell.innerHTML = `
-    <div class="app-shell__background" aria-hidden="true"></div>
-
     <section
       class="opening-screen"
       data-opening-screen
