@@ -11,7 +11,7 @@
 .mission-zero__title {
   max-width: 12ch;
   font-family: var(--font-display);
-  font-size: clamp(1.95rem, 6.7vw, 3.35rem);
+  font-size: clamp(2.15rem, 7.3vw, 3.7rem);
   line-height: 0.95;
   text-align: center;
   letter-spacing: 0.08em;
@@ -132,7 +132,7 @@
   max-width: 560px;
   justify-items: center;
   align-content: start;
-  gap: clamp(14px, 2.8vh, 28px);
+  gap: clamp(10px, 2vh, 18px);
   padding-top: max(12vh, calc(env(safe-area-inset-top) + 56px));
   margin: 0 auto;
   transform: translateX(10px);
@@ -152,7 +152,7 @@
   position: relative;
   justify-self: center;
   align-self: start;
-  margin-top: clamp(6px, 1.6vh, 18px);
+  margin-top: 0;
 }
 
 .story-card:focus-visible {
@@ -177,7 +177,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 389 / 526;
-  min-height: clamp(430px, 62vh, 700px);
+  min-height: clamp(470px, 66vh, 740px);
   z-index: 1;
 }
 
@@ -390,7 +390,7 @@
 
 .mission-zero__welcome .quiz-cta {
   align-self: start;
-  margin: clamp(12px, 2.4vh, 24px) auto 0;
+  margin: clamp(6px, 1.4vh, 14px) auto 0;
 }
 
 .quiz-cta:active {
