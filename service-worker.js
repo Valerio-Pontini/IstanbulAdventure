@@ -1,4 +1,4 @@
-const CACHE_NAME = "demo-svg-pwa-v3";
+const CACHE_NAME = "demo-svg-pwa-v4";
 
 const APP_ASSETS = [
   "./",

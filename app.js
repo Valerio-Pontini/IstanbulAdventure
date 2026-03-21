@@ -4,7 +4,8 @@ const routes = {
 };
 
 const content = window.APP_CONTENT;
-const storySlides = content.storySlides;
+const STORY_TEXT_MAX_SIZE = 26;
+const STORY_TEXT_MIN_SIZE = 16;
 
 const ui = {
   onboardingPage: document.getElementById("onboardingPage"),
@@ -21,6 +22,8 @@ const ui = {
 };
 
 let currentSlideIndex = 0;
+let storySlides = [];
+let resizeTimeoutId = null;
 
 function renderStaticContent() {
   ui.coverTitle.textContent = content.coverTitle;
@@ -29,8 +32,80 @@ function renderStaticContent() {
   ui.actionButtonLabel.textContent = content.actionButtonLabel;
 }
 
+function textFits(text, fontSize) {
+  ui.widgetText.style.fontSize = `${fontSize}px`;
+  ui.widgetText.textContent = text;
+  return ui.widgetText.scrollHeight <= ui.widgetText.clientHeight;
+}
+
+function getBestFittingFontSize(text) {
+  for (let fontSize = STORY_TEXT_MAX_SIZE; fontSize >= STORY_TEXT_MIN_SIZE; fontSize -= 1) {
+    if (textFits(text, fontSize)) {
+      return fontSize;
+    }
+  }
+
+  return null;
+}
+
+function paginateStoryText(text) {
+  const words = text.trim().split(/\s+/);
+  const pages = [];
+  let currentWords = [];
+
+  for (const word of words) {
+    const candidateWords = [...currentWords, word];
+    const candidateText = candidateWords.join(" ");
+
+    if (getBestFittingFontSize(candidateText) !== null) {
+      currentWords = candidateWords;
+      continue;
+    }
+
+    if (currentWords.length === 0) {
+      pages.push({
+        text: candidateText,
+        fontSize: STORY_TEXT_MIN_SIZE
+      });
+      continue;
+    }
+
+    const currentText = currentWords.join(" ");
+    pages.push({
+      text: currentText,
+      fontSize: getBestFittingFontSize(currentText) ?? STORY_TEXT_MIN_SIZE
+    });
+    currentWords = [word];
+  }
+
+  if (currentWords.length > 0) {
+    const currentText = currentWords.join(" ");
+    pages.push({
+      text: currentText,
+      fontSize: getBestFittingFontSize(currentText) ?? STORY_TEXT_MIN_SIZE
+    });
+  }
+
+  return pages;
+}
+
+function rebuildStorySlides() {
+  storySlides = content.storySlides.flatMap((slide) => paginateStoryText(slide));
+  currentSlideIndex = Math.min(currentSlideIndex, Math.max(storySlides.length - 1, 0));
+}
+
 function renderStorySlide() {
-  ui.widgetText.textContent = storySlides[currentSlideIndex];
+  const currentSlide = storySlides[currentSlideIndex];
+
+  if (!currentSlide) {
+    ui.widgetText.textContent = "";
+    ui.prevTextButton.disabled = true;
+    ui.nextTextButton.disabled = true;
+    return;
+  }
+
+  ui.widgetText.style.fontSize = `${currentSlide.fontSize}px`;
+  ui.widgetText.textContent = currentSlide.text;
   ui.prevTextButton.disabled = currentSlideIndex === 0;
   ui.nextTextButton.disabled = currentSlideIndex === storySlides.length - 1;
 }
@@ -85,8 +160,24 @@ ui.nextTextButton.addEventListener("click", () => {
   renderStorySlide();
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("resize", () => {
+  window.clearTimeout(resizeTimeoutId);
+  resizeTimeoutId = window.setTimeout(() => {
+    rebuildStorySlides();
+    renderStorySlide();
+  }, 100);
+});
+
+window.addEventListener("DOMContentLoaded", async () => {
   renderStaticContent();
+  if (document.fonts?.ready) {
+    try {
+      await document.fonts.ready;
+    } catch (error) {
+      console.error("Font non caricati correttamente:", error);
+    }
+  }
+  rebuildStorySlides();
   renderStorySlide();
   syncPageWithRoute();
 });
