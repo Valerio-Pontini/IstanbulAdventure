@@ -14,7 +14,9 @@ const APP_SHELL = [
   "/src/assets/app-background.png",
   "/src/assets/hero-onboarding.png",
   "/src/assets/hero-onboarding-2.png",
-  "/src/assets/ui/textBox.png",
+  "/src/assets/ui/textBox.svg",
+  "/src/assets/ui/etichetta-ghirigori.svg",
+  "/src/assets/ui/pulsante-marrone.svg",
   "/icons/icon-192.png",
   "/icons/icon-512.png"
 ];
