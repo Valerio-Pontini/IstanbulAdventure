@@ -109,7 +109,7 @@
   display: grid;
   align-content: stretch;
   gap: var(--space-5);
-  width: 88%;
+  width: 98%;
   margin: 0 auto;
 }
 
