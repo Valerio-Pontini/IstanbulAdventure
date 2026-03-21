@@ -1,6 +1,6 @@
 .app-shell {
   position: relative;
-  width: min(100vw, calc(var(--app-min-height) * 9 / 20));
+  width: min(100vw, calc(var(--app-min-height) * 10 / 20));
   min-height: var(--app-min-height);
   aspect-ratio: var(--app-aspect-ratio);
   margin: 0 auto;
@@ -150,7 +150,7 @@
 @media (min-width: 768px) {
   .app-shell {
     padding: 0;
-    width: min(100vw, calc(var(--app-min-height) * 9 / 20));
+    width: min(100vw, calc(var(--app-min-height) * 10.5 / 20));
   }
 
   .opening-screen {
