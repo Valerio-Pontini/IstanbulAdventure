@@ -1,8 +1,7 @@
 const content = window.APP_CONTENT;
 const quizContent = window.QUIZ_CONTENT ?? content.quiz ?? {};
 const QUESTION_TEXT_MIN_SIZE = 14;
-const ANSWER_TEXT_MAX_SIZE = 20;
-const ANSWER_TEXT_MIN_SIZE = 10;
+const ANSWER_TEXT_MIN_SIZE = 8;
 const QUIZ_ANSWER_SHAPE = "etichetta-ghirigori.svg";
 const QUIZ_ANSWER_FALLBACK_SHAPE = "assets/pulsante marrone.svg";
 
@@ -48,6 +47,19 @@ function getAnswerButtonWidth(label) {
 
 function getAnswerButtonHeight(label) {
   return clampNumber(Math.round(74 + label.length * 0.9), 78, 112);
+}
+
+function getAnswerFontBounds(element) {
+  const button = element.closest(".quiz-answer-button");
+  const buttonWidth = button?.clientWidth ?? element.clientWidth;
+  const textHeight = element.clientHeight;
+  const derivedMax = Math.round(Math.min(buttonWidth * 0.044, textHeight * 0.56));
+  const derivedMin = Math.round(Math.min(buttonWidth * 0.026, textHeight * 0.34));
+
+  return {
+    max: clampNumber(derivedMax, 12, 18),
+    min: clampNumber(derivedMin, ANSWER_TEXT_MIN_SIZE, 11)
+  };
 }
 
 function questionTextFits(text, fontSize, element) {
@@ -137,13 +149,15 @@ function answerTextFits(text, fontSize, element) {
 }
 
 function getBestAnswerFontSize(text, element) {
-  for (let fontSize = ANSWER_TEXT_MAX_SIZE; fontSize >= ANSWER_TEXT_MIN_SIZE; fontSize -= 1) {
+  const { max, min } = getAnswerFontBounds(element);
+
+  for (let fontSize = max; fontSize >= min; fontSize -= 1) {
     if (answerTextFits(text, fontSize, element)) {
       return fontSize;
     }
   }
 
-  return ANSWER_TEXT_MIN_SIZE;
+  return min;
 }
 
 function showQuizQuestionLayer() {
