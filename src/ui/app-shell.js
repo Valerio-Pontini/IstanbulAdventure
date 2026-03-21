@@ -10,10 +10,25 @@ const createMissionScreen = (model, hidden = false) => {
           <section class="mission-zero__welcome">
             <span class="section-heading__eyebrow">${welcome.eyebrow}</span>
             <h2 class="mission-zero__title">${welcome.title}</h2>
-            <div class="mission-zero__copy">
-              ${welcome.body
-                .map((paragraph) => `<p class="quiz-step__text">${paragraph}</p>`)
-                .join("")}
+            <div class="story-card" data-story-card role="button" tabindex="0" aria-label="Carta introduttiva da girare">
+              <div class="story-card__inner">
+                <section class="story-card__face story-card__face--front" aria-label="Carta introduttiva fronte">
+                  <div class="mission-zero__copy">
+                    ${welcome.card.front
+                      .map((paragraph) => `<p class="quiz-step__text">${paragraph}</p>`)
+                      .join("")}
+                  </div>
+                  <span class="story-card__arrow" aria-hidden="true">→</span>
+                </section>
+                <section class="story-card__face story-card__face--back" aria-label="Carta introduttiva retro">
+                  <div class="mission-zero__copy">
+                    ${welcome.card.back
+                      .map((paragraph) => `<p class="quiz-step__text">${paragraph}</p>`)
+                      .join("")}
+                  </div>
+                  <span class="story-card__arrow story-card__arrow--back" aria-hidden="true">←</span>
+                </section>
+              </div>
             </div>
             <button class="quiz-cta" type="button" data-start-quiz>${welcome.cta}</button>
           </section>

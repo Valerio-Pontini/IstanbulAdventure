@@ -5,19 +5,17 @@ export const gameText = {
   welcome: {
     eyebrow: "",
     title: "Benvenuti",
-    body: [
-      "Questa non è una guida è un modo diverso di vivere la città.",
-      "Durante il viaggio non seguirete un percorso fisso: scoprirete Istanbul attraverso missioni, dettagli e storie",
-      "Ma non tutti la esplorano allo stesso modo.",
-      "A Istanbul non tutti vedono la stessa città: ogni viaggiatore appartiene, senza saperlo, a una delle cinque tribù:",
-      " Archivisti degli Imperi,",
-      " Cacciatori di Leggende,",
-      "Esploratori della Città,",
-      "Custodi delle Tradizioni",
-      "Decifratori dei Simboli",
-      "C’è chi segue le tracce degli imperi, chi rincorre storie misteriose, chi esplora quartieri e panorami, chi osserva la vita quotidiana e chi inizia a riconoscere simboli ovunque.",
-      "Prima di iniziare, una breve missione servirà a capire quale è la tua: un quiz veloce, con domande a volte un po’ assurde, che definirà il tuo modo di giocare e ti farà scoprire Istanbul in modo unico."
-    ],
+    card: {
+      front: [
+        "Questa non e una guida: e un modo diverso di vivere la citta.",
+        "Durante il viaggio non seguirete un percorso fisso: scoprirete Istanbul attraverso missioni, dettagli e storie.",
+        "Ma non tutti la esplorano allo stesso modo.",
+      ],
+      back: [
+        "A Istanbul non tutti vedono la stessa citta: ogni viaggiatore appartiene, senza saperlo, a una delle cinque tribu.",
+        "Prima di iniziare, una breve missione servira a capire quale e la tua: un quiz veloce che definira il tuo modo di giocare.",
+      ],
+    },
     cta: "Inizia la Missione 0",
   },
   missionZero: {

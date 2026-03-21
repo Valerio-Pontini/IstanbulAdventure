@@ -21,11 +21,39 @@ root.append(appShell);
 const openingScreen = appShell.querySelector("[data-opening-screen]");
 const missionZeroScreen = appShell.querySelector("[data-mission-zero]");
 const quizStage = appShell.querySelector("[data-quiz-stage]");
-const { missionZero } = gameText;
+const { missionZero, welcome } = gameText;
 
 let currentQuestionIndex = 0;
 const answers = [];
 let currentProfile = null;
+
+const syncStoryCardState = (isFlipped) => {
+  if (!quizStage) {
+    return;
+  }
+
+  const storyCard = quizStage.querySelector("[data-story-card]");
+
+  if (!storyCard) {
+    return;
+  }
+
+  storyCard.classList.toggle("is-flipped", isFlipped);
+};
+
+const toggleStoryCard = () => {
+  if (!quizStage) {
+    return;
+  }
+
+  const storyCard = quizStage.querySelector("[data-story-card]");
+
+  if (!storyCard) {
+    return;
+  }
+
+  syncStoryCardState(!storyCard.classList.contains("is-flipped"));
+};
 
 const hideOpening = () => {
   if (!openingScreen) {
@@ -158,6 +186,31 @@ if (quizStage && !hasCompletedMissionZero) {
       window.localStorage.setItem(MISSION_ZERO_COMPLETED_KEY, "true");
       hideMission();
     }
+  });
+
+  quizStage.addEventListener("click", (event) => {
+    const storyCard = event.target.closest("[data-story-card]");
+
+    if (!storyCard) {
+      return;
+    }
+
+    toggleStoryCard();
+  });
+
+  quizStage.addEventListener("keydown", (event) => {
+    const storyCard = event.target.closest("[data-story-card]");
+
+    if (!storyCard) {
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+    toggleStoryCard();
   });
 }
 
