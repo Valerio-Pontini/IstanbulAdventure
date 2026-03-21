@@ -193,11 +193,11 @@ button {
 
 .content-title {
   margin: 0;
-  font-size: clamp(2.5rem, 6.8vw, 4.2rem);
+  font-size: clamp(2.0rem, 6.0vw, 3.8rem);
   font-weight: 700;
   color: var(--title-color);
   font-family: var(--font-title);
-  letter-spacing: 0.7em;
+  letter-spacing: 0.3em;
   text-shadow: 0 0px 0px rgba(12, 8, 6, 0.45);
 }
 
