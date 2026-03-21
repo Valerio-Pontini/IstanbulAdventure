@@ -1,4 +1,5 @@
 const content = window.APP_CONTENT;
+const quizContent = window.QUIZ_CONTENT ?? content.quiz ?? {};
 const QUESTION_TEXT_MAX_SIZE = 31;
 const QUESTION_TEXT_MIN_SIZE = 18;
 const ANSWER_TEXT_MAX_SIZE = 20;
@@ -23,7 +24,31 @@ let activeOverlayAction = null;
 let overlayCompletesQuiz = false;
 const shownQuestionDescriptions = new Set();
 
-const quizQuestions = new Map((content.quiz?.questions ?? []).map((question) => [question.id, question]));
+const quizQuestions = new Map((quizContent.questions ?? []).map((question) => [question.id, question]));
+
+function clampNumber(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function getQuestionWidgetWidth(question) {
+  const baseWidth = 392;
+  const textBonus = (question.text?.length ?? 0) * 0.7;
+  const answerBonus = Math.max(...(question.answers ?? []).map((answer) => answer.label.length), 0) * 0.4;
+  return clampNumber(Math.round(baseWidth + textBonus + answerBonus), 392, 456);
+}
+
+function getQuestionTextHeight(question) {
+  const textLength = question.text?.length ?? 0;
+  return clampNumber(30 + Math.round(textLength / 24), 30, 40);
+}
+
+function getAnswerButtonWidth(label) {
+  return clampNumber(Math.round(310 + label.length * 3.2), 320, 408);
+}
+
+function getAnswerButtonHeight(label) {
+  return clampNumber(Math.round(74 + label.length * 0.9), 78, 112);
+}
 
 function questionTextFits(text, fontSize, element) {
   element.style.fontSize = `${fontSize}px`;
@@ -46,6 +71,8 @@ function createAnswerButton(answer) {
   button.type = "button";
   button.className = "quiz-answer-button";
   button.setAttribute("aria-label", answer.label);
+  button.style.setProperty("--answer-button-width", `${getAnswerButtonWidth(answer.label)}px`);
+  button.style.setProperty("--answer-button-height", `${getAnswerButtonHeight(answer.label)}px`);
 
   const shape = document.createElement("img");
   shape.className = "quiz-answer-shape";
@@ -67,6 +94,11 @@ function createAnswerButton(answer) {
   button.append(shape, label);
   button.addEventListener("click", () => handleAnswerSelection(answer));
   return button;
+}
+
+function applyQuestionLayout(question) {
+  ui.quizExperience.style.setProperty("--question-widget-width", `${getQuestionWidgetWidth(question)}px`);
+  ui.quizExperience.style.setProperty("--question-text-height", `${getQuestionTextHeight(question)}%`);
 }
 
 function answerTextFits(text, fontSize, element) {
@@ -106,7 +138,7 @@ function showOverlayCard(text, options = {}) {
 }
 
 function finishQuiz() {
-  const completion = content.quiz?.completion;
+  const completion = quizContent.completion;
   if (!completion) {
     return;
   }
@@ -136,6 +168,7 @@ function renderQuestion(questionId) {
 
   showQuizQuestionLayer();
   currentQuestionId = question.id;
+  applyQuestionLayout(question);
   ui.quizQuestionText.style.fontSize = `${getBestQuestionFontSize(question.text, ui.quizQuestionText)}px`;
   ui.quizQuestionText.textContent = question.text;
 
@@ -207,7 +240,7 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener("DOMContentLoaded", async () => {
-  ui.feedbackHint.textContent = content.quiz?.tapToContinueLabel ?? "Tocca per continuare";
+  ui.feedbackHint.textContent = quizContent.tapToContinueLabel ?? "Tocca per continuare";
 
   if (document.fonts?.ready) {
     try {
@@ -217,5 +250,5 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  renderQuestion(content.quiz?.startQuestionId);
+  renderQuestion(quizContent.startQuestionId);
 });
