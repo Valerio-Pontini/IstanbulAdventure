@@ -82,7 +82,7 @@
 
 .mission-zero__title {
   max-width: 100%;
-  margin: 0 0 calc(var(--space-4) + 8px);
+  margin: 0;
   color: var(--color-title);
   justify-self: center;
   text-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
@@ -95,10 +95,7 @@
   width: 100%;
   height: 100%;
   min-height: var(--app-min-height);
-  padding:
-    max(148px, calc(env(safe-area-inset-top) + 118px))
-    var(--space-4)
-    calc(var(--space-8) + 32px);
+  padding: 0 var(--space-4);
 }
 
 .mission-zero.is-hidden {
@@ -119,12 +116,25 @@
   align-content: start;
   justify-items: center;
   gap: var(--space-5);
-  min-height: calc(var(--app-min-height) - max(148px, calc(env(safe-area-inset-top) + 118px)));
+  min-height: var(--app-min-height);
 }
 
 .mission-zero__copy {
   display: grid;
   gap: var(--space-3);
+}
+
+.mission-zero__welcome {
+  position: relative;
+  width: 100%;
+}
+
+.mission-zero__welcome .mission-zero__title {
+  position: absolute;
+  top: max(20%, calc(env(safe-area-inset-top) + 72px));
+  left: 50%;
+  width: min(88%, 560px);
+  transform: translateX(-50%);
 }
 
 .story-card {
@@ -133,6 +143,8 @@
   outline: none;
   position: relative;
   justify-self: center;
+  align-self: center;
+  margin-top: clamp(32px, 6vh, 64px);
 }
 
 .story-card:focus-visible {
@@ -335,7 +347,7 @@
   min-height: 126px;
   display: grid;
   place-items: center;
-  margin: 0 auto;
+  margin: -8px auto 0;
   padding: 0 40px;
   border: 0;
   border-radius: 0;
@@ -366,6 +378,10 @@
   z-index: 1;
   display: block;
   width: 72%;
+}
+
+.mission-zero__welcome .quiz-cta {
+  align-self: start;
 }
 
 .quiz-cta:active {
