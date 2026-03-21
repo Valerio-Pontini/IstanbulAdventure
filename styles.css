@@ -193,12 +193,12 @@ button {
 
 .content-title {
   margin: 0;
-  font-size: clamp(1.9rem, 5.2vw, 3.1rem);
+  font-size: clamp(2.5rem, 6.8vw, 4.2rem);
   font-weight: 700;
   color: var(--title-color);
   font-family: var(--font-title);
-  letter-spacing: 0.04em;
-  text-shadow: 0 4px 18px rgba(12, 8, 6, 0.45);
+  letter-spacing: 0.7em;
+  text-shadow: 0 0px 0px rgba(12, 8, 6, 0.45);
 }
 
 .widget-wrapper {
