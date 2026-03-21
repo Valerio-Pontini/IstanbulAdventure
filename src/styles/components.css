@@ -130,7 +130,7 @@
   justify-items: center;
   align-content: start;
   gap: clamp(14px, 2.8vh, 28px);
-  padding-top: max(20vh, calc(env(safe-area-inset-top) + 88px));
+  padding-top: max(12vh, calc(env(safe-area-inset-top) + 56px));
 }
 
 .mission-zero__welcome .mission-zero__title {
@@ -178,7 +178,7 @@
 
 .story-card__face {
   position: absolute;
-  inset: 10;
+  inset: 0;
   display: grid;
   align-items: stretch;
   padding: 0;
