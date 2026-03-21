@@ -3,13 +3,37 @@ const routes = {
   content: "#contenuto"
 };
 
+const content = window.APP_CONTENT;
+const storySlides = content.storySlides;
+
 const ui = {
   onboardingPage: document.getElementById("onboardingPage"),
   storyPage: document.getElementById("storyPage"),
   enterAppButton: document.getElementById("enterAppButton"),
   actionButton: document.getElementById("svgActionButton"),
-  widgetText: document.getElementById("widgetText")
+  coverTitle: document.getElementById("coverTitle"),
+  coverHint: document.getElementById("coverHint"),
+  contentTitle: document.getElementById("contentTitle"),
+  actionButtonLabel: document.getElementById("actionButtonLabel"),
+  widgetText: document.getElementById("widgetText"),
+  prevTextButton: document.getElementById("prevTextButton"),
+  nextTextButton: document.getElementById("nextTextButton")
 };
+
+let currentSlideIndex = 0;
+
+function renderStaticContent() {
+  ui.coverTitle.textContent = content.coverTitle;
+  ui.coverHint.textContent = content.coverHint;
+  ui.contentTitle.textContent = content.contentTitle;
+  ui.actionButtonLabel.textContent = content.actionButtonLabel;
+}
+
+function renderStorySlide() {
+  ui.widgetText.textContent = storySlides[currentSlideIndex];
+  ui.prevTextButton.disabled = currentSlideIndex === 0;
+  ui.nextTextButton.disabled = currentSlideIndex === storySlides.length - 1;
+}
 
 function setActivePage(targetPage, nextHash, statePage) {
   const isStoryPage = targetPage === ui.storyPage;
@@ -39,10 +63,33 @@ function syncPageWithRoute() {
 ui.enterAppButton.addEventListener("click", showStoryPage);
 
 ui.actionButton.addEventListener("click", () => {
-  ui.widgetText.textContent = "Hai premuto il pulsante sotto alla textbox.";
+  currentSlideIndex = (currentSlideIndex + 1) % storySlides.length;
+  renderStorySlide();
 });
 
-window.addEventListener("DOMContentLoaded", syncPageWithRoute);
+ui.prevTextButton.addEventListener("click", () => {
+  if (currentSlideIndex === 0) {
+    return;
+  }
+
+  currentSlideIndex -= 1;
+  renderStorySlide();
+});
+
+ui.nextTextButton.addEventListener("click", () => {
+  if (currentSlideIndex === storySlides.length - 1) {
+    return;
+  }
+
+  currentSlideIndex += 1;
+  renderStorySlide();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderStaticContent();
+  renderStorySlide();
+  syncPageWithRoute();
+});
 window.addEventListener("popstate", syncPageWithRoute);
 
 if ("serviceWorker" in navigator) {

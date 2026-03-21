@@ -1,9 +1,10 @@
-const CACHE_NAME = "demo-svg-pwa-v2";
+const CACHE_NAME = "demo-svg-pwa-v3";
 
 const APP_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
+  "./content.js",
   "./app.js",
   "./manifest.json",
   "./assets/hero-onboarding.png",

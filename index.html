@@ -8,6 +8,12 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <title>Webapp Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -21,8 +27,8 @@
           alt="Immagine di copertina"
         />
         <div class="cover-overlay"></div>
-        <h1 class="cover-title">Il Mio Titolo</h1>
-        <p class="cover-hint">Tocca per entrare</p>
+        <h1 class="cover-title" id="coverTitle">Il Mio Titolo</h1>
+        <p class="cover-hint" id="coverHint">Tocca per entrare</p>
       </button>
     </section>
 
@@ -30,7 +36,7 @@
       <div class="content-inner">
         <div class="content-stage">
           <header class="content-header">
-            <h2 class="content-title">Seconda Pagina</h2>
+            <h2 class="content-title" id="contentTitle">Seconda Pagina</h2>
           </header>
 
           <div class="widget-wrapper" role="img" aria-label="Textbox decorativa con testo interno">
@@ -43,6 +49,14 @@
             <div class="widget-text" id="widgetText">
               Qui va il tuo testo dentro il widget SVG
             </div>
+            <div class="widget-controls" aria-label="Navigazione del testo">
+              <button id="prevTextButton" class="widget-arrow widget-arrow-prev" type="button" aria-label="Testo precedente">
+                <span aria-hidden="true">←</span>
+              </button>
+              <button id="nextTextButton" class="widget-arrow widget-arrow-next" type="button" aria-label="Testo successivo">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
           </div>
 
           <button id="svgActionButton" class="svg-button" type="button">
@@ -52,13 +66,14 @@
               alt=""
               aria-hidden="true"
             />
-            <span class="svg-button-label">Premi qui</span>
+            <span class="svg-button-label" id="actionButtonLabel">Premi qui</span>
           </button>
         </div>
       </div>
     </section>
   </main>
 
+  <script src="content.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
