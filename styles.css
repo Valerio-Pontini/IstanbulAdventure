@@ -394,7 +394,7 @@ button {
 .quiz-widget-text {
   position: relative;
   z-index: 1;
-  width: 70%;
+  width: 74%;
   min-height: 0;
   height: auto;
   display: flex;

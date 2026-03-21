@@ -1,7 +1,6 @@
 const content = window.APP_CONTENT;
 const quizContent = window.QUIZ_CONTENT ?? content.quiz ?? {};
-const QUESTION_TEXT_MAX_SIZE = 31;
-const QUESTION_TEXT_MIN_SIZE = 18;
+const QUESTION_TEXT_MIN_SIZE = 14;
 const ANSWER_TEXT_MAX_SIZE = 20;
 const ANSWER_TEXT_MIN_SIZE = 10;
 const QUIZ_ANSWER_SHAPE = "etichetta-ghirigori.svg";
@@ -23,6 +22,7 @@ let pendingQuestionId = null;
 let activeOverlayAction = null;
 let overlayCompletesQuiz = false;
 const shownQuestionDescriptions = new Set();
+let pendingQuestionFrame = null;
 
 const quizQuestions = new Map((quizContent.questions ?? []).map((question) => [question.id, question]));
 
@@ -56,14 +56,43 @@ function questionTextFits(text, fontSize, element) {
   return element.scrollHeight <= element.clientHeight && element.scrollWidth <= element.clientWidth;
 }
 
+function getQuestionFontBounds(element) {
+  const widget = element.closest(".quiz-widget");
+  const widgetWidth = widget?.clientWidth ?? element.clientWidth;
+  const textHeight = element.clientHeight;
+  const derivedMax = Math.round(Math.min(widgetWidth * 0.046, textHeight * 0.42));
+  const derivedMin = Math.round(Math.min(widgetWidth * 0.024, textHeight * 0.26));
+
+  return {
+    max: clampNumber(derivedMax, 15, 23),
+    min: clampNumber(derivedMin, 11, 15)
+  };
+}
+
 function getBestQuestionFontSize(text, element) {
-  for (let fontSize = QUESTION_TEXT_MAX_SIZE; fontSize >= QUESTION_TEXT_MIN_SIZE; fontSize -= 1) {
+  const { max, min } = getQuestionFontBounds(element);
+
+  for (let fontSize = max; fontSize >= min; fontSize -= 1) {
     if (questionTextFits(text, fontSize, element)) {
       return fontSize;
     }
   }
 
-  return QUESTION_TEXT_MIN_SIZE;
+  return min;
+}
+
+function fitTextToQuestionFrame(element, text) {
+  element.textContent = text;
+  element.style.fontSize = "";
+
+  if (pendingQuestionFrame) {
+    window.cancelAnimationFrame(pendingQuestionFrame);
+  }
+
+  pendingQuestionFrame = window.requestAnimationFrame(() => {
+    element.style.fontSize = `${getBestQuestionFontSize(text, element)}px`;
+    pendingQuestionFrame = null;
+  });
 }
 
 function createAnswerButton(answer) {
@@ -144,8 +173,7 @@ function finishQuiz() {
   }
 
   showQuizCompletionLayer();
-  ui.quizCompletionText.style.fontSize = `${getBestQuestionFontSize(completion.text, ui.quizCompletionText)}px`;
-  ui.quizCompletionText.textContent = completion.text;
+  fitTextToQuestionFrame(ui.quizCompletionText, completion.text);
   currentQuestionId = null;
 }
 
@@ -169,8 +197,7 @@ function renderQuestion(questionId) {
   showQuizQuestionLayer();
   currentQuestionId = question.id;
   applyQuestionLayout(question);
-  ui.quizQuestionText.style.fontSize = `${getBestQuestionFontSize(question.text, ui.quizQuestionText)}px`;
-  ui.quizQuestionText.textContent = question.text;
+  fitTextToQuestionFrame(ui.quizQuestionText, question.text);
 
   const answerButtons = question.answers.map((answer) => createAnswerButton(answer));
   ui.quizAnswers.replaceChildren(...answerButtons);
@@ -229,6 +256,11 @@ ui.feedbackOverlay.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("resize", () => {
+  if (pendingQuestionFrame) {
+    window.cancelAnimationFrame(pendingQuestionFrame);
+    pendingQuestionFrame = null;
+  }
+
   if (currentQuestionId) {
     renderQuestion(currentQuestionId);
     return;
