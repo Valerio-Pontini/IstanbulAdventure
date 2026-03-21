@@ -188,7 +188,8 @@ button {
   z-index: 1;
   text-align: center;
   margin-top: 65px;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
+  transform: translateX(3px);
 }
 
 .content-title {
