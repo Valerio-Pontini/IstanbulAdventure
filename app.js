@@ -136,10 +136,8 @@ function syncPageWithRoute() {
 }
 
 ui.enterAppButton.addEventListener("click", showStoryPage);
-
 ui.actionButton.addEventListener("click", () => {
-  currentSlideIndex = (currentSlideIndex + 1) % storySlides.length;
-  renderStorySlide();
+  window.location.href = "./quiz.html";
 });
 
 ui.prevTextButton.addEventListener("click", () => {
@@ -181,6 +179,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   renderStorySlide();
   syncPageWithRoute();
 });
+
 window.addEventListener("popstate", syncPageWithRoute);
 
 if ("serviceWorker" in navigator) {
