@@ -1,5 +1,6 @@
 import { createAppShell } from "./ui/app-shell.js";
 import { gameText } from "./content/game-text.js";
+import { loadUiSvgAssets } from "./ui/svg-assets.js";
 
 const MISSION_ZERO_COMPLETED_KEY = "travelgame-mission-zero-completed";
 const PLAYER_TRIBE_KEY = "travelgame-player-tribe";
@@ -10,19 +11,22 @@ if (!root) {
   throw new Error("Root container #app non trovato.");
 }
 
+const createSvgButtonMarkup = ({ frameMarkup, className, labelClassName, label, dataAttribute }) => `
+  <button class="${className}" type="button" ${dataAttribute}>
+    ${frameMarkup}
+    <span class="${labelClassName}">${label}</span>
+  </button>
+`;
+
 const hasCompletedMissionZero =
   window.localStorage.getItem(MISSION_ZERO_COMPLETED_KEY) === "true";
-const appShell = createAppShell(gameText, {
-  showOpening: !hasCompletedMissionZero,
-  showMission: !hasCompletedMissionZero,
-});
-root.append(appShell);
-
-const openingScreen = appShell.querySelector("[data-opening-screen]");
-const missionZeroScreen = appShell.querySelector("[data-mission-zero]");
-const quizStage = appShell.querySelector("[data-quiz-stage]");
 const { missionZero, welcome } = gameText;
 
+let appShell = null;
+let openingScreen = null;
+let missionZeroScreen = null;
+let quizStage = null;
+let uiSvgAssets = null;
 let currentQuestionIndex = 0;
 const answers = [];
 let currentProfile = null;
@@ -112,7 +116,8 @@ const renderQuestion = (index) => {
                 type="button"
                 data-answer-profile="${answer.profile}"
               >
-                ${answer.label}
+                ${uiSvgAssets.answerFrame}
+                <span class="quiz-answer__label">${answer.label}</span>
               </button>
             `
           )
@@ -134,85 +139,110 @@ const renderResult = (profile) => {
       <span class="section-heading__eyebrow">${result.eyebrow}</span>
       <h2 class="mission-zero__title">${result.title}</h2>
       <p class="quiz-step__text">${result.description}</p>
-      <button class="quiz-cta" type="button" data-complete-mission>
-        ${missionZero.completeCta}
-      </button>
+      ${createSvgButtonMarkup({
+        frameMarkup: uiSvgAssets.ctaFrame,
+        className: "quiz-cta",
+        labelClassName: "quiz-cta__label",
+        label: missionZero.completeCta,
+        dataAttribute: "data-complete-mission",
+      })}
     </section>
   `;
 };
 
-if (openingScreen && !hasCompletedMissionZero) {
-  document.body.classList.add("is-opening-active");
-} else {
-  hideMission();
-}
+const bindEvents = () => {
+  if (openingScreen && !hasCompletedMissionZero) {
+    document.body.classList.add("is-opening-active");
+  } else {
+    hideMission();
+  }
 
-if (openingScreen && !hasCompletedMissionZero) {
-  openingScreen.addEventListener("click", () => {
-    hideOpening();
-    showMission();
-  });
-}
+  if (openingScreen && !hasCompletedMissionZero) {
+    openingScreen.addEventListener("click", () => {
+      hideOpening();
+      showMission();
+    });
+  }
 
-if (quizStage && !hasCompletedMissionZero) {
-  quizStage.addEventListener("click", (event) => {
-    const startButton = event.target.closest("[data-start-quiz]");
-    const answerButton = event.target.closest("[data-answer-profile]");
-    const finishButton = event.target.closest("[data-complete-mission]");
+  if (quizStage && !hasCompletedMissionZero) {
+    quizStage.addEventListener("click", (event) => {
+      const startButton = event.target.closest("[data-start-quiz]");
+      const answerButton = event.target.closest("[data-answer-profile]");
+      const finishButton = event.target.closest("[data-complete-mission]");
 
-    if (startButton) {
-      currentQuestionIndex = 0;
-      answers.length = 0;
-      renderQuestion(currentQuestionIndex);
-      return;
-    }
-
-    if (answerButton) {
-      answers.push(answerButton.dataset.answerProfile);
-      currentQuestionIndex += 1;
-
-      if (currentQuestionIndex < missionZero.questions.length) {
+      if (startButton) {
+        currentQuestionIndex = 0;
+        answers.length = 0;
         renderQuestion(currentQuestionIndex);
         return;
       }
 
-      currentProfile = resolveProfile(answers);
-      window.localStorage.setItem(PLAYER_TRIBE_KEY, currentProfile);
-      renderResult(currentProfile);
-      return;
-    }
+      if (answerButton) {
+        answers.push(answerButton.dataset.answerProfile);
+        currentQuestionIndex += 1;
 
-    if (finishButton) {
-      window.localStorage.setItem(MISSION_ZERO_COMPLETED_KEY, "true");
-      hideMission();
-    }
+        if (currentQuestionIndex < missionZero.questions.length) {
+          renderQuestion(currentQuestionIndex);
+          return;
+        }
+
+        currentProfile = resolveProfile(answers);
+        window.localStorage.setItem(PLAYER_TRIBE_KEY, currentProfile);
+        renderResult(currentProfile);
+        return;
+      }
+
+      if (finishButton) {
+        window.localStorage.setItem(MISSION_ZERO_COMPLETED_KEY, "true");
+        hideMission();
+      }
+    });
+
+    quizStage.addEventListener("click", (event) => {
+      const storyCard = event.target.closest("[data-story-card]");
+
+      if (!storyCard) {
+        return;
+      }
+
+      toggleStoryCard();
+    });
+
+    quizStage.addEventListener("keydown", (event) => {
+      const storyCard = event.target.closest("[data-story-card]");
+
+      if (!storyCard) {
+        return;
+      }
+
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      event.preventDefault();
+      toggleStoryCard();
+    });
+  }
+};
+
+const init = async () => {
+  uiSvgAssets = await loadUiSvgAssets();
+  appShell = createAppShell(gameText, uiSvgAssets, {
+    showOpening: !hasCompletedMissionZero,
+    showMission: !hasCompletedMissionZero,
   });
+  root.append(appShell);
 
-  quizStage.addEventListener("click", (event) => {
-    const storyCard = event.target.closest("[data-story-card]");
+  openingScreen = appShell.querySelector("[data-opening-screen]");
+  missionZeroScreen = appShell.querySelector("[data-mission-zero]");
+  quizStage = appShell.querySelector("[data-quiz-stage]");
 
-    if (!storyCard) {
-      return;
-    }
+  bindEvents();
+};
 
-    toggleStoryCard();
-  });
-
-  quizStage.addEventListener("keydown", (event) => {
-    const storyCard = event.target.closest("[data-story-card]");
-
-    if (!storyCard) {
-      return;
-    }
-
-    if (event.key !== "Enter" && event.key !== " ") {
-      return;
-    }
-
-    event.preventDefault();
-    toggleStoryCard();
-  });
-}
+init().catch((error) => {
+  console.error("Inizializzazione interfaccia fallita:", error);
+});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {

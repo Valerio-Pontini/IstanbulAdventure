@@ -6,6 +6,7 @@ const APP_SHELL = [
   "/src/main.js",
   "/src/content/game-text.js",
   "/src/ui/app-shell.js",
+  "/src/ui/svg-assets.js",
   "/src/styles/index.css",
   "/src/styles/tokens.css",
   "/src/styles/base.css",

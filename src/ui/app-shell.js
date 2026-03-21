@@ -1,4 +1,11 @@
-const createMissionScreen = (model, hidden = false) => {
+const createSvgButton = ({ frameMarkup, className, labelClassName, label, dataAttribute }) => `
+  <button class="${className}" type="button" ${dataAttribute}>
+    ${frameMarkup}
+    <span class="${labelClassName}">${label}</span>
+  </button>
+`;
+
+const createMissionScreen = (model, svgAssets, hidden = false) => {
   const { welcome } = model;
 
   return `
@@ -13,6 +20,7 @@ const createMissionScreen = (model, hidden = false) => {
             <div class="story-card" data-story-card role="button" tabindex="0" aria-label="Carta introduttiva da girare">
               <div class="story-card__inner">
                 <section class="story-card__face story-card__face--front" aria-label="Carta introduttiva fronte">
+                  ${svgAssets.storyCardFrame}
                   <div class="story-card__content">
                     <div class="mission-zero__copy">
                       ${welcome.card.front
@@ -23,6 +31,7 @@ const createMissionScreen = (model, hidden = false) => {
                   <span class="story-card__arrow" aria-hidden="true">→</span>
                 </section>
                 <section class="story-card__face story-card__face--back" aria-label="Carta introduttiva retro">
+                  ${svgAssets.storyCardFrame}
                   <div class="story-card__content">
                     <div class="mission-zero__copy">
                       ${welcome.card.back
@@ -34,7 +43,13 @@ const createMissionScreen = (model, hidden = false) => {
                 </section>
               </div>
             </div>
-            <button class="quiz-cta" type="button" data-start-quiz>${welcome.cta}</button>
+            ${createSvgButton({
+              frameMarkup: svgAssets.ctaFrame,
+              className: "quiz-cta",
+              labelClassName: "quiz-cta__label",
+              label: welcome.cta,
+              dataAttribute: "data-start-quiz",
+            })}
           </section>
         </div>
       </div>
@@ -42,7 +57,7 @@ const createMissionScreen = (model, hidden = false) => {
   `;
 };
 
-export function createAppShell(model, options = {}) {
+export function createAppShell(model, svgAssets, options = {}) {
   const { showOpening = false, showMission = false } = options;
   const shell = document.createElement("div");
   shell.className = `app-shell${showOpening ? " is-opening-active" : ""}`;
@@ -68,7 +83,7 @@ export function createAppShell(model, options = {}) {
 
     <div class="app-frame">
       <main class="main-screen" aria-label="Schermata principale">
-        ${createMissionScreen(model, !showMission)}
+        ${createMissionScreen(model, svgAssets, !showMission)}
       </main>
     </div>
   `;
