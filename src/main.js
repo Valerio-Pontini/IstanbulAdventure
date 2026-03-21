@@ -4,6 +4,7 @@ import { loadUiSvgAssets } from "./ui/svg-assets.js";
 
 const MISSION_ZERO_COMPLETED_KEY = "travelgame-mission-zero-completed";
 const PLAYER_TRIBE_KEY = "travelgame-player-tribe";
+const ENABLE_SW = false; // metti true solo quando vuoi davvero testare la PWA/cache
 
 const root = document.querySelector("#app");
 
@@ -11,52 +12,50 @@ if (!root) {
   throw new Error("Root container #app non trovato.");
 }
 
-const createSvgButtonMarkup = ({ frameMarkup, className, labelClassName, label, dataAttribute }) => `
+const createSvgButtonMarkup = ({
+  frameMarkup,
+  className,
+  labelClassName,
+  label,
+  dataAttribute = "",
+}) => `
   <button class="${className}" type="button" ${dataAttribute}>
     ${frameMarkup}
     <span class="${labelClassName}">${label}</span>
   </button>
 `;
 
-const hasCompletedMissionZero =
-  window.localStorage.getItem(MISSION_ZERO_COMPLETED_KEY) === "true";
-const { missionZero, welcome } = gameText;
+const storage = {
+  hasCompletedMissionZero() {
+    return window.localStorage.getItem(MISSION_ZERO_COMPLETED_KEY) === "true";
+  },
+  setCompletedMissionZero(value) {
+    window.localStorage.setItem(MISSION_ZERO_COMPLETED_KEY, String(value));
+  },
+  setPlayerTribe(profile) {
+    window.localStorage.setItem(PLAYER_TRIBE_KEY, profile);
+  },
+};
+
+const state = {
+  currentQuestionIndex: 0,
+  answers: [],
+  currentProfile: null,
+};
+
+const { missionZero } = gameText;
 
 let appShell = null;
 let openingScreen = null;
 let missionZeroScreen = null;
 let quizStage = null;
 let uiSvgAssets = null;
-let currentQuestionIndex = 0;
-const answers = [];
-let currentProfile = null;
 
-const syncStoryCardState = (isFlipped) => {
-  if (!quizStage) {
-    return;
-  }
+const getStoryCard = () => quizStage?.querySelector("[data-story-card]") ?? null;
 
-  const storyCard = quizStage.querySelector("[data-story-card]");
-
-  if (!storyCard) {
-    return;
-  }
-
-  storyCard.classList.toggle("is-flipped", isFlipped);
-};
-
-const toggleStoryCard = () => {
-  if (!quizStage) {
-    return;
-  }
-
-  const storyCard = quizStage.querySelector("[data-story-card]");
-
-  if (!storyCard) {
-    return;
-  }
-
-  syncStoryCardState(!storyCard.classList.contains("is-flipped"));
+const syncBodyOpeningState = (isActive) => {
+  document.body.classList.toggle("is-opening-active", isActive);
+  appShell?.classList.toggle("is-opening-active", isActive);
 };
 
 const hideOpening = () => {
@@ -64,9 +63,8 @@ const hideOpening = () => {
     return;
   }
 
-  appShell.classList.remove("is-opening-active");
   openingScreen.hidden = true;
-  document.body.classList.remove("is-opening-active");
+  syncBodyOpeningState(false);
 };
 
 const showMission = () => {
@@ -87,13 +85,22 @@ const hideMission = () => {
   missionZeroScreen.classList.add("is-hidden");
 };
 
+const resetQuizState = () => {
+  state.currentQuestionIndex = 0;
+  state.answers = [];
+  state.currentProfile = null;
+};
+
 const resolveProfile = (entries) => {
   const scores = entries.reduce((accumulator, profile) => {
     accumulator[profile] = (accumulator[profile] || 0) + 1;
     return accumulator;
   }, {});
 
-  return Object.entries(scores).sort((left, right) => right[1] - left[1])[0]?.[0] ?? "explorer";
+  return (
+    Object.entries(scores).sort((left, right) => right[1] - left[1])[0]?.[0] ??
+    "explorer"
+  );
 };
 
 const renderQuestion = (index) => {
@@ -102,6 +109,10 @@ const renderQuestion = (index) => {
   }
 
   const question = missionZero.questions[index];
+
+  if (!question) {
+    return;
+  }
 
   quizStage.innerHTML = `
     <section class="quiz-step">
@@ -134,6 +145,10 @@ const renderResult = (profile) => {
 
   const result = missionZero.results[profile];
 
+  if (!result) {
+    return;
+  }
+
   quizStage.innerHTML = `
     <section class="quiz-step quiz-step--result">
       <span class="section-heading__eyebrow">${result.eyebrow}</span>
@@ -150,101 +165,134 @@ const renderResult = (profile) => {
   `;
 };
 
-const bindEvents = () => {
-  if (openingScreen && !hasCompletedMissionZero) {
-    document.body.classList.add("is-opening-active");
-  } else {
-    hideMission();
+const toggleStoryCard = () => {
+  const storyCard = getStoryCard();
+
+  if (!storyCard) {
+    return;
   }
 
-  if (openingScreen && !hasCompletedMissionZero) {
-    openingScreen.addEventListener("click", () => {
-      hideOpening();
-      showMission();
-    });
+  const isFlipped = storyCard.classList.toggle("is-flipped");
+  storyCard.setAttribute("aria-pressed", String(isFlipped));
+};
+
+const startQuiz = () => {
+  resetQuizState();
+  renderQuestion(state.currentQuestionIndex);
+};
+
+const handleAnswer = (profile) => {
+  state.answers.push(profile);
+  state.currentQuestionIndex += 1;
+
+  if (state.currentQuestionIndex < missionZero.questions.length) {
+    renderQuestion(state.currentQuestionIndex);
+    return;
   }
 
-  if (quizStage && !hasCompletedMissionZero) {
-    quizStage.addEventListener("click", (event) => {
-      const startButton = event.target.closest("[data-start-quiz]");
-      const answerButton = event.target.closest("[data-answer-profile]");
-      const finishButton = event.target.closest("[data-complete-mission]");
+  state.currentProfile = resolveProfile(state.answers);
+  storage.setPlayerTribe(state.currentProfile);
+  renderResult(state.currentProfile);
+};
 
-      if (startButton) {
-        currentQuestionIndex = 0;
-        answers.length = 0;
-        renderQuestion(currentQuestionIndex);
-        return;
-      }
+const completeMission = () => {
+  storage.setCompletedMissionZero(true);
+  hideMission();
+};
 
-      if (answerButton) {
-        answers.push(answerButton.dataset.answerProfile);
-        currentQuestionIndex += 1;
+const bindOpeningEvents = () => {
+  if (!openingScreen || storage.hasCompletedMissionZero()) {
+    hideOpening();
+    return;
+  }
 
-        if (currentQuestionIndex < missionZero.questions.length) {
-          renderQuestion(currentQuestionIndex);
-          return;
-        }
+  syncBodyOpeningState(true);
 
-        currentProfile = resolveProfile(answers);
-        window.localStorage.setItem(PLAYER_TRIBE_KEY, currentProfile);
-        renderResult(currentProfile);
-        return;
-      }
+  openingScreen.addEventListener("click", () => {
+    hideOpening();
+    showMission();
+  });
+};
 
-      if (finishButton) {
-        window.localStorage.setItem(MISSION_ZERO_COMPLETED_KEY, "true");
-        hideMission();
-      }
-    });
+const bindQuizEvents = () => {
+  if (!quizStage || storage.hasCompletedMissionZero()) {
+    return;
+  }
 
-    quizStage.addEventListener("click", (event) => {
-      const storyCard = event.target.closest("[data-story-card]");
+  quizStage.addEventListener("click", (event) => {
+    const startButton = event.target.closest("[data-start-quiz]");
+    const answerButton = event.target.closest("[data-answer-profile]");
+    const finishButton = event.target.closest("[data-complete-mission]");
+    const storyCard = event.target.closest("[data-story-card]");
 
-      if (!storyCard) {
-        return;
-      }
+    if (startButton) {
+      startQuiz();
+      return;
+    }
 
+    if (answerButton) {
+      handleAnswer(answerButton.dataset.answerProfile);
+      return;
+    }
+
+    if (finishButton) {
+      completeMission();
+      return;
+    }
+
+    if (storyCard) {
       toggleStoryCard();
-    });
+    }
+  });
 
-    quizStage.addEventListener("keydown", (event) => {
-      const storyCard = event.target.closest("[data-story-card]");
+  quizStage.addEventListener("keydown", (event) => {
+    const storyCard = event.target.closest("[data-story-card]");
 
-      if (!storyCard) {
-        return;
-      }
+    if (!storyCard) {
+      return;
+    }
 
-      if (event.key !== "Enter" && event.key !== " ") {
-        return;
-      }
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
 
-      event.preventDefault();
-      toggleStoryCard();
-    });
-  }
+    event.preventDefault();
+    toggleStoryCard();
+  });
 };
 
 const init = async () => {
   uiSvgAssets = await loadUiSvgAssets();
+
+  const hasCompletedMissionZero = storage.hasCompletedMissionZero();
+
   appShell = createAppShell(gameText, uiSvgAssets, {
     showOpening: !hasCompletedMissionZero,
     showMission: !hasCompletedMissionZero,
   });
-  root.append(appShell);
+
+  root.replaceChildren(appShell);
 
   openingScreen = appShell.querySelector("[data-opening-screen]");
   missionZeroScreen = appShell.querySelector("[data-mission-zero]");
   quizStage = appShell.querySelector("[data-quiz-stage]");
 
-  bindEvents();
+  if (hasCompletedMissionZero) {
+    hideMission();
+    hideOpening();
+  } else {
+    showMission();
+  }
+
+  bindOpeningEvents();
+  bindQuizEvents();
 };
 
 init().catch((error) => {
   console.error("Inizializzazione interfaccia fallita:", error);
 });
 
-if ("serviceWorker" in navigator) {
+if (ENABLE_SW && "serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch((error) => {
       console.error("Registrazione service worker fallita:", error);

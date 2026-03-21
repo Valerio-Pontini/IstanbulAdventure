@@ -1,4 +1,10 @@
-const createSvgButton = ({ frameMarkup, className, labelClassName, label, dataAttribute }) => `
+const createSvgButton = ({
+  frameMarkup,
+  className,
+  labelClassName,
+  label,
+  dataAttribute = "",
+}) => `
   <button class="${className}" type="button" ${dataAttribute}>
     ${frameMarkup}
     <span class="${labelClassName}">${label}</span>
@@ -9,17 +15,36 @@ const createMissionScreen = (model, svgAssets, hidden = false) => {
   const { welcome } = model;
 
   return `
-    <section class="mission-zero${hidden ? " is-hidden" : ""}" data-mission-zero ${
-      hidden ? "hidden" : ""
-    }>
+    <section
+      class="mission-zero${hidden ? " is-hidden" : ""}"
+      data-mission-zero
+      ${hidden ? "hidden" : ""}
+      aria-label="Missione zero"
+    >
       <div class="mission-zero__panel">
         <div class="quiz-stage" data-quiz-stage>
           <section class="mission-zero__welcome">
-            <span class="section-heading__eyebrow">${welcome.eyebrow}</span>
+            ${
+              welcome.eyebrow
+                ? `<span class="section-heading__eyebrow">${welcome.eyebrow}</span>`
+                : ""
+            }
+
             <h2 class="mission-zero__title">${welcome.title}</h2>
-            <div class="story-card" data-story-card role="button" tabindex="0" aria-label="Carta introduttiva da girare">
+
+            <div
+              class="story-card"
+              data-story-card
+              role="button"
+              tabindex="0"
+              aria-label="Carta introduttiva da girare"
+              aria-pressed="false"
+            >
               <div class="story-card__inner">
-                <section class="story-card__face story-card__face--front" aria-label="Carta introduttiva fronte">
+                <section
+                  class="story-card__face story-card__face--front"
+                  aria-label="Carta introduttiva fronte"
+                >
                   ${svgAssets.storyCardFrame}
                   <div class="story-card__content">
                     <div class="mission-zero__copy">
@@ -30,7 +55,11 @@ const createMissionScreen = (model, svgAssets, hidden = false) => {
                   </div>
                   <span class="story-card__arrow" aria-hidden="true">→</span>
                 </section>
-                <section class="story-card__face story-card__face--back" aria-label="Carta introduttiva retro">
+
+                <section
+                  class="story-card__face story-card__face--back"
+                  aria-label="Carta introduttiva retro"
+                >
                   ${svgAssets.storyCardFrame}
                   <div class="story-card__content">
                     <div class="mission-zero__copy">
@@ -43,6 +72,7 @@ const createMissionScreen = (model, svgAssets, hidden = false) => {
                 </section>
               </div>
             </div>
+
             ${createSvgButton({
               frameMarkup: svgAssets.ctaFrame,
               className: "quiz-cta",
@@ -59,6 +89,7 @@ const createMissionScreen = (model, svgAssets, hidden = false) => {
 
 export function createAppShell(model, svgAssets, options = {}) {
   const { showOpening = false, showMission = false } = options;
+
   const shell = document.createElement("div");
   shell.className = `app-shell${showOpening ? " is-opening-active" : ""}`;
 
@@ -76,8 +107,11 @@ export function createAppShell(model, svgAssets, options = {}) {
           alt=""
         />
       </div>
+
       <div class="opening-screen__content opening-screen__content--title">
-        <h1 class="opening-screen__title opening-screen__title--cover">${model.cover.title}</h1>
+        <h1 class="opening-screen__title opening-screen__title--cover">
+          ${model.cover.title}
+        </h1>
       </div>
     </section>
 

@@ -36,10 +36,15 @@
   --shadow-soft: 0 18px 40px -24px var(--color-shadow);
   --shadow-panel: 0 24px 60px -28px rgba(21, 32, 29, 0.28);
 
-  --app-max-width: 100vw;
-  --app-min-height: 100vh;
+  --app-max-width: 520px;
   --app-min-height: 100dvh;
-  --app-aspect-ratio: 20 / 9;
-  --bottom-nav-height: 88px;
+  --app-aspect-ratio: 9 / 16;
+  --bottom-nav-height: 84px;
+  --bottom-nav-offset: calc(var(--bottom-nav-height) + 20px + env(safe-area-inset-bottom));
+  --screen-padding-x: 16px;
+  --screen-padding-top: max(16px, env(safe-area-inset-top));
+  --screen-padding-bottom: max(16px, env(safe-area-inset-bottom));
+  --content-max-width: 420px;
+
   --home-progress: 0;
 }
