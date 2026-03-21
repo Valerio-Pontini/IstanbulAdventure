@@ -53,12 +53,12 @@ function getAnswerFontBounds(element) {
   const button = element.closest(".quiz-answer-button");
   const buttonWidth = button?.clientWidth ?? element.clientWidth;
   const textHeight = element.clientHeight;
-  const derivedMax = Math.round(Math.min(buttonWidth * 0.044, textHeight * 0.56));
-  const derivedMin = Math.round(Math.min(buttonWidth * 0.026, textHeight * 0.34));
+  const derivedMax = Math.round(Math.min(buttonWidth * 0.047, textHeight * 0.6));
+  const derivedMin = Math.round(Math.min(buttonWidth * 0.028, textHeight * 0.38));
 
   return {
-    max: clampNumber(derivedMax, 12, 18),
-    min: clampNumber(derivedMin, ANSWER_TEXT_MIN_SIZE, 11)
+    max: clampNumber(derivedMax, 13, 19),
+    min: clampNumber(derivedMin, ANSWER_TEXT_MIN_SIZE, 12)
   };
 }
 
