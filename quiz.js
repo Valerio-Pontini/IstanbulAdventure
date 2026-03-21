@@ -57,7 +57,7 @@ function getAnswerFontBounds(element) {
   const derivedMin = Math.round(Math.min(buttonWidth * 0.028, textHeight * 0.38));
 
   return {
-    max: clampNumber(derivedMax, 13, 19),
+    max: clampNumber(derivedMax, 18, 24),
     min: clampNumber(derivedMin, ANSWER_TEXT_MIN_SIZE, 12)
   };
 }
