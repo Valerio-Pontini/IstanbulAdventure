@@ -11,7 +11,7 @@
 .mission-zero__title {
   max-width: 12ch;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 6.1vw, 3.05rem);
+  font-size: clamp(1.95rem, 6.7vw, 3.35rem);
   line-height: 0.95;
   text-align: center;
   letter-spacing: 0.08em;
@@ -82,7 +82,7 @@
 
 .mission-zero__title {
   max-width: 100%;
-  margin: 0 0 var(--space-4);
+  margin: 0 0 calc(var(--space-4) + 8px);
   color: var(--color-title);
   justify-self: center;
   text-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
@@ -109,7 +109,7 @@
   display: grid;
   align-content: stretch;
   gap: var(--space-5);
-  width: 80%;
+  width: 88%;
   margin: 0 auto;
 }
 
@@ -129,7 +129,7 @@
 
 .story-card {
   width: 100%;
-  min-height: 320px;
+  min-height: 420px;
   cursor: pointer;
   outline: none;
   position: relative;
@@ -156,7 +156,7 @@
 .story-card__inner {
   position: relative;
   width: 100%;
-  min-height: 320px;
+  min-height: 420px;
   z-index: 1;
 }
 
@@ -207,7 +207,7 @@
 
 .story-card__content {
   position: absolute;
-  inset: 12% 15% 18% 15%;
+  inset: 10% 12% 16% 12%;
   display: grid;
   align-content: start;
 }
