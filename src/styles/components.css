@@ -129,7 +129,6 @@
 
 .story-card {
   width: 100%;
-  min-height: 420px;
   cursor: pointer;
   outline: none;
   position: relative;
@@ -156,7 +155,6 @@
 .story-card__inner {
   position: relative;
   width: 100%;
-  min-height: 420px;
   z-index: 1;
 }
 
