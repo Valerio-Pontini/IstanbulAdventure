@@ -2,7 +2,7 @@
   --bg: #0f0f10;
   --fg: #ffffff;
   --muted: rgba(255, 255, 255, 0.78);
-  --title-color: #5184a6;
+  --title-color: #2f4e63;
   --text-color: #2B2B28;
   --card-width: min(82vw, 320px);
   --button-width: min(78vw, 320px);
@@ -187,7 +187,7 @@ button {
   position: relative;
   z-index: 1;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 65px;
   margin-bottom: 4px;
 }
 
