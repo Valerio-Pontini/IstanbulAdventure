@@ -4,10 +4,13 @@
   --muted: rgba(255, 255, 255, 0.78);
   --title-color: #2F4A5C;
   --text-color: #2B2B28;
-  --card-width: min(82vw, 320px);
-  --button-width: min(78vw, 320px);
-  --safe-bottom: max(24px, env(safe-area-inset-bottom));
-  --safe-top: max(24px, env(safe-area-inset-top));
+  --card-width: 82%;
+  --button-width: 78%;
+  --page-padding-x: 5%;
+  --page-padding-top: max(5%, env(safe-area-inset-top));
+  --page-padding-bottom: max(5%, env(safe-area-inset-bottom));
+  --stage-width: 88%;
+  --arrow-size: 14%;
   --font-title: "Cinzel Decorative", serif;
   --font-main: "Cormorant Garamond", Georgia, serif;
 }
@@ -44,7 +47,7 @@ button {
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(18px);
+  transform: translateY(2%);
   transition:
     opacity 0.35s ease,
     transform 0.35s ease;
@@ -94,7 +97,7 @@ button {
 
 .cover-title {
   top: 50%;
-  width: min(90vw, 720px);
+  width: 90%;
   font-size: clamp(2.8rem, 8vw, 5.8rem);
   font-weight: 700;
   color: #F4EDE4;
@@ -104,9 +107,9 @@ button {
 }
 
 .cover-hint {
-  bottom: calc(var(--safe-bottom) + 12px);
+  bottom: calc(var(--page-padding-bottom) + 2%);
   color: var(--text-color);
-  font-size: 1.15rem;
+  font-size: clamp(1.05rem, 2.8vw, 1.25rem);
   font-weight: 500;
   letter-spacing: 0.03em;
   opacity: 0.92;
@@ -135,9 +138,9 @@ button {
   z-index: 1;
   min-height: 100%;
   padding:
-    max(40px, var(--safe-top))
-    20px
-    calc(var(--safe-bottom) + 36px);
+    var(--page-padding-top)
+    var(--page-padding-x)
+    calc(var(--page-padding-bottom) + 4%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,14 +149,15 @@ button {
 
 .content-stage {
   position: relative;
-  width: min(100%, 430px);
-  min-height: min(78dvh, 760px);
+  width: var(--stage-width);
+  max-width: 32rem;
+  min-height: 78dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  padding: clamp(18px, 3vw, 28px) 0 clamp(20px, 4vw, 34px);
+  gap: 3%;
+  padding: 4% 0 5%;
 }
 
 .content-stage::before {
@@ -161,8 +165,8 @@ button {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: min(92vw, 420px);
-  height: min(58dvh, 420px);
+  width: 100%;
+  height: 58%;
   border-radius: 999px 999px 28px 28px;
   background: transparent;
   box-shadow: none;
@@ -174,9 +178,9 @@ button {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 8px;
-  width: min(88vw, 340px);
-  height: 28px;
+  bottom: 2%;
+  width: 80%;
+  height: 4%;
   border-radius: 999px;
   background: transparent;
   transform: translateX(-50%);
@@ -187,8 +191,8 @@ button {
   position: relative;
   z-index: 1;
   text-align: center;
-  margin-top: 28px;
-  margin-bottom: 4px;
+  margin-top: 6%;
+  margin-bottom: 1%;
 }
 
 .content-title {
@@ -243,13 +247,17 @@ button {
   bottom: 16%;
   z-index: 1;
   display: flex;
-  gap: 10px;
+  gap: 3%;
   transform: translateX(-50%);
+  width: 38%;
+  justify-content: center;
 }
 
 .widget-arrow {
   position: relative;
-  width: 52px;
+  width: var(--arrow-size);
+  min-width: 2.5rem;
+  max-width: 3.4rem;
   aspect-ratio: 1 / 1;
   border: 0;
   background: transparent;
@@ -279,13 +287,14 @@ button {
 .svg-button {
   position: relative;
   width: var(--button-width);
+  max-width: 82%;
   aspect-ratio: 383 / 139;
   border: 0;
   background: transparent;
   cursor: pointer;
   padding: 0;
   z-index: 1;
-  margin-top: -18px;
+  margin-top: -4%;
   transition: transform 0.18s ease;
   filter: none;
 }
@@ -317,17 +326,19 @@ button {
 
 @media (max-width: 640px) {
   .content-stage {
-    min-height: min(74dvh, 680px);
-    gap: 14px;
+    width: 92%;
+    min-height: 74dvh;
+    gap: 2.4%;
   }
 
   .content-stage::before {
-    width: min(94vw, 390px);
-    height: min(52dvh, 360px);
+    width: 100%;
+    height: 52%;
   }
 
   .svg-button {
-    margin-top: -14px;
+    width: 84%;
+    margin-top: -3%;
   }
 
   .widget-text {
@@ -337,10 +348,12 @@ button {
 
   .widget-controls {
     bottom: 15%;
+    width: 42%;
   }
 
   .widget-arrow {
-    width: 46px;
+    width: 16%;
+    min-width: 2.25rem;
   }
 }
 
