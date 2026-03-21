@@ -1,6 +1,10 @@
 const content = window.APP_CONTENT;
 const QUESTION_TEXT_MAX_SIZE = 31;
 const QUESTION_TEXT_MIN_SIZE = 18;
+const ANSWER_TEXT_MAX_SIZE = 20;
+const ANSWER_TEXT_MIN_SIZE = 10;
+const QUIZ_ANSWER_SHAPE = "etichetta-ghirigori.svg";
+const QUIZ_ANSWER_FALLBACK_SHAPE = "assets/pulsante marrone.svg";
 
 const ui = {
   quizExperience: document.getElementById("quizExperience"),
@@ -24,7 +28,7 @@ const quizQuestions = new Map((content.quiz?.questions ?? []).map((question) => 
 function questionTextFits(text, fontSize, element) {
   element.style.fontSize = `${fontSize}px`;
   element.textContent = text;
-  return element.scrollHeight <= element.clientHeight;
+  return element.scrollHeight <= element.clientHeight && element.scrollWidth <= element.clientWidth;
 }
 
 function getBestQuestionFontSize(text, element) {
@@ -45,17 +49,40 @@ function createAnswerButton(answer) {
 
   const shape = document.createElement("img");
   shape.className = "quiz-answer-shape";
-  shape.src = "assets/pulsante marrone.svg";
+  shape.src = QUIZ_ANSWER_SHAPE;
   shape.alt = "";
   shape.setAttribute("aria-hidden", "true");
+  shape.addEventListener("error", () => {
+    if (!shape.dataset.fallbackApplied) {
+      shape.dataset.fallbackApplied = "true";
+      shape.src = QUIZ_ANSWER_FALLBACK_SHAPE;
+    }
+  });
 
   const label = document.createElement("span");
   label.className = "quiz-answer-label";
   label.textContent = answer.label;
+  label.style.fontSize = `${getBestAnswerFontSize(answer.label, label)}px`;
 
   button.append(shape, label);
   button.addEventListener("click", () => handleAnswerSelection(answer));
   return button;
+}
+
+function answerTextFits(text, fontSize, element) {
+  element.style.fontSize = `${fontSize}px`;
+  element.textContent = text;
+  return element.scrollHeight <= element.clientHeight && element.scrollWidth <= element.clientWidth;
+}
+
+function getBestAnswerFontSize(text, element) {
+  for (let fontSize = ANSWER_TEXT_MAX_SIZE; fontSize >= ANSWER_TEXT_MIN_SIZE; fontSize -= 1) {
+    if (answerTextFits(text, fontSize, element)) {
+      return fontSize;
+    }
+  }
+
+  return ANSWER_TEXT_MIN_SIZE;
 }
 
 function showQuizQuestionLayer() {

@@ -10,7 +10,7 @@
   --safe-top: max(24px, env(safe-area-inset-top));
   --font-title: "Cinzel Decorative", serif;
   --font-main: "Cormorant Garamond", Georgia, serif;
-  --quiz-button-width: min(82vw, 338px);
+  --quiz-button-width: min(86vw, 392px);
 }
 
 * {
@@ -334,6 +334,8 @@ button {
 
 .page-quiz .content-inner {
   justify-content: flex-start;
+  padding-top: max(24px, var(--safe-top));
+  padding-bottom: calc(var(--safe-bottom) + 44px);
 }
 
 .page-quiz {
@@ -345,29 +347,30 @@ button {
 }
 
 .quiz-stage {
-  width: min(100%, 430px);
-  min-height: min(82dvh, 820px);
+  width: min(100%, 460px);
+  min-height: min(82dvh, 760px);
   justify-content: flex-start;
-  gap: 0;
+  gap: 14px;
+  padding-top: 0;
 }
 
 .quiz-experience {
   width: 100%;
-  min-height: inherit;
+  min-height: min(82dvh, 760px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 18px;
+  gap: 14px;
 }
 
 .quiz-widget {
   position: relative;
-  width: min(88vw, 352px);
-  aspect-ratio: 389 / 526;
+  width: min(92vw, 440px);
+  aspect-ratio: 669 / 318;
   display: grid;
   place-items: center;
-  margin-top: 36px;
+  margin-top: 0;
 }
 
 .quiz-widget-frame {
@@ -380,19 +383,21 @@ button {
 .quiz-widget-text {
   position: relative;
   z-index: 1;
-  width: 58%;
-  height: 38%;
+  width: 70%;
+  height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--text-color);
   font-family: var(--font-main);
-  font-size: clamp(1.45rem, 4.1vw, 1.95rem);
-  line-height: 1.1;
+  font-size: clamp(1.40rem, 3.6vw, 1.90rem);
+  line-height: 1.06;
   font-weight: 600;
   letter-spacing: 0.015em;
-  transform: translateY(-13%);
+  transform: translateY(-6%);
+  padding: 0 10px;
+  overflow: hidden;
 }
 
 .quiz-answers {
@@ -400,15 +405,15 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: -6px;
-  padding-bottom: calc(var(--safe-bottom) + 20px);
+  gap: 12px;
+  margin-top: 2px;
+  padding-bottom: calc(var(--safe-bottom) + 24px);
 }
 
 .quiz-answer-button {
   position: relative;
   width: var(--quiz-button-width);
-  aspect-ratio: 383 / 139;
+  min-height: 86px;
   border: 0;
   background: transparent;
   padding: 0;
@@ -433,24 +438,27 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: fill;
 }
 
 .quiz-answer-label {
   position: relative;
   z-index: 1;
-  width: 62%;
-  height: 100%;
+  width: 66%;
+  height: 60px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #f8f1e8;
+  color: var(--text-color);
   font-family: var(--font-main);
-  font-size: clamp(1.2rem, 3.6vw, 1.55rem);
-  line-height: 1.02;
+  font-size: clamp(1.16rem, 3.7vw, 1.5rem);
+  line-height: 1.04;
   font-weight: 600;
   letter-spacing: 0.015em;
+  padding: 0 10px;
+  overflow: hidden;
 }
 
 .feedback-overlay {
@@ -469,8 +477,8 @@ button {
 
 .feedback-card {
   position: relative;
-  width: min(86vw, 340px);
-  aspect-ratio: 389 / 360;
+  width: min(92vw, 420px);
+  aspect-ratio: 513 / 487;
   display: grid;
   place-items: center;
 }
@@ -485,30 +493,32 @@ button {
 .feedback-card-text {
   position: relative;
   z-index: 1;
-  width: 62%;
-  height: 40%;
+  width: 66%;
+  min-height: 42%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--text-color);
   font-family: var(--font-main);
-  font-size: clamp(1.2rem, 3.7vw, 1.55rem);
-  line-height: 1.1;
+  font-size: clamp(1.18rem, 3.5vw, 1.52rem);
+  line-height: 1.14;
   font-weight: 600;
-  transform: translateY(-8%);
+  transform: translateY(-2%);
+  padding: 0 12px;
 }
 
 .feedback-card-hint {
   position: absolute;
   left: 50%;
-  bottom: 18%;
+  bottom: 12%;
   z-index: 1;
   color: rgba(43, 43, 40, 0.76);
   font-family: var(--font-main);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-style: italic;
   transform: translateX(-50%);
+  transform:translateY(10px)
 }
 
 .quiz-completion {
@@ -518,7 +528,7 @@ button {
 }
 
 .quiz-widget-completion {
-  margin-top: 108px;
+  margin-top: 28px;
 }
 
 @media (max-width: 640px) {
@@ -550,30 +560,32 @@ button {
   }
 
   .quiz-widget {
-    width: min(90vw, 330px);
+    width: min(92vw, 390px);
   }
 
   .quiz-widget-text {
-    width: 60%;
-    font-size: clamp(1.28rem, 4.9vw, 1.62rem);
+    width: 74%;
+    font-size: clamp(1.18rem, 4.7vw, 1.54rem);
   }
 
   .quiz-answer-label {
-    width: 64%;
-    font-size: clamp(1.05rem, 4vw, 1.32rem);
+    width: 68%;
+    height: 58px;
+    font-size: clamp(1.02rem, 4vw, 1.28rem);
   }
 
   .feedback-card {
-    width: min(88vw, 320px);
+    width: min(94vw, 360px);
   }
 
   .feedback-card-text {
-    width: 64%;
-    font-size: clamp(1.08rem, 4.1vw, 1.35rem);
+    width: 70%;
+    min-height: 44%;
+    font-size: clamp(1.02rem, 4vw, 1.24rem);
   }
 
   .quiz-widget-completion {
-    margin-top: 96px;
+    margin-top: 20px;
   }
 }
 
