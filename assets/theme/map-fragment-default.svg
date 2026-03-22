@@ -1,0 +1,14 @@
+<svg width="1440" height="2400" viewBox="0 0 1440 2400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.3">
+    <path d="M236 519L412 446L603 503L802 392L1002 450L1188 368" stroke="#F5ECD9" stroke-opacity="0.18" stroke-width="3"/>
+    <path d="M252 641L433 592L628 654L809 591L1025 636L1199 573" stroke="#B48A54" stroke-opacity="0.22" stroke-width="2"/>
+    <path d="M208 1573L393 1499L572 1540L732 1468L962 1518L1168 1443" stroke="#F5ECD9" stroke-opacity="0.14" stroke-width="2"/>
+    <path d="M267 1711L445 1642L655 1682L801 1612L1032 1668L1220 1602" stroke="#2F8F8B" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="603" cy="503" r="12" fill="#B48A54" fill-opacity="0.28"/>
+    <circle cx="809" cy="591" r="12" fill="#F5ECD9" fill-opacity="0.22"/>
+    <circle cx="732" cy="1468" r="12" fill="#B48A54" fill-opacity="0.28"/>
+    <circle cx="445" cy="1642" r="12" fill="#F5ECD9" fill-opacity="0.22"/>
+    <path d="M1048 920C1115 862 1198 835 1298 841" stroke="#F5ECD9" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M1048 920L1084 958L1135 907" stroke="#F5ECD9" stroke-opacity="0.16" stroke-width="2"/>
+  </g>
+</svg>
