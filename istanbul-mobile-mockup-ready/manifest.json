@@ -1,0 +1,35 @@
+{
+  "name": "Istanbul",
+  "short_name": "Istanbul",
+  "description": "Web app mobile-first narrativa per Missione 0 e archivio missioni a Istanbul.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
+  "background_color": "#0f0b09",
+  "theme_color": "#0f0b09",
+  "lang": "it",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": [
+    "travel",
+    "games",
+    "entertainment"
+  ],
+  "prefer_related_applications": false
+}
