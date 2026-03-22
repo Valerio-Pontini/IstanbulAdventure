@@ -3,135 +3,1453 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#0d1014" />
-  <meta name="description" content="Esperienza narrativa immersiva di Istanbul Adventure." />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="assets/icon-192.png" />
-  <link rel="apple-touch-icon" href="assets/icon-192.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Sora:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <meta name="theme-color" content="#08131d" />
+  <meta name="description" content="Istanbul Adventure, un artefatto digitale narrativo per esplorare la citta attraverso Missione 0." />
   <title>Istanbul Adventure</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --bosphorus-blue: #0f4f67;
+      --pomegranate-red: #9e2c33;
+      --warm-ivory: #f5ecd9;
+      --antique-brass: #b48a54;
+      --ottoman-turquoise: #2f8f8b;
+      --warm-sand: #c3a67e;
+      --night: #08131d;
+      --night-soft: #10202d;
+      --night-deep: #060d14;
+      --ink: rgba(8, 19, 29, 0.82);
+      --mist: rgba(245, 236, 217, 0.08);
+      --line: rgba(245, 236, 217, 0.15);
+      --line-strong: rgba(180, 138, 84, 0.45);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+      --text: var(--warm-ivory);
+      --muted: rgba(245, 236, 217, 0.72);
+      --safe-top: max(20px, env(safe-area-inset-top));
+      --safe-bottom: max(24px, env(safe-area-inset-bottom));
+      --ritual-progress: 0%;
+      --veil-opacity: 0;
+      --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --font-ui: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(47, 143, 139, 0.16), transparent 24%),
+        radial-gradient(circle at 82% 14%, rgba(158, 44, 51, 0.22), transparent 20%),
+        radial-gradient(circle at 50% 76%, rgba(15, 79, 103, 0.24), transparent 32%),
+        linear-gradient(180deg, #0e1b28 0%, #09131d 52%, #050c13 100%);
+      color: var(--text);
+      font-family: var(--font-ui);
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .artifact-app {
+      position: relative;
+      min-height: 100dvh;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 50% 14%, rgba(245, 236, 217, 0.07), transparent 24%),
+        linear-gradient(160deg, rgba(6, 14, 20, 0.2), rgba(6, 14, 20, 0.65));
+    }
+
+    .atmosphere,
+    .atmosphere::before,
+    .atmosphere::after,
+    .bosphorus-ribbon,
+    .signal-grid,
+    .grain,
+    .veil {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .atmosphere {
+      background:
+        radial-gradient(circle at 24% 18%, rgba(47, 143, 139, 0.22), transparent 26%),
+        radial-gradient(circle at 76% 22%, rgba(180, 138, 84, 0.16), transparent 24%),
+        radial-gradient(circle at 54% 70%, rgba(158, 44, 51, 0.16), transparent 30%);
+      filter: saturate(1.1);
+      animation: driftA 20s ease-in-out infinite alternate;
+    }
+
+    .atmosphere::before {
+      content: "";
+      background:
+        radial-gradient(circle at 62% 36%, rgba(245, 236, 217, 0.12), transparent 14%),
+        radial-gradient(circle at 18% 66%, rgba(47, 143, 139, 0.1), transparent 18%);
+      transform: scale(1.08);
+      filter: blur(16px);
+      animation: driftB 26s ease-in-out infinite alternate;
+    }
+
+    .atmosphere::after {
+      content: "";
+      inset: 8% 6%;
+      border: 1px solid rgba(180, 138, 84, 0.09);
+      border-radius: 48px;
+      box-shadow:
+        0 0 0 1px rgba(245, 236, 217, 0.03) inset,
+        0 0 60px rgba(47, 143, 139, 0.05);
+      animation: pulseFrame 8s ease-in-out infinite;
+    }
+
+    .bosphorus-ribbon {
+      opacity: 0.58;
+      background:
+        radial-gradient(circle at 52% 48%, transparent 0 22%, rgba(245, 236, 217, 0.06) 22.2% 22.6%, transparent 23%),
+        conic-gradient(from 210deg at 50% 50%, transparent 0 18%, rgba(47, 143, 139, 0.2) 19% 23%, transparent 24% 46%, rgba(180, 138, 84, 0.22) 47% 50%, transparent 51% 76%, rgba(158, 44, 51, 0.16) 77% 82%, transparent 83% 100%);
+      filter: blur(2px);
+      transform: scale(1.25);
+      animation: slowRotate 38s linear infinite;
+    }
+
+    .signal-grid {
+      background-image:
+        linear-gradient(rgba(245, 236, 217, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 236, 217, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at 50% 50%, black 38%, transparent 88%);
+      opacity: 0.16;
+      animation: driftGrid 24s linear infinite;
+    }
+
+    .grain {
+      opacity: 0.18;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0 0.6px, transparent 0.8px),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.08) 0 0.6px, transparent 0.8px),
+        radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.08) 0 0.7px, transparent 0.9px);
+      background-size: 18px 18px, 24px 24px, 26px 26px;
+      mix-blend-mode: soft-light;
+    }
+
+    .veil {
+      opacity: var(--veil-opacity);
+      background:
+        radial-gradient(circle at center, rgba(245, 236, 217, 0.08), transparent 30%),
+        rgba(4, 10, 16, 0.62);
+      transition: opacity 520ms ease;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      padding:
+        var(--safe-top)
+        clamp(18px, 4.2vw, 40px)
+        var(--safe-bottom);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+    }
+
+    .seal,
+    .status-pill,
+    .progress-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(8, 19, 29, 0.38);
+      backdrop-filter: blur(18px);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.66rem;
+    }
+
+    .seal::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, var(--warm-ivory), transparent 45%),
+        linear-gradient(180deg, var(--ottoman-turquoise), var(--bosphorus-blue));
+      box-shadow: 0 0 16px rgba(47, 143, 139, 0.45);
+    }
+
+    .status-pill {
+      color: var(--muted);
+    }
+
+    .progress-pill {
+      border-color: var(--line-strong);
+      color: var(--warm-ivory);
+    }
+
+    .stage {
+      position: relative;
+      flex: 1;
+      display: grid;
+      align-items: end;
+    }
+
+    .compass {
+      position: absolute;
+      top: 11vh;
+      right: -28vw;
+      width: 82vw;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(180, 138, 84, 0.16);
+      box-shadow:
+        0 0 0 1px rgba(245, 236, 217, 0.04) inset,
+        0 0 80px rgba(0, 0, 0, 0.3);
+      opacity: 0.56;
+      transform: rotate(10deg);
+    }
+
+    .compass::before,
+    .compass::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      border: 1px solid rgba(245, 236, 217, 0.08);
+    }
+
+    .compass::after {
+      inset: 26%;
+      border-style: dashed;
+      animation: slowRotateReverse 34s linear infinite;
+    }
+
+    .compass span {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(transparent 49.6%, rgba(180, 138, 84, 0.14) 50%, transparent 50.4%),
+        linear-gradient(90deg, transparent 49.6%, rgba(180, 138, 84, 0.14) 50%, transparent 50.4%);
+      animation: slowRotate 28s linear infinite;
+    }
+
+    .sequence {
+      position: relative;
+      width: min(100%, 680px);
+      padding-bottom: 2vh;
+    }
+
+    .subline {
+      margin: 0 0 14px;
+      color: rgba(245, 236, 217, 0.78);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .hero-title,
+    .mission-title,
+    .completion-title {
+      margin: 0;
+      font-family: var(--font-display);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+
+    .hero-title {
+      font-size: clamp(3.6rem, 18vw, 7rem);
+      text-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.45),
+        0 0 24px rgba(47, 143, 139, 0.12);
+    }
+
+    .hero-title span,
+    .mission-title span,
+    .completion-title span {
+      display: block;
+      color: var(--warm-sand);
+      font-size: 0.34em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      font-family: var(--font-ui);
+    }
+
+    .lead,
+    .mission-copy,
+    .completion-copy {
+      margin: 18px 0 0;
+      max-width: 38rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .ritual-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .ritual-button,
+    .story-nav,
+    .answer-button,
+    .overlay-dismiss,
+    .restart-button {
+      position: relative;
+      border: 0;
+      cursor: pointer;
+      transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        background-color 220ms ease,
+        border-color 220ms ease;
+    }
+
+    .ritual-button,
+    .restart-button {
+      min-height: 58px;
+      padding: 0 22px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(180, 138, 84, 0.38);
+      background:
+        linear-gradient(135deg, rgba(180, 138, 84, 0.26), rgba(47, 143, 139, 0.18)),
+        rgba(8, 19, 29, 0.72);
+      color: var(--warm-ivory);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.34);
+    }
+
+    .ritual-button::before,
+    .restart-button::before,
+    .answer-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(245, 236, 217, 0.14), transparent 34%, transparent 66%, rgba(245, 236, 217, 0.16));
+      opacity: 0.7;
+    }
+
+    .ritual-button::after,
+    .restart-button::after,
+    .answer-button::after {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: linear-gradient(90deg, transparent, rgba(245, 236, 217, 0.22), transparent);
+      transform: translateX(-120%) rotate(8deg);
+      transition: transform 540ms ease;
+    }
+
+    .ritual-button:hover::after,
+    .ritual-button:focus-visible::after,
+    .restart-button:hover::after,
+    .restart-button:focus-visible::after,
+    .answer-button:hover::after,
+    .answer-button:focus-visible::after {
+      transform: translateX(120%) rotate(8deg);
+    }
+
+    .ritual-button:hover,
+    .ritual-button:focus-visible,
+    .story-nav:hover,
+    .story-nav:focus-visible,
+    .answer-button:hover,
+    .answer-button:focus-visible,
+    .overlay-dismiss:hover,
+    .overlay-dismiss:focus-visible,
+    .restart-button:hover,
+    .restart-button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
+      outline: none;
+    }
+
+    .ritual-button span,
+    .restart-button span {
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .ritual-note {
+      color: rgba(245, 236, 217, 0.64);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .quote-band {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: max(20px, var(--safe-bottom));
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .quote-band p {
+      margin: 0;
+      width: min(100%, 720px);
+      text-align: center;
+      color: rgba(245, 236, 217, 0.48);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(24px) scale(0.985);
+      transition:
+        opacity 480ms ease,
+        transform 480ms ease;
+    }
+
+    .scene.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .story-frame,
+    .mission-frame,
+    .completion-frame {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      margin-top: auto;
+      margin-bottom: 7vh;
+      padding: 24px 0 0;
+    }
+
+    .story-frame::before,
+    .mission-frame::before,
+    .completion-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-top: 1px solid rgba(180, 138, 84, 0.3);
+      mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
+    }
+
+    .story-slide {
+      min-height: 180px;
+      padding-top: 24px;
+    }
+
+    .story-copy {
+      margin: 0;
+      color: var(--warm-ivory);
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 8vw, 3.4rem);
+      line-height: 1.08;
+      text-wrap: balance;
+      text-shadow: 0 16px 42px rgba(0, 0, 0, 0.34);
+    }
+
+    .story-footer,
+    .mission-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .story-nav {
+      min-width: 52px;
+      min-height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(245, 236, 217, 0.16);
+      background: rgba(8, 19, 29, 0.56);
+      backdrop-filter: blur(16px);
+      font-size: 1.2rem;
+    }
+
+    .story-nav[disabled] {
+      opacity: 0.35;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .story-index,
+    .question-meta {
+      color: rgba(245, 236, 217, 0.66);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .ritual-progress {
+      position: relative;
+      width: min(100%, 460px);
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(245, 236, 217, 0.08);
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(245, 236, 217, 0.04);
+    }
+
+    .ritual-progress::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: var(--ritual-progress);
+      border-radius: inherit;
+      background:
+        linear-gradient(90deg, var(--pomegranate-red), var(--antique-brass), var(--ottoman-turquoise));
+      box-shadow: 0 0 20px rgba(47, 143, 139, 0.32);
+      transition: width 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .mission-copy {
+      max-width: 42rem;
+      margin-bottom: 22px;
+    }
+
+    .mission-title {
+      font-size: clamp(2.5rem, 10vw, 4.6rem);
+    }
+
+    .question-orbit {
+      position: relative;
+      padding: 30px 0 10px;
+    }
+
+    .question-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: min(76vw, 540px);
+      height: min(76vw, 540px);
+      border-radius: 50%;
+      border: 1px solid rgba(180, 138, 84, 0.12);
+      transform: translate(-30%, -16%);
+      opacity: 0.7;
+    }
+
+    .question-panel {
+      position: relative;
+      padding: 24px 24px 8px;
+      border-radius: 28px;
+      border: 1px solid rgba(180, 138, 84, 0.18);
+      background:
+        linear-gradient(180deg, rgba(245, 236, 217, 0.04), transparent 34%),
+        rgba(8, 19, 29, 0.4);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .question-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(47, 143, 139, 0.12), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(158, 44, 51, 0.12), transparent 24%);
+      pointer-events: none;
+    }
+
+    .question-panel::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(245, 236, 217, 0.06);
+      pointer-events: none;
+    }
+
+    .question-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .question-text {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 7vw, 3rem);
+      line-height: 1.12;
+      text-wrap: balance;
+    }
+
+    .answer-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+      padding-bottom: 8px;
+    }
+
+    .answer-button {
+      width: 100%;
+      text-align: left;
+      padding: 18px 18px 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(245, 236, 217, 0.12);
+      background:
+        linear-gradient(135deg, rgba(180, 138, 84, 0.12), rgba(15, 79, 103, 0.08)),
+        rgba(8, 19, 29, 0.62);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .answer-button.is-selected {
+      transform: scale(0.985);
+      border-color: rgba(180, 138, 84, 0.52);
+      box-shadow: 0 0 0 1px rgba(180, 138, 84, 0.18) inset;
+    }
+
+    .answer-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin-right: 12px;
+      border: 1px solid rgba(180, 138, 84, 0.32);
+      background: rgba(245, 236, 217, 0.04);
+      color: var(--warm-sand);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      vertical-align: top;
+    }
+
+    .answer-label {
+      position: relative;
+      z-index: 1;
+      display: inline;
+      color: var(--warm-ivory);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .feedback-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(5, 12, 19, 0.68);
+      backdrop-filter: blur(12px);
+    }
+
+    .feedback-card {
+      position: relative;
+      width: min(100%, 500px);
+      padding: 28px 24px;
+      border-radius: 30px;
+      border: 1px solid rgba(180, 138, 84, 0.26);
+      background:
+        radial-gradient(circle at top, rgba(47, 143, 139, 0.14), transparent 30%),
+        linear-gradient(180deg, rgba(245, 236, 217, 0.05), transparent 30%),
+        rgba(8, 19, 29, 0.9);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+      transform-origin: center;
+      animation: revealCard 420ms cubic-bezier(0.18, 0.8, 0.25, 1);
+    }
+
+    .feedback-eyebrow {
+      margin: 0 0 12px;
+      color: var(--warm-sand);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .feedback-text {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    .feedback-hint {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .overlay-dismiss {
+      margin-top: 22px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 236, 217, 0.14);
+      background: rgba(245, 236, 217, 0.06);
+      color: var(--warm-ivory);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .completion-title {
+      font-size: clamp(2.6rem, 10vw, 4.8rem);
+    }
+
+    .completion-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .map-legend {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 236, 217, 0.1);
+      background: rgba(8, 19, 29, 0.36);
+      color: rgba(245, 236, 217, 0.76);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    @keyframes driftA {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(0, -18px, 0) scale(1.04); }
+    }
+
+    @keyframes driftB {
+      from { transform: translate3d(-2%, 0, 0) scale(1.06); }
+      to { transform: translate3d(2%, -2%, 0) scale(1.1); }
+    }
+
+    @keyframes driftGrid {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(18px, -16px, 0); }
+    }
+
+    @keyframes slowRotate {
+      from { transform: scale(1.25) rotate(0deg); }
+      to { transform: scale(1.25) rotate(360deg); }
+    }
+
+    @keyframes slowRotateReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes pulseFrame {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.95; }
+    }
+
+    @keyframes revealCard {
+      from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (min-width: 760px) {
+      .shell {
+        padding-left: clamp(30px, 5vw, 56px);
+        padding-right: clamp(30px, 5vw, 56px);
+      }
+
+      .story-footer,
+      .mission-footer {
+        flex-wrap: nowrap;
+      }
+
+      .question-panel {
+        padding: 28px 30px 12px;
+      }
+
+      .answer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="app-shell">
-    <section id="onboardingPage" class="page page-cover is-active" aria-label="Pagina iniziale">
-      <button id="enterAppButton" class="cover-tap-area" aria-label="Entra nell'esperienza">
-        <img
-          class="cover-image"
-          src="assets/hero-onboarding.png"
-          alt="Vista suggestiva di Istanbul"
-        />
-        <span class="cover-gradient" aria-hidden="true"></span>
-        <span class="cover-grain" aria-hidden="true"></span>
-        <span class="cover-aura cover-aura-one" aria-hidden="true"></span>
-        <span class="cover-aura cover-aura-two" aria-hidden="true"></span>
+  <main class="artifact-app">
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="bosphorus-ribbon" aria-hidden="true"></div>
+    <div class="signal-grid" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="veil" id="veil" aria-hidden="true"></div>
 
-        <div class="cover-shell">
-          <div class="cover-topbar">
-            <span class="brand-mark">Istanbul Adventure</span>
-            <span class="brand-chip">Interactive Story Experience</span>
+    <div class="shell">
+      <header class="topbar">
+        <div class="seal">Istanbul Adventure</div>
+        <div class="status-pill" id="statusPill">Strato nascosto della citta</div>
+      </header>
+
+      <div class="stage">
+        <div class="compass" aria-hidden="true"><span></span></div>
+
+        <section class="scene is-active" id="scene-entry" aria-label="Ingresso">
+          <div class="sequence">
+            <p class="subline">Urban relic / shared travel game</p>
+            <h1 class="hero-title">
+              <span>Hidden Layer</span>
+              Istanbul
+            </h1>
+            <p class="lead">
+              Non apri un'app. Attivi un artefatto. Missione 0 serve a capire con quale istinto attraverserai la citta, i suoi segnali e i suoi doppi fondi.
+            </p>
+            <div class="ritual-row">
+              <button class="ritual-button" id="enterButton" type="button"><span>Apri il varco</span></button>
+              <div class="ritual-note">Bosforo, ottone, inchiostro, tracce</div>
+            </div>
+            <div class="map-legend" aria-hidden="true">
+              <div class="legend-item">Missione 0</div>
+              <div class="legend-item">Percorso ramificato</div>
+              <div class="legend-item">Mobile-first</div>
+            </div>
           </div>
+          <div class="quote-band"><p>Not every traveler enters the same city.</p></div>
+        </section>
 
-          <div class="cover-stage">
-            <div class="cover-copy">
-              <p class="eyebrow">Playable Travel Story</p>
-              <h1 class="cover-title" id="coverTitle">Il Mio Titolo</h1>
-              <p class="cover-description">
-                Un ingresso cinematografico, moderno e magnetico per una storia da vivere come un viaggio sensoriale.
-              </p>
-              <div class="cover-entry">
-                <span class="cover-entry-label" id="coverHint">Tocca per entrare</span>
-                <span class="cover-entry-arrow" aria-hidden="true">→</span>
+        <section class="scene" id="scene-story" aria-label="Prologo">
+          <div class="story-frame">
+            <p class="subline">Prologo narrativo</p>
+            <div class="story-slide">
+              <p class="story-copy" id="storyText"></p>
+            </div>
+            <div class="story-footer">
+              <div class="ritual-progress" id="storyProgress" aria-hidden="true"></div>
+              <div class="story-index" id="storyIndex"></div>
+              <div style="display:flex;gap:10px;">
+                <button class="story-nav" id="storyPrev" type="button" aria-label="Slide precedente">←</button>
+                <button class="story-nav" id="storyNext" type="button" aria-label="Slide successiva">→</button>
               </div>
             </div>
-
-            <aside class="cover-panel" aria-hidden="true">
-              <span class="cover-panel-label">City Notes</span>
-              <p class="cover-panel-title">Una UI progettata come un prodotto premium, non come una pagina decorata.</p>
-              <div class="cover-panel-grid">
-                <div class="cover-stat">
-                  <span class="cover-stat-value">01</span>
-                  <span class="cover-stat-label">Immersione</span>
-                </div>
-                <div class="cover-stat">
-                  <span class="cover-stat-value">02</span>
-                  <span class="cover-stat-label">Ritmo</span>
-                </div>
-                <div class="cover-stat">
-                  <span class="cover-stat-value">03</span>
-                  <span class="cover-stat-label">Profondita</span>
-                </div>
-              </div>
-            </aside>
           </div>
-        </div>
-      </button>
-    </section>
+        </section>
 
-    <section id="storyPage" class="page page-story" aria-label="Pagina storia">
-      <div class="story-backdrop" aria-hidden="true"></div>
-      <div class="story-noise" aria-hidden="true"></div>
-
-      <div class="content-inner">
-        <div class="story-layout">
-          <header class="story-header">
-            <div class="story-brand">
-              <span class="brand-mark">Istanbul Adventure</span>
-              <span class="story-route">Chapter One</span>
-            </div>
-            <div class="story-meta">
-              <span class="story-meta-pill">Narrative Mode</span>
-              <span class="story-meta-pill story-meta-pill-muted">Designed For Focus</span>
-            </div>
-          </header>
-
-          <section class="story-main">
-            <div class="story-card">
-              <div class="story-card-top">
-                <p class="eyebrow">Story Journal</p>
-                <h2 class="content-title" id="contentTitle">Seconda Pagina</h2>
-              </div>
-
-              <div class="story-reader">
-                <div class="story-reader-glow" aria-hidden="true"></div>
-                <div class="story-reader-frame" aria-hidden="true"></div>
-                <div class="widget-text story-text" id="widgetText">
-                  Qui va il tuo testo dentro il widget SVG
+        <section class="scene" id="scene-mission" aria-label="Missione 0">
+          <div class="mission-frame">
+            <p class="subline" id="missionKicker">Missione 0</p>
+            <h2 class="mission-title">
+              <span>Rito di assegnazione</span>
+              Identita in emersione
+            </h2>
+            <p class="mission-copy" id="missionIntro"></p>
+            <div class="question-orbit">
+              <div class="question-panel">
+                <div class="question-head">
+                  <div class="progress-pill" id="questionCounter">01 / 10</div>
+                  <div class="question-meta" id="questionMeta">Segnale attivo</div>
                 </div>
-              </div>
-
-              <div class="story-controls" aria-label="Navigazione del testo">
-                <button id="prevTextButton" class="story-nav-button" type="button" aria-label="Testo precedente">←</button>
-                <div class="story-controls-copy">
-                  <span class="story-controls-title">Scorri la scena</span>
-                  <span class="story-controls-subtitle">Muoviti nel racconto con un ritmo piu elegante e leggibile.</span>
-                </div>
-                <button id="nextTextButton" class="story-nav-button" type="button" aria-label="Testo successivo">→</button>
+                <p class="question-text" id="questionText"></p>
+                <div class="answer-grid" id="answerGrid" aria-live="polite"></div>
               </div>
             </div>
-          </section>
-
-          <aside class="story-sidebar">
-            <div class="story-sidebar-card">
-              <span class="story-sidebar-label">Next Destination</span>
-              <p class="story-sidebar-title">Quando sei pronto, il racconto lascia spazio all'interazione.</p>
-              <button id="svgActionButton" class="action-launch" type="button">
-                <span class="action-launch-surface" aria-hidden="true"></span>
-                <span class="action-launch-label" id="actionButtonLabel">Premi qui</span>
-              </button>
+            <div class="mission-footer">
+              <div class="ritual-progress" id="questionProgress" aria-hidden="true"></div>
+              <div class="question-meta" id="tapHint">Scegli d'istinto</div>
             </div>
-          </aside>
-        </div>
+          </div>
+        </section>
+
+        <section class="scene" id="scene-complete" aria-label="Completamento">
+          <div class="completion-frame">
+            <p class="subline">Percorso attivato</p>
+            <h2 class="completion-title">
+              <span>Missione chiusa</span>
+              Sotto la superficie, il viaggio ha gia scelto un tono
+            </h2>
+            <p class="completion-copy" id="completionText"></p>
+            <div class="completion-actions">
+              <button class="restart-button" id="restartButton" type="button"><span>Ricomincia il rito</span></button>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
+
+    <div class="feedback-overlay" id="feedbackOverlay" hidden>
+      <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="feedbackText">
+        <p class="feedback-eyebrow">Murmur from the city</p>
+        <p class="feedback-text" id="feedbackText"></p>
+        <p class="feedback-hint" id="feedbackHint"></p>
+        <button class="overlay-dismiss" id="overlayDismiss" type="button">Continua</button>
+      </div>
+    </div>
   </main>
 
-  <script src="content.js"></script>
-  <script src="app.js"></script>
+  <script>
+    const STORY_SLIDES = [
+      "Questa non e una guida, e un modo diverso di scoprire la citta.",
+      "Durante il viaggio non seguirai un percorso fisso. Scoprirai Istanbul attraverso missioni, dettagli e storie.",
+      "A Istanbul non tutti vedono la stessa citta: ogni viaggiatore appartiene, senza saperlo, a una delle cinque tribu.",
+      "Prima di iniziare, una breve missione servira a capire a quale tribu appartieni: un quiz veloce con domande a volte un po' assurde, che definira il tuo modo di giocare e iniziera a farti scoprire Istanbul in modo unico."
+    ];
+
+    const QUIZ_CONTENT = {
+      introTitle: "Missione 0",
+      introText: "Scegli ogni risposta d'istinto. Alcune scelte apriranno un indizio prima della domanda successiva.",
+      tapToContinueLabel: "Tocca per continuare",
+      startQuestionId: "p1",
+      completion: {
+        title: "Percorso avviato",
+        text: "La tua tribu sta prendendo forma. Da qui in poi il viaggio potra seguire strade diverse in base alle tue scelte."
+      },
+      questions: [
+        {
+          id: "p1",
+          text: "Sei sul Bosforo, il traghetto passa vicino a una moschea enorme",
+          answers: [
+            { label: "Pensi a quante epoche ha attraversato", nextId: "a_1" },
+            { label: "Ti chiedi se ha storie strane legate a lei", nextId: "c_1" },
+            { label: "Guardi il percorso dove potresti sceglere", nextId: "e_1" },
+            { label: "Noti i dettagli della struttura e delle decorazioni", nextId: "d_1" }
+          ]
+        },
+        {
+          id: "p2",
+          text: "Nel Grand Bazar un venditore ti invita a entrare",
+          answers: [
+            { label: "Inizia a parlare con lui", nextId: "cu_4" },
+            { label: "Osservi gli oggetti esposti", nextId: "d_4" },
+            { label: "Ti chiedi che tipo di storie avra visto", nextId: "c_4" },
+            { label: "Ti infili dentro per vedere dove arrivi", nextId: "e_4" }
+          ]
+        },
+        {
+          id: "p3",
+          text: "Ti trovi davanti a un edificio antico senza spiegazioni",
+          answers: [
+            { label: "Ti avvicini per osservare i dettagli", nextId: "d_7" },
+            { label: "Lo superi per trovare qualcos'altro", nextId: "e_7" },
+            { label: "Cerchi di capire quando e stato scotruito", nextId: "a_7" },
+            { label: "Immagini cosa potrebbe essere successo li", nextId: "c_7" }
+          ]
+        },
+        {
+          id: "p4",
+          text: "In una cay house qualcuno ti guarda e sorride",
+          answers: [
+            { label: "Ti chiedi chi sia e cosa stia pensando", nextId: "c_10" },
+            { label: "Inizi la conversazione", nextId: "cu_10" },
+            { label: "Noti piccoli gesti e oggetti sul tavolo", nextId: "d_10" },
+            { label: "Ti godi la scena e vivi il momento", nextId: "e_10" }
+          ]
+        },
+        {
+          id: "p5",
+          text: "Camminando trovi una strada che sembra poco frequentata",
+          answers: [
+            { label: "Ti chiedi dove porta", nextId: "e_13" },
+            { label: "Ti chiedi cosa succede li di notte", nextId: "c_13" },
+            { label: "Guardi se qualche simbolo o indicazione dice dove porta", nextId: "d_13" },
+            { label: "Ti chiedi cosa e successo li", nextId: "a_13" }
+          ]
+        },
+        {
+          id: "p6",
+          text: "Ti danno un bicchiere di cay",
+          answers: [
+            { label: "Pensi alla tradizione dietro alla preparazione", nextId: "c_16" },
+            { label: "Lo bevi e riparti subito", nextId: "e_16" },
+            { label: "Osservi il modo in cui viene servito", nextId: "d_16" },
+            { label: "Ti chiedi chi lo abbia inventato", nextId: "cu_16" }
+          ]
+        },
+        {
+          id: "p7",
+          text: "Vedi un simbolo blu appeso ovunque",
+          answers: [
+            { label: "Chiedi a qualcuno cosa significa", nextId: "cu_19" },
+            { label: "Ti chiedi che storia c'e dietro", nextId: "c_19" },
+            { label: "Lo osservi nei dettagli", nextId: "d_19" },
+            { label: "Ti chiedi da quando esiste", nextId: "a_19" }
+          ]
+        },
+        {
+          id: "p8",
+          text: "Stai scegliendo cosa fotografare",
+          answers: [
+            { label: "Una strada", nextId: "e_22" },
+            { label: "Un luogo con una storia", nextId: "a_22" },
+            { label: "Un momento tra persone", nextId: "cu_22" },
+            { label: "Un dettaglio", nextId: "d_22" }
+          ]
+        },
+        {
+          id: "p9",
+          text: "Qualcuno racconta una leggenda su un luogo",
+          answers: [
+            { label: "Ti interessa capire se e vera", nextId: "a_25" },
+            { label: "Ti interessa la storia in se", nextId: "c_25" },
+            { label: "Ti interessa andare a vedere il posto", nextId: "e_25" },
+            { label: "Ti interessa cosa rappresenta", nextId: "d_25" }
+          ]
+        },
+        {
+          id: "p10",
+          text: "Fine giornata, ripensi a quello che hai visto:",
+          answers: [
+            { label: "Le persone incontrate", nextId: "cu_28" },
+            { label: "Le storie strane", nextId: "c_28" },
+            { label: "I percorsi fatti", nextId: "e_28" },
+            { label: "I dettagli notati", nextId: "d_28" }
+          ]
+        },
+        {
+          id: "a_1",
+          text: "Istanbul e stata capitale di quanti imperi?",
+          answers: [
+            { label: "1", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" },
+            { label: "2", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" },
+            { label: "3", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" },
+            { label: "4", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" }
+          ]
+        },
+        {
+          id: "a_2",
+          text: "Prima di chiamarsi Istanbul come si chiamava?",
+          answers: [
+            { label: "Troia", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" },
+            { label: "Costantinopoli", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" },
+            { label: "Efeso", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" },
+            { label: "Antiochia", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" }
+          ]
+        },
+        {
+          id: "a_3",
+          text: "Chi conquisto Costantinopoli nel 1453?",
+          answers: [
+            { label: "Alessandro Magno", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" },
+            { label: "Mehmet II", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" },
+            { label: "Cesare", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" },
+            { label: "Napoleone", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" }
+          ]
+        },
+        {
+          id: "a_7",
+          text: "Quale edificio e stato sia chiesa che moschea?",
+          answers: [
+            { label: "Topkapi", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" },
+            { label: "Hagia Sophia", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" },
+            { label: "Moschea Blu", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" },
+            { label: "Dolmabahce", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" }
+          ]
+        },
+        {
+          id: "a_8",
+          text: "Il Grand Bazar nasce",
+          answers: [
+            { label: "Nel 1800", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" },
+            { label: "Nel 1200", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" },
+            { label: "Nel 1400", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" },
+            { label: "Nel 1900", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" }
+          ]
+        },
+        {
+          id: "a_9",
+          text: "Il palazzo Topkapi era",
+          answers: [
+            { label: "Una fortezza militare", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" },
+            { label: "La residenza dei sultani", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" },
+            { label: "Un tempio", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" },
+            { label: "Un mercato", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" }
+          ]
+        },
+        {
+          id: "a_13",
+          text: "Il nome Istanbul probabilmente deriva da:",
+          answers: [
+            { label: "Latino", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." },
+            { label: "Greco", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." },
+            { label: "Arabo", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." },
+            { label: "Persiano", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." }
+          ]
+        },
+        {
+          id: "a_14",
+          text: "Hagia Sofia e stata costruita in:",
+          answers: [
+            { label: "10 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" },
+            { label: "50 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" },
+            { label: "5 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" },
+            { label: "100 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" }
+          ]
+        },
+        {
+          id: "a_15",
+          text: "I sultani ottomani vivevano:",
+          answers: [
+            { label: "Sempre nello stesso palazzo", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" },
+            { label: "In tende", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" },
+            { label: "In un complesso enorme con centinaia di stanze", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" },
+            { label: "In castelli separati", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" }
+          ]
+        },
+        {
+          id: "a_19",
+          text: "Le mura di Costantinopoli avevano:",
+          answers: [
+            { label: "Una sola linea", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" },
+            { label: "Due linee", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" },
+            { label: "Tre linee", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" },
+            { label: "Nessuna linea", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" }
+          ]
+        },
+        {
+          id: "a_20",
+          text: "Durante l'assedio del 1453, gli ottomani:",
+          answers: [
+            { label: "Scavarono sotto la citta", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" },
+            { label: "Portarono navi via terra", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" },
+            { label: "Usarono solo archi", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" },
+            { label: "Aspettarono", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" }
+          ]
+        },
+        {
+          id: "a_21",
+          text: "Hagia Sofia ha:",
+          answers: [
+            { label: "Solo mosaici cristiani", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" },
+            { label: "Solo elementi islamici", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" },
+            { label: "Entrambi", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" },
+            { label: "Nessuno", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" }
+          ]
+        },
+        {
+          id: "a_22",
+          text: "La Cisterna Basilica era:",
+          answers: [
+            { label: "Una prigione", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" },
+            { label: "Un magazzino d'acqua", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" },
+            { label: "Un tempio", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" },
+            { label: "Un teatro", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" }
+          ]
+        },
+        {
+          id: "a_23",
+          text: "Le teste di Medusa nella cisterna sono:",
+          answers: [
+            { label: "Colorate", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" },
+            { label: "Distrutte", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" },
+            { label: "Capovolte", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" },
+            { label: "Divise", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" }
+          ]
+        },
+        {
+          id: "a_24",
+          text: "I Giannizzeri (guardie d'elite) erano",
+          answers: [
+            { label: "Tutti turchi", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" },
+            { label: "Bambini presi da altre regioni", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" },
+            { label: "Mercenari europei", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" },
+            { label: "Nobili", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" }
+          ]
+        }
+      ]
+    };
+
+    const ui = {
+      scenes: {
+        entry: document.getElementById("scene-entry"),
+        story: document.getElementById("scene-story"),
+        mission: document.getElementById("scene-mission"),
+        complete: document.getElementById("scene-complete")
+      },
+      enterButton: document.getElementById("enterButton"),
+      storyText: document.getElementById("storyText"),
+      storyIndex: document.getElementById("storyIndex"),
+      storyPrev: document.getElementById("storyPrev"),
+      storyNext: document.getElementById("storyNext"),
+      storyProgress: document.getElementById("storyProgress"),
+      missionKicker: document.getElementById("missionKicker"),
+      missionIntro: document.getElementById("missionIntro"),
+      questionCounter: document.getElementById("questionCounter"),
+      questionMeta: document.getElementById("questionMeta"),
+      questionText: document.getElementById("questionText"),
+      answerGrid: document.getElementById("answerGrid"),
+      questionProgress: document.getElementById("questionProgress"),
+      tapHint: document.getElementById("tapHint"),
+      completionText: document.getElementById("completionText"),
+      restartButton: document.getElementById("restartButton"),
+      feedbackOverlay: document.getElementById("feedbackOverlay"),
+      feedbackText: document.getElementById("feedbackText"),
+      feedbackHint: document.getElementById("feedbackHint"),
+      overlayDismiss: document.getElementById("overlayDismiss"),
+      statusPill: document.getElementById("statusPill"),
+      veil: document.getElementById("veil")
+    };
+
+    const quizQuestions = new Map(QUIZ_CONTENT.questions.map((question) => [question.id, question]));
+    const primaryQuestionIds = QUIZ_CONTENT.questions.filter((question) => question.id.startsWith("p")).map((question) => question.id);
+
+    let currentScene = "entry";
+    let storyIndex = 0;
+    let currentQuestionId = null;
+    let pendingNextId = null;
+    let pendingCompletesQuiz = false;
+    let answeredCount = 0;
+    let activeAnswerButton = null;
+
+    function setVeil(active) {
+      document.documentElement.style.setProperty("--veil-opacity", active ? "1" : "0");
+    }
+
+    function setProgress(element, value) {
+      element.style.setProperty("--ritual-progress", `${value}%`);
+    }
+
+    function setScene(sceneName) {
+      currentScene = sceneName;
+      Object.entries(ui.scenes).forEach(([name, element]) => {
+        element.classList.toggle("is-active", name === sceneName);
+      });
+
+      const labels = {
+        entry: "Strato nascosto della citta",
+        story: "Trasmissione del prologo",
+        mission: "Missione 0 attiva",
+        complete: "Assegnazione compiuta"
+      };
+
+      ui.statusPill.textContent = labels[sceneName] || "Istanbul Adventure";
+      setVeil(sceneName === "mission" || sceneName === "complete");
+    }
+
+    function renderStorySlide() {
+      ui.storyText.textContent = STORY_SLIDES[storyIndex];
+      ui.storyIndex.textContent = `${String(storyIndex + 1).padStart(2, "0")} / ${String(STORY_SLIDES.length).padStart(2, "0")}`;
+      ui.storyPrev.disabled = storyIndex === 0;
+      ui.storyNext.textContent = storyIndex === STORY_SLIDES.length - 1 ? "↗" : "→";
+      setProgress(ui.storyProgress, ((storyIndex + 1) / STORY_SLIDES.length) * 100);
+    }
+
+    function showMission() {
+      setScene("mission");
+      ui.missionKicker.textContent = QUIZ_CONTENT.introTitle;
+      ui.missionIntro.textContent = QUIZ_CONTENT.introText;
+      ui.tapHint.textContent = QUIZ_CONTENT.tapToContinueLabel;
+      answeredCount = 0;
+      renderQuestion(QUIZ_CONTENT.startQuestionId);
+    }
+
+    function updateQuestionMeta(questionId) {
+      const isPrimary = questionId.startsWith("p");
+      const primaryIndex = primaryQuestionIds.indexOf(questionId);
+      const left = isPrimary ? primaryIndex + 1 : answeredCount + 1;
+      ui.questionCounter.textContent = `${String(Math.max(left, 1)).padStart(2, "0")} / ${String(primaryQuestionIds.length).padStart(2, "0")}`;
+      ui.questionMeta.textContent = isPrimary ? "Nodo narrativo" : "Eco storico";
+      setProgress(ui.questionProgress, Math.min((answeredCount / primaryQuestionIds.length) * 100, 100));
+    }
+
+    function renderQuestion(questionId) {
+      const question = quizQuestions.get(questionId);
+      currentQuestionId = questionId;
+      activeAnswerButton = null;
+
+      if (!question) {
+        finishQuiz();
+        return;
+      }
+
+      updateQuestionMeta(questionId);
+      ui.questionText.textContent = question.text;
+      ui.answerGrid.replaceChildren(...question.answers.map((answer, index) => createAnswerButton(answer, index)));
+    }
+
+    function createAnswerButton(answer, index) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "answer-button";
+      button.innerHTML = `<span class="answer-index">${String(index + 1).padStart(2, "0")}</span><span class="answer-label">${answer.label}</span>`;
+      button.addEventListener("click", () => handleAnswer(answer, button));
+      return button;
+    }
+
+    function showFeedback(text, nextId, completesQuiz) {
+      pendingNextId = nextId || null;
+      pendingCompletesQuiz = Boolean(completesQuiz);
+      ui.feedbackText.textContent = text;
+      ui.feedbackHint.textContent = QUIZ_CONTENT.tapToContinueLabel;
+      ui.feedbackOverlay.hidden = false;
+      ui.overlayDismiss.focus();
+    }
+
+    function closeFeedback() {
+      ui.feedbackOverlay.hidden = true;
+
+      if (pendingNextId) {
+        const nextId = pendingNextId;
+        pendingNextId = null;
+        pendingCompletesQuiz = false;
+        renderQuestion(nextId);
+        return;
+      }
+
+      if (pendingCompletesQuiz) {
+        pendingCompletesQuiz = false;
+        finishQuiz();
+      }
+    }
+
+    function handleAnswer(answer, button) {
+      if (activeAnswerButton) {
+        activeAnswerButton.classList.remove("is-selected");
+      }
+
+      activeAnswerButton = button;
+      button.classList.add("is-selected");
+      answeredCount += 1;
+      updateQuestionMeta(currentQuestionId);
+
+      if (answer.feedback) {
+        showFeedback(answer.feedback, answer.nextId, !answer.nextId);
+        return;
+      }
+
+      if (answer.nextId) {
+        renderQuestion(answer.nextId);
+        return;
+      }
+
+      finishQuiz();
+    }
+
+    function finishQuiz() {
+      setScene("complete");
+      ui.completionText.textContent = QUIZ_CONTENT.completion.text;
+      setProgress(ui.questionProgress, 100);
+    }
+
+    function restartExperience() {
+      storyIndex = 0;
+      renderStorySlide();
+      pendingNextId = null;
+      pendingCompletesQuiz = false;
+      ui.feedbackOverlay.hidden = true;
+      setScene("entry");
+    }
+
+    ui.enterButton.addEventListener("click", () => {
+      setScene("story");
+      renderStorySlide();
+    });
+
+    ui.storyPrev.addEventListener("click", () => {
+      if (storyIndex === 0) {
+        return;
+      }
+
+      storyIndex -= 1;
+      renderStorySlide();
+    });
+
+    ui.storyNext.addEventListener("click", () => {
+      if (storyIndex < STORY_SLIDES.length - 1) {
+        storyIndex += 1;
+        renderStorySlide();
+        return;
+      }
+
+      showMission();
+    });
+
+    ui.overlayDismiss.addEventListener("click", closeFeedback);
+    ui.feedbackOverlay.addEventListener("click", (event) => {
+      if (event.target === ui.feedbackOverlay) {
+        closeFeedback();
+      }
+    });
+
+    ui.restartButton.addEventListener("click", restartExperience);
+
+    window.addEventListener("keydown", (event) => {
+      if (ui.feedbackOverlay.hidden) {
+        if (currentScene === "story" && event.key === "ArrowRight") {
+          ui.storyNext.click();
+        }
+
+        if (currentScene === "story" && event.key === "ArrowLeft") {
+          ui.storyPrev.click();
+        }
+
+        return;
+      }
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        closeFeedback();
+      }
+    });
+
+    if (window.location.hash === "#missione-0") {
+      showMission();
+    }
+  </script>
 </body>
 </html>
