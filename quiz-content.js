@@ -879,5 +879,32 @@ window.QUIZ_CONTENT = {
       { label: "Pegaso", label: "p10", feedback: "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca." }
     ]
   },
+  { id: "cu_4",
+  text: "Qual è la bevanda tradizionale turca servita in piccoli bicchieri a forma di tulipano?",
+  answers: [
+    { label: "Caffè turco", nextId: "cu_5", feedback: "Il tè (çay) è la bevanda nazionale turca, servita in bicchieri a tulipano ed elemento centrale della vita sociale." },
+    { label: "Tè turco (çay)", nextId: "cu_5", feedback: "Il tè (çay) è la bevanda nazionale turca, servita in bicchieri a tulipano ed elemento centrale della vita sociale." },
+    { label: "Ayran", nextId: "cu_5", feedback: "Il tè (çay) è la bevanda nazionale turca, servita in bicchieri a tulipano ed elemento centrale della vita sociale." },
+    { label: "Salep", nextId: "cu_5", feedback: "Il tè (çay) è la bevanda nazionale turca, servita in bicchieri a tulipano ed elemento centrale della vita sociale." }
+  ]
+},
+{ id: "cu_5",
+  text: "Il caffè turco tradizionale viene preparato in un recipiente chiamato:",
+  answers: [
+    { label: "Ibrik", nextId: "cu_6", feedback: "Il caffè turco si prepara nel cezve (detto anche ibrik), piccolo bricco con manico lungo." },
+    { label: "Cezve", nextId: "cu_6", feedback: "Il caffè turco si prepara nel cezve (detto anche ibrik), piccolo bricco con manico lungo." },
+    { label: "Samovar", nextId: "cu_6", feedback: "Il caffè turco si prepara nel cezve (detto anche ibrik), piccolo bricco con manico lungo." },
+    { label: "Tandir", nextId: "cu_6", feedback: "Il caffè turco si prepara nel cezve (detto anche ibrik), piccolo bricco con manico lungo." }
+  ]
+},
+{ id: "cu_6",
+  text: "Quale dolce ottomano è composto da sottilissimi strati di pasta fillo, pistacchi e sciroppo?",
+  answers: [
+    { label: "Lokum", nextId: "p3", feedback: "La baklava è un dolce ottomano a strati di pasta fillo, frutta secca e sciroppo." },
+    { label: "Baklava", nextId: "p3", feedback: "La baklava è un dolce ottomano a strati di pasta fillo, frutta secca e sciroppo." },
+    { label: "Kadayif", nextId: "p3", feedback: "La baklava è un dolce ottomano a strati di pasta fillo, frutta secca e sciroppo." },
+    { label: "Simit", nextId: "p3", feedback: "La baklava è un dolce ottomano a strati di pasta fillo, frutta secca e sciroppo." }
+  ]
+},
   ]
 };

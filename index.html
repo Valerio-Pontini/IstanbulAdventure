@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#08131d" />
-  <meta name="description" content="Istanbul Adventure, un artefatto digitale narrativo per esplorare la citta attraverso Missione 0." />
+  <meta name="theme-color" content="#17110d" />
+  <meta
+    name="description"
+    content="Istanbul Adventure, un'app narrativa mobile-first per esplorare Istanbul attraverso missioni, storie e percorsi personali."
+  />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -12,2918 +15,324 @@
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" href="./assets/icon-192.png" />
   <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
   <title>Istanbul Adventure</title>
-  <style>
-    :root {
-      --bosphorus-blue: #0f4f67;
-      --pomegranate-red: #9e2c33;
-      --warm-ivory: #f5ecd9;
-      --antique-brass: #b48a54;
-      --ottoman-turquoise: #2f8f8b;
-      --warm-sand: #c3a67e;
-      --night: #08131d;
-      --night-soft: #10202d;
-      --night-deep: #060d14;
-      --ink: rgba(8, 19, 29, 0.82);
-      --mist: rgba(245, 236, 217, 0.08);
-      --line: rgba(245, 236, 217, 0.15);
-      --line-strong: rgba(180, 138, 84, 0.45);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
-      --text: var(--warm-ivory);
-      --muted: rgba(245, 236, 217, 0.72);
-      --safe-top: max(20px, env(safe-area-inset-top));
-      --safe-bottom: max(24px, env(safe-area-inset-bottom));
-      --ritual-progress: 0%;
-      --veil-opacity: 0;
-      --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-      --font-ui: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
-      --app-background-image: none;
-      --app-overlay-image: none;
-      --map-fragment-image: none;
-      --grain-image: none;
-      --seal-icon-image: none;
-      --mission-icon-image: none;
-      --story-icon-image: none;
-      --completion-icon-image: none;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(47, 143, 139, 0.16), transparent 24%),
-        radial-gradient(circle at 82% 14%, rgba(158, 44, 51, 0.22), transparent 20%),
-        radial-gradient(circle at 50% 76%, rgba(15, 79, 103, 0.24), transparent 32%),
-        linear-gradient(180deg, #0e1b28 0%, #09131d 52%, #050c13 100%);
-      color: var(--text);
-      font-family: var(--font-ui);
-      -webkit-text-size-adjust: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      overflow-x: hidden;
-      overflow-y: auto;
-      overscroll-behavior-y: contain;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    button {
-      font: inherit;
-      color: inherit;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-
-    [hidden] {
-      display: none !important;
-    }
-
-    .artifact-app {
-      position: relative;
-      min-height: 100svh;
-      overflow-x: clip;
-      isolation: isolate;
-      background:
-        var(--app-background-image),
-        radial-gradient(circle at 50% 14%, rgba(245, 236, 217, 0.07), transparent 24%),
-        linear-gradient(160deg, rgba(6, 14, 20, 0.2), rgba(6, 14, 20, 0.65));
-      background-size: cover, auto, auto;
-      background-position: center center, center center, center center;
-    }
-
-    .atmosphere,
-    .atmosphere::before,
-    .atmosphere::after,
-    .bosphorus-ribbon,
-    .signal-grid,
-    .grain,
-    .veil {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .atmosphere {
-      background:
-        var(--app-overlay-image),
-        radial-gradient(circle at 24% 18%, rgba(47, 143, 139, 0.22), transparent 26%),
-        radial-gradient(circle at 76% 22%, rgba(180, 138, 84, 0.16), transparent 24%),
-        radial-gradient(circle at 54% 70%, rgba(158, 44, 51, 0.16), transparent 30%);
-      background-size: cover, auto, auto, auto;
-      background-position: center center, center center, center center, center center;
-      filter: saturate(1.1);
-      animation: driftA 20s ease-in-out infinite alternate;
-    }
-
-    .atmosphere::before {
-      content: "";
-      background:
-        radial-gradient(circle at 62% 36%, rgba(245, 236, 217, 0.12), transparent 14%),
-        radial-gradient(circle at 18% 66%, rgba(47, 143, 139, 0.1), transparent 18%);
-      transform: scale(1.08);
-      filter: blur(16px);
-      animation: driftB 26s ease-in-out infinite alternate;
-    }
-
-    .atmosphere::after {
-      content: "";
-      inset: 8% 6%;
-      border: 1px solid rgba(180, 138, 84, 0.09);
-      border-radius: 48px;
-      box-shadow:
-        0 0 0 1px rgba(245, 236, 217, 0.03) inset,
-        0 0 60px rgba(47, 143, 139, 0.05);
-      animation: pulseFrame 8s ease-in-out infinite;
-    }
-
-    .bosphorus-ribbon {
-      opacity: 0.58;
-      background:
-        radial-gradient(circle at 52% 48%, transparent 0 22%, rgba(245, 236, 217, 0.06) 22.2% 22.6%, transparent 23%),
-        conic-gradient(from 210deg at 50% 50%, transparent 0 18%, rgba(47, 143, 139, 0.2) 19% 23%, transparent 24% 46%, rgba(180, 138, 84, 0.22) 47% 50%, transparent 51% 76%, rgba(158, 44, 51, 0.16) 77% 82%, transparent 83% 100%);
-      filter: blur(2px);
-      transform: scale(1.25);
-      animation: slowRotate 38s linear infinite;
-    }
-
-    .signal-grid {
-      background-image:
-        var(--map-fragment-image),
-        linear-gradient(rgba(245, 236, 217, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245, 236, 217, 0.05) 1px, transparent 1px);
-      background-size: cover, 32px 32px, 32px 32px;
-      background-position: center center, center center, center center;
-      mask-image: radial-gradient(circle at 50% 50%, black 38%, transparent 88%);
-      opacity: 0.16;
-      animation: driftGrid 24s linear infinite;
-    }
-
-    .grain {
-      opacity: 0.18;
-      background-image:
-        var(--grain-image),
-        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0 0.6px, transparent 0.8px),
-        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.08) 0 0.6px, transparent 0.8px),
-        radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.08) 0 0.7px, transparent 0.9px);
-      background-size: cover, 18px 18px, 24px 24px, 26px 26px;
-      background-position: center center, center center, center center, center center;
-      mix-blend-mode: soft-light;
-    }
-
-    .veil {
-      opacity: var(--veil-opacity);
-      background:
-        radial-gradient(circle at center, rgba(245, 236, 217, 0.08), transparent 30%),
-        rgba(4, 10, 16, 0.62);
-      transition: opacity 520ms ease;
-    }
-
-    .shell {
-      position: relative;
-      z-index: 1;
-      min-height: 100svh;
-      padding:
-        var(--safe-top)
-        14px
-        var(--safe-bottom);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-direction: column;
-      gap: 10px;
-      padding: 8px 0 10px;
-      position: sticky;
-      top: 0;
-      z-index: 3;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(180deg, rgba(8, 19, 29, 0.88), rgba(8, 19, 29, 0.24));
-    }
-
-    .seal,
-    .status-pill,
-    .progress-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(8, 19, 29, 0.38);
-      backdrop-filter: blur(18px);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.66rem;
-    }
-
-    .seal::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background:
-        var(--seal-icon-image),
-        radial-gradient(circle at 30% 30%, var(--warm-ivory), transparent 45%),
-        linear-gradient(180deg, var(--ottoman-turquoise), var(--bosphorus-blue));
-      background-size: cover, auto, auto;
-      background-position: center center, center center, center center;
-      box-shadow: 0 0 16px rgba(47, 143, 139, 0.45);
-    }
-
-    .status-pill {
-      color: var(--muted);
-      max-width: 100%;
-    }
-
-    .progress-pill {
-      border-color: var(--line-strong);
-      color: var(--warm-ivory);
-    }
-
-    .stage {
-      position: relative;
-      flex: 1;
-      display: grid;
-      align-items: stretch;
-      min-height: 0;
-    }
-
-    .compass {
-      position: absolute;
-      top: 11vh;
-      right: -28vw;
-      width: 82vw;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid rgba(180, 138, 84, 0.16);
-      box-shadow:
-        0 0 0 1px rgba(245, 236, 217, 0.04) inset,
-        0 0 80px rgba(0, 0, 0, 0.3);
-      opacity: 0.56;
-      transform: rotate(10deg);
-    }
-
-    .compass::before,
-    .compass::after {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border-radius: 50%;
-      border: 1px solid rgba(245, 236, 217, 0.08);
-    }
-
-    .compass::after {
-      inset: 26%;
-      border-style: dashed;
-      animation: slowRotateReverse 34s linear infinite;
-    }
-
-    .compass span {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(transparent 49.6%, rgba(180, 138, 84, 0.14) 50%, transparent 50.4%),
-        linear-gradient(90deg, transparent 49.6%, rgba(180, 138, 84, 0.14) 50%, transparent 50.4%);
-      animation: slowRotate 28s linear infinite;
-    }
-
-    .sequence {
-      position: relative;
-      width: min(100%, 680px);
-      padding-bottom: 2vh;
-    }
-
-    .subline {
-      margin: 0 0 14px;
-      color: rgba(245, 236, 217, 0.78);
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-    }
-
-    .subline::before {
-      content: "";
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      margin-right: 10px;
-      vertical-align: -2px;
-      border-radius: 50%;
-      background:
-        var(--section-icon-image, none),
-        radial-gradient(circle at 30% 30%, rgba(245, 236, 217, 0.95), rgba(245, 236, 217, 0.1) 48%, transparent 60%);
-      background-size: cover, cover;
-      background-position: center center, center center;
-      box-shadow: 0 0 0 1px rgba(180, 138, 84, 0.26);
-    }
-
-    .hero-title,
-    .mission-title,
-    .completion-title {
-      margin: 0;
-      font-family: var(--font-display);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      text-wrap: balance;
-    }
-
-    .hero-title {
-      font-size: clamp(3.6rem, 18vw, 7rem);
-      text-shadow:
-        0 18px 60px rgba(0, 0, 0, 0.45),
-        0 0 24px rgba(47, 143, 139, 0.12);
-    }
-
-    .hero-title span,
-    .mission-title span,
-    .completion-title span {
-      display: block;
-      color: var(--warm-sand);
-      font-size: 0.34em;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      font-family: var(--font-ui);
-    }
-
-    .lead,
-    .mission-copy,
-    .completion-copy {
-      margin: 18px 0 0;
-      max-width: 38rem;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    .ritual-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .ritual-button,
-    .story-nav,
-    .answer-button,
-    .overlay-dismiss,
-    .restart-button {
-      position: relative;
-      border: 0;
-      cursor: pointer;
-      transition:
-        transform 220ms ease,
-        box-shadow 220ms ease,
-        background-color 220ms ease,
-        border-color 220ms ease;
-    }
-
-    .ritual-button,
-    .restart-button {
-      min-height: 58px;
-      padding: 0 22px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 1px solid rgba(180, 138, 84, 0.38);
-      background:
-        linear-gradient(135deg, rgba(180, 138, 84, 0.26), rgba(47, 143, 139, 0.18)),
-        rgba(8, 19, 29, 0.72);
-      color: var(--warm-ivory);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.34);
-    }
-
-    .ritual-button::before,
-    .restart-button::before,
-    .answer-button::before {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: inherit;
-      background: linear-gradient(120deg, rgba(245, 236, 217, 0.14), transparent 34%, transparent 66%, rgba(245, 236, 217, 0.16));
-      opacity: 0.7;
-    }
-
-    .ritual-button::after,
-    .restart-button::after,
-    .answer-button::after {
-      content: "";
-      position: absolute;
-      inset: -50%;
-      background: linear-gradient(90deg, transparent, rgba(245, 236, 217, 0.22), transparent);
-      transform: translateX(-120%) rotate(8deg);
-      transition: transform 540ms ease;
-    }
-
-    .ritual-button:hover::after,
-    .ritual-button:focus-visible::after,
-    .restart-button:hover::after,
-    .restart-button:focus-visible::after,
-    .answer-button:hover::after,
-    .answer-button:focus-visible::after {
-      transform: translateX(120%) rotate(8deg);
-    }
-
-    .ritual-button:hover,
-    .ritual-button:focus-visible,
-    .story-nav:hover,
-    .story-nav:focus-visible,
-    .answer-button:hover,
-    .answer-button:focus-visible,
-    .overlay-dismiss:hover,
-    .overlay-dismiss:focus-visible,
-    .restart-button:hover,
-    .restart-button:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
-      outline: none;
-    }
-
-    .ritual-button span,
-    .restart-button span {
-      position: relative;
-      z-index: 1;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      font-weight: 700;
-    }
-
-    .ritual-note {
-      color: rgba(245, 236, 217, 0.64);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .quote-band {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-      margin-top: 26px;
-    }
-
-    .quote-band p {
-      margin: 0;
-      width: min(100%, 720px);
-      text-align: center;
-      color: rgba(245, 236, 217, 0.48);
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .scene {
-      position: relative;
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: calc(100svh - var(--safe-top) - var(--safe-bottom) - 92px);
-      padding-bottom: 18px;
-      animation: sceneReveal 480ms ease both;
-    }
-
-    .scene.is-active {
-      display: flex;
-    }
-
-    .story-frame,
-    .mission-frame,
-    .completion-frame {
-      position: relative;
-      width: 100%;
-      max-width: 720px;
-      margin-top: auto;
-      margin-bottom: 0;
-      padding: 24px 0 0;
-    }
-
-    .story-frame::before,
-    .mission-frame::before,
-    .completion-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-top: 1px solid rgba(180, 138, 84, 0.3);
-      mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
-    }
-
-    .story-slide {
-      min-height: 180px;
-      padding-top: 24px;
-    }
-
-    .story-copy {
-      margin: 0;
-      color: var(--warm-ivory);
-      font-family: var(--font-display);
-      font-size: clamp(1.9rem, 8vw, 3.4rem);
-      line-height: 1.08;
-      text-wrap: balance;
-      text-shadow: 0 16px 42px rgba(0, 0, 0, 0.34);
-    }
-
-    .story-footer,
-    .mission-footer {
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-
-    .story-nav {
-      min-width: 56px;
-      min-height: 56px;
-      border-radius: 50%;
-      border: 1px solid rgba(245, 236, 217, 0.16);
-      background: rgba(8, 19, 29, 0.56);
-      backdrop-filter: blur(16px);
-      font-size: 1.2rem;
-    }
-
-    .story-nav[disabled] {
-      opacity: 0.35;
-      cursor: default;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .story-index,
-    .question-meta {
-      color: rgba(245, 236, 217, 0.66);
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .ritual-progress {
-      position: relative;
-      width: 100%;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(245, 236, 217, 0.08);
-      overflow: hidden;
-      box-shadow: inset 0 0 0 1px rgba(245, 236, 217, 0.04);
-    }
-
-    .ritual-progress::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      width: var(--ritual-progress);
-      border-radius: inherit;
-      background:
-        linear-gradient(90deg, var(--pomegranate-red), var(--antique-brass), var(--ottoman-turquoise));
-      box-shadow: 0 0 20px rgba(47, 143, 139, 0.32);
-      transition: width 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .mission-copy {
-      max-width: 42rem;
-      margin-bottom: 22px;
-    }
-
-    .mission-title {
-      font-size: clamp(2.5rem, 10vw, 4.6rem);
-    }
-
-    .question-orbit {
-      position: relative;
-      padding: 30px 0 10px;
-    }
-
-    .question-orbit::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
-      width: min(76vw, 540px);
-      height: min(76vw, 540px);
-      border-radius: 50%;
-      border: 1px solid rgba(180, 138, 84, 0.12);
-      transform: translate(-30%, -16%);
-      opacity: 0.7;
-    }
-
-    .question-panel {
-      position: relative;
-      padding: 20px 18px 6px;
-      border-radius: 24px;
-      border: 1px solid rgba(180, 138, 84, 0.18);
-      background:
-        linear-gradient(180deg, rgba(245, 236, 217, 0.04), transparent 34%),
-        rgba(8, 19, 29, 0.4);
-      backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      scroll-margin-top: 110px;
-    }
-
-    .question-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(47, 143, 139, 0.12), transparent 24%),
-        radial-gradient(circle at bottom left, rgba(158, 44, 51, 0.12), transparent 24%);
-      pointer-events: none;
-    }
-
-    .question-panel::after {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border-radius: 22px;
-      border: 1px solid rgba(245, 236, 217, 0.06);
-      pointer-events: none;
-    }
-
-    .question-head {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .question-text {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(1.85rem, 7vw, 3rem);
-      line-height: 1.12;
-      text-wrap: balance;
-    }
-
-    .answer-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 12px;
-      margin-top: 24px;
-      padding-bottom: 8px;
-    }
-
-    .answer-button {
-      width: 100%;
-      text-align: left;
-      min-height: 72px;
-      padding: 16px 16px 16px 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(245, 236, 217, 0.12);
-      background:
-        linear-gradient(135deg, rgba(180, 138, 84, 0.12), rgba(15, 79, 103, 0.08)),
-        rgba(8, 19, 29, 0.62);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-    }
-
-    .answer-button.is-selected {
-      transform: scale(0.985);
-      border-color: rgba(180, 138, 84, 0.52);
-      box-shadow: 0 0 0 1px rgba(180, 138, 84, 0.18) inset;
-    }
-
-    .answer-index {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      margin-right: 12px;
-      border: 1px solid rgba(180, 138, 84, 0.32);
-      background: rgba(245, 236, 217, 0.04);
-      color: var(--warm-sand);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      vertical-align: top;
-    }
-
-    .answer-label {
-      position: relative;
-      z-index: 1;
-      display: inline;
-      color: var(--warm-ivory);
-      font-size: 0.96rem;
-      line-height: 1.5;
-    }
-
-    .feedback-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 4;
-      display: grid;
-      place-items: center;
-      padding:
-        max(18px, var(--safe-top))
-        18px
-        max(18px, var(--safe-bottom));
-      background: rgba(5, 12, 19, 0.68);
-      backdrop-filter: blur(12px);
-    }
-
-    .feedback-card {
-      position: relative;
-      width: min(100%, 500px);
-      padding: 28px 24px;
-      border-radius: 30px;
-      border: 1px solid rgba(180, 138, 84, 0.26);
-      background:
-        radial-gradient(circle at top, rgba(47, 143, 139, 0.14), transparent 30%),
-        linear-gradient(180deg, rgba(245, 236, 217, 0.05), transparent 30%),
-        rgba(8, 19, 29, 0.9);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
-      transform-origin: center;
-      animation: revealCard 420ms cubic-bezier(0.18, 0.8, 0.25, 1);
-    }
-
-    #scene-story .subline {
-      --section-icon-image: var(--story-icon-image);
-    }
-
-    #scene-mission .subline {
-      --section-icon-image: var(--mission-icon-image);
-    }
-
-    #scene-complete .subline {
-      --section-icon-image: var(--completion-icon-image);
-    }
-
-    .feedback-eyebrow {
-      margin: 0 0 12px;
-      color: var(--warm-sand);
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .feedback-text {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 6vw, 2.2rem);
-      line-height: 1.18;
-      text-wrap: balance;
-    }
-
-    .feedback-hint {
-      margin: 18px 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .overlay-dismiss {
-      margin-top: 22px;
-      min-height: 52px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 236, 217, 0.14);
-      background: rgba(245, 236, 217, 0.06);
-      color: var(--warm-ivory);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-    }
-
-    .completion-title {
-      font-size: clamp(2.6rem, 10vw, 4.8rem);
-    }
-
-    .completion-title strong {
-      display: block;
-      font: inherit;
-      font-weight: inherit;
-    }
-
-    .completion-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(20px, 4vw, 40px);
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .completion-visual {
-      position: relative;
-      min-height: 100%;
-      order: -1;
-    }
-
-    .completion-emblem {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 70px;
-      height: 70px;
-      border-radius: 22px;
-      border: 1px solid rgba(180, 138, 84, 0.28);
-      background: rgba(8, 19, 29, 0.54);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.24);
-    }
-
-    .completion-emblem img {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-    }
-
-    .completion-note {
-      margin: 22px 0 0;
-      color: rgba(245, 236, 217, 0.56);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .completion-illustration-frame {
-      position: relative;
-      overflow: hidden;
-      border-radius: 32px;
-      border: 1px solid rgba(180, 138, 84, 0.2);
-      background:
-        radial-gradient(circle at top, rgba(47, 143, 139, 0.18), transparent 36%),
-        rgba(8, 19, 29, 0.48);
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.34);
-      aspect-ratio: 4 / 5;
-    }
-
-    .completion-illustration {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .completion-actions {
-      display: flex;
-      gap: 14px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-
-    .mission-home-frame {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .home-shell {
-      display: grid;
-      gap: 22px;
-    }
-
-    .home-hero,
-    .home-overview,
-    .home-section,
-    .home-panel {
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(180, 138, 84, 0.18);
-      background:
-        linear-gradient(180deg, rgba(245, 236, 217, 0.04), transparent 26%),
-        rgba(8, 19, 29, 0.5);
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(20px);
-    }
-
-    .home-hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      padding: 20px 18px;
-      align-items: center;
-    }
-
-    .home-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 8vw, 4.6rem);
-      line-height: 0.94;
-      text-wrap: balance;
-    }
-
-    .home-copy {
-      margin: 18px 0 0;
-      max-width: 46rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .home-overview {
-      display: grid;
-      gap: 22px;
-      padding: 20px 18px;
-    }
-
-    .home-overview-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .home-overview-copy {
-      max-width: 44rem;
-    }
-
-    .home-overview-title {
-      margin: 8px 0 0;
-      font-family: var(--font-display);
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      line-height: 0.98;
-    }
-
-    .home-overview-text {
-      margin: 14px 0 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .home-stat-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .home-stat-card {
-      padding: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(245, 236, 217, 0.08);
-      background: rgba(245, 236, 217, 0.03);
-    }
-
-    .home-stat-label {
-      display: block;
-      color: rgba(245, 236, 217, 0.58);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .home-stat-value {
-      display: block;
-      margin-top: 10px;
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 0.95;
-    }
-
-    .home-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .home-nav-title {
-      width: 100%;
-      margin: 0 0 2px;
-      color: rgba(245, 236, 217, 0.6);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .home-nav-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      width: 100%;
-      min-height: 50px;
-      padding: 0 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(180, 138, 84, 0.24);
-      background: rgba(8, 19, 29, 0.42);
-      color: var(--warm-ivory);
-      text-decoration: none;
-      font-size: 0.84rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .home-nav-link:hover,
-    .home-nav-link:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
-      outline: none;
-    }
-
-    .home-nav-count,
-    .section-count {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 28px;
-      height: 28px;
-      padding: 0 8px;
-      border-radius: 999px;
-      background: rgba(245, 236, 217, 0.08);
-      color: var(--warm-ivory);
-      font-size: 0.74rem;
-      letter-spacing: 0;
-    }
-
-    .home-profile-card {
-      display: grid;
-      gap: 16px;
-      padding: 22px;
-      border-radius: 28px;
-      border: 1px solid rgba(245, 236, 217, 0.1);
-      background: rgba(8, 19, 29, 0.44);
-    }
-
-    .home-profile-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 56px;
-      width: fit-content;
-      max-width: 100%;
-      padding: 10px 16px 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(180, 138, 84, 0.28);
-      background: rgba(245, 236, 217, 0.05);
-    }
-
-    .home-profile-chip img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-    }
-
-    .home-profile-chip-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .home-profile-chip-label,
-    .mission-card-meta,
-    .panel-kicker {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 0.68rem;
-    }
-
-    .home-profile-chip-label {
-      color: rgba(245, 236, 217, 0.58);
-    }
-
-    .home-profile-chip-title {
-      font-size: 0.9rem;
-      color: var(--warm-ivory);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .home-profile-title,
-    .panel-title {
-      margin: 0;
-      font-family: var(--font-display);
-      line-height: 1;
-      text-wrap: balance;
-    }
-
-    .home-profile-title {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-    }
-
-    .home-profile-text,
-    .panel-text {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .home-section-stack {
-      display: grid;
-      gap: 22px;
-    }
-
-    .home-section {
-      padding: 20px 18px;
-    }
-
-    .panel-kicker {
-      margin: 0;
-      color: var(--warm-sand);
-    }
-
-    .panel-title {
-      margin-top: 10px;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-    }
-
-    .panel-text {
-      margin-top: 12px;
-    }
-
-    .home-section-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .home-section-copy {
-      max-width: 44rem;
-    }
-
-    .home-section-meta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .section-open-button,
-    .detail-back-button,
-    .filter-chip {
-      border: 1px solid rgba(180, 138, 84, 0.24);
-      background: rgba(8, 19, 29, 0.42);
-      color: var(--warm-ivory);
-      cursor: pointer;
-      transition:
-        transform 220ms ease,
-        box-shadow 220ms ease,
-        background-color 220ms ease,
-        border-color 220ms ease;
-    }
-
-    .section-open-button,
-    .detail-back-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 50px;
-      padding: 0 18px;
-      border-radius: 999px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-size: 0.76rem;
-    }
-
-    .section-open-button:hover,
-    .section-open-button:focus-visible,
-    .detail-back-button:hover,
-    .detail-back-button:focus-visible,
-    .filter-chip:hover,
-    .filter-chip:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
-      outline: none;
-    }
-
-    .mission-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 20px;
-      grid-template-columns: 1fr;
-    }
-
-    .mission-card {
-      display: grid;
-      gap: 14px;
-      padding: 16px;
-      border-radius: 24px;
-      border: 1px solid rgba(245, 236, 217, 0.08);
-      background: rgba(245, 236, 217, 0.03);
-    }
-
-    .mission-card-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .mission-card-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      border: 1px solid rgba(180, 138, 84, 0.22);
-      background: rgba(8, 19, 29, 0.5);
-      flex-shrink: 0;
-    }
-
-    .mission-card-badge img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-    }
-
-    .mission-card-meta {
-      color: rgba(245, 236, 217, 0.52);
-      text-align: right;
-    }
-
-    .mission-card-title {
-      margin: 0;
-      font-size: 1.02rem;
-      line-height: 1.35;
-    }
-
-    .mission-card-description {
-      margin: 0;
-      color: rgba(245, 236, 217, 0.76);
-      line-height: 1.6;
-    }
-
-    .mission-card-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .mission-filter-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 10px;
-      border-radius: 999px;
-      background: rgba(245, 236, 217, 0.05);
-      color: rgba(245, 236, 217, 0.66);
-      font-size: 0.72rem;
-    }
-
-    .detail-frame {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .detail-shell {
-      display: grid;
-      gap: 22px;
-    }
-
-    .detail-hero,
-    .detail-results {
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(180, 138, 84, 0.18);
-      background:
-        linear-gradient(180deg, rgba(245, 236, 217, 0.04), transparent 26%),
-        rgba(8, 19, 29, 0.5);
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(20px);
-      padding: 20px 18px;
-    }
-
-    .detail-topbar {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-direction: column;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .detail-title {
-      margin: 12px 0 0;
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 7vw, 4rem);
-      line-height: 0.96;
-      text-wrap: balance;
-    }
-
-    .detail-text {
-      margin: 16px 0 0;
-      max-width: 48rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .filter-panel-title {
-      margin: 24px 0 0;
-      color: rgba(245, 236, 217, 0.58);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .filter-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .filter-chip {
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .filter-chip.is-active {
-      background: rgba(245, 236, 217, 0.12);
-      border-color: rgba(245, 236, 217, 0.18);
-    }
-
-    .detail-results-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .detail-results-count {
-      color: rgba(245, 236, 217, 0.66);
-      font-size: 0.82rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .detail-empty {
-      padding: 20px 18px;
-      border-radius: 24px;
-      border: 1px solid rgba(245, 236, 217, 0.08);
-      background: rgba(245, 236, 217, 0.03);
-    }
-
-    .detail-empty-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-    }
-
-    .detail-empty-text {
-      margin: 12px 0 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .map-legend {
-      display: flex;
-      gap: 12px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-
-    .legend-item {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 236, 217, 0.1);
-      background: rgba(8, 19, 29, 0.36);
-      color: rgba(245, 236, 217, 0.76);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .story-nav-cluster {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-      justify-content: flex-end;
-    }
-
-    @keyframes driftA {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(0, -18px, 0) scale(1.04); }
-    }
-
-    @keyframes sceneReveal {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes driftB {
-      from { transform: translate3d(-2%, 0, 0) scale(1.06); }
-      to { transform: translate3d(2%, -2%, 0) scale(1.1); }
-    }
-
-    @keyframes driftGrid {
-      from { transform: translate3d(0, 0, 0); }
-      to { transform: translate3d(18px, -16px, 0); }
-    }
-
-    @keyframes slowRotate {
-      from { transform: scale(1.25) rotate(0deg); }
-      to { transform: scale(1.25) rotate(360deg); }
-    }
-
-    @keyframes slowRotateReverse {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
-    }
-
-    @keyframes pulseFrame {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 0.95; }
-    }
-
-    @keyframes revealCard {
-      from {
-        opacity: 0;
-        transform: translateY(22px) scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @media (min-width: 760px) {
-      .shell {
-        padding-left: clamp(30px, 5vw, 56px);
-        padding-right: clamp(30px, 5vw, 56px);
-      }
-
-      .topbar {
-        align-items: center;
-        flex-direction: row;
-        gap: 16px;
-        padding-bottom: 10px;
-        background: transparent;
-      }
-
-      .story-footer,
-      .mission-footer {
-        flex-wrap: nowrap;
-      }
-
-      .question-panel {
-        padding: 28px 30px 12px;
-      }
-
-      .answer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .home-hero {
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 360px);
-        gap: 24px;
-        padding: clamp(24px, 4vw, 36px);
-      }
-
-      .home-overview,
-      .home-section,
-      .detail-hero,
-      .detail-results {
-        padding: clamp(22px, 3vw, 32px);
-      }
-
-      .home-overview-header,
-      .home-section-header {
-        align-items: end;
-      }
-
-      .home-stat-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .home-nav-link {
-        width: auto;
-      }
-
-      .home-section-meta {
-        width: auto;
-        justify-content: flex-end;
-      }
-
-      .section-open-button,
-      .detail-back-button {
-        width: auto;
-      }
-
-      .mission-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .completion-layout {
-        grid-template-columns: minmax(0, 1.15fr) minmax(240px, 320px);
-      }
-
-      .completion-visual {
-        order: 0;
-      }
-
-      .detail-topbar {
-        align-items: center;
-        flex-direction: row;
-      }
-
-      .story-nav-cluster {
-        width: auto;
-      }
-    }
-
-    @media (max-width: 759px) {
-      .compass {
-        top: 7vh;
-        right: -44vw;
-        width: 108vw;
-        opacity: 0.38;
-      }
-
-      .hero-title {
-        font-size: clamp(3rem, 17vw, 4.8rem);
-      }
-
-      .sequence,
-      .story-frame,
-      .mission-frame,
-      .completion-frame,
-      .mission-home-frame {
-        max-width: none;
-      }
-
-      .story-frame,
-      .mission-frame,
-      .completion-frame,
-      .mission-home-frame {
-        margin-top: 8vh;
-      }
-
-      .story-slide {
-        min-height: 0;
-      }
-
-      .home-overview,
-      .home-section,
-      .home-hero,
-      .detail-hero,
-      .detail-results {
-        border-radius: 26px;
-      }
-
-      .question-text {
-        font-size: clamp(1.65rem, 8vw, 2.4rem);
-      }
-
-      .answer-grid {
-        gap: 10px;
-      }
-
-      .feedback-card {
-        padding: 24px 20px;
-        border-radius: 26px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition-duration: 0.01ms !important;
-        transition-delay: 0ms !important;
-      }
-    }
-  </style>
 </head>
 <body>
-  <main class="artifact-app">
-    <div class="atmosphere" aria-hidden="true"></div>
-    <div class="bosphorus-ribbon" aria-hidden="true"></div>
-    <div class="signal-grid" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="veil" id="veil" aria-hidden="true"></div>
+  <div class="app-shell">
+    <div class="app-backdrop" aria-hidden="true"></div>
 
-    <div class="shell">
-      <header class="topbar">
-        <div class="seal">Istanbul Adventure</div>
-        <div class="status-pill" id="statusPill">Strato nascosto della citta</div>
-      </header>
+    <header class="app-bar">
+      <div class="app-bar__brand">Istanbul Adventure</div>
+      <div class="app-bar__status" id="statusPill">Ingresso</div>
+    </header>
 
-      <div class="stage">
-        <div class="compass" aria-hidden="true"><span></span></div>
-
-        <section class="scene is-active" id="scene-entry" aria-label="Ingresso">
-          <div class="sequence">
-            <p class="subline">Urban relic / shared travel game</p>
-            <h1 class="hero-title">
-              <span>Hidden Layer</span>
-              Istanbul
-            </h1>
-            <p class="lead">
-              Non apri un'app. Attivi un artefatto. Missione 0 serve a capire con quale istinto attraverserai la citta, i suoi segnali e i suoi doppi fondi.
+    <main class="app-main">
+      <section class="view is-active" id="scene-entry" aria-label="Ingresso">
+        <div class="entry-layout">
+          <div class="entry-map" aria-hidden="true"></div>
+          <div class="entry-panel">
+            <div class="section-line">
+              <div class="section-line__mark"></div>
+              <div class="section-line__text">Missione introduttiva</div>
+            </div>
+            <h1 class="page-title">Scopri Istanbul come se fosse un archivio vivo.</h1>
+            <p class="page-copy">
+              Questa app non ti da un itinerario fisso. Ti assegna un modo di guardare la citta, poi apre un sistema di missioni generali, luoghi e deviazioni personali.
             </p>
-            <div class="ritual-row">
-              <button class="ritual-button" id="enterButton" type="button"><span>Apri il varco</span></button>
-              <div class="ritual-note">Bosforo, ottone, inchiostro, tracce</div>
-            </div>
-            <div class="map-legend" aria-hidden="true">
-              <div class="legend-item">Missione 0</div>
-              <div class="legend-item">Percorso ramificato</div>
-              <div class="legend-item">Mobile-first</div>
-            </div>
-          </div>
-          <div class="quote-band"><p>Not every traveler enters the same city.</p></div>
-        </section>
 
-        <section class="scene" id="scene-story" aria-label="Prologo">
-          <div class="story-frame">
-            <p class="subline">Prologo narrativo</p>
-            <div class="story-slide">
-              <p class="story-copy" id="storyText"></p>
+            <div class="action-row">
+              <button class="button button-primary" id="enterButton" type="button">Apri il prologo</button>
+              <button class="button" id="jumpToMissionButton" type="button">Vai subito al quiz</button>
             </div>
-            <div class="story-footer">
-              <div class="ritual-progress" id="storyProgress" aria-hidden="true"></div>
-              <div class="story-index" id="storyIndex"></div>
-              <div class="story-nav-cluster">
-                <button class="story-nav" id="storyPrev" type="button" aria-label="Slide precedente">←</button>
-                <button class="story-nav" id="storyNext" type="button" aria-label="Slide successiva">→</button>
+
+            <div class="entry-facts">
+              <div class="entry-fact">
+                <p class="entry-fact__label">Formato</p>
+                <p class="entry-fact__value">Mobile-first</p>
+              </div>
+              <div class="entry-fact">
+                <p class="entry-fact__label">Durata</p>
+                <p class="entry-fact__value">Missione rapida + archivio</p>
+              </div>
+              <div class="entry-fact">
+                <p class="entry-fact__label">Metodo</p>
+                <p class="entry-fact__value">Quiz, profilo, missioni</p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="scene" id="scene-mission" aria-label="Missione 0">
-          <div class="mission-frame">
-            <p class="subline" id="missionKicker">Missione 0</p>
-            <h2 class="mission-title">
-              <span>Rito di assegnazione</span>
-              Identita in emersione
-            </h2>
-            <p class="mission-copy" id="missionIntro"></p>
-            <div class="question-orbit">
-              <div class="question-panel">
-                <div class="question-head">
-                  <div class="progress-pill" id="questionCounter">01 / 10</div>
-                  <div class="question-meta" id="questionMeta">Segnale attivo</div>
+      <section class="view" id="scene-story" aria-label="Prologo" hidden>
+        <div class="reading-page">
+          <div class="paper-sheet">
+            <div class="paper-sheet__inner">
+              <div class="section-header">
+                <div class="section-line">
+                  <div class="section-line__mark"></div>
+                  <div class="section-line__text">Prologo</div>
                 </div>
-                <p class="question-text" id="questionText"></p>
-                <div class="answer-grid" id="answerGrid" aria-live="polite"></div>
+                <p class="section-count" id="storyIndex">1 / 4</p>
               </div>
-            </div>
-            <div class="mission-footer">
-              <div class="ritual-progress" id="questionProgress" aria-hidden="true"></div>
-              <div class="question-meta" id="tapHint">Scegli d'istinto</div>
-            </div>
-          </div>
-        </section>
 
-        <section class="scene" id="scene-complete" aria-label="Completamento">
-          <div class="completion-frame">
-            <p class="subline" id="completionKicker">Percorso attivato</p>
-            <div class="completion-layout">
-              <div class="completion-copy-block">
-                <div class="completion-emblem" id="completionEmblem" hidden>
-                  <img id="completionEmblemImage" alt="" />
-                </div>
-                <h2 class="completion-title">
-                  <span id="completionTitleEyebrow">Missione chiusa</span>
-                  <strong id="completionTitleText">Sotto la superficie, il viaggio ha gia scelto un tono</strong>
-                </h2>
-                <p class="completion-copy" id="completionText"></p>
-                <p class="completion-note" id="completionNote"></p>
-                <div class="completion-actions">
-                  <button class="restart-button" id="completionHomeButton" type="button"><span id="completionHomeButtonLabel">Apri la home</span></button>
-                </div>
+              <div class="story-panel">
+                <p class="story-text" id="storyText"></p>
               </div>
-              <div class="completion-visual" id="completionVisual" hidden>
-                <div class="completion-illustration-frame">
-                  <img class="completion-illustration" id="completionIllustration" alt="" />
-                </div>
+
+              <div class="progress-line" aria-hidden="true">
+                <span id="storyProgress"></span>
+              </div>
+
+              <div class="action-row action-row-split">
+                <button class="button" id="storyPrev" type="button">Indietro</button>
+                <button class="button button-primary" id="storyNext" type="button">Continua</button>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="scene" id="scene-home" aria-label="Home missioni">
-          <div class="mission-home-frame">
-            <div class="home-shell">
-              <section class="home-hero">
-                <div>
-                  <p class="subline" id="homeKicker">Home missioni</p>
-                  <h2 class="home-title" id="homeTitle">La tua plancia di gioco a Istanbul</h2>
-                  <p class="home-copy" id="homeText"></p>
+      <section class="view" id="scene-mission" aria-label="Missione 0" hidden>
+        <div class="mission-page">
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-line">
+                  <div class="section-line__mark"></div>
+                  <div class="section-line__text" id="missionTitle">Missione 0</div>
                 </div>
-                <aside class="home-profile-card">
-                  <p class="panel-kicker" id="homeProfileKicker">Profilo emerso</p>
-                  <div class="home-profile-chip" id="homeProfileChip" hidden>
-                    <img id="homeProfileIcon" alt="" />
-                    <div class="home-profile-chip-text">
-                      <span class="home-profile-chip-label">Categoria</span>
-                      <span class="home-profile-chip-title" id="homeProfileChipTitle"></span>
-                    </div>
-                  </div>
-                  <h3 class="home-profile-title" id="homeProfileTitle"></h3>
-                  <p class="home-profile-text" id="homeProfileText"></p>
-                </aside>
-              </section>
+                <p class="page-copy page-copy-tight" id="missionIntro"></p>
+              </div>
+              <p class="section-count" id="questionCounter">1 / 10</p>
+            </div>
 
-              <section class="home-overview">
-                <div class="home-overview-header">
-                  <div class="home-overview-copy">
-                    <p class="panel-kicker" id="homeOverviewKicker"></p>
-                    <h3 class="home-overview-title" id="homeOverviewTitle"></h3>
-                    <p class="home-overview-text" id="homeOverviewText"></p>
-                  </div>
-                  <nav class="home-nav" aria-label="Navigazione sezioni missioni">
-                    <p class="home-nav-title" id="homeNavTitle"></p>
-                    <button class="home-nav-link" type="button" data-scroll-target="missions-general">
-                      <span id="homeNavGeneralLabel"></span>
-                      <span class="home-nav-count" id="homeNavGeneralCount"></span>
-                    </button>
-                    <button class="home-nav-link" type="button" data-scroll-target="missions-locations">
-                      <span id="homeNavLocationsLabel"></span>
-                      <span class="home-nav-count" id="homeNavLocationsCount"></span>
-                    </button>
-                    <button class="home-nav-link" type="button" data-scroll-target="missions-personal">
-                      <span id="homeNavPersonalLabel"></span>
-                      <span class="home-nav-count" id="homeNavPersonalCount"></span>
-                    </button>
-                  </nav>
-                </div>
+            <div class="meta-row">
+              <p id="questionMeta">Nodo narrativo</p>
+              <p id="tapHint">Scegli d'istinto</p>
+            </div>
 
-                <div class="home-stat-grid">
-                  <article class="home-stat-card">
-                    <span class="home-stat-label" id="totalMissionLabel"></span>
-                    <span class="home-stat-value" id="totalMissionCount"></span>
-                  </article>
-                  <article class="home-stat-card">
-                    <span class="home-stat-label" id="generalMissionLabel"></span>
-                    <span class="home-stat-value" id="generalMissionCount"></span>
-                  </article>
-                  <article class="home-stat-card">
-                    <span class="home-stat-label" id="locationMissionLabel"></span>
-                    <span class="home-stat-value" id="locationMissionCount"></span>
-                  </article>
-                  <article class="home-stat-card">
-                    <span class="home-stat-label" id="personalMissionLabel"></span>
-                    <span class="home-stat-value" id="personalMissionCount"></span>
-                  </article>
-                </div>
-              </section>
+            <div class="progress-line progress-line-strong" aria-hidden="true">
+              <span id="questionProgress"></span>
+            </div>
 
-              <div class="home-section-stack">
-                <section class="home-section" id="missions-general">
-                  <div class="home-section-header">
-                    <div class="home-section-copy">
-                      <p class="panel-kicker" id="generalPanelKicker"></p>
-                      <h3 class="panel-title" id="generalPanelTitle"></h3>
-                      <p class="panel-text" id="generalPanelText"></p>
-                    </div>
-                    <div class="home-section-meta">
-                      <span class="section-count" id="generalSectionCount"></span>
-                      <button class="section-open-button" id="generalOpenButton" type="button">Apri archivio</button>
-                    </div>
-                  </div>
-                  <div class="mission-list" id="generalMissionList"></div>
-                </section>
+            <div class="question-block">
+              <p class="question-text" id="questionText"></p>
+            </div>
 
-                <section class="home-section" id="missions-locations">
-                  <div class="home-section-header">
-                    <div class="home-section-copy">
-                      <p class="panel-kicker" id="locationPanelKicker"></p>
-                      <h3 class="panel-title" id="locationPanelTitle"></h3>
-                      <p class="panel-text" id="locationPanelText"></p>
-                    </div>
-                    <div class="home-section-meta">
-                      <span class="section-count" id="locationSectionCount"></span>
-                      <button class="section-open-button" id="locationOpenButton" type="button">Apri archivio</button>
-                    </div>
-                  </div>
-                  <div class="mission-list" id="locationMissionList"></div>
-                </section>
+            <div class="answer-list" id="answerGrid" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
 
-                <section class="home-section" id="missions-personal">
-                  <div class="home-section-header">
-                    <div class="home-section-copy">
-                      <p class="panel-kicker" id="personalPanelKicker"></p>
-                      <h3 class="panel-title" id="personalPanelTitle"></h3>
-                      <p class="panel-text" id="personalPanelText"></p>
-                    </div>
-                    <div class="home-section-meta">
-                      <span class="section-count" id="personalSectionCount"></span>
-                      <button class="section-open-button" id="personalOpenButton" type="button">Apri archivio</button>
-                    </div>
-                  </div>
-                  <div class="mission-list" id="personalMissionList"></div>
-                </section>
+      <section class="view" id="scene-complete" aria-label="Completamento" hidden>
+        <div class="result-page">
+          <div class="panel panel-result">
+            <div class="section-line">
+              <div class="section-line__mark"></div>
+              <div class="section-line__text" id="completionKicker">Esito missione</div>
+            </div>
+            <h2 class="page-title page-title-small" id="completionTitleText">Il viaggio ha preso una direzione.</h2>
+            <p class="page-copy" id="completionText"></p>
+
+            <div class="profile-panel" id="completionProfileCard" hidden>
+              <div class="profile-panel__badge" id="completionProfileBadge" aria-hidden="true"></div>
+              <div>
+                <p class="profile-panel__label">Profilo emerso</p>
+                <p class="profile-panel__title" id="completionProfileTitle"></p>
+                <p class="profile-panel__text" id="completionProfileDescription"></p>
               </div>
             </div>
-          </div>
-        </section>
 
-        <section class="scene" id="scene-category-detail" aria-label="Archivio categoria missioni">
-          <div class="detail-frame">
-            <div class="detail-shell">
-              <section class="detail-hero">
-                <div class="detail-topbar">
-                  <button class="detail-back-button" id="detailBackButton" type="button">Torna alla home</button>
-                  <div class="section-count" id="detailCategoryCount"></div>
-                </div>
-                <p class="subline" id="detailKicker">Archivio missioni</p>
-                <h2 class="detail-title" id="detailTitle"></h2>
-                <p class="detail-text" id="detailText"></p>
-                <p class="filter-panel-title" id="detailFilterTitle"></p>
-                <div class="filter-chip-row" id="detailFilterRow"></div>
-              </section>
+            <p class="support-copy" id="completionNote" hidden></p>
 
-              <section class="detail-results">
-                <div class="detail-results-header">
-                  <p class="panel-kicker" id="detailResultsKicker">Missioni disponibili</p>
-                  <div class="detail-results-count" id="detailResultsCount"></div>
-                </div>
-                <div class="mission-list" id="detailMissionList"></div>
-                <div class="detail-empty" id="detailEmptyState" hidden>
-                  <h3 class="detail-empty-title" id="detailEmptyTitle"></h3>
-                  <p class="detail-empty-text" id="detailEmptyText"></p>
-                </div>
-              </section>
+            <div class="action-row">
+              <button class="button button-primary" id="completionHomeButton" type="button">Apri la home</button>
+              <button class="button" id="restartButton" type="button">Ricomincia</button>
             </div>
           </div>
-        </section>
-      </div>
+
+          <aside class="result-sidecard" id="completionVisual" hidden>
+            <div class="result-sidecard__map" aria-hidden="true"></div>
+            <div class="result-sidecard__content">
+              <p class="result-sidecard__label">Direzione attivata</p>
+              <p class="result-sidecard__text">Il tuo archivio missioni ora puo essere consultato e filtrato.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="scene-home" aria-label="Home missioni" hidden>
+        <div class="home-layout">
+          <section class="panel">
+            <div class="section-line">
+              <div class="section-line__mark"></div>
+              <div class="section-line__text">Archivio personale</div>
+            </div>
+            <h2 class="page-title page-title-small" id="homeTitle">Le tue missioni</h2>
+            <p class="page-copy page-copy-tight" id="homeText"></p>
+
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span id="totalMissionLabel">Missioni raccomandate</span>
+                <strong id="totalMissionCount">00</strong>
+              </div>
+              <div class="summary-item">
+                <span id="generalMissionLabel">Generali</span>
+                <strong id="generalMissionCount">00</strong>
+              </div>
+              <div class="summary-item">
+                <span id="locationMissionLabel">Luoghi</span>
+                <strong id="locationMissionCount">00</strong>
+              </div>
+              <div class="summary-item">
+                <span id="personalMissionLabel">Profilo</span>
+                <strong id="personalMissionCount">00</strong>
+              </div>
+            </div>
+          </section>
+
+          <aside class="panel">
+            <div class="section-line">
+              <div class="section-line__mark"></div>
+              <div class="section-line__text">Profilo</div>
+            </div>
+            <h2 class="section-title" id="homeProfileTitle">Profilo in attesa</h2>
+            <p class="page-copy page-copy-tight" id="homeProfileText"></p>
+            <div class="profile-panel profile-panel-compact" id="homeProfileChip" hidden>
+              <div class="profile-panel__badge" id="homeProfileBadge" aria-hidden="true"></div>
+              <div>
+                <p class="profile-panel__label">Categoria</p>
+                <p class="profile-panel__title" id="homeProfileChipTitle"></p>
+              </div>
+            </div>
+          </aside>
+
+          <section class="panel">
+            <div class="section-line">
+              <div class="section-line__mark"></div>
+              <div class="section-line__text">Accessi rapidi</div>
+            </div>
+            <p class="page-copy page-copy-tight" id="homeOverviewText"></p>
+            <div class="archive-grid">
+              <button class="archive-link" type="button" data-section="general">
+                <span id="homeNavGeneralLabel">Generali</span>
+                <strong id="homeNavGeneralCount">00</strong>
+              </button>
+              <button class="archive-link" type="button" data-section="locations">
+                <span id="homeNavLocationsLabel">Luoghi</span>
+                <strong id="homeNavLocationsCount">00</strong>
+              </button>
+              <button class="archive-link" type="button" data-section="personal">
+                <span id="homeNavPersonalLabel">Profilo</span>
+                <strong id="homeNavPersonalCount">00</strong>
+              </button>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-line">
+                  <div class="section-line__mark"></div>
+                  <div class="section-line__text">Sezione</div>
+                </div>
+                <h2 class="section-title" id="generalPanelTitle">Missioni generali</h2>
+                <p class="page-copy page-copy-tight" id="generalPanelText"></p>
+              </div>
+              <div class="section-actions">
+                <span class="section-count" id="generalSectionCount">0</span>
+                <button class="button" id="generalOpenButton" type="button">Apri archivio</button>
+              </div>
+            </div>
+            <div class="mission-list" id="generalMissionList"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-line">
+                  <div class="section-line__mark"></div>
+                  <div class="section-line__text">Sezione</div>
+                </div>
+                <h2 class="section-title" id="locationPanelTitle">Missioni luogo</h2>
+                <p class="page-copy page-copy-tight" id="locationPanelText"></p>
+              </div>
+              <div class="section-actions">
+                <span class="section-count" id="locationSectionCount">0</span>
+                <button class="button" id="locationOpenButton" type="button">Apri archivio</button>
+              </div>
+            </div>
+            <div class="mission-list" id="locationMissionList"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-line">
+                  <div class="section-line__mark"></div>
+                  <div class="section-line__text">Sezione</div>
+                </div>
+                <h2 class="section-title" id="personalPanelTitle">Missioni profilo</h2>
+                <p class="page-copy page-copy-tight" id="personalPanelText"></p>
+              </div>
+              <div class="section-actions">
+                <span class="section-count" id="personalSectionCount">0</span>
+                <button class="button" id="personalOpenButton" type="button">Apri archivio</button>
+              </div>
+            </div>
+            <div class="mission-list" id="personalMissionList"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="scene-category-detail" aria-label="Archivio missioni" hidden>
+        <div class="panel panel-detail">
+          <div class="section-header">
+            <button class="button" id="detailBackButton" type="button">Torna alla home</button>
+            <span class="section-count" id="detailCategoryCount">0 missioni</span>
+          </div>
+
+          <div class="section-line">
+            <div class="section-line__mark"></div>
+            <div class="section-line__text">Archivio</div>
+          </div>
+          <h2 class="section-title" id="detailTitle">Archivio missioni</h2>
+          <p class="page-copy page-copy-tight" id="detailText"></p>
+
+          <div class="filter-block">
+            <p class="filter-label" id="detailFilterTitle">Filtra le missioni</p>
+            <div class="filter-row" id="detailFilterRow"></div>
+          </div>
+
+          <div class="section-header section-header-spaced">
+            <h3 class="list-title">Missioni disponibili</h3>
+            <span class="section-count" id="detailResultsCount">0 risultati</span>
+          </div>
+
+          <div class="mission-list" id="detailMissionList"></div>
+
+          <div class="empty-state" id="detailEmptyState" hidden>
+            <h3 class="list-title" id="detailEmptyTitle">Nessuna missione</h3>
+            <p class="page-copy page-copy-tight" id="detailEmptyText"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="feedback-overlay" id="feedbackOverlay" hidden>
+    <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="feedbackText">
+      <p class="story-text story-text-small" id="feedbackText"></p>
+      <p class="support-copy" id="feedbackHint"></p>
+      <button class="button button-primary" id="overlayDismiss" type="button">Continua</button>
     </div>
+  </div>
 
-    <div class="feedback-overlay" id="feedbackOverlay" hidden>
-      <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="feedbackText">
-        <p class="feedback-eyebrow">Murmur from the city</p>
-        <p class="feedback-text" id="feedbackText"></p>
-        <p class="feedback-hint" id="feedbackHint"></p>
-        <button class="overlay-dismiss" id="overlayDismiss" type="button">Continua</button>
-      </div>
-    </div>
-  </main>
-
+  <script src="./content.js"></script>
+  <script src="./quiz-content.js"></script>
   <script src="./mission-0-result-content.js"></script>
   <script src="./mission-home-content.js"></script>
-  <script>
-    const THEME_SETTINGS = {
-      backgroundImage: "./assets/theme/bg-main-default.svg",
-      overlayImage: "./assets/theme/bg-overlay-default.svg",
-      mapFragmentImage: "./assets/theme/map-fragment-default.svg",
-      grainImage: "./assets/theme/grain-default.svg",
-      sealIconImage: "./assets/theme/icon-seal-default.svg",
-      missionIconImage: "./assets/theme/icon-mission-default.svg",
-      storyIconImage: "./assets/theme/icon-story-default.svg",
-      completionIconImage: "./assets/theme/icon-complete-default.svg"
-    };
-
-    function setThemeAssetVariable(cssVariable, assetPath) {
-      if (!assetPath) {
-        return;
-      }
-
-      document.documentElement.style.setProperty(cssVariable, `url("${assetPath}")`);
-    }
-
-    function applyThemeSettings() {
-      setThemeAssetVariable("--app-background-image", THEME_SETTINGS.backgroundImage);
-      setThemeAssetVariable("--app-overlay-image", THEME_SETTINGS.overlayImage);
-      setThemeAssetVariable("--map-fragment-image", THEME_SETTINGS.mapFragmentImage);
-      setThemeAssetVariable("--grain-image", THEME_SETTINGS.grainImage);
-      setThemeAssetVariable("--seal-icon-image", THEME_SETTINGS.sealIconImage);
-      setThemeAssetVariable("--mission-icon-image", THEME_SETTINGS.missionIconImage);
-      setThemeAssetVariable("--story-icon-image", THEME_SETTINGS.storyIconImage);
-      setThemeAssetVariable("--completion-icon-image", THEME_SETTINGS.completionIconImage);
-    }
-
-    const STORY_SLIDES = [
-      "Questa non e una guida, e un modo diverso di scoprire la citta.",
-      "Durante il viaggio non seguirai un percorso fisso. Scoprirai Istanbul attraverso missioni, dettagli e storie.",
-      "A Istanbul non tutti vedono la stessa citta: ogni viaggiatore appartiene, senza saperlo, a una delle cinque tribu.",
-      "Prima di iniziare, una breve missione servira a capire a quale tribu appartieni: un quiz veloce con domande a volte un po' assurde, che definira il tuo modo di giocare e iniziera a farti scoprire Istanbul in modo unico."
-    ];
-
-    const QUIZ_CONTENT = {
-      introTitle: "Missione 0",
-      introText: "Scegli ogni risposta d'istinto. Alcune scelte apriranno un indizio prima della domanda successiva.",
-      tapToContinueLabel: "Tocca per continuare",
-      startQuestionId: "p1",
-      completion: {
-        title: "Percorso avviato",
-        text: "La tua tribu sta prendendo forma. Da qui in poi il viaggio potra seguire strade diverse in base alle tue scelte."
-      },
-      questions: [
-        {
-          id: "p1",
-          text: "Sei sul Bosforo, il traghetto passa vicino a una moschea enorme",
-          answers: [
-            { label: "Pensi a quante epoche ha attraversato", nextId: "a_1" },
-            { label: "Ti chiedi se ha storie strane legate a lei", nextId: "c_1" },
-            { label: "Guardi il percorso dove potresti sceglere", nextId: "e_1" },
-            { label: "Noti i dettagli della struttura e delle decorazioni", nextId: "d_1" }
-          ]
-        },
-        {
-          id: "p2",
-          text: "Nel Grand Bazar un venditore ti invita a entrare",
-          answers: [
-            { label: "Inizia a parlare con lui", nextId: "cu_4" },
-            { label: "Osservi gli oggetti esposti", nextId: "d_4" },
-            { label: "Ti chiedi che tipo di storie avra visto", nextId: "c_4" },
-            { label: "Ti infili dentro per vedere dove arrivi", nextId: "e_4" }
-          ]
-        },
-        {
-          id: "p3",
-          text: "Ti trovi davanti a un edificio antico senza spiegazioni",
-          answers: [
-            { label: "Ti avvicini per osservare i dettagli", nextId: "d_7" },
-            { label: "Lo superi per trovare qualcos'altro", nextId: "e_7" },
-            { label: "Cerchi di capire quando e stato scotruito", nextId: "a_7" },
-            { label: "Immagini cosa potrebbe essere successo li", nextId: "c_7" }
-          ]
-        },
-        {
-          id: "p4",
-          text: "In una cay house qualcuno ti guarda e sorride",
-          answers: [
-            { label: "Ti chiedi chi sia e cosa stia pensando", nextId: "c_10" },
-            { label: "Inizi la conversazione", nextId: "cu_10" },
-            { label: "Noti piccoli gesti e oggetti sul tavolo", nextId: "d_10" },
-            { label: "Ti godi la scena e vivi il momento", nextId: "e_10" }
-          ]
-        },
-        {
-          id: "p5",
-          text: "Camminando trovi una strada che sembra poco frequentata",
-          answers: [
-            { label: "Ti chiedi dove porta", nextId: "e_13" },
-            { label: "Ti chiedi cosa succede li di notte", nextId: "c_13" },
-            { label: "Guardi se qualche simbolo o indicazione dice dove porta", nextId: "d_13" },
-            { label: "Ti chiedi cosa e successo li", nextId: "a_13" }
-          ]
-        },
-        {
-          id: "p6",
-          text: "Ti danno un bicchiere di cay",
-          answers: [
-            { label: "Pensi alla tradizione dietro alla preparazione", nextId: "c_16" },
-            { label: "Lo bevi e riparti subito", nextId: "e_16" },
-            { label: "Osservi il modo in cui viene servito", nextId: "d_16" },
-            { label: "Ti chiedi chi lo abbia inventato", nextId: "cu_16" }
-          ]
-        },
-        {
-          id: "p7",
-          text: "Vedi un simbolo blu appeso ovunque",
-          answers: [
-            { label: "Chiedi a qualcuno cosa significa", nextId: "cu_19" },
-            { label: "Ti chiedi che storia c'e dietro", nextId: "c_19" },
-            { label: "Lo osservi nei dettagli", nextId: "d_19" },
-            { label: "Ti chiedi da quando esiste", nextId: "a_19" }
-          ]
-        },
-        {
-          id: "p8",
-          text: "Stai scegliendo cosa fotografare",
-          answers: [
-            { label: "Una strada", nextId: "e_22" },
-            { label: "Un luogo con una storia", nextId: "a_22" },
-            { label: "Un momento tra persone", nextId: "cu_22" },
-            { label: "Un dettaglio", nextId: "d_22" }
-          ]
-        },
-        {
-          id: "p9",
-          text: "Qualcuno racconta una leggenda su un luogo",
-          answers: [
-            { label: "Ti interessa capire se e vera", nextId: "a_25" },
-            { label: "Ti interessa la storia in se", nextId: "c_25" },
-            { label: "Ti interessa andare a vedere il posto", nextId: "e_25" },
-            { label: "Ti interessa cosa rappresenta", nextId: "d_25" }
-          ]
-        },
-        {
-          id: "p10",
-          text: "Fine giornata, ripensi a quello che hai visto:",
-          answers: [
-            { label: "Le persone incontrate", categoryId: "cu" },
-            { label: "Le storie strane", categoryId: "c" },
-            { label: "I percorsi fatti", categoryId: "e" },
-            { label: "I dettagli notati", categoryId: "d" }
-          ]
-        },
-        {
-          id: "a_1",
-          text: "Istanbul e stata capitale di quanti imperi?",
-          answers: [
-            { label: "1", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" },
-            { label: "2", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" },
-            { label: "3", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" },
-            { label: "4", nextId: "a_2", feedback: "E stata capitale dell'impero romano, bizantino e ottomano" }
-          ]
-        },
-        {
-          id: "a_2",
-          text: "Prima di chiamarsi Istanbul come si chiamava?",
-          answers: [
-            { label: "Troia", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" },
-            { label: "Costantinopoli", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" },
-            { label: "Efeso", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" },
-            { label: "Antiochia", nextId: "a_3", feedback: "Costantinopoli e stato il nome principale per oltre 1000 anni" }
-          ]
-        },
-        {
-          id: "a_3",
-          text: "Chi conquisto Costantinopoli nel 1453?",
-          answers: [
-            { label: "Alessandro Magno", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" },
-            { label: "Mehmet II", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" },
-            { label: "Cesare", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" },
-            { label: "Napoleone", nextId: "p2", feedback: "Mehmet II, detto Il Conquistatore, aveva solo 21 anni" }
-          ]
-        },
-        {
-          id: "a_7",
-          text: "Quale edificio e stato sia chiesa che moschea?",
-          answers: [
-            { label: "Topkapi", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" },
-            { label: "Hagia Sophia", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" },
-            { label: "Moschea Blu", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" },
-            { label: "Dolmabahce", nextId: "a_8", feedback: "Hagia Sophia e uno dei simboli piu incredibili della citta" }
-          ]
-        },
-        {
-          id: "a_8",
-          text: "Il Grand Bazar nasce",
-          answers: [
-            { label: "Nel 1800", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" },
-            { label: "Nel 1200", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" },
-            { label: "Nel 1400", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" },
-            { label: "Nel 1900", nextId: "a_9", feedback: "Nel 1400, e uno dei mercati coperti piu antichi del mondo" }
-          ]
-        },
-        {
-          id: "a_9",
-          text: "Il palazzo Topkapi era",
-          answers: [
-            { label: "Una fortezza militare", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" },
-            { label: "La residenza dei sultani", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" },
-            { label: "Un tempio", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" },
-            { label: "Un mercato", nextId: "p4", feedback: "La residenza dei sultani: fu il centro del potere ottomano per secoli" }
-          ]
-        },
-        {
-          id: "a_13",
-          text: "Il nome Istanbul probabilmente deriva da:",
-          answers: [
-            { label: "Latino", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." },
-            { label: "Greco", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." },
-            { label: "Arabo", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." },
-            { label: "Persiano", nextId: "a_14", feedback: "Deriva dall'espressione greca eis ten polin, che significa verso la citta." }
-          ]
-        },
-        {
-          id: "a_14",
-          text: "Hagia Sofia e stata costruita in:",
-          answers: [
-            { label: "10 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" },
-            { label: "50 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" },
-            { label: "5 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" },
-            { label: "100 anni", nextId: "a_15", feedback: "Fu incredibilmente costruita in 5 anni" }
-          ]
-        },
-        {
-          id: "a_15",
-          text: "I sultani ottomani vivevano:",
-          answers: [
-            { label: "Sempre nello stesso palazzo", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" },
-            { label: "In tende", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" },
-            { label: "In un complesso enorme con centinaia di stanze", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" },
-            { label: "In castelli separati", nextId: "p6", feedback: "Topkapi era praticamente una citta dentro la citta" }
-          ]
-        },
-        {
-          id: "a_19",
-          text: "Le mura di Costantinopoli avevano:",
-          answers: [
-            { label: "Una sola linea", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" },
-            { label: "Due linee", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" },
-            { label: "Tre linee", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" },
-            { label: "Nessuna linea", nextId: "a_20", feedback: "Tre livelli difensivi: fossa, mura esterne e interne" }
-          ]
-        },
-        {
-          id: "a_20",
-          text: "Durante l'assedio del 1453, gli ottomani:",
-          answers: [
-            { label: "Scavarono sotto la citta", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" },
-            { label: "Portarono navi via terra", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" },
-            { label: "Usarono solo archi", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" },
-            { label: "Aspettarono", nextId: "a_21", feedback: "Trasportarono navi su terra per aggirare le difese" }
-          ]
-        },
-        {
-          id: "a_21",
-          text: "Hagia Sofia ha:",
-          answers: [
-            { label: "Solo mosaici cristiani", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" },
-            { label: "Solo elementi islamici", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" },
-            { label: "Entrambi", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" },
-            { label: "Nessuno", nextId: "p8", feedback: "Entrambi, un mix unico di simboli religiosi" }
-          ]
-        },
-        {
-          id: "a_22",
-          text: "La Cisterna Basilica era:",
-          answers: [
-            { label: "Una prigione", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" },
-            { label: "Un magazzino d'acqua", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" },
-            { label: "Un tempio", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" },
-            { label: "Un teatro", nextId: "a_23", feedback: "Serviva a immagazzinare acqua per la citta" }
-          ]
-        },
-        {
-          id: "a_23",
-          text: "Le teste di Medusa nella cisterna sono:",
-          answers: [
-            { label: "Colorate", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" },
-            { label: "Distrutte", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" },
-            { label: "Capovolte", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" },
-            { label: "Divise", nextId: "a_24", feedback: "Capovolte. Posizione misteriosa e molto discussa" }
-          ]
-        },
-        {
-          id: "a_24",
-          text: "I Giannizzeri (guardie d'elite) erano",
-          answers: [
-            { label: "Tutti turchi", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" },
-            { label: "Bambini presi da altre regioni", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" },
-            { label: "Mercenari europei", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" },
-            { label: "Nobili", nextId: "p9", feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano" }
-          ]
-        }
-      ]
-    };
-
-    const MISSION_ZERO_RESULT_CONTENT = window.MISSION_ZERO_RESULT_CONTENT || {
-      kicker: "Percorso attivato",
-      titleEyebrow: "Missione chiusa",
-      title: "Sotto la superficie, il viaggio ha gia scelto un tono",
-      text: QUIZ_CONTENT.completion.text,
-      cardNote: "",
-      homeButtonLabel: "Apri la home",
-      homeRoute: "#home",
-      illustration: null,
-      emblem: null
-    };
-
-    const MISSION_HOME_CONTENT = window.MISSION_HOME_CONTENT || {
-      statusLabel: "Archivio missioni attivo",
-      hero: {
-        kicker: "Home missioni",
-        title: "La tua plancia di gioco a Istanbul",
-        text: ""
-      },
-      profileCard: {
-        kicker: "Profilo emerso",
-        fallbackTitle: "Profilo in attesa",
-        fallbackText: ""
-      },
-      sections: {
-        general: { kicker: "", title: "", text: "" },
-        locations: { kicker: "", title: "", text: "" },
-        personal: { kicker: "", title: "", text: "" }
-      },
-      categories: {},
-      missions: {
-        general: [],
-        locations: [],
-        byCategory: {}
-      }
-    };
-
-    const ui = {
-      scenes: {
-        entry: document.getElementById("scene-entry"),
-        story: document.getElementById("scene-story"),
-        mission: document.getElementById("scene-mission"),
-        complete: document.getElementById("scene-complete"),
-        home: document.getElementById("scene-home"),
-        categoryDetail: document.getElementById("scene-category-detail")
-      },
-      enterButton: document.getElementById("enterButton"),
-      storyText: document.getElementById("storyText"),
-      storyIndex: document.getElementById("storyIndex"),
-      storyPrev: document.getElementById("storyPrev"),
-      storyNext: document.getElementById("storyNext"),
-      storyProgress: document.getElementById("storyProgress"),
-      missionKicker: document.getElementById("missionKicker"),
-      missionIntro: document.getElementById("missionIntro"),
-      questionCounter: document.getElementById("questionCounter"),
-      questionMeta: document.getElementById("questionMeta"),
-      questionText: document.getElementById("questionText"),
-      answerGrid: document.getElementById("answerGrid"),
-      questionProgress: document.getElementById("questionProgress"),
-      tapHint: document.getElementById("tapHint"),
-      completionKicker: document.getElementById("completionKicker"),
-      completionTitleEyebrow: document.getElementById("completionTitleEyebrow"),
-      completionTitleText: document.getElementById("completionTitleText"),
-      completionText: document.getElementById("completionText"),
-      completionNote: document.getElementById("completionNote"),
-      completionHomeButton: document.getElementById("completionHomeButton"),
-      completionHomeButtonLabel: document.getElementById("completionHomeButtonLabel"),
-      completionVisual: document.getElementById("completionVisual"),
-      completionIllustration: document.getElementById("completionIllustration"),
-      completionEmblem: document.getElementById("completionEmblem"),
-      completionEmblemImage: document.getElementById("completionEmblemImage"),
-      homeKicker: document.getElementById("homeKicker"),
-      homeTitle: document.getElementById("homeTitle"),
-      homeText: document.getElementById("homeText"),
-      homeOverviewKicker: document.getElementById("homeOverviewKicker"),
-      homeOverviewTitle: document.getElementById("homeOverviewTitle"),
-      homeOverviewText: document.getElementById("homeOverviewText"),
-      homeNavTitle: document.getElementById("homeNavTitle"),
-      homeNavGeneralLabel: document.getElementById("homeNavGeneralLabel"),
-      homeNavGeneralCount: document.getElementById("homeNavGeneralCount"),
-      homeNavLocationsLabel: document.getElementById("homeNavLocationsLabel"),
-      homeNavLocationsCount: document.getElementById("homeNavLocationsCount"),
-      homeNavPersonalLabel: document.getElementById("homeNavPersonalLabel"),
-      homeNavPersonalCount: document.getElementById("homeNavPersonalCount"),
-      totalMissionLabel: document.getElementById("totalMissionLabel"),
-      totalMissionCount: document.getElementById("totalMissionCount"),
-      generalMissionLabel: document.getElementById("generalMissionLabel"),
-      generalMissionCount: document.getElementById("generalMissionCount"),
-      locationMissionLabel: document.getElementById("locationMissionLabel"),
-      locationMissionCount: document.getElementById("locationMissionCount"),
-      personalMissionLabel: document.getElementById("personalMissionLabel"),
-      personalMissionCount: document.getElementById("personalMissionCount"),
-      homeProfileKicker: document.getElementById("homeProfileKicker"),
-      homeProfileChip: document.getElementById("homeProfileChip"),
-      homeProfileIcon: document.getElementById("homeProfileIcon"),
-      homeProfileChipTitle: document.getElementById("homeProfileChipTitle"),
-      homeProfileTitle: document.getElementById("homeProfileTitle"),
-      homeProfileText: document.getElementById("homeProfileText"),
-      generalPanelKicker: document.getElementById("generalPanelKicker"),
-      generalPanelTitle: document.getElementById("generalPanelTitle"),
-      generalPanelText: document.getElementById("generalPanelText"),
-      generalSectionCount: document.getElementById("generalSectionCount"),
-      generalOpenButton: document.getElementById("generalOpenButton"),
-      generalMissionList: document.getElementById("generalMissionList"),
-      locationPanelKicker: document.getElementById("locationPanelKicker"),
-      locationPanelTitle: document.getElementById("locationPanelTitle"),
-      locationPanelText: document.getElementById("locationPanelText"),
-      locationSectionCount: document.getElementById("locationSectionCount"),
-      locationOpenButton: document.getElementById("locationOpenButton"),
-      locationMissionList: document.getElementById("locationMissionList"),
-      personalPanelKicker: document.getElementById("personalPanelKicker"),
-      personalPanelTitle: document.getElementById("personalPanelTitle"),
-      personalPanelText: document.getElementById("personalPanelText"),
-      personalSectionCount: document.getElementById("personalSectionCount"),
-      personalOpenButton: document.getElementById("personalOpenButton"),
-      personalMissionList: document.getElementById("personalMissionList"),
-      detailBackButton: document.getElementById("detailBackButton"),
-      detailCategoryCount: document.getElementById("detailCategoryCount"),
-      detailKicker: document.getElementById("detailKicker"),
-      detailTitle: document.getElementById("detailTitle"),
-      detailText: document.getElementById("detailText"),
-      detailFilterTitle: document.getElementById("detailFilterTitle"),
-      detailFilterRow: document.getElementById("detailFilterRow"),
-      detailResultsCount: document.getElementById("detailResultsCount"),
-      detailMissionList: document.getElementById("detailMissionList"),
-      detailEmptyState: document.getElementById("detailEmptyState"),
-      detailEmptyTitle: document.getElementById("detailEmptyTitle"),
-      detailEmptyText: document.getElementById("detailEmptyText"),
-      feedbackOverlay: document.getElementById("feedbackOverlay"),
-      feedbackText: document.getElementById("feedbackText"),
-      feedbackHint: document.getElementById("feedbackHint"),
-      overlayDismiss: document.getElementById("overlayDismiss"),
-      statusPill: document.getElementById("statusPill"),
-      veil: document.getElementById("veil")
-    };
-
-    const quizQuestions = new Map(QUIZ_CONTENT.questions.map((question) => [question.id, question]));
-    const primaryQuestionIds = QUIZ_CONTENT.questions.filter((question) => question.id.startsWith("p")).map((question) => question.id);
-    const STORAGE_KEYS = {
-      homeUnlocked: "istanbulAdventure.homeUnlocked",
-      categoryId: "istanbulAdventure.categoryId"
-    };
-
-    let currentScene = "entry";
-    let storyIndex = 0;
-    let currentQuestionId = null;
-    let pendingNextId = null;
-    let pendingCompletesQuiz = false;
-    let answeredCount = 0;
-    let activeAnswerButton = null;
-    let categoryScores = {};
-    let categoryTrail = [];
-    let resolvedCategoryId = null;
-    let activeDetailSection = null;
-    let activeDetailFilter = "all";
-    const lastAnswerOrders = new Map();
-
-    function setVeil(active) {
-      document.documentElement.style.setProperty("--veil-opacity", active ? "1" : "0");
-    }
-
-    function setProgress(element, value) {
-      element.style.setProperty("--ritual-progress", `${value}%`);
-    }
-
-    function setScene(sceneName) {
-      currentScene = sceneName;
-      Object.entries(ui.scenes).forEach(([name, element]) => {
-        element.classList.toggle("is-active", name === sceneName);
-        element.toggleAttribute("hidden", name !== sceneName);
-      });
-
-      const labels = {
-        entry: "Strato nascosto della citta",
-        story: "Trasmissione del prologo",
-        mission: "Missione 0 attiva",
-        complete: "Assegnazione compiuta",
-        home: MISSION_HOME_CONTENT.statusLabel || "Archivio missioni attivo",
-        categoryDetail: "Archivio missioni"
-      };
-
-      ui.statusPill.textContent = labels[sceneName] || "Istanbul Adventure";
-      setVeil(sceneName === "mission" || sceneName === "complete" || sceneName === "home");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function isHomeUnlocked() {
-      return window.localStorage.getItem(STORAGE_KEYS.homeUnlocked) === "true";
-    }
-
-    function getStoredCategoryId() {
-      return window.localStorage.getItem(STORAGE_KEYS.categoryId) || null;
-    }
-
-    function persistHomeProfile(categoryId) {
-      window.localStorage.setItem(STORAGE_KEYS.homeUnlocked, "true");
-      window.localStorage.setItem(STORAGE_KEYS.categoryId, categoryId || "");
-    }
-
-    function getCategoryIdFromAnswer(answer) {
-      if (answer.categoryId) {
-        return answer.categoryId;
-      }
-
-      const nextIdPrefix = answer.nextId?.split("_")[0];
-      if (nextIdPrefix && MISSION_HOME_CONTENT.categories[nextIdPrefix]) {
-        return nextIdPrefix;
-      }
-
-      return null;
-    }
-
-    function trackCategoryAnswer(questionId, answer) {
-      if (!questionId.startsWith("p")) {
-        return;
-      }
-
-      const categoryId = getCategoryIdFromAnswer(answer);
-      if (!categoryId) {
-        return;
-      }
-
-      categoryScores[categoryId] = (categoryScores[categoryId] || 0) + 1;
-      categoryTrail.push(categoryId);
-    }
-
-    function resolveCategoryId() {
-      const knownIds = Object.keys(MISSION_HOME_CONTENT.categories);
-      const entries = Object.entries(categoryScores).filter(([categoryId]) => knownIds.includes(categoryId));
-
-      if (entries.length === 0) {
-        return getStoredCategoryId() || knownIds[0] || null;
-      }
-
-      const topScore = Math.max(...entries.map(([, score]) => score));
-      const tiedIds = entries.filter(([, score]) => score === topScore).map(([categoryId]) => categoryId);
-
-      for (let index = categoryTrail.length - 1; index >= 0; index -= 1) {
-        const categoryId = categoryTrail[index];
-        if (tiedIds.includes(categoryId)) {
-          return categoryId;
-        }
-      }
-
-      return tiedIds[0] || null;
-    }
-
-    function createMissionCard(mission) {
-      const card = document.createElement("article");
-      card.className = "mission-card";
-      const filters = Array.isArray(mission.filters) ? mission.filters : [];
-
-      const badge = mission.iconSrc
-        ? `<div class="mission-card-badge"><img src="${mission.iconSrc}" alt="${mission.iconAlt || ""}" /></div>`
-        : "";
-
-      const filterMarkup = filters.length
-        ? `<div class="mission-card-filters">${filters.map((filter) => `<span class="mission-filter-tag">${filter}</span>`).join("")}</div>`
-        : "";
-
-      card.innerHTML = `
-        <div class="mission-card-head">
-          ${badge}
-          <div class="mission-card-meta">${mission.meta || ""}</div>
-        </div>
-        <h4 class="mission-card-title">${mission.title || ""}</h4>
-        <p class="mission-card-description">${mission.description || ""}</p>
-        ${filterMarkup}
-      `;
-
-      return card;
-    }
-
-    function renderMissionList(container, missions) {
-      const items = Array.isArray(missions) ? missions : [];
-      container.replaceChildren(...items.map((mission) => createMissionCard(mission)));
-    }
-
-    function scrollToHomeSection(sectionId) {
-      const target = document.getElementById(sectionId);
-      if (!target) {
-        return;
-      }
-
-      target.scrollIntoView({ block: "start", behavior: "smooth" });
-    }
-
-    function getSectionContent(sectionKey, categoryId) {
-      if (sectionKey === "general") {
-        return MISSION_HOME_CONTENT.missions.general || [];
-      }
-
-      if (sectionKey === "locations") {
-        return MISSION_HOME_CONTENT.missions.locations || [];
-      }
-
-      if (sectionKey === "personal") {
-        return MISSION_HOME_CONTENT.missions.byCategory?.[categoryId] || [];
-      }
-
-      return [];
-    }
-
-    function getRecommendedMissions(sectionKey, categoryId) {
-      const missions = getSectionContent(sectionKey, categoryId);
-      const recommended = missions.filter((mission) => mission.recommended);
-      return (recommended.length ? recommended : missions).slice(0, 2);
-    }
-
-    function getSectionConfig(sectionKey) {
-      if (sectionKey === "general") {
-        return MISSION_HOME_CONTENT.sections.general;
-      }
-
-      if (sectionKey === "locations") {
-        return MISSION_HOME_CONTENT.sections.locations;
-      }
-
-      return MISSION_HOME_CONTENT.sections.personal;
-    }
-
-    function renderDetailFilters(missions) {
-      const allFilters = Array.from(new Set(missions.flatMap((mission) => mission.filters || [])));
-      const filters = ["all", ...allFilters];
-      const labelFor = (filter) => (filter === "all" ? "Tutte" : filter);
-
-      ui.detailFilterRow.replaceChildren(
-        ...filters.map((filter) => {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = `filter-chip${activeDetailFilter === filter ? " is-active" : ""}`;
-          button.textContent = labelFor(filter);
-          button.addEventListener("click", () => {
-            activeDetailFilter = filter;
-            renderCategoryDetail();
-          });
-          return button;
-        })
-      );
-    }
-
-    function renderCategoryDetail() {
-      const categoryId = resolvedCategoryId || getStoredCategoryId();
-      const sectionKey = activeDetailSection || "general";
-      const section = getSectionConfig(sectionKey);
-      const missions = getSectionContent(sectionKey, categoryId);
-      const filteredMissions = activeDetailFilter === "all"
-        ? missions
-        : missions.filter((mission) => (mission.filters || []).includes(activeDetailFilter));
-
-      ui.detailKicker.textContent = section.kicker || "";
-      ui.detailTitle.textContent = section.detailTitle || section.title || "";
-      ui.detailText.textContent = section.text || "";
-      ui.detailCategoryCount.textContent = `${missions.length} missioni`;
-      ui.detailFilterTitle.textContent = MISSION_HOME_CONTENT.detailView?.filterTitle || "";
-      ui.detailResultsCount.textContent = `${filteredMissions.length} risultati`;
-      ui.detailEmptyTitle.textContent = MISSION_HOME_CONTENT.detailView?.emptyTitle || "";
-      ui.detailEmptyText.textContent = MISSION_HOME_CONTENT.detailView?.emptyText || "";
-
-      renderDetailFilters(missions);
-      renderMissionList(ui.detailMissionList, filteredMissions);
-
-      const isEmpty = filteredMissions.length === 0;
-      ui.detailMissionList.hidden = isEmpty;
-      ui.detailEmptyState.hidden = !isEmpty;
-    }
-
-    function openCategoryDetail(sectionKey) {
-      activeDetailSection = sectionKey;
-      activeDetailFilter = "all";
-      renderCategoryDetail();
-      setScene("categoryDetail");
-    }
-
-    function renderHome() {
-      const categoryId = resolvedCategoryId || getStoredCategoryId();
-      const category = categoryId ? MISSION_HOME_CONTENT.categories[categoryId] : null;
-      const generalMissions = MISSION_HOME_CONTENT.missions.general || [];
-      const locationMissions = MISSION_HOME_CONTENT.missions.locations || [];
-      const personalMissions = MISSION_HOME_CONTENT.missions.byCategory?.[categoryId] || [];
-      const recommendedGeneral = getRecommendedMissions("general", categoryId);
-      const recommendedLocations = getRecommendedMissions("locations", categoryId);
-      const recommendedPersonal = getRecommendedMissions("personal", categoryId);
-      const totalMissions = recommendedGeneral.length + recommendedLocations.length + recommendedPersonal.length;
-
-      ui.homeKicker.textContent = MISSION_HOME_CONTENT.hero.kicker || "Home missioni";
-      ui.homeTitle.textContent = MISSION_HOME_CONTENT.hero.title || "";
-      ui.homeText.textContent = MISSION_HOME_CONTENT.hero.text || "";
-      ui.homeOverviewKicker.textContent = MISSION_HOME_CONTENT.overview?.kicker || "";
-      ui.homeOverviewTitle.textContent = MISSION_HOME_CONTENT.overview?.title || "";
-      ui.homeOverviewText.textContent = MISSION_HOME_CONTENT.overview?.text || "";
-      ui.homeNavTitle.textContent = MISSION_HOME_CONTENT.navigation?.title || "";
-      ui.homeNavGeneralLabel.textContent = MISSION_HOME_CONTENT.sections.general.anchorLabel || MISSION_HOME_CONTENT.sections.general.kicker || "";
-      ui.homeNavLocationsLabel.textContent = MISSION_HOME_CONTENT.sections.locations.anchorLabel || MISSION_HOME_CONTENT.sections.locations.kicker || "";
-      ui.homeNavPersonalLabel.textContent = MISSION_HOME_CONTENT.sections.personal.anchorLabel || MISSION_HOME_CONTENT.sections.personal.kicker || "";
-      ui.homeNavGeneralCount.textContent = String(recommendedGeneral.length).padStart(2, "0");
-      ui.homeNavLocationsCount.textContent = String(recommendedLocations.length).padStart(2, "0");
-      ui.homeNavPersonalCount.textContent = String(recommendedPersonal.length).padStart(2, "0");
-      ui.totalMissionLabel.textContent = MISSION_HOME_CONTENT.overview?.stats?.totalLabel || "";
-      ui.totalMissionCount.textContent = String(totalMissions).padStart(2, "0");
-      ui.generalMissionLabel.textContent = MISSION_HOME_CONTENT.overview?.stats?.generalLabel || "";
-      ui.generalMissionCount.textContent = String(recommendedGeneral.length).padStart(2, "0");
-      ui.locationMissionLabel.textContent = MISSION_HOME_CONTENT.overview?.stats?.locationLabel || "";
-      ui.locationMissionCount.textContent = String(recommendedLocations.length).padStart(2, "0");
-      ui.personalMissionLabel.textContent = MISSION_HOME_CONTENT.overview?.stats?.personalLabel || "";
-      ui.personalMissionCount.textContent = String(recommendedPersonal.length).padStart(2, "0");
-      ui.homeProfileKicker.textContent = MISSION_HOME_CONTENT.profileCard.kicker || "Profilo emerso";
-
-      if (category) {
-        ui.homeProfileChip.hidden = !category.iconSrc;
-        ui.homeProfileChipTitle.textContent = category.shortLabel || category.title || "";
-
-        if (category.iconSrc) {
-          ui.homeProfileIcon.src = category.iconSrc;
-          ui.homeProfileIcon.alt = category.iconAlt || "";
-        } else {
-          ui.homeProfileIcon.removeAttribute("src");
-          ui.homeProfileIcon.alt = "";
-        }
-
-        ui.homeProfileTitle.textContent = category.title || "";
-        ui.homeProfileText.textContent = category.description || "";
-      } else {
-        ui.homeProfileChip.hidden = true;
-        ui.homeProfileChipTitle.textContent = "";
-        ui.homeProfileIcon.removeAttribute("src");
-        ui.homeProfileIcon.alt = "";
-        ui.homeProfileTitle.textContent = MISSION_HOME_CONTENT.profileCard.fallbackTitle || "";
-        ui.homeProfileText.textContent = MISSION_HOME_CONTENT.profileCard.fallbackText || "";
-      }
-
-      ui.generalPanelKicker.textContent = MISSION_HOME_CONTENT.sections.general.kicker || "";
-      ui.generalPanelTitle.textContent = MISSION_HOME_CONTENT.sections.general.title || "";
-      ui.generalPanelText.textContent = MISSION_HOME_CONTENT.sections.general.text || "";
-      ui.generalSectionCount.textContent = `${generalMissions.length} totali`;
-      ui.locationPanelKicker.textContent = MISSION_HOME_CONTENT.sections.locations.kicker || "";
-      ui.locationPanelTitle.textContent = MISSION_HOME_CONTENT.sections.locations.title || "";
-      ui.locationPanelText.textContent = MISSION_HOME_CONTENT.sections.locations.text || "";
-      ui.locationSectionCount.textContent = `${locationMissions.length} totali`;
-      ui.personalPanelKicker.textContent = MISSION_HOME_CONTENT.sections.personal.kicker || "";
-      ui.personalPanelTitle.textContent = MISSION_HOME_CONTENT.sections.personal.title || "";
-      ui.personalPanelText.textContent = MISSION_HOME_CONTENT.sections.personal.text || "";
-      ui.personalSectionCount.textContent = `${personalMissions.length} totali`;
-
-      renderMissionList(ui.generalMissionList, recommendedGeneral);
-      renderMissionList(ui.locationMissionList, recommendedLocations);
-      renderMissionList(ui.personalMissionList, recommendedPersonal);
-    }
-
-    function showHome() {
-      if (!isHomeUnlocked()) {
-        setScene("entry");
-        return;
-      }
-
-      resolvedCategoryId = resolvedCategoryId || getStoredCategoryId();
-      renderHome();
-      setScene("home");
-    }
-
-    function syncSceneWithHash() {
-      if (window.location.hash === "#missione-0") {
-        showMission();
-        return;
-      }
-
-      if (window.location.hash === (MISSION_ZERO_RESULT_CONTENT.homeRoute || "#home") && isHomeUnlocked()) {
-        resolvedCategoryId = getStoredCategoryId();
-        showHome();
-        return;
-      }
-
-      setScene("entry");
-    }
-
-    function renderStorySlide() {
-      ui.storyText.textContent = STORY_SLIDES[storyIndex];
-      ui.storyIndex.textContent = `${String(storyIndex + 1).padStart(2, "0")} / ${String(STORY_SLIDES.length).padStart(2, "0")}`;
-      ui.storyPrev.disabled = storyIndex === 0;
-      ui.storyNext.textContent = storyIndex === STORY_SLIDES.length - 1 ? "↗" : "→";
-      setProgress(ui.storyProgress, ((storyIndex + 1) / STORY_SLIDES.length) * 100);
-    }
-
-    function showMission() {
-      setScene("mission");
-      ui.missionKicker.textContent = QUIZ_CONTENT.introTitle;
-      ui.missionIntro.textContent = QUIZ_CONTENT.introText;
-      ui.tapHint.textContent = QUIZ_CONTENT.tapToContinueLabel;
-      answeredCount = 0;
-      categoryScores = {};
-      categoryTrail = [];
-      resolvedCategoryId = null;
-      renderQuestion(QUIZ_CONTENT.startQuestionId);
-    }
-
-    function updateQuestionMeta(questionId) {
-      const isPrimary = questionId.startsWith("p");
-      const primaryIndex = primaryQuestionIds.indexOf(questionId);
-      const left = isPrimary ? primaryIndex + 1 : answeredCount + 1;
-      ui.questionCounter.textContent = `${String(Math.max(left, 1)).padStart(2, "0")} / ${String(primaryQuestionIds.length).padStart(2, "0")}`;
-      ui.questionMeta.textContent = isPrimary ? "Nodo narrativo" : "Eco storico";
-      setProgress(ui.questionProgress, Math.min((answeredCount / primaryQuestionIds.length) * 100, 100));
-    }
-
-    function shuffleAnswers(question) {
-      const answers = [...question.answers];
-
-      if (answers.length < 2) {
-        return answers;
-      }
-
-      const previousOrder = lastAnswerOrders.get(question.id) ?? answers.map((answer) => answer.label).join("|");
-      let shuffled = answers;
-      let attempts = 0;
-
-      do {
-        shuffled = [...answers];
-
-        for (let index = shuffled.length - 1; index > 0; index -= 1) {
-          const randomIndex = Math.floor(Math.random() * (index + 1));
-          [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
-        }
-
-        attempts += 1;
-      } while (shuffled.map((answer) => answer.label).join("|") === previousOrder && attempts < 8);
-
-      lastAnswerOrders.set(question.id, shuffled.map((answer) => answer.label).join("|"));
-      return shuffled;
-    }
-
-    function renderQuestion(questionId) {
-      const question = quizQuestions.get(questionId);
-      currentQuestionId = questionId;
-      activeAnswerButton = null;
-
-      if (!question) {
-        finishQuiz();
-        return;
-      }
-
-      updateQuestionMeta(questionId);
-      ui.questionText.textContent = question.text;
-      const shuffledAnswers = shuffleAnswers(question);
-      ui.answerGrid.replaceChildren(...shuffledAnswers.map((answer, index) => createAnswerButton(answer, index)));
-      document.querySelector(".question-panel")?.scrollIntoView({ block: "start", behavior: "smooth" });
-    }
-
-    function createAnswerButton(answer, index) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "answer-button";
-      button.innerHTML = `<span class="answer-index">${String(index + 1).padStart(2, "0")}</span><span class="answer-label">${answer.label}</span>`;
-      button.addEventListener("click", () => handleAnswer(answer, button));
-      return button;
-    }
-
-    function showFeedback(text, nextId, completesQuiz) {
-      pendingNextId = nextId || null;
-      pendingCompletesQuiz = Boolean(completesQuiz);
-      ui.feedbackText.textContent = text;
-      ui.feedbackHint.textContent = QUIZ_CONTENT.tapToContinueLabel;
-      ui.feedbackOverlay.hidden = false;
-      ui.overlayDismiss.focus();
-    }
-
-    function closeFeedback() {
-      ui.feedbackOverlay.hidden = true;
-
-      if (pendingNextId) {
-        const nextId = pendingNextId;
-        pendingNextId = null;
-        pendingCompletesQuiz = false;
-        renderQuestion(nextId);
-        return;
-      }
-
-      if (pendingCompletesQuiz) {
-        pendingCompletesQuiz = false;
-        finishQuiz();
-      }
-    }
-
-    function handleAnswer(answer, button) {
-      if (activeAnswerButton) {
-        activeAnswerButton.classList.remove("is-selected");
-      }
-
-      activeAnswerButton = button;
-      button.classList.add("is-selected");
-      answeredCount += 1;
-      trackCategoryAnswer(currentQuestionId, answer);
-      updateQuestionMeta(currentQuestionId);
-
-      if (answer.feedback) {
-        showFeedback(answer.feedback, answer.nextId, !answer.nextId);
-        return;
-      }
-
-      if (answer.nextId) {
-        renderQuestion(answer.nextId);
-        return;
-      }
-
-      finishQuiz();
-    }
-
-    function finishQuiz() {
-      resolvedCategoryId = resolveCategoryId();
-      persistHomeProfile(resolvedCategoryId);
-      setScene("complete");
-      ui.completionKicker.textContent = MISSION_ZERO_RESULT_CONTENT.kicker || "Percorso attivato";
-      ui.completionTitleEyebrow.textContent = MISSION_ZERO_RESULT_CONTENT.titleEyebrow || "Missione chiusa";
-      ui.completionTitleText.textContent = MISSION_ZERO_RESULT_CONTENT.title || QUIZ_CONTENT.completion.title;
-      ui.completionText.textContent = MISSION_ZERO_RESULT_CONTENT.text || QUIZ_CONTENT.completion.text;
-      ui.completionNote.textContent = MISSION_ZERO_RESULT_CONTENT.cardNote || "";
-      ui.completionNote.hidden = !MISSION_ZERO_RESULT_CONTENT.cardNote;
-      ui.completionHomeButtonLabel.textContent = MISSION_ZERO_RESULT_CONTENT.homeButtonLabel || "Apri la home";
-
-      const illustrationSrc = MISSION_ZERO_RESULT_CONTENT.illustration?.src;
-      ui.completionVisual.hidden = !illustrationSrc;
-      if (illustrationSrc) {
-        ui.completionIllustration.src = illustrationSrc;
-        ui.completionIllustration.alt = MISSION_ZERO_RESULT_CONTENT.illustration.alt || "";
-      } else {
-        ui.completionIllustration.removeAttribute("src");
-        ui.completionIllustration.alt = "";
-      }
-
-      const emblemSrc = MISSION_ZERO_RESULT_CONTENT.emblem?.src;
-      ui.completionEmblem.hidden = !emblemSrc;
-      if (emblemSrc) {
-        ui.completionEmblemImage.src = emblemSrc;
-        ui.completionEmblemImage.alt = MISSION_ZERO_RESULT_CONTENT.emblem.alt || "";
-      } else {
-        ui.completionEmblemImage.removeAttribute("src");
-        ui.completionEmblemImage.alt = "";
-      }
-
-      setProgress(ui.questionProgress, 100);
-    }
-
-    function restartExperience() {
-      storyIndex = 0;
-      renderStorySlide();
-      pendingNextId = null;
-      pendingCompletesQuiz = false;
-      ui.feedbackOverlay.hidden = true;
-      setScene("entry");
-    }
-
-    ui.enterButton.addEventListener("click", () => {
-      setScene("story");
-      renderStorySlide();
-    });
-
-    ui.storyPrev.addEventListener("click", () => {
-      if (storyIndex === 0) {
-        return;
-      }
-
-      storyIndex -= 1;
-      renderStorySlide();
-    });
-
-    ui.storyNext.addEventListener("click", () => {
-      if (storyIndex < STORY_SLIDES.length - 1) {
-        storyIndex += 1;
-        renderStorySlide();
-        return;
-      }
-
-      showMission();
-    });
-
-    ui.overlayDismiss.addEventListener("click", closeFeedback);
-    ui.feedbackOverlay.addEventListener("click", (event) => {
-      if (event.target === ui.feedbackOverlay) {
-        closeFeedback();
-      }
-    });
-
-    ui.completionHomeButton.addEventListener("click", () => {
-      pendingNextId = null;
-      pendingCompletesQuiz = false;
-      ui.feedbackOverlay.hidden = true;
-      window.location.hash = MISSION_ZERO_RESULT_CONTENT.homeRoute || "#home";
-      showHome();
-    });
-
-    ui.generalOpenButton.addEventListener("click", () => openCategoryDetail("general"));
-    ui.locationOpenButton.addEventListener("click", () => openCategoryDetail("locations"));
-    ui.personalOpenButton.addEventListener("click", () => openCategoryDetail("personal"));
-    ui.detailBackButton.addEventListener("click", showHome);
-
-    document.querySelectorAll("[data-scroll-target]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const target = button.dataset.scrollTarget;
-        if (target === "missions-general") {
-          openCategoryDetail("general");
-          return;
-        }
-
-        if (target === "missions-locations") {
-          openCategoryDetail("locations");
-          return;
-        }
-
-        openCategoryDetail("personal");
-      });
-    });
-
-    window.addEventListener("keydown", (event) => {
-      if (ui.feedbackOverlay.hidden) {
-        if (currentScene === "story" && event.key === "ArrowRight") {
-          ui.storyNext.click();
-        }
-
-        if (currentScene === "story" && event.key === "ArrowLeft") {
-          ui.storyPrev.click();
-        }
-
-        return;
-      }
-
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        closeFeedback();
-      }
-    });
-
-    applyThemeSettings();
-    syncSceneWithHash();
-
-    window.addEventListener("hashchange", syncSceneWithHash);
-
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js").catch(() => {});
-      });
-    }
-  </script>
+  <script src="./app.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" fill="none">
+  <rect width="1200" height="1600" rx="24" fill="#F1E2C9"/>
+  <rect x="30" y="30" width="1140" height="1540" rx="18" stroke="#C5965B" stroke-opacity=".45" stroke-width="4"/>
+  <rect x="68" y="76" width="1064" height="1448" rx="12" stroke="#7A5330" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M122 176H1078" stroke="#7A5330" stroke-opacity=".14" stroke-width="2"/>
+  <path d="M122 264H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 352H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 440H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 528H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 616H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 704H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 792H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 880H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 968H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 1056H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 1144H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 1232H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 1320H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M122 1408H1078" stroke="#7A5330" stroke-opacity=".08" stroke-width="2"/>
+  <circle cx="164" cy="130" r="10" fill="#7A5330" fill-opacity=".2"/>
+  <circle cx="600" cy="130" r="10" fill="#7A5330" fill-opacity=".2"/>
+  <circle cx="1036" cy="130" r="10" fill="#7A5330" fill-opacity=".2"/>
+</svg>
