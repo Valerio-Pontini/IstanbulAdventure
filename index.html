@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#17110d" />
+  <meta name="theme-color" content="#18120f" />
   <meta
     name="description"
     content="Istanbul Adventure, un'app narrativa mobile-first per esplorare Istanbul attraverso missioni, storie e percorsi personali."
@@ -23,41 +23,49 @@
     <div class="app-backdrop" aria-hidden="true"></div>
 
     <header class="app-bar">
-      <div class="app-bar__brand">ISTANBUL</div>
+      <div class="app-bar__brand">
+        <span class="app-bar__city">Istanbul</span>
+        <span class="app-bar__project">Adventure</span>
+      </div>
       <div class="app-bar__status" id="statusPill">Missione 0</div>
     </header>
 
     <main class="app-main">
       <section class="view is-active" id="scene-entry" aria-label="Ingresso">
         <div class="entry-layout">
-          <div class="entry-map" aria-hidden="true"></div>
+          <div class="entry-hero">
+            <div class="entry-hero__media" aria-hidden="true"></div>
+            <div class="entry-hero__grid" aria-hidden="true"></div>
+          </div>
+
           <div class="entry-panel">
-            <div class="section-line">
-              <div class="section-line__mark"></div>
-              <div class="section-line__text">Missione introduttiva</div>
+            <div class="entry-panel__meta">
+              <span class="entry-panel__route">Bosphorus Route</span>
+              <span class="entry-panel__season">Mobile experience</span>
             </div>
-            <h1 class="page-title">Istanbul non è come pensi</h1>
+
+            <h1 class="page-title">Una città diversa per ogni viaggiatore</h1>
             <p class="page-copy">
-              Una missione iniziale ti assegna una personalità di esplorazione. Da lì si aprono missioni generiche, luoghi e percorsi speciali pensati per il tuo sguardo.
+              Una missione iniziale ti assegna una personalità di esplorazione. Da lì si aprono missioni, luoghi e percorsi speciali costruiti sul modo in cui guardi Istanbul.
             </p>
 
             <div class="action-row">
               <button class="button button-primary" id="enterButton" type="button">Inizia Missione 0</button>
-              <button class="button" id="jumpToMissionButton" type="button">Salta al quiz</button>
+              <button class="button" id="jumpToMissionButton" type="button">Vai subito al quiz</button>
             </div>
 
             <div class="entry-facts">
               <div class="entry-fact">
                 <p class="entry-fact__label">Formato</p>
-                <p class="entry-fact__value">Mobile-first</p>
+                <p class="entry-fact__value">Flusso narrativo in tap</p>
               </div>
               <div class="entry-fact">
                 <p class="entry-fact__label">Durata</p>
-                <p class="entry-fact__value">Missione rapida + archivio</p>
+                <p class="entry-fact__value">Missione rapida + archivio personale</p>
               </div>
               <div class="entry-fact">
-                <p class="entry-fact__label">Metodo</p>
-                <p class="entry-fact__value">Quiz, profilo, missioni</p>
+                <p class="entry-fact__label">Output</p>
+                <p class="entry-fact__value">Profilo, missioni consigliate, filtri</p>
               </div>
             </div>
           </div>
@@ -65,58 +73,54 @@
       </section>
 
       <section class="view" id="scene-story" aria-label="Prologo" hidden>
-        <div class="reading-page">
-          <div class="paper-sheet">
-            <div class="paper-sheet__inner">
-              <div class="section-header">
-                <div class="section-line">
-                  <div class="section-line__mark"></div>
-                  <div class="section-line__text">Prologo</div>
-                </div>
-                <p class="section-count" id="storyIndex">1 / 4</p>
-              </div>
+        <div class="story-layout">
+          <aside class="story-rail" aria-hidden="true">
+            <div class="story-rail__map"></div>
+            <div class="story-rail__line"></div>
+          </aside>
 
-              <div class="story-panel">
-                <p class="story-text" id="storyText"></p>
-              </div>
-
-              <div class="progress-line" aria-hidden="true">
-                <span id="storyProgress"></span>
-              </div>
-
-              <div class="action-row action-row-split">
-                <button class="button" id="storyPrev" type="button">Indietro</button>
-                <button class="button button-primary" id="storyNext" type="button">Continua</button>
-              </div>
+          <article class="story-sheet">
+            <div class="story-sheet__head">
+              <div class="story-sheet__chapter">Prologo</div>
+              <p class="section-count" id="storyIndex">1 / 4</p>
             </div>
-          </div>
+
+            <div class="story-sheet__body">
+              <p class="story-text" id="storyText"></p>
+            </div>
+
+            <div class="progress-line" aria-hidden="true">
+              <span id="storyProgress"></span>
+            </div>
+
+            <div class="action-row action-row-split">
+              <button class="button" id="storyPrev" type="button">Indietro</button>
+              <button class="button button-primary" id="storyNext" type="button">Continua</button>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="view" id="scene-mission" aria-label="Missione 0" hidden>
-        <div class="mission-page">
-          <div class="panel">
-            <div class="section-header">
-              <div>
-                <div class="section-line">
-                  <div class="section-line__mark"></div>
-                  <div class="section-line__text" id="missionTitle">Missione 0</div>
-                </div>
-                <p class="page-copy page-copy-tight" id="missionIntro"></p>
-              </div>
+        <div class="mission-layout">
+          <header class="mission-header">
+            <div>
+              <p class="mission-header__eyeline" id="missionTitle">Missione 0</p>
+              <p class="page-copy page-copy-tight" id="missionIntro"></p>
+            </div>
+            <div class="mission-header__status">
               <p class="section-count" id="questionCounter">1 / 10</p>
+              <p class="section-count" id="questionMeta">Nodo narrativo</p>
             </div>
+          </header>
 
-            <div class="meta-row">
-              <p id="questionMeta">Nodo narrativo</p>
-              <p id="tapHint">Scegli d'istinto</p>
-            </div>
+          <div class="progress-line progress-line-strong" aria-hidden="true">
+            <span id="questionProgress"></span>
+          </div>
 
-            <div class="progress-line progress-line-strong" aria-hidden="true">
-              <span id="questionProgress"></span>
-            </div>
-
-            <div class="question-block">
+          <div class="mission-frame">
+            <div class="mission-frame__prompt">
+              <div class="mission-frame__hint" id="tapHint">Scegli d'istinto</div>
               <p class="question-text" id="questionText"></p>
             </div>
 
@@ -126,12 +130,9 @@
       </section>
 
       <section class="view" id="scene-complete" aria-label="Completamento" hidden>
-        <div class="result-page">
-          <div class="panel panel-result">
-            <div class="section-line">
-              <div class="section-line__mark"></div>
-              <div class="section-line__text" id="completionKicker">Esito missione</div>
-            </div>
+        <div class="result-layout">
+          <section class="result-main">
+            <p class="result-main__meta" id="completionKicker">Esito missione</p>
             <h2 class="page-title page-title-small" id="completionTitleText">Il viaggio ha preso una direzione.</h2>
             <p class="page-copy" id="completionText"></p>
 
@@ -150,13 +151,13 @@
               <button class="button button-primary" id="completionHomeButton" type="button">Apri la home</button>
               <button class="button" id="restartButton" type="button">Ricomincia</button>
             </div>
-          </div>
+          </section>
 
           <aside class="result-sidecard" id="completionVisual" hidden>
             <div class="result-sidecard__map" aria-hidden="true"></div>
             <div class="result-sidecard__content">
-              <p class="result-sidecard__label">Direzione attivata</p>
-              <p class="result-sidecard__text">Il tuo archivio missioni ora puo essere consultato e filtrato.</p>
+              <p class="result-sidecard__label">Archivio sbloccato</p>
+              <p class="result-sidecard__text">Da qui puoi leggere le missioni generali, quelle dei luoghi e il percorso legato al tuo profilo.</p>
             </div>
           </aside>
         </div>
@@ -164,13 +165,12 @@
 
       <section class="view" id="scene-home" aria-label="Home missioni" hidden>
         <div class="home-layout">
-          <section class="panel">
-            <div class="section-line">
-              <div class="section-line__mark"></div>
-              <div class="section-line__text">Archivio personale</div>
+          <section class="home-intro">
+            <div class="home-intro__copy">
+              <p class="home-intro__route">Archivio personale</p>
+              <h2 class="page-title page-title-small" id="homeTitle">Le tue missioni</h2>
+              <p class="page-copy page-copy-tight" id="homeText"></p>
             </div>
-            <h2 class="page-title page-title-small" id="homeTitle">Le tue missioni</h2>
-            <p class="page-copy page-copy-tight" id="homeText"></p>
 
             <div class="summary-grid">
               <div class="summary-item">
@@ -192,51 +192,43 @@
             </div>
           </section>
 
-          <aside class="panel">
-            <div class="section-line">
-              <div class="section-line__mark"></div>
-              <div class="section-line__text">Profilo</div>
-            </div>
-            <h2 class="section-title" id="homeProfileTitle">Profilo in attesa</h2>
-            <p class="page-copy page-copy-tight" id="homeProfileText"></p>
-            <div class="profile-panel profile-panel-compact" id="homeProfileChip" hidden>
-              <div class="profile-panel__badge" id="homeProfileBadge" aria-hidden="true"></div>
-              <div>
-                <p class="profile-panel__label">Categoria</p>
-                <p class="profile-panel__title" id="homeProfileChipTitle"></p>
+          <aside class="home-side">
+            <section class="home-side__panel">
+              <h2 class="section-title" id="homeProfileTitle">Profilo in attesa</h2>
+              <p class="page-copy page-copy-tight" id="homeProfileText"></p>
+
+              <div class="profile-panel profile-panel-compact" id="homeProfileChip" hidden>
+                <div class="profile-panel__badge" id="homeProfileBadge" aria-hidden="true"></div>
+                <div>
+                  <p class="profile-panel__label">Categoria</p>
+                  <p class="profile-panel__title" id="homeProfileChipTitle"></p>
+                </div>
               </div>
-            </div>
+            </section>
+
+            <section class="home-side__panel">
+              <p class="page-copy page-copy-tight" id="homeOverviewText"></p>
+
+              <div class="archive-grid">
+                <button class="archive-link" type="button" data-section="general">
+                  <span id="homeNavGeneralLabel">Generali</span>
+                  <strong id="homeNavGeneralCount">00</strong>
+                </button>
+                <button class="archive-link" type="button" data-section="locations">
+                  <span id="homeNavLocationsLabel">Luoghi</span>
+                  <strong id="homeNavLocationsCount">00</strong>
+                </button>
+                <button class="archive-link" type="button" data-section="personal">
+                  <span id="homeNavPersonalLabel">Profilo</span>
+                  <strong id="homeNavPersonalCount">00</strong>
+                </button>
+              </div>
+            </section>
           </aside>
 
-          <section class="panel">
-            <div class="section-line">
-              <div class="section-line__mark"></div>
-              <div class="section-line__text">Accessi rapidi</div>
-            </div>
-            <p class="page-copy page-copy-tight" id="homeOverviewText"></p>
-            <div class="archive-grid">
-              <button class="archive-link" type="button" data-section="general">
-                <span id="homeNavGeneralLabel">Generali</span>
-                <strong id="homeNavGeneralCount">00</strong>
-              </button>
-              <button class="archive-link" type="button" data-section="locations">
-                <span id="homeNavLocationsLabel">Luoghi</span>
-                <strong id="homeNavLocationsCount">00</strong>
-              </button>
-              <button class="archive-link" type="button" data-section="personal">
-                <span id="homeNavPersonalLabel">Profilo</span>
-                <strong id="homeNavPersonalCount">00</strong>
-              </button>
-            </div>
-          </section>
-
-          <section class="panel">
+          <section class="panel mission-panel">
             <div class="section-header">
               <div>
-                <div class="section-line">
-                  <div class="section-line__mark"></div>
-                  <div class="section-line__text">Sezione</div>
-                </div>
                 <h2 class="section-title" id="generalPanelTitle">Missioni generali</h2>
                 <p class="page-copy page-copy-tight" id="generalPanelText"></p>
               </div>
@@ -248,13 +240,9 @@
             <div class="mission-list" id="generalMissionList"></div>
           </section>
 
-          <section class="panel">
+          <section class="panel mission-panel">
             <div class="section-header">
               <div>
-                <div class="section-line">
-                  <div class="section-line__mark"></div>
-                  <div class="section-line__text">Sezione</div>
-                </div>
                 <h2 class="section-title" id="locationPanelTitle">Missioni luogo</h2>
                 <p class="page-copy page-copy-tight" id="locationPanelText"></p>
               </div>
@@ -266,13 +254,9 @@
             <div class="mission-list" id="locationMissionList"></div>
           </section>
 
-          <section class="panel">
+          <section class="panel mission-panel">
             <div class="section-header">
               <div>
-                <div class="section-line">
-                  <div class="section-line__mark"></div>
-                  <div class="section-line__text">Sezione</div>
-                </div>
                 <h2 class="section-title" id="personalPanelTitle">Missioni profilo</h2>
                 <p class="page-copy page-copy-tight" id="personalPanelText"></p>
               </div>
@@ -287,35 +271,33 @@
       </section>
 
       <section class="view" id="scene-category-detail" aria-label="Archivio missioni" hidden>
-        <div class="panel panel-detail">
-          <div class="section-header">
+        <div class="detail-layout">
+          <header class="detail-layout__header">
             <button class="button" id="detailBackButton" type="button">Torna alla home</button>
             <span class="section-count" id="detailCategoryCount">0 missioni</span>
-          </div>
+          </header>
 
-          <div class="section-line">
-            <div class="section-line__mark"></div>
-            <div class="section-line__text">Archivio</div>
-          </div>
-          <h2 class="section-title" id="detailTitle">Archivio missioni</h2>
-          <p class="page-copy page-copy-tight" id="detailText"></p>
+          <section class="panel panel-detail">
+            <h2 class="section-title" id="detailTitle">Archivio missioni</h2>
+            <p class="page-copy page-copy-tight" id="detailText"></p>
 
-          <div class="filter-block">
-            <p class="filter-label" id="detailFilterTitle">Filtra le missioni</p>
-            <div class="filter-row" id="detailFilterRow"></div>
-          </div>
+            <div class="filter-block">
+              <p class="filter-label" id="detailFilterTitle">Filtra le missioni</p>
+              <div class="filter-row" id="detailFilterRow"></div>
+            </div>
 
-          <div class="section-header section-header-spaced">
-            <h3 class="list-title">Missioni disponibili</h3>
-            <span class="section-count" id="detailResultsCount">0 risultati</span>
-          </div>
+            <div class="section-header section-header-spaced">
+              <h3 class="list-title">Missioni disponibili</h3>
+              <span class="section-count" id="detailResultsCount">0 risultati</span>
+            </div>
 
-          <div class="mission-list" id="detailMissionList"></div>
+            <div class="mission-list" id="detailMissionList"></div>
 
-          <div class="empty-state" id="detailEmptyState" hidden>
-            <h3 class="list-title" id="detailEmptyTitle">Nessuna missione</h3>
-            <p class="page-copy page-copy-tight" id="detailEmptyText"></p>
-          </div>
+            <div class="empty-state" id="detailEmptyState" hidden>
+              <h3 class="list-title" id="detailEmptyTitle">Nessuna missione</h3>
+              <p class="page-copy page-copy-tight" id="detailEmptyText"></p>
+            </div>
+          </section>
         </div>
       </section>
     </main>
