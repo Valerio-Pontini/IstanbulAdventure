@@ -3,111 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#111111" />
-  <meta name="description" content="Webapp installabile con copertina fullscreen e seconda pagina con widget SVG e pulsante SVG." />
+  <meta name="theme-color" content="#0d1014" />
+  <meta name="description" content="Esperienza narrativa immersiva di Istanbul Adventure." />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Sora:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
-  <title>Webapp Demo</title>
+  <title>Istanbul Adventure</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="app-shell">
     <section id="onboardingPage" class="page page-cover is-active" aria-label="Pagina iniziale">
-      <button id="enterAppButton" class="cover-tap-area" aria-label="Apri la seconda pagina">
+      <button id="enterAppButton" class="cover-tap-area" aria-label="Entra nell'esperienza">
         <img
           class="cover-image"
           src="assets/hero-onboarding.png"
-          alt="Immagine di copertina"
+          alt="Vista suggestiva di Istanbul"
         />
-        <div class="scene-noise" aria-hidden="true"></div>
-        <div class="cover-overlay"></div>
-        <div class="cover-chrome" aria-hidden="true">
-          <span class="cover-badge">Immersive Journey</span>
-          <span class="cover-orbit cover-orbit-one"></span>
-          <span class="cover-orbit cover-orbit-two"></span>
-        </div>
-        <div class="cover-copy">
-          <p class="cover-kicker">Istanbul Adventure</p>
-          <h1 class="cover-title" id="coverTitle">Il Mio Titolo</h1>
-          <p class="cover-subtitle">Un'esperienza narrativa pensata come una cartolina viva, tra scoperta, atmosfera e ritmo.</p>
-        </div>
-        <div class="cover-footer">
-          <p class="cover-hint" id="coverHint">Tocca per entrare</p>
-          <span class="cover-pulse" aria-hidden="true"></span>
+        <span class="cover-gradient" aria-hidden="true"></span>
+        <span class="cover-grain" aria-hidden="true"></span>
+        <span class="cover-aura cover-aura-one" aria-hidden="true"></span>
+        <span class="cover-aura cover-aura-two" aria-hidden="true"></span>
+
+        <div class="cover-shell">
+          <div class="cover-topbar">
+            <span class="brand-mark">Istanbul Adventure</span>
+            <span class="brand-chip">Interactive Story Experience</span>
+          </div>
+
+          <div class="cover-stage">
+            <div class="cover-copy">
+              <p class="eyebrow">Playable Travel Story</p>
+              <h1 class="cover-title" id="coverTitle">Il Mio Titolo</h1>
+              <p class="cover-description">
+                Un ingresso cinematografico, moderno e magnetico per una storia da vivere come un viaggio sensoriale.
+              </p>
+              <div class="cover-entry">
+                <span class="cover-entry-label" id="coverHint">Tocca per entrare</span>
+                <span class="cover-entry-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+
+            <aside class="cover-panel" aria-hidden="true">
+              <span class="cover-panel-label">City Notes</span>
+              <p class="cover-panel-title">Una UI progettata come un prodotto premium, non come una pagina decorata.</p>
+              <div class="cover-panel-grid">
+                <div class="cover-stat">
+                  <span class="cover-stat-value">01</span>
+                  <span class="cover-stat-label">Immersione</span>
+                </div>
+                <div class="cover-stat">
+                  <span class="cover-stat-value">02</span>
+                  <span class="cover-stat-label">Ritmo</span>
+                </div>
+                <div class="cover-stat">
+                  <span class="cover-stat-value">03</span>
+                  <span class="cover-stat-label">Profondita</span>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </button>
     </section>
 
-    <section id="storyPage" class="page page-content" aria-label="Seconda pagina">
-      <div class="scene-noise" aria-hidden="true"></div>
+    <section id="storyPage" class="page page-story" aria-label="Pagina storia">
+      <div class="story-backdrop" aria-hidden="true"></div>
+      <div class="story-noise" aria-hidden="true"></div>
+
       <div class="content-inner">
-        <div class="content-stage">
-          <div class="content-atmosphere" aria-hidden="true">
-            <span class="content-halo"></span>
-            <span class="content-grid"></span>
-          </div>
-          <div class="story-shell">
-            <div class="story-shell-top">
-              <span class="story-badge">Chapter 01</span>
-              <span class="story-badge story-badge-muted">Interactive Tale</span>
+        <div class="story-layout">
+          <header class="story-header">
+            <div class="story-brand">
+              <span class="brand-mark">Istanbul Adventure</span>
+              <span class="story-route">Chapter One</span>
             </div>
-          <header class="content-header">
-            <h2 class="content-title" id="contentTitle">Seconda Pagina</h2>
-            <p class="content-subtitle">Un pannello di lettura più ricco, avvolgente e pronto per una release production-grade.</p>
+            <div class="story-meta">
+              <span class="story-meta-pill">Narrative Mode</span>
+              <span class="story-meta-pill story-meta-pill-muted">Designed For Focus</span>
+            </div>
           </header>
 
-          <div class="widget-wrapper" role="img" aria-label="Textbox decorativa con testo interno">
-            <div class="widget-glow" aria-hidden="true"></div>
-            <img
-              class="widget-frame"
-              src="assets/textbox.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <div class="widget-text" id="widgetText">
-              Qui va il tuo testo dentro il widget SVG
-            </div>
-            <div class="widget-controls" aria-label="Navigazione del testo">
-              <button id="prevTextButton" class="widget-arrow widget-arrow-prev" type="button" aria-label="Testo precedente">
-                <img
-                  class="widget-arrow-shape"
-                  src="assets/leftArrow.png"
-                  alt=""
-                  aria-hidden="true"
-                />
-              </button>
-              <button id="nextTextButton" class="widget-arrow widget-arrow-next" type="button" aria-label="Testo successivo">
-                <img
-                  class="widget-arrow-shape"
-                  src="assets/rightArrow.png"
-                  alt=""
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </div>
+          <section class="story-main">
+            <div class="story-card">
+              <div class="story-card-top">
+                <p class="eyebrow">Story Journal</p>
+                <h2 class="content-title" id="contentTitle">Seconda Pagina</h2>
+              </div>
 
-          <button id="svgActionButton" class="svg-button" type="button">
-            <img
-              class="svg-button-shape"
-              src="assets/pulsante marrone.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <span class="svg-button-label" id="actionButtonLabel">Premi qui</span>
-          </button>
-          </div>
+              <div class="story-reader">
+                <div class="story-reader-glow" aria-hidden="true"></div>
+                <div class="story-reader-frame" aria-hidden="true"></div>
+                <div class="widget-text story-text" id="widgetText">
+                  Qui va il tuo testo dentro il widget SVG
+                </div>
+              </div>
+
+              <div class="story-controls" aria-label="Navigazione del testo">
+                <button id="prevTextButton" class="story-nav-button" type="button" aria-label="Testo precedente">←</button>
+                <div class="story-controls-copy">
+                  <span class="story-controls-title">Scorri la scena</span>
+                  <span class="story-controls-subtitle">Muoviti nel racconto con un ritmo piu elegante e leggibile.</span>
+                </div>
+                <button id="nextTextButton" class="story-nav-button" type="button" aria-label="Testo successivo">→</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="story-sidebar">
+            <div class="story-sidebar-card">
+              <span class="story-sidebar-label">Next Destination</span>
+              <p class="story-sidebar-title">Quando sei pronto, il racconto lascia spazio all'interazione.</p>
+              <button id="svgActionButton" class="action-launch" type="button">
+                <span class="action-launch-surface" aria-hidden="true"></span>
+                <span class="action-launch-label" id="actionButtonLabel">Premi qui</span>
+              </button>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
-
   </main>
 
   <script src="content.js"></script>

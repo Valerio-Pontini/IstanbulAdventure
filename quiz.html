@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#111111" />
-  <meta name="description" content="Pagina quiz di Istanbul Adventure." />
+  <meta name="theme-color" content="#0d1014" />
+  <meta name="description" content="Quiz immersivo di Istanbul Adventure." />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Sora:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <title>Istanbul Adventure Quiz</title>
@@ -19,59 +19,48 @@
 </head>
 <body class="quiz-page-body">
   <main class="app-shell">
-    <section class="page page-content page-quiz is-active" aria-label="Pagina quiz">
-      <div class="scene-noise" aria-hidden="true"></div>
+    <section class="page page-quiz is-active" aria-label="Pagina quiz">
+      <div class="quiz-backdrop" aria-hidden="true"></div>
+      <div class="story-noise" aria-hidden="true"></div>
+
       <div class="content-inner">
-        <div class="content-stage quiz-stage">
-          <div class="content-atmosphere" aria-hidden="true">
-            <span class="content-halo"></span>
-            <span class="content-grid"></span>
-          </div>
-          <div class="story-shell quiz-shell">
-            <div class="story-shell-top">
-              <span class="story-badge">Quiz Mode</span>
-              <span class="story-badge story-badge-muted">Interactive Challenge</span>
+        <div class="quiz-layout">
+          <header class="quiz-header">
+            <div class="story-brand">
+              <span class="brand-mark">Istanbul Adventure</span>
+              <span class="story-route">Quiz Sequence</span>
             </div>
-          <div id="quizExperience" class="quiz-experience">
-            <div class="quiz-widget" role="img" aria-label="Domanda dentro un widget decorativo">
-              <div class="quiz-widget-glow" aria-hidden="true"></div>
-              <img
-                class="quiz-widget-frame"
-                src="assets/horizontalFrame.png"
-                alt=""
-                aria-hidden="true"
-              />
-              <div class="quiz-widget-text" id="quizQuestionText"></div>
+            <div class="story-meta">
+              <span class="story-meta-pill">Interactive Challenge</span>
+            </div>
+          </header>
+
+          <section class="quiz-panel">
+            <div id="quizExperience" class="quiz-experience">
+              <div class="quiz-widget" role="img" aria-label="Domanda del quiz">
+                <div class="quiz-widget-glow" aria-hidden="true"></div>
+                <div class="quiz-widget-frame" aria-hidden="true"></div>
+                <div class="quiz-widget-text" id="quizQuestionText"></div>
+              </div>
+
+              <div id="quizAnswers" class="quiz-answers" aria-live="polite"></div>
             </div>
 
-            <div id="quizAnswers" class="quiz-answers" aria-live="polite"></div>
-          </div>
-
-          <div id="quizCompletion" class="quiz-completion" hidden>
-            <div class="quiz-widget quiz-widget-completion" role="img" aria-label="Messaggio finale del quiz">
-              <div class="quiz-widget-glow" aria-hidden="true"></div>
-              <img
-                class="quiz-widget-frame"
-                src="assets/horizontalFrame.png"
-                alt=""
-                aria-hidden="true"
-              />
-              <div class="quiz-widget-text" id="quizCompletionText"></div>
+            <div id="quizCompletion" class="quiz-completion" hidden>
+              <div class="quiz-widget quiz-widget-completion" role="img" aria-label="Messaggio finale del quiz">
+                <div class="quiz-widget-glow" aria-hidden="true"></div>
+                <div class="quiz-widget-frame" aria-hidden="true"></div>
+                <div class="quiz-widget-text" id="quizCompletionText"></div>
+              </div>
             </div>
-          </div>
-          </div>
+          </section>
         </div>
       </div>
 
       <div id="feedbackOverlay" class="feedback-overlay" hidden role="button" tabindex="0" aria-label="Chiudi il messaggio e continua">
         <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="feedbackText">
           <div class="feedback-card-glow" aria-hidden="true"></div>
-          <img
-            class="feedback-card-frame"
-            src="assets/descriptionBox.png"
-            alt=""
-            aria-hidden="true"
-          />
+          <div class="feedback-card-frame" aria-hidden="true"></div>
           <div class="feedback-card-text" id="feedbackText"></div>
           <span class="feedback-card-hint" id="feedbackHint">Tocca per continuare</span>
         </div>

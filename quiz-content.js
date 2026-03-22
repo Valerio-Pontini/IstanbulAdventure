@@ -568,6 +568,58 @@ window.QUIZ_CONTENT = {
           feedback: "Serviva a immagazzinare acqua per la città"
         }
       ]
+    },
+    {
+      id: "a_23",
+      text: "Le teste di Medusa nella cisterna sono:",
+      answers: [
+        {
+          label: "Colorate",
+          nextId: "a_24",
+          feedback: "Capovolte. Posizione misteriosa e molto discussa"
+        },
+        {
+          label: "Distrutte",
+          nextId: "a_24",
+          feedback: "Capovolte. Posizione misteriosa e molto discussa"
+        },
+        {
+          label: "Capovolte",
+          nextId: "a_24",
+          feedback: "Capovolte. Posizione misteriosa e molto discussa"
+        },
+        {
+          label: "Divise",
+          nextId: "a_24",
+          feedback: "Capovolte. Posizione misteriosa e molto discussa"
+        }
+      ]
+    },
+    {
+      id: "a_24",
+      text: "I Giannizzeri (guardie d'èlite) erano",
+      answers: [
+        {
+          label: "Tutti turchi",
+          nextId: "p9",
+          feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano"
+        },
+        {
+          label: "Bambini presi da altre regioni",
+          nextId: "p9",
+          feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano"
+        },
+        {
+          label: "Mercenari europei",
+          nextId: "p9",
+          feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano"
+        },
+        {
+          label: "Nobili",
+          nextId: "p9",
+          feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano"
+        }
+      ]
     }
   ]
 };

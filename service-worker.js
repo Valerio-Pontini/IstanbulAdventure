@@ -1,20 +1,17 @@
-const CACHE_NAME = "demo-svg-pwa-v12";
+const CACHE_NAME = "demo-svg-pwa-v14";
 
 const APP_ASSETS = [
   "./",
   "./index.html",
+  "./quiz.html",
   "./styles.css",
   "./content.js",
   "./quiz-content.js",
   "./app.js",
+  "./quiz.js",
   "./manifest.json",
   "./assets/hero-onboarding.png",
   "./assets/hero-onboarding2.png",
-  "./assets/leftArrow.png",
-  "./assets/rightArrow.png",
-  "./assets/textbox.svg",
-  "./assets/horizontalFrame.png",
-  "./assets/descriptionBox.png",
   "./etichetta-ghirigori.svg",
   "./assets/pulsante marrone.svg",
   "./assets/icon-192.png",
