@@ -22,6 +22,7 @@ let activeOverlayAction = null;
 let overlayCompletesQuiz = false;
 const shownQuestionDescriptions = new Set();
 let pendingQuestionFrame = null;
+const lastAnswerOrders = new Map();
 
 const quizQuestions = new Map((quizContent.questions ?? []).map((question) => [question.id, question]));
 
@@ -200,6 +201,32 @@ function maybeShowQuestionDescription(question) {
   showOverlayCard(question.description);
 }
 
+function shuffleAnswers(question) {
+  const answers = [...(question.answers ?? [])];
+
+  if (answers.length < 2) {
+    return answers;
+  }
+
+  const previousOrder = lastAnswerOrders.get(question.id) ?? answers.map((answer) => answer.label).join("|");
+  let shuffled = answers;
+  let attempts = 0;
+
+  do {
+    shuffled = [...answers];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+
+    attempts += 1;
+  } while (shuffled.map((answer) => answer.label).join("|") === previousOrder && attempts < 8);
+
+  lastAnswerOrders.set(question.id, shuffled.map((answer) => answer.label).join("|"));
+  return shuffled;
+}
+
 function renderQuestion(questionId) {
   const question = quizQuestions.get(questionId);
 
@@ -213,7 +240,7 @@ function renderQuestion(questionId) {
   applyQuestionLayout(question);
   fitTextToQuestionFrame(ui.quizQuestionText, question.text);
 
-  const answerButtons = question.answers.map((answer) => createAnswerButton(answer));
+  const answerButtons = shuffleAnswers(question).map((answer) => createAnswerButton(answer));
   ui.quizAnswers.replaceChildren(...answerButtons);
   maybeShowQuestionDescription(question);
 }

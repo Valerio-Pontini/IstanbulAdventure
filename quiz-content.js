@@ -620,6 +620,84 @@ window.QUIZ_CONTENT = {
           feedback: "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano"
         }
       ]
+    },
+    {
+      id: "a_25",
+      text: "Alcuni mosaici di Hagia Sophia sono stati:",
+      answers: [
+        {
+          label: "Distrutti",
+          nextId: "a_26",
+          feedback: "Furono coperti durante il periodo ottomano e riscoperti dopo"
+        },
+        {
+          label: "Coperti per secoli",
+          nextId: "a_26",
+          feedback: "Furono coperti durante il periodo ottomano e riscoperti dopo"
+        },
+        {
+          label: "Rubati",
+          nextId: "a_26",
+          feedback: "Furono coperti durante il periodo ottomano e riscoperti dopo"
+        },
+        {
+          label: "Dipinti",
+          nextId: "a_26",
+          feedback: "Furono coperti durante il periodo ottomano e riscoperti dopo"
+        }
+      ]
+    },
+    {
+      id: "a_26",
+      text: "Il Tünel di Istanbul è considerato:",
+      answers: [
+        {
+          label: "La prima metro al mondo",
+          nextId: "a_27",
+          feedback: "è il secondo sistema sotterraneo urbano più antico dopo Londra"
+        },
+        {
+          label: "La seconda metro al mondo",
+          nextId: "a_27",
+          feedback: "è il secondo sistema sotterraneo urbano più antico dopo Londra"
+        },
+        {
+          label: "Un ascensore turistico",
+          nextId: "a_27",
+          feedback: "è il secondo sistema sotterraneo urbano più antico dopo Londra"
+        },
+        {
+          label: "Una funivia moderna",
+          nextId: "a_27",
+          feedback: "è il secondo sistema sotterraneo urbano più antico dopo Londra"
+        }
+      ]
+    },
+    {
+      id: "a_27",
+      text: "Le cucine del palazzo Topkapi:",
+      answers: [
+        {
+          label: "Servivano solo il sultano",
+          nextId: "p10",
+          feedback: "Preparavano migliaia di pasti al giorno. Una vera macchina logistica imperiale"
+        },
+        {
+          label: "Preparavano migliaia di pasti al giorno",
+          nextId: "p10",
+          feedback: "Preparavano migliaia di pasti al giorno. Una vera macchina logistica imperiale"
+        },
+        {
+          label: "Erano il nascondiglio del tesoro reale",
+          nextId: "p10",
+          feedback: "Preparavano migliaia di pasti al giorno. Una vera macchina logistica imperiale"
+        },
+        {
+          label: "Non furono mai utilizzate",
+          nextId: "p10",
+          feedback: "Preparavano migliaia di pasti al giorno. Una vera macchina logistica imperiale"
+        }
+      ]
     }
   ]
 };

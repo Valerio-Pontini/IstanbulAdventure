@@ -1448,6 +1448,7 @@
     let pendingCompletesQuiz = false;
     let answeredCount = 0;
     let activeAnswerButton = null;
+    const lastAnswerOrders = new Map();
 
     function setVeil(active) {
       document.documentElement.style.setProperty("--veil-opacity", active ? "1" : "0");
@@ -1502,6 +1503,32 @@
       setProgress(ui.questionProgress, Math.min((answeredCount / primaryQuestionIds.length) * 100, 100));
     }
 
+    function shuffleAnswers(question) {
+      const answers = [...question.answers];
+
+      if (answers.length < 2) {
+        return answers;
+      }
+
+      const previousOrder = lastAnswerOrders.get(question.id) ?? answers.map((answer) => answer.label).join("|");
+      let shuffled = answers;
+      let attempts = 0;
+
+      do {
+        shuffled = [...answers];
+
+        for (let index = shuffled.length - 1; index > 0; index -= 1) {
+          const randomIndex = Math.floor(Math.random() * (index + 1));
+          [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+        }
+
+        attempts += 1;
+      } while (shuffled.map((answer) => answer.label).join("|") === previousOrder && attempts < 8);
+
+      lastAnswerOrders.set(question.id, shuffled.map((answer) => answer.label).join("|"));
+      return shuffled;
+    }
+
     function renderQuestion(questionId) {
       const question = quizQuestions.get(questionId);
       currentQuestionId = questionId;
@@ -1514,7 +1541,8 @@
 
       updateQuestionMeta(questionId);
       ui.questionText.textContent = question.text;
-      ui.answerGrid.replaceChildren(...question.answers.map((answer, index) => createAnswerButton(answer, index)));
+      const shuffledAnswers = shuffleAnswers(question);
+      ui.answerGrid.replaceChildren(...shuffledAnswers.map((answer, index) => createAnswerButton(answer, index)));
       document.querySelector(".question-panel")?.scrollIntoView({ block: "start", behavior: "smooth" });
     }
 
