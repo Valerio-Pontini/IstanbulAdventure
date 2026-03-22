@@ -1,10 +1,12 @@
-const CACHE_NAME = "istanbul-adventure-pwa-v15";
+const CACHE_NAME = "istanbul-adventure-pwa-v17";
 
 const APP_ASSETS = [
   "./",
   "./index.html",
   "./quiz.html",
   "./manifest.json",
+  "./mission-0-result-content.js",
+  "./mission-home-content.js",
   "./assets/icon-192.png",
   "./assets/icon-512.png",
   "./assets/theme/bg-main-default.svg",
@@ -14,7 +16,8 @@ const APP_ASSETS = [
   "./assets/theme/icon-seal-default.svg",
   "./assets/theme/icon-story-default.svg",
   "./assets/theme/icon-mission-default.svg",
-  "./assets/theme/icon-complete-default.svg"
+  "./assets/theme/icon-complete-default.svg",
+  "./assets/hero-onboarding2.png"
 ];
 
 self.addEventListener("install", (event) => {

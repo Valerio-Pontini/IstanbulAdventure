@@ -698,6 +698,58 @@ window.QUIZ_CONTENT = {
           feedback: "Preparavano migliaia di pasti al giorno. Una vera macchina logistica imperiale"
         }
       ]
-    }
+    },
+    {
+    id: "c_1",
+    text: "Secondo una leggenda, la Torre della Fanciulla serviva a:",
+    answers: [
+      { label: "Difendere la città", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
+      { label: "Tenere al sicuro una principessa", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
+      { label: "Nascondere un tesoro", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
+      { label: "Controllare il traffico marittimo", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." }
+    ]
+  },
+  ,
+  {
+    id: "c_2",
+    text: "Nella leggenda della Torre della Fanciulla, cosa uccide la principessa?",
+    answers: [
+      { label: "Un soldato", nextId: "c_3", feedback: "Un serpente nascosto. Arrivò in un cesto di frutta." },
+      { label: "Un serpente nascosto", nextId: "c_3", feedback: "Un serpente nascosto. Arrivò in un cesto di frutta." },
+      { label: "Un crollo", nextId: "c_3", feedback: "Un serpente nascosto. Arrivò in un cesto di frutta." },
+      { label: "Una malattia", nextId: "c_3", feedback: "Un serpente nascosto. Arrivò in un cesto di frutta." }
+    ]
+  },
+  {
+    id: "c_3",
+    text: "Secondo alcune credenze, il malocchio viene causato da:",
+    answers: [
+      { label: "Il vento", nextId: "p2", feedback: "Lo sguardo invidioso. Il nazar serve a proteggersi da questo." },
+      { label: "Lo sguardo invidioso", nextId: "p2", feedback: "Lo sguardo invidioso. Il nazar serve a proteggersi da questo." },
+      { label: "Gli animali", nextId: "p2", feedback: "Lo sguardo invidioso. Il nazar serve a proteggersi da questo." },
+      { label: "Il buio", nextId: "p2", feedback: "Lo sguardo invidioso. Il nazar serve a proteggersi da questo." }
+    ]
+  },
+  {
+    id: "c_4",
+    text: "Secondo alcune storie, i gatti di Istanbul sono:",
+    answers: [
+      { label: "Animali normali", nextId: "c_5", feedback: "Custodi della città. Sono visti come osservatori silenziosi." },
+      { label: "Custodi della città", nextId: "c_5", feedback: "Custodi della città. Sono visti come osservatori silenziosi." },
+      { label: "Animali sacri", nextId: "c_5", feedback: "Custodi della città. Sono visti come osservatori silenziosi." },
+      { label: "Animali randagi senza ruolo", nextId: "c_5", feedback: "Custodi della città. Sono visti come osservatori silenziosi." }
+    ]
+  },
+  ,
+  {
+    id: "c_5",
+    text: "Quale rituale ‘da fila’ è legato a un pilastro con un piccolo foro, dentro Santa Sofia?",
+    answers: [
+      { label: "Inserire il pollice e ruotarlo esprimendo un desiderio", nextId: "c_6", feedback: "Corretto: il gesto è la miccia della leggenda." },
+      { label: "Bussare tre volte e chiedere permesso", nextId: "c_6", feedback: "No: educato, ma non è il rito famoso." },
+      { label: "Contare i mosaici fino a perdere il conto", nextId: "c_6", feedback: "No: questo è un trucco da labirinto mentale." },
+      { label: "Fischiare per chiamare i gabbiani", nextId: "c_6", feedback: "No: i gabbiani rispondono, ma non c’entra." }
+    ]
+  }
   ]
 };
