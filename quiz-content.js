@@ -445,23 +445,127 @@ window.QUIZ_CONTENT = {
       answers: [
         {
           label: "Sempre nello stesso palazzo",
-          nextId: "p5",
+          nextId: "p6",
           feedback: "Topkapi era praticamente una città dentro la città"
         },
         {
           label: "In tende",
-          nextId: "p5",
+          nextId: "p6",
           feedback: "Topkapi era praticamente una città dentro la città"
         },
         {
           label: "In un complesso enorme con centinaia di stanze",
-          nextId: "p5",
+          nextId: "p6",
           feedback: "Topkapi era praticamente una città dentro la città"
         },
         {
           label: "In castelli separati",
-          nextId: "p5",
+          nextId: "p6",
           feedback: "Topkapi era praticamente una città dentro la città"
+        }
+      ]
+    },
+    {
+      id: "a_19",
+      text: "Le mura di Costantinopoli avevano:",
+      answers: [
+        {
+          label: "Una sola linea",
+          nextId: "a_20",
+          feedback: "Tre livelli difensivi: fossa, mura esterne e interne"
+        },
+        {
+          label: "Due linee",
+          nextId: "a_20",
+          feedback: "Tre livelli difensivi: fossa, mura esterne e interne"
+        },
+        {
+          label: "Tre linee",
+          nextId: "a_20",
+          feedback: "Tre livelli difensivi: fossa, mura esterne e interne"
+        },
+        {
+          label: "Nessuna linea",
+          nextId: "a_20",
+          feedback: "Tre livelli difensivi: fossa, mura esterne e interne"
+        }
+      ]
+    },
+    {
+      id: "a_20",
+      text: "Durante l'assedio del 1453, gli ottomani:",
+      answers: [
+        {
+          label: "Scavarono sotto la città",
+          nextId: "a_21",
+          feedback: "Trasportarono navi su terra per aggirare le difese"
+        },
+        {
+          label: "Portarono navi via terra",
+          nextId: "a_21",
+          feedback: "Trasportarono navi su terra per aggirare le difese"
+        },
+        {
+          label: "Usarono solo archi",
+          nextId: "a_21",
+          feedback: "Trasportarono navi su terra per aggirare le difese"
+        },
+        {
+          label: "Aspettarono",
+          nextId: "a_21",
+          feedback: "Trasportarono navi su terra per aggirare le difese"
+        }
+      ]
+    },
+    {
+      id: "a_21",
+      text: "Hagia Sofia ha:",
+      answers: [
+        {
+          label: "Solo mosaici cristiani",
+          nextId: "p8",
+          feedback: "Entrambi, un mix unico di simboli religiosi"
+        },
+        {
+          label: "Solo elementi islamici",
+          nextId: "p8",
+          feedback: "Entrambi, un mix unico di simboli religiosi"
+        },
+        {
+          label: "Entrambi",
+          nextId: "p8",
+          feedback: "Entrambi, un mix unico di simboli religiosi"
+        },
+        {
+          label: "Nessuno",
+          nextId: "p8",
+          feedback: "Entrambi, un mix unico di simboli religiosi"
+        }
+      ]
+    },
+    {
+      id: "a_22",
+      text: "La Cisterna Basilica era:",
+      answers: [
+        {
+          label: "Una prigione",
+          nextId: "a_23",
+          feedback: "Serviva a immagazzinare acqua per la città"
+        },
+        {
+          label: "Un magazzino d'acqa",
+          nextId: "a_23",
+          feedback: "Serviva a immagazzinare acqua per la città"
+        },
+        {
+          label: "Un tempio",
+          nextId: "a_23",
+          feedback: "Serviva a immagazzinare acqua per la città"
+        },
+        {
+          label: "Un teatro",
+          nextId: "a_23",
+          feedback: "Serviva a immagazzinare acqua per la città"
         }
       ]
     }

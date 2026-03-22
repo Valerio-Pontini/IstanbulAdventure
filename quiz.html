@@ -20,10 +20,21 @@
 <body class="quiz-page-body">
   <main class="app-shell">
     <section class="page page-content page-quiz is-active" aria-label="Pagina quiz">
+      <div class="scene-noise" aria-hidden="true"></div>
       <div class="content-inner">
         <div class="content-stage quiz-stage">
+          <div class="content-atmosphere" aria-hidden="true">
+            <span class="content-halo"></span>
+            <span class="content-grid"></span>
+          </div>
+          <div class="story-shell quiz-shell">
+            <div class="story-shell-top">
+              <span class="story-badge">Quiz Mode</span>
+              <span class="story-badge story-badge-muted">Interactive Challenge</span>
+            </div>
           <div id="quizExperience" class="quiz-experience">
             <div class="quiz-widget" role="img" aria-label="Domanda dentro un widget decorativo">
+              <div class="quiz-widget-glow" aria-hidden="true"></div>
               <img
                 class="quiz-widget-frame"
                 src="assets/horizontalFrame.png"
@@ -38,6 +49,7 @@
 
           <div id="quizCompletion" class="quiz-completion" hidden>
             <div class="quiz-widget quiz-widget-completion" role="img" aria-label="Messaggio finale del quiz">
+              <div class="quiz-widget-glow" aria-hidden="true"></div>
               <img
                 class="quiz-widget-frame"
                 src="assets/horizontalFrame.png"
@@ -47,11 +59,13 @@
               <div class="quiz-widget-text" id="quizCompletionText"></div>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
       <div id="feedbackOverlay" class="feedback-overlay" hidden role="button" tabindex="0" aria-label="Chiudi il messaggio e continua">
         <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="feedbackText">
+          <div class="feedback-card-glow" aria-hidden="true"></div>
           <img
             class="feedback-card-frame"
             src="assets/descriptionBox.png"
