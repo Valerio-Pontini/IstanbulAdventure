@@ -14,8 +14,8 @@ window.QUIZ_CONTENT = {
       answers: [
         {
           label: "Pensi a quante epoche ha attraversato",
-          nextId: "a_1",
-          },
+          nextId: "a_1"
+        },
         {
           label: "Ti chiedi se ha storie strane legate a lei",
           nextId: "c_1"
@@ -700,16 +700,15 @@ window.QUIZ_CONTENT = {
       ]
     },
     {
-    id: "c_1",
-    text: "Secondo una leggenda, la Torre della Fanciulla serviva a:",
-    answers: [
-      { label: "Difendere la città", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
-      { label: "Tenere al sicuro una principessa", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
-      { label: "Nascondere un tesoro", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
-      { label: "Controllare il traffico marittimo", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." }
-    ]
-  },
-  ,
+      id: "c_1",
+      text: "Secondo una leggenda, la Torre della Fanciulla serviva a:",
+      answers: [
+        { label: "Difendere la città", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
+        { label: "Tenere al sicuro una principessa", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
+        { label: "Nascondere un tesoro", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." },
+        { label: "Controllare il traffico marittimo", nextId: "c_2", feedback: "Tenere al sicuro una principessa. Fu isolata lì per sfuggire a una profezia." }
+      ]
+    },
   {
     id: "c_2",
     text: "Nella leggenda della Torre della Fanciulla, cosa uccide la principessa?",
@@ -740,16 +739,145 @@ window.QUIZ_CONTENT = {
       { label: "Animali randagi senza ruolo", nextId: "c_5", feedback: "Custodi della città. Sono visti come osservatori silenziosi." }
     ]
   },
-  ,
-  {
-    id: "c_5",
-    text: "Quale rituale ‘da fila’ è legato a un pilastro con un piccolo foro, dentro Santa Sofia?",
+    {
+      id: "c_5",
+      text: "Quale rito popolare si associa comunemente alla colonna nella Moschea Blu di Istanbul?",
+      answers: [
+        { label: "Inserire il pollice nel foro e girarlo", nextId: "c_6", feedback: "Il rito consiste nell'inserire il pollice in un piccolo foro della colonna e ruotarlo esprimendo un desiderio." },
+        { label: "Baciare la colonna di pietra", nextId: "c_6", feedback: "Il rito consiste nell'inserire il pollice in un piccolo foro della colonna e ruotarlo esprimendo un desiderio." },
+        { label: "Lucidare la colonna con olio sacro", nextId: "c_6", feedback: "Il rito consiste nell'inserire il pollice in un piccolo foro della colonna e ruotarlo esprimendo un desiderio." },
+        { label: "Portare offerte di fiori", nextId: "c_6", feedback: "Il rito consiste nell'inserire il pollice in un piccolo foro della colonna e ruotarlo esprimendo un desiderio." }
+      ]
+    },
+    { id: "c_6", text: "Qual è l’unica fonte letteraria nota che racconta il volo di Hezarfen?", answers: [
+      { label: "Il Séyahatnâme di Evliya Çelebi", label: "p3", feedback: "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi【14†L103-L110】." },
+      { label: "Un salmo bizantino", label: "p3", feedback: "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi【14†L103-L110】." },
+      { label: "Un diario ottomano", label: "p3", feedback: "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi【14†L103-L110】." },
+      { label: "Un cronaca persiana", label: "p3", feedback: "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi【14†L103-L110】." }
+    ] },
+    { id: "c_7", text: "Qual è il soprannome turco della Cisterna Basilica?", answers: [
+      { label: "Yerebatan Sarayı (Palazzo sommerso)", label: "c_8", feedback: "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'【15†L149-L156】." },
+      { label: "Subterraneo Regale", label: "c_8", feedback: "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'【15†L149-L156】." },
+      { label: "Abisso di Giustiniano", label: "c_8", feedback: "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'【15†L149-L156】." },
+      { label: "Sala delle Meduse", label: "c_8", feedback: "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'【15†L149-L156】." }
+    ] },
+    { id: "c_8", text: "Come viene rappresentata Şahmeran nella mitologia turca?", answers: [
+      { label: "Metà donna, metà serpente", label: "c_9", feedback: "Şahmeran è descritta come un essere mitologico metà donna e metà serpente." },
+      { label: "Un drago alato", label: "c_9", feedback: "Şahmeran è descritta come un essere mitologico metà donna e metà serpente." },
+      { label: "Una ninfa dei boschi", label: "c_9", feedback: "Şahmeran è descritta come un essere mitologico metà donna e metà serpente." },
+      { label: "Una statua vivente", label: "c_9", feedback: "Şahmeran è descritta come un essere mitologico metà donna e metà serpente." }
+    ] },
+    { id: "c_9", text: "Nasreddin Hoca è celebre per racconti di quale genere?", answers: [
+      { label: "Umorismo paradossale", label: "p4", feedback: "Nasreddin è noto per racconti umoristici che capovolgono la logica comune." },
+      { label: "Tragedie storiche", label: "p4", feedback: "Nasreddin è noto per racconti umoristici che capovolgono la logica comune." },
+      { label: "Scienza e invenzioni", label: "p4", feedback: "Nasreddin è noto per racconti umoristici che capovolgono la logica comune." },
+      { label: "Ricette culinarie", label: "p4", feedback: "Nasreddin è noto per racconti umoristici che capovolgono la logica comune." }
+    ] },
+    { id: "c_10", text: "Chi è Dede Korkut nelle saghe turche?", answers: [
+      { label: "Saggio narratore e consigliere epico", label: "c_11", feedback: "Dede Korkut è il saggio narratore e figura guida nell’epica popolare degli Oghuz." },
+      { label: "Re guerriero degli imperatori", label: "c_11", feedback: "Dede Korkut è il saggio narratore e figura guida nell’epica popolare degli Oghuz." },
+      { label: "Demone della foresta", label: "c_11", feedback: "Dede Korkut è il saggio narratore e figura guida nell’epica popolare degli Oghuz." },
+      { label: "Drago marino", label: "c_11", feedback: "Dede Korkut è il saggio narratore e figura guida nell’epica popolare degli Oghuz." }
+    ] },
+    { id: "c_11", text: "Chi sono Karagöz e Hacivat?", answers: [
+      { label: "Personaggi del teatro di ombre turco", label: "c_12", feedback: "Karagöz e Hacivat sono i protagonisti del tradizionale teatro di ombre turco (teatro di figura)【13†L166-L174】." },
+      { label: "Due moschee a Istanbul", label: "c_12", feedback: "Karagöz e Hacivat sono i protagonisti del tradizionale teatro di ombre turco (teatro di figura)【13†L166-L174】." },
+      { label: "Due re della dinastia ottomana", label: "c_12", feedback: "Karagöz e Hacivat sono i protagonisti del tradizionale teatro di ombre turco (teatro di figura)【13†L166-L174】." },
+      { label: "Due montagne sacre", label: "c_12", feedback: "Karagöz e Hacivat sono i protagonisti del tradizionale teatro di ombre turco (teatro di figura)【13†L166-L174】." }
+    ] },
+    { id: "c_12", text: "Quale sultano ottomano introdusse il caffè in Turchia secondo la leggenda?", answers: [
+      { label: "Solimano il Magnifico", label: "p5", feedback: "Secondo la tradizione, il caffè entrò in uso all’epoca di Solimano il Magnifico nel XVI secolo【11†L376-L384】." },
+      { label: "Mehmed II", label: "p5", feedback: "Secondo la tradizione, il caffè entrò in uso all’epoca di Solimano il Magnifico nel XVI secolo【11†L376-L384】." },
+      { label: "Suleyman il Vecchio", label: "p5", feedback: "Secondo la tradizione, il caffè entrò in uso all’epoca di Solimano il Magnifico nel XVI secolo【11†L376-L384】." },
+      { label: "Mahmud il II", label: "p5", feedback: "Secondo la tradizione, il caffè entrò in uso all’epoca di Solimano il Magnifico nel XVI secolo【11†L376-L384】." }
+    ] },
+    { id: "c_13", text: "Cosa racconta la leggenda sulla resa dei turchi a Vienna nel 1683 legata al caffè?", answers: [
+      { label: "Abbandono di sacchi di caffè", label: "c_14", feedback: "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa【11†L380-L388】." },
+      { label: "Riscatto con caffè speziato", label: "c_14", feedback: "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa【11†L380-L388】." },
+      { label: "Tariffa caffè imposto", label: "c_14", feedback: "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa【11†L380-L388】." },
+      { label: "Volo de l caffè portato da angeli", label: "c_14", feedback: "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa【11†L380-L388】." }
+    ] },
+    { id: "c_14", text: "Quale libro di viaggio del 1600 menziona il volo di Hezarfen?", answers: [
+      { label: "Seyahatnâme di Evliya Çelebi", label: "c_15", feedback: "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo)【14†L103-L110】." },
+      { label: "Le Mille e una Notte", label: "c_15", feedback: "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo)【14†L103-L110】." },
+      { label: "Divan di Rumi", label: "c_15", feedback: "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo)【14†L103-L110】." },
+      { label: "Enciclopedia del Cielo", label: "c_15", feedback: "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo)【14†L103-L110】." }
+    ] },
+    { id: "c_15", text: "Cosa significa il nome Şahmeran nella lingua persiana?", answers: [
+      { label: "Re dei serpenti", label: "p6", feedback: "Il nome Şahmeran significa letteralmente **\"Re dei serpenti\"** (persiano shah: re, maran: serpenti)." },
+      { label: "Signora delle acque", label: "p6", feedback: "Il nome Şahmeran significa letteralmente **\"Re dei serpenti\"** (persiano shah: re, maran: serpenti)." },
+      { label: "Regina delle fate", label: "p6", feedback: "Il nome Şahmeran significa letteralmente **\"Re dei serpenti\"** (persiano shah: re, maran: serpenti)." },
+      { label: "Dea della saggezza", label: "p6", feedback: "Il nome Şahmeran significa letteralmente **\"Re dei serpenti\"** (persiano shah: re, maran: serpenti)." }
+    ] },
+    { id: "c_16", text: "Secondo la leggenda, quale segno compare sul corpo di chi vede Şahmeran?", answers: [
+      { label: "Squame serpentine", label: "c_17", feedback: "Si narra che chi vede Şahmeran sviluppa delle **squame serpentine** sul corpo." },
+      { label: "Ali d'angelo", label: "c_17", feedback: "Si narra che chi vede Şahmeran sviluppa delle **squame serpentine** sul corpo." },
+      { label: "Occhi di fuoco", label: "c_17", feedback: "Si narra che chi vede Şahmeran sviluppa delle **squame serpentine** sul corpo." },
+      { label: "Nessun segno", label: "c_17", feedback: "Si narra che chi vede Şahmeran sviluppa delle **squame serpentine** sul corpo." }
+    ] },
+    { id: "c_17", text: "Secondo il mito di Ergenekon, in quale luogo leggendario i Turchi furono imprigionati?", answers: [
+      { label: "Valle di Ergenekon", label: "c_18", feedback: "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di **Ergenekon** fino alla loro liberazione." },
+      { label: "Grotta di Çatalhöyük", label: "c_18", feedback: "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di **Ergenekon** fino alla loro liberazione." },
+      { label: "Isola di Creta", label: "c_18", feedback: "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di **Ergenekon** fino alla loro liberazione." },
+      { label: "Deserto di Gobi", label: "c_18", feedback: "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di **Ergenekon** fino alla loro liberazione." }
+    ] },
+    { id: "c_18", text: "Cos’è l’Anka kuşu nella mitologia turca?", answers: [
+      { label: "La fenice mitica", label: "p7", feedback: "L’**Anka kuşu** è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri." },
+      { label: "Una montagna sacra", label: "p7", feedback: "L’**Anka kuşu** è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri." },
+      { label: "Un eroe epico", label: "p7", feedback: "L’**Anka kuşu** è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri." },
+      { label: "Una pianta medicinale", label: "p7", feedback: "L’**Anka kuşu** è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri." }
+    ] },
+    { id: "c_19", text: "Quale figura leggendaria è strettamente associata alle acque e alla guarigione nella tradizione popolare turca?", answers: [
+      { label: "Khidr (Hızır)", label: "c_20", feedback: "Il profeta leggendario **Khidr (Hızır)** è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca." },
+      { label: "Orfeo", label: "c_20", feedback: "Il profeta leggendario **Khidr (Hızır)** è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca." },
+      { label: "Aquila", label: "c_20", feedback: "Il profeta leggendario **Khidr (Hızır)** è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca." },
+      { label: "Pandora", label: "c_20", feedback: "Il profeta leggendario **Khidr (Hızır)** è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca." }
+    ] },
+    { id: "c_20", text: "Nel mito di Ergenekon, come fu liberato il popolo dalla valle leggendaria?", answers: [
+      { label: "Un fabbro forgiò una spada e aprì la montagna", label: "c_21", feedback: "La leggenda dice che un fabbro forgiò una spada e ruppe la montagna di Ergenekon, liberando così il popolo." },
+      { label: "Un angelo discese dal cielo", label: "c_21", feedback: "La leggenda dice che un fabbro forgiò una spada e ruppe la montagna di Ergenekon, liberando così il popolo." },
+      { label: "Un drago sorvolò la valle", label: "c_21", feedback: "La leggenda dice che un fabbro forgiò una spada e ruppe la montagna di Ergenekon, liberando così il popolo." },
+      { label: "Un re spezzò la valle con il suo scettro", label: "c_21", feedback: "La leggenda dice che un fabbro forgiò una spada e ruppe la montagna di Ergenekon, liberando così il popolo." }
+    ] },
+    {
+    id: "c_21",
+    text: "Quale figura leggendaria appare nella notte di Hıdrellez secondo la tradizione?",
     answers: [
-      { label: "Inserire il pollice e ruotarlo esprimendo un desiderio", nextId: "c_6", feedback: "Corretto: il gesto è la miccia della leggenda." },
-      { label: "Bussare tre volte e chiedere permesso", nextId: "c_6", feedback: "No: educato, ma non è il rito famoso." },
-      { label: "Contare i mosaici fino a perdere il conto", nextId: "c_6", feedback: "No: questo è un trucco da labirinto mentale." },
-      { label: "Fischiare per chiamare i gabbiani", nextId: "c_6", feedback: "No: i gabbiani rispondono, ma non c’entra." }
+      { label: "Hızır", label: "p8", feedback: "Durante Hıdrellez si crede che appaia **Hızır**, figura misteriosa associata a fortuna, guarigione e desideri realizzati." },
+      { label: "Ercole", label: "p8", feedback: "Durante Hıdrellez si crede che appaia **Hızır**, figura misteriosa associata a fortuna, guarigione e desideri realizzati." },
+      { label: "Odino", label: "p8", feedback: "Durante Hıdrellez si crede che appaia **Hızır**, figura misteriosa associata a fortuna, guarigione e desideri realizzati." },
+      { label: "Anubi", label: "p8", feedback: "Durante Hıdrellez si crede che appaia **Hızır**, figura misteriosa associata a fortuna, guarigione e desideri realizzati." }
     ]
-  }
+  },
+  {
+    id: "c_25",
+    text: "Secondo alcune leggende, cosa succede di notte nella Cisterna Basilica?",
+    answers: [
+      { label: "Si sentono voci e sussurri", label: "c_26", feedback: "Molte storie raccontano che nella Cisterna Basilica si sentano **voci e sussurri**, alimentando l’atmosfera misteriosa del luogo sotterraneo." },
+      { label: "L'acqua scompare", label: "c_26", feedback: "Molte storie raccontano che nella Cisterna Basilica si sentano **voci e sussurri**, alimentando l’atmosfera misteriosa del luogo sotterraneo." },
+      { label: "Le statue si muovono", label: "c_26", feedback: "Molte storie raccontano che nella Cisterna Basilica si sentano **voci e sussurri**, alimentando l’atmosfera misteriosa del luogo sotterraneo." },
+      { label: "Appare un re", label: "c_26", feedback: "Molte storie raccontano che nella Cisterna Basilica si sentano **voci e sussurri**, alimentando l’atmosfera misteriosa del luogo sotterraneo." }
+    ]
+  },
+  {
+    id: "c_26",
+    text: "Chi era Şahmeran nella tradizione anatolica?",
+    answers: [
+      { label: "Una regina dei serpenti", label: "c_27", feedback: "Şahmeran è una figura leggendaria metà donna e metà serpente, considerata la **regina dei serpenti e simbolo di conoscenza e saggezza nascosta**." },
+      { label: "Una guerriera umana", label: "c_27", feedback: "Şahmeran è una figura leggendaria metà donna e metà serpente, considerata la **regina dei serpenti e simbolo di conoscenza e saggezza nascosta**." },
+      { label: "Una dea del mare", label: "c_27", feedback: "Şahmeran è una figura leggendaria metà donna e metà serpente, considerata la **regina dei serpenti e simbolo di conoscenza e saggezza nascosta**." },
+      { label: "Una strega malvagia", label: "c_27", feedback: "Şahmeran è una figura leggendaria metà donna e metà serpente, considerata la **regina dei serpenti e simbolo di conoscenza e saggezza nascosta**." }
+    ]
+  },
+  {
+    id: "c_27",
+    text: "Quale figura mitologica turca rappresenta un uccello immortale che rinasce?",
+    answers: [
+      { label: "Anka", label: "p10", feedback: "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca." },
+      { label: "Simurgh", label: "p10", feedback: "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca." },
+      { label: "Grifone", label: "p10", feedback: "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca." },
+      { label: "Pegaso", label: "p10", feedback: "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca." }
+    ]
+  },
   ]
 };
