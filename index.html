@@ -24,8 +24,8 @@
 
     <header class="app-bar">
       <div class="app-bar__brand">
-        <span class="app-bar__city">Istanbul</span>
-        <span class="app-bar__project">Adventure</span>
+        <span class="app-bar__city" data-text-key="brand.city">Istanbul</span>
+        <span class="app-bar__project" data-text-key="brand.project">Adventure</span>
       </div>
       <div class="app-bar__status" id="statusPill">Missione 0</div>
     </header>
@@ -40,12 +40,12 @@
 
           <div class="entry-panel">
             <div class="entry-panel__meta">
-              <span class="entry-panel__route">Bosphorus Route</span>
-              <span class="entry-panel__season">Mobile experience</span>
+              <span class="entry-panel__route" data-text-key="entry.route">Bosphorus Route</span>
+              <span class="entry-panel__season" data-text-key="entry.season">Mobile experience</span>
             </div>
 
-            <h1 class="page-title">Una città diversa per ogni viaggiatore</h1>
-            <p class="page-copy">
+            <h1 class="page-title" data-text-key="entry.title">Una città diversa per ogni viaggiatore</h1>
+            <p class="page-copy" data-text-key="entry.copy">
               Una missione iniziale ti assegna una personalità di esplorazione. Da lì si aprono missioni, luoghi e percorsi speciali costruiti sul modo in cui guardi Istanbul.
             </p>
 
@@ -56,16 +56,16 @@
 
             <div class="entry-facts">
               <div class="entry-fact">
-                <p class="entry-fact__label">Formato</p>
-                <p class="entry-fact__value">Flusso narrativo in tap</p>
+                <p class="entry-fact__label" data-text-key="entry.factFormatLabel">Formato</p>
+                <p class="entry-fact__value" data-text-key="entry.factFormatValue">Flusso narrativo in tap</p>
               </div>
               <div class="entry-fact">
-                <p class="entry-fact__label">Durata</p>
-                <p class="entry-fact__value">Missione rapida + archivio personale</p>
+                <p class="entry-fact__label" data-text-key="entry.factDurationLabel">Durata</p>
+                <p class="entry-fact__value" data-text-key="entry.factDurationValue">Missione rapida + archivio personale</p>
               </div>
               <div class="entry-fact">
-                <p class="entry-fact__label">Output</p>
-                <p class="entry-fact__value">Profilo, missioni consigliate, filtri</p>
+                <p class="entry-fact__label" data-text-key="entry.factOutputLabel">Output</p>
+                <p class="entry-fact__value" data-text-key="entry.factOutputValue">Profilo, missioni consigliate, filtri</p>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@
 
           <article class="story-sheet">
             <div class="story-sheet__head">
-              <div class="story-sheet__chapter">Prologo</div>
+              <div class="story-sheet__chapter" data-text-key="story.chapter">Prologo</div>
               <p class="section-count" id="storyIndex">1 / 4</p>
             </div>
 
@@ -139,7 +139,7 @@
             <div class="profile-panel" id="completionProfileCard" hidden>
               <div class="profile-panel__badge" id="completionProfileBadge" aria-hidden="true"></div>
               <div>
-                <p class="profile-panel__label">Profilo emerso</p>
+                <p class="profile-panel__label" data-text-key="result.profileLabel">Profilo emerso</p>
                 <p class="profile-panel__title" id="completionProfileTitle"></p>
                 <p class="profile-panel__text" id="completionProfileDescription"></p>
               </div>
@@ -156,8 +156,8 @@
           <aside class="result-sidecard" id="completionVisual" hidden>
             <div class="result-sidecard__map" aria-hidden="true"></div>
             <div class="result-sidecard__content">
-              <p class="result-sidecard__label">Archivio sbloccato</p>
-              <p class="result-sidecard__text">Da qui puoi leggere le missioni generali, quelle dei luoghi e il percorso legato al tuo profilo.</p>
+              <p class="result-sidecard__label" data-text-key="result.sideLabel">Archivio sbloccato</p>
+              <p class="result-sidecard__text" data-text-key="result.sideText">Da qui puoi leggere le missioni generali, quelle dei luoghi e il percorso legato al tuo profilo.</p>
             </div>
           </aside>
         </div>
@@ -167,7 +167,7 @@
         <div class="home-layout">
           <section class="home-intro">
             <div class="home-intro__copy">
-              <p class="home-intro__route">Archivio personale</p>
+              <p class="home-intro__route" data-text-key="home.route">Archivio personale</p>
               <h2 class="page-title page-title-small" id="homeTitle">Le tue missioni</h2>
               <p class="page-copy page-copy-tight" id="homeText"></p>
             </div>
@@ -200,7 +200,7 @@
               <div class="profile-panel profile-panel-compact" id="homeProfileChip" hidden>
                 <div class="profile-panel__badge" id="homeProfileBadge" aria-hidden="true"></div>
                 <div>
-                  <p class="profile-panel__label">Categoria</p>
+                  <p class="profile-panel__label" data-text-key="home.profileCategoryLabel">Categoria</p>
                   <p class="profile-panel__title" id="homeProfileChipTitle"></p>
                 </div>
               </div>
@@ -287,7 +287,7 @@
             </div>
 
             <div class="section-header section-header-spaced">
-              <h3 class="list-title">Missioni disponibili</h3>
+              <h3 class="list-title" data-text-key="detail.availableTitle">Missioni disponibili</h3>
               <span class="section-count" id="detailResultsCount">0 risultati</span>
             </div>
 
@@ -296,6 +296,51 @@
             <div class="empty-state" id="detailEmptyState" hidden>
               <h3 class="list-title" id="detailEmptyTitle">Nessuna missione</h3>
               <p class="page-copy page-copy-tight" id="detailEmptyText"></p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="scene-mission-detail" aria-label="Dettaglio missione" hidden>
+        <div class="detail-layout">
+          <header class="detail-layout__header">
+            <button class="button" id="missionDetailBackButton" type="button">Torna indietro</button>
+            <span class="section-count" id="missionDetailEyebrow">Missione</span>
+          </header>
+
+          <section class="panel mission-detail-panel">
+            <div class="mission-detail-hero">
+              <div class="mission-detail-hero__icon" id="missionDetailIcon" aria-hidden="true"></div>
+              <div>
+                <p class="mission-header__eyeline" id="missionDetailMeta">Missione</p>
+                <h2 class="section-title mission-detail-title" id="missionDetailTitle">Titolo missione</h2>
+                <p class="page-copy page-copy-tight" id="missionDetailDescription"></p>
+              </div>
+            </div>
+
+            <div class="mission-detail-summary" id="missionDetailSummary"></div>
+
+            <div class="filter-block">
+              <p class="filter-label" id="missionDetailTagsLabel">Tag di lettura</p>
+              <div class="filter-row" id="missionDetailTags"></div>
+            </div>
+
+            <div class="mission-detail-grid">
+              <section class="mission-detail-section">
+                <div class="section-header section-header-spaced">
+                  <h3 class="list-title" id="missionDetailObjectiveTitle">Obiettivo</h3>
+                </div>
+                <div class="mission-detail-copy" id="missionDetailIntro"></div>
+                <ul class="mission-detail-list" id="missionDetailObjectives"></ul>
+              </section>
+
+              <section class="mission-detail-section">
+                <div class="section-header section-header-spaced">
+                  <h3 class="list-title" id="missionDetailFlowTitle">Come si completa</h3>
+                  <span class="section-count" id="missionDetailFlowCount">1 step</span>
+                </div>
+                <div class="mission-step-list" id="missionDetailSteps"></div>
+              </section>
             </div>
           </section>
         </div>
@@ -311,6 +356,7 @@
     </div>
   </div>
 
+  <script src="./app-text.it.js"></script>
   <script src="./content.js"></script>
   <script src="./quiz-content.js"></script>
   <script src="./mission-0-result-content.js"></script>

@@ -1,7 +1,9 @@
+const APP_TEXT = window.APP_TEXT?.it ?? {};
 const APP_CONTENT = window.APP_CONTENT ?? {};
 const QUIZ_CONTENT = window.QUIZ_CONTENT ?? {};
 const MISSION_ZERO_RESULT_CONTENT = window.MISSION_ZERO_RESULT_CONTENT ?? {};
 const MISSION_HOME_CONTENT = window.MISSION_HOME_CONTENT ?? {};
+const UI_TEXT = APP_TEXT.ui ?? {};
 
 const STORY_SLIDES = APP_CONTENT.storySlides ?? [];
 const quizQuestions = new Map((QUIZ_CONTENT.questions ?? []).map((question) => [question.id, question]));
@@ -21,7 +23,8 @@ const ui = {
     mission: document.getElementById("scene-mission"),
     complete: document.getElementById("scene-complete"),
     home: document.getElementById("scene-home"),
-    categoryDetail: document.getElementById("scene-category-detail")
+    categoryDetail: document.getElementById("scene-category-detail"),
+    missionDetail: document.getElementById("scene-mission-detail")
   },
   statusPill: document.getElementById("statusPill"),
   enterButton: document.getElementById("enterButton"),
@@ -99,6 +102,21 @@ const ui = {
   detailEmptyState: document.getElementById("detailEmptyState"),
   detailEmptyTitle: document.getElementById("detailEmptyTitle"),
   detailEmptyText: document.getElementById("detailEmptyText"),
+  missionDetailBackButton: document.getElementById("missionDetailBackButton"),
+  missionDetailEyebrow: document.getElementById("missionDetailEyebrow"),
+  missionDetailIcon: document.getElementById("missionDetailIcon"),
+  missionDetailMeta: document.getElementById("missionDetailMeta"),
+  missionDetailTitle: document.getElementById("missionDetailTitle"),
+  missionDetailDescription: document.getElementById("missionDetailDescription"),
+  missionDetailSummary: document.getElementById("missionDetailSummary"),
+  missionDetailTagsLabel: document.getElementById("missionDetailTagsLabel"),
+  missionDetailTags: document.getElementById("missionDetailTags"),
+  missionDetailObjectiveTitle: document.getElementById("missionDetailObjectiveTitle"),
+  missionDetailFlowTitle: document.getElementById("missionDetailFlowTitle"),
+  missionDetailFlowCount: document.getElementById("missionDetailFlowCount"),
+  missionDetailIntro: document.getElementById("missionDetailIntro"),
+  missionDetailObjectives: document.getElementById("missionDetailObjectives"),
+  missionDetailSteps: document.getElementById("missionDetailSteps"),
   feedbackOverlay: document.getElementById("feedbackOverlay"),
   feedbackText: document.getElementById("feedbackText"),
   feedbackHint: document.getElementById("feedbackHint"),
@@ -115,10 +133,57 @@ let pendingCompletesQuiz = false;
 let resolvedCategoryId = null;
 let activeDetailSection = "general";
 let activeDetailFilter = "all";
+let activeMissionId = null;
+let missionDetailBackScene = "home";
 let categoryScores = {};
 let categoryTrail = [];
 let activeAnswerButton = null;
 const lastAnswerOrders = new Map();
+
+function getNestedValue(source, path) {
+  if (!source || !path) {
+    return undefined;
+  }
+
+  return path.split(".").reduce((value, key) => value?.[key], source);
+}
+
+function getUiText(path, fallback = "") {
+  return getNestedValue(UI_TEXT, path) ?? fallback;
+}
+
+function formatLabeledCount(count, suffixPath, fallbackSuffix) {
+  return `${count} ${getUiText(suffixPath, fallbackSuffix)}`;
+}
+
+function applyStaticText() {
+  document.querySelectorAll("[data-text-key]").forEach((element) => {
+    const text = getNestedValue(UI_TEXT.static, element.dataset.textKey);
+    if (typeof text === "string") {
+      element.textContent = text;
+    }
+  });
+
+  document.title = getUiText("document.title", document.title);
+
+  const descriptionMeta = document.querySelector('meta[name="description"]');
+  if (descriptionMeta) {
+    descriptionMeta.setAttribute("content", getUiText("document.description", descriptionMeta.getAttribute("content") || ""));
+  }
+
+  ui.enterButton.textContent = getUiText("actions.enterMission", ui.enterButton.textContent);
+  ui.jumpToMissionButton.textContent = getUiText("actions.jumpToQuiz", ui.jumpToMissionButton.textContent);
+  ui.storyPrev.textContent = getUiText("actions.storyPrev", ui.storyPrev.textContent);
+  ui.storyNext.textContent = getUiText("actions.storyNext", ui.storyNext.textContent);
+  ui.completionHomeButton.textContent = MISSION_ZERO_RESULT_CONTENT.homeButtonLabel || getUiText("actions.openHome", ui.completionHomeButton.textContent);
+  ui.restartButton.textContent = getUiText("actions.restart", ui.restartButton.textContent);
+  ui.generalOpenButton.textContent = getUiText("actions.openArchive", ui.generalOpenButton.textContent);
+  ui.locationOpenButton.textContent = getUiText("actions.openArchive", ui.locationOpenButton.textContent);
+  ui.personalOpenButton.textContent = getUiText("actions.openArchive", ui.personalOpenButton.textContent);
+  ui.detailBackButton.textContent = MISSION_HOME_CONTENT.detailView?.backLabel || getUiText("actions.backToHome", ui.detailBackButton.textContent);
+  ui.missionDetailBackButton.textContent = MISSION_HOME_CONTENT.missionDetail?.backLabel || getUiText("actions.backToHome", ui.missionDetailBackButton.textContent);
+  ui.overlayDismiss.textContent = getUiText("actions.dismissOverlay", ui.overlayDismiss.textContent);
+}
 
 function setScene(sceneName) {
   currentScene = sceneName;
@@ -131,15 +196,16 @@ function setScene(sceneName) {
   });
 
   const labels = {
-    entry: "Ingresso",
-    story: "Prologo",
-    mission: "Missione 0",
-    complete: "Esito",
-    home: MISSION_HOME_CONTENT.statusLabel || "Home missioni",
-    categoryDetail: "Archivio missioni"
+    entry: getUiText("scenes.entry", "Ingresso"),
+    story: getUiText("scenes.story", "Prologo"),
+    mission: getUiText("scenes.mission", "Missione 0"),
+    complete: getUiText("scenes.complete", "Esito"),
+    home: MISSION_HOME_CONTENT.statusLabel || getUiText("scenes.homeFallback", "Home missioni"),
+    categoryDetail: getUiText("scenes.categoryDetail", "Archivio missioni"),
+    missionDetail: getUiText("scenes.missionDetail", "Dettaglio missione")
   };
 
-  ui.statusPill.textContent = labels[sceneName] || "Istanbul Adventure";
+  ui.statusPill.textContent = labels[sceneName] || getUiText("document.title", "Istanbul Adventure");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -226,7 +292,10 @@ function renderStorySlide() {
   ui.storyText.textContent = STORY_SLIDES[storyIndex] || "";
   ui.storyIndex.textContent = `${storyIndex + 1} / ${total}`;
   ui.storyPrev.disabled = storyIndex === 0;
-  ui.storyNext.textContent = storyIndex === total - 1 ? "Vai al quiz" : "Continua";
+  ui.storyNext.textContent =
+    storyIndex === total - 1
+      ? getUiText("actions.storyFinish", "Vai al quiz")
+      : getUiText("actions.storyNext", "Continua");
   setProgress(ui.storyProgress, ((storyIndex + 1) / total) * 100);
 }
 
@@ -244,8 +313,10 @@ function updateQuestionMeta(questionId) {
 
   const position = Math.max(currentPrimaryIndex + 1, 1);
   ui.questionCounter.textContent = `${position} / ${primaryQuestionIds.length}`;
-  ui.questionMeta.textContent = isPrimaryQuestion ? "Nodo narrativo" : "Approfondimento";
-  ui.tapHint.textContent = QUIZ_CONTENT.tapToContinueLabel || "Tocca per continuare";
+  ui.questionMeta.textContent = isPrimaryQuestion
+    ? getUiText("quiz.primaryQuestionLabel", "Nodo narrativo")
+    : getUiText("quiz.branchQuestionLabel", "Approfondimento");
+  ui.tapHint.textContent = QUIZ_CONTENT.tapToContinueLabel || getUiText("quiz.tapHint", "Tocca per continuare");
   setProgress(ui.questionProgress, (completedPrimaryCount / Math.max(primaryQuestionIds.length, 1)) * 100);
 }
 
@@ -305,7 +376,7 @@ function showFeedback(text, nextId, completesQuiz) {
   pendingNextId = nextId || null;
   pendingCompletesQuiz = Boolean(completesQuiz);
   ui.feedbackText.textContent = text;
-  ui.feedbackHint.textContent = QUIZ_CONTENT.tapToContinueLabel || "Tocca per continuare";
+  ui.feedbackHint.textContent = QUIZ_CONTENT.tapToContinueLabel || getUiText("quiz.tapHint", "Tocca per continuare");
   ui.feedbackOverlay.hidden = false;
   ui.overlayDismiss.focus();
 }
@@ -377,14 +448,14 @@ function finishQuiz() {
   persistHomeProfile(resolvedCategoryId);
 
   const category = resolvedCategoryId ? MISSION_HOME_CONTENT.categories?.[resolvedCategoryId] : null;
-  ui.completionKicker.textContent = MISSION_ZERO_RESULT_CONTENT.kicker || "Missione completata";
+  ui.completionKicker.textContent = MISSION_ZERO_RESULT_CONTENT.kicker || getUiText("scenes.complete", "Missione completata");
   ui.completionTitleText.textContent =
     MISSION_ZERO_RESULT_CONTENT.title || QUIZ_CONTENT.completion?.title || "Percorso avviato";
   ui.completionText.textContent =
     MISSION_ZERO_RESULT_CONTENT.text || QUIZ_CONTENT.completion?.text || "";
   ui.completionNote.textContent = MISSION_ZERO_RESULT_CONTENT.cardNote || "";
   ui.completionNote.hidden = !MISSION_ZERO_RESULT_CONTENT.cardNote;
-  ui.completionHomeButton.textContent = MISSION_ZERO_RESULT_CONTENT.homeButtonLabel || "Apri la home";
+  ui.completionHomeButton.textContent = MISSION_ZERO_RESULT_CONTENT.homeButtonLabel || getUiText("actions.openHome", "Apri la home");
 
   ui.completionVisual.hidden = false;
 
@@ -415,9 +486,32 @@ function getSectionConfig(sectionKey) {
   return MISSION_HOME_CONTENT.sections?.[sectionKey] || {};
 }
 
+function getMissionById(missionId) {
+  return MISSION_HOME_CONTENT.missionIndex?.[missionId] || null;
+}
+
+function createSummaryItem(label, value) {
+  const item = document.createElement("div");
+  item.className = "summary-item";
+  item.innerHTML = `
+    <span>${label}</span>
+    <strong>${value}</strong>
+  `;
+  return item;
+}
+
+function createMissionTag(text) {
+  const tag = document.createElement("span");
+  tag.className = "mission-tag";
+  tag.textContent = text;
+  return tag;
+}
+
 function createMissionCard(mission) {
   const card = document.createElement("article");
   card.className = "mission-row";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
 
   const filters = Array.isArray(mission.filters) ? mission.filters : [];
   const filterMarkup = filters.length
@@ -442,12 +536,77 @@ function createMissionCard(mission) {
     <div class="mission-row__arrow" aria-hidden="true">›</div>
   `;
 
+  card.addEventListener("click", () => openMissionDetail(mission.id));
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openMissionDetail(mission.id);
+    }
+  });
   return card;
 }
 
 function renderMissionList(container, missions) {
   const items = Array.isArray(missions) ? missions : [];
   container.replaceChildren(...items.map((mission) => createMissionCard(mission)));
+}
+
+function renderMissionDetail(mission) {
+  if (!mission) {
+    return;
+  }
+
+  const detailCopy = MISSION_HOME_CONTENT.missionDetail || {};
+  const iconFallback = (mission.meta || mission.title || "M").replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase() || "M";
+  const completionLabels = mission.completionTypes?.map((type) => (type === "photo" ? "Foto" : "Codice/password")) || [];
+  const summaryItems = [
+    [detailCopy.summaryType || "Tipo", mission.typeLabel || ""],
+    [detailCopy.summaryAudience || "Accesso", mission.audienceLabel || ""],
+    [detailCopy.summaryFormat || "Formato", mission.formatLabel || ""],
+    [detailCopy.summaryPlace || "Luogo", mission.place?.name || "Ovunque"],
+    [detailCopy.summaryCompletion || "Verifica", completionLabels.join(" + ") || "Codice/password"]
+  ];
+
+  ui.missionDetailEyebrow.textContent = mission.typeLabel || "Missione";
+  ui.missionDetailMeta.textContent = mission.meta || mission.typeLabel || "Missione";
+  ui.missionDetailTitle.textContent = mission.title || "";
+  ui.missionDetailDescription.textContent = mission.description || "";
+  ui.missionDetailIcon.innerHTML = createIconMarkup(mission.iconSrc, mission.iconAlt, iconFallback);
+  ui.missionDetailTagsLabel.textContent = detailCopy.tagsLabel || "Tag di lettura";
+  ui.missionDetailObjectiveTitle.textContent = detailCopy.objectiveTitle || "Obiettivo e contesto";
+  ui.missionDetailFlowTitle.textContent = detailCopy.flowTitle || "Flusso di completamento";
+  ui.missionDetailFlowCount.textContent = `${mission.steps?.length || 0} ${detailCopy.flowSingle || "step"}`;
+
+  ui.missionDetailSummary.replaceChildren(...summaryItems.map(([label, value]) => createSummaryItem(label, value)));
+  ui.missionDetailTags.replaceChildren(...(mission.filters || []).map((filter) => createMissionTag(filter)));
+  ui.missionDetailIntro.innerHTML = `<p class="page-copy page-copy-tight">${mission.intro || ""}</p>`;
+  ui.missionDetailObjectives.replaceChildren(
+    ...(mission.objectives || []).map((objective) => {
+      const item = document.createElement("li");
+      item.textContent = objective;
+      return item;
+    })
+  );
+
+  ui.missionDetailSteps.replaceChildren(
+    ...((mission.steps || []).map((step) => {
+      const article = document.createElement("article");
+      article.className = "mission-step";
+      article.innerHTML = `
+        <div class="mission-step__index">${formatCount(step.order)}</div>
+        <div class="mission-step__body">
+          <div class="mission-step__meta">${step.completion.inputLabel || ""}</div>
+          <h4 class="mission-step__title">${step.title || ""}</h4>
+          <p class="mission-step__description">${step.description || ""}</p>
+          <div class="mission-step__footer">
+            <span class="mission-tag">${step.completion.label || ""}</span>
+            <p class="support-copy">${step.completion.hint || ""}</p>
+          </div>
+        </div>
+      `;
+      return article;
+    }))
+  );
 }
 
 function renderHomeProfile(category) {
@@ -502,17 +661,17 @@ function renderHome() {
 
   ui.generalPanelTitle.textContent = MISSION_HOME_CONTENT.sections?.general?.title || "Missioni generali";
   ui.generalPanelText.textContent = MISSION_HOME_CONTENT.sections?.general?.text || "";
-  ui.generalSectionCount.textContent = `${generalMissions.length} totali`;
+  ui.generalSectionCount.textContent = formatLabeledCount(generalMissions.length, "counts.totalsSuffix", "totali");
   renderMissionList(ui.generalMissionList, recommendedGeneral);
 
   ui.locationPanelTitle.textContent = MISSION_HOME_CONTENT.sections?.locations?.title || "Missioni luogo";
   ui.locationPanelText.textContent = MISSION_HOME_CONTENT.sections?.locations?.text || "";
-  ui.locationSectionCount.textContent = `${locationMissions.length} totali`;
+  ui.locationSectionCount.textContent = formatLabeledCount(locationMissions.length, "counts.totalsSuffix", "totali");
   renderMissionList(ui.locationMissionList, recommendedLocations);
 
   ui.personalPanelTitle.textContent = MISSION_HOME_CONTENT.sections?.personal?.title || "Missioni profilo";
   ui.personalPanelText.textContent = MISSION_HOME_CONTENT.sections?.personal?.text || "";
-  ui.personalSectionCount.textContent = `${personalMissions.length} totali`;
+  ui.personalSectionCount.textContent = formatLabeledCount(personalMissions.length, "counts.totalsSuffix", "totali");
   renderMissionList(ui.personalMissionList, recommendedPersonal);
 }
 
@@ -525,7 +684,7 @@ function renderDetailFilters(missions) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = `filter-chip${filter === activeDetailFilter ? " is-active" : ""}`;
-      button.textContent = filter === "all" ? "Tutte" : filter;
+      button.textContent = filter === "all" ? getUiText("quiz.filterAll", "Tutte") : filter;
       button.addEventListener("click", () => {
         activeDetailFilter = filter;
         renderCategoryDetail();
@@ -547,8 +706,8 @@ function renderCategoryDetail() {
   ui.detailTitle.textContent = section.detailTitle || section.title || "Archivio missioni";
   ui.detailText.textContent = section.text || "";
   ui.detailFilterTitle.textContent = MISSION_HOME_CONTENT.detailView?.filterTitle || "Filtra le missioni";
-  ui.detailCategoryCount.textContent = `${missions.length} missioni`;
-  ui.detailResultsCount.textContent = `${filteredMissions.length} risultati`;
+  ui.detailCategoryCount.textContent = formatLabeledCount(missions.length, "counts.missionsSuffix", "missioni");
+  ui.detailResultsCount.textContent = formatLabeledCount(filteredMissions.length, "counts.resultsSuffix", "risultati");
   ui.detailEmptyTitle.textContent = MISSION_HOME_CONTENT.detailView?.emptyTitle || "Nessuna missione";
   ui.detailEmptyText.textContent = MISSION_HOME_CONTENT.detailView?.emptyText || "";
 
@@ -565,6 +724,30 @@ function openCategoryDetail(sectionKey) {
   activeDetailFilter = "all";
   renderCategoryDetail();
   setScene("categoryDetail");
+}
+
+function openMissionDetail(missionId) {
+  const mission = getMissionById(missionId);
+  if (!mission) {
+    return;
+  }
+
+  activeMissionId = missionId;
+  missionDetailBackScene = currentScene === "categoryDetail" ? "categoryDetail" : "home";
+  renderMissionDetail(mission);
+  setScene("missionDetail");
+}
+
+function closeMissionDetail() {
+  activeMissionId = null;
+
+  if (missionDetailBackScene === "categoryDetail") {
+    renderCategoryDetail();
+    setScene("categoryDetail");
+    return;
+  }
+
+  showHome();
 }
 
 function showHome() {
@@ -585,6 +768,8 @@ function resetQuizState() {
   pendingNextId = null;
   pendingCompletesQuiz = false;
   resolvedCategoryId = null;
+  activeMissionId = null;
+  missionDetailBackScene = "home";
   categoryScores = {};
   categoryTrail = [];
   activeAnswerButton = null;
@@ -595,7 +780,7 @@ function showMission() {
   resetQuizState();
   ui.missionTitle.textContent = QUIZ_CONTENT.introTitle || "Missione 0";
   ui.missionIntro.textContent = QUIZ_CONTENT.introText || "";
-  ui.tapHint.textContent = QUIZ_CONTENT.tapToContinueLabel || "Tocca per continuare";
+  ui.tapHint.textContent = QUIZ_CONTENT.tapToContinueLabel || getUiText("quiz.tapHint", "Tocca per continuare");
   renderQuestion(QUIZ_CONTENT.startQuestionId);
   setScene("mission");
 }
@@ -668,6 +853,7 @@ ui.generalOpenButton.addEventListener("click", () => openCategoryDetail("general
 ui.locationOpenButton.addEventListener("click", () => openCategoryDetail("locations"));
 ui.personalOpenButton.addEventListener("click", () => openCategoryDetail("personal"));
 ui.detailBackButton.addEventListener("click", showHome);
+ui.missionDetailBackButton.addEventListener("click", closeMissionDetail);
 
 ui.archiveButtons.forEach((button) => {
   button.addEventListener("click", () => openCategoryDetail(button.dataset.section || "general"));
@@ -692,6 +878,7 @@ window.addEventListener("keydown", (event) => {
 window.addEventListener("hashchange", syncSceneWithHash);
 
 window.addEventListener("DOMContentLoaded", () => {
+  applyStaticText();
   renderStorySlide();
   syncSceneWithHash();
 });

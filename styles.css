@@ -102,7 +102,8 @@ body[data-scene="mission"] .app-backdrop {
 
 body[data-scene="complete"] .app-backdrop,
 body[data-scene="home"] .app-backdrop,
-body[data-scene="categoryDetail"] .app-backdrop {
+body[data-scene="categoryDetail"] .app-backdrop,
+body[data-scene="missionDetail"] .app-backdrop {
   background:
     linear-gradient(180deg, rgba(15, 10, 8, 0.18), rgba(15, 10, 8, 0.82)),
     linear-gradient(90deg, #18120f, #221913);
@@ -639,8 +640,15 @@ body[data-scene="categoryDetail"] .app-backdrop {
   grid-template-columns: 52px minmax(0, 1fr) auto;
   align-items: start;
   gap: 14px;
+  width: 100%;
   padding: 16px 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
   border-top: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
 }
 
 .mission-row:first-child {
@@ -706,6 +714,16 @@ body[data-scene="categoryDetail"] .app-backdrop {
   color: var(--muted-soft);
   padding-top: 2px;
   font-size: 1.15rem;
+}
+
+.mission-row:hover,
+.mission-row:focus-visible {
+  outline: none;
+}
+
+.mission-row:hover .mission-row__title,
+.mission-row:focus-visible .mission-row__title {
+  color: var(--success);
 }
 
 .profile-panel {
@@ -780,6 +798,112 @@ body[data-scene="categoryDetail"] .app-backdrop {
   max-width: 420px;
 }
 
+.mission-detail-panel {
+  display: grid;
+  gap: 22px;
+}
+
+.mission-detail-hero {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.mission-detail-hero__icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(59, 43, 34, 0.75);
+}
+
+.mission-detail-hero__icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.mission-detail-title {
+  margin-top: 4px;
+}
+
+.mission-detail-summary,
+.mission-detail-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.mission-detail-grid {
+  grid-template-columns: 1fr;
+}
+
+.mission-detail-section {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.mission-detail-copy p {
+  margin: 0;
+}
+
+.mission-detail-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.mission-detail-list li + li {
+  margin-top: 10px;
+}
+
+.mission-step-list {
+  display: grid;
+  gap: 12px;
+}
+
+.mission-step {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(57, 42, 33, 0.52);
+}
+
+.mission-step__index {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(192, 141, 85, 0.14);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.mission-step__title {
+  margin-top: 4px;
+  font-size: 1.02rem;
+}
+
+.mission-step__description {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.mission-step__footer {
+  margin-top: 12px;
+}
+
+.mission-step__footer .support-copy {
+  margin-top: 10px;
+}
+
 .support-copy {
   margin: 16px 0 0;
   line-height: 1.55;
@@ -838,6 +962,11 @@ body[data-scene="categoryDetail"] .app-backdrop {
 
   .home-layout {
     grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+
+  .mission-detail-grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.88fr);
     align-items: start;
   }
 
