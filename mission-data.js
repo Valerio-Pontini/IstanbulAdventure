@@ -1,0 +1,2638 @@
+window.MISSIONI_V3_BACKEND = {
+  "versione_schema": "3.0-backend",
+  "descrizione_schema": "Versione backend-friendly delle missioni con metadati di filtro, validazione e punteggio.",
+  "missioni": [
+    {
+      "id": "001",
+      "nome": "Il cittadino con i baffi",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un gatto che stia occupando uno spazio chiaramente pensato per gli esseri umani: una sedia, uno scooter, una vetrina, una cassetta, uno zerbino o un gradino davanti a un negozio.",
+      "gruppo": "tutti tranne Custodi delle Tradizioni",
+      "scoperta": "A Istanbul i gatti non sembrano intrusi: sembrano residenti con pieni diritti. La città li tollera, li nutre e li integra. Questa convivenza racconta un’idea di spazio pubblico condiviso, dove anche gli animali diventano parte del paesaggio umano.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
+      "slug": "001-il-cittadino-con-i-baffi",
+      "tema_principale": "gatti",
+      "temi_secondari": [
+        "spazio-pubblico",
+        "animali-urbani"
+      ],
+      "keywords": [
+        "animali-urbani",
+        "gatti",
+        "gatto",
+        "ricerca",
+        "spazio-pubblico"
+      ],
+      "persona_target_backend": [
+        "tutti_tranne",
+        "Custodi delle Tradizioni"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 1,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un gatto che stia occupando uno spazio chiaramente pensato per gli esseri umani: una sedia, uno scooter, una vetrina, una cassetta, uno zerbino o un gradino davanti a un negozio."
+          ]
+        }
+      }
+    },
+    {
+      "id": "002",
+      "nome": "Primo avvistamento",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un gatto vicino a un luogo simbolico della vita cittadina: una moschea, un negozio, un molo, un mercato o l’ingresso di una casa. Nella foto deve essere riconoscibile anche il contesto.",
+      "gruppo": "Custodi delle tradizioni",
+      "scoperta": "Il gatto non vive ai margini: compare proprio dove la città si muove. È parte della scena urbana, non un dettaglio separato.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "I custodi della città",
+      "successiva": "003",
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
+      "slug": "002-primo-avvistamento",
+      "tema_principale": "gatti",
+      "temi_secondari": [
+        "vita-quotidiana",
+        "animali-urbani"
+      ],
+      "keywords": [
+        "animali-urbani",
+        "gatti",
+        "gatto",
+        "ricerca",
+        "vita-quotidiana"
+      ],
+      "persona_target_backend": [
+        "Custodi delle tradizioni"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 12,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 2,
+        "sequenza": {
+          "nome": "I custodi della città",
+          "ha_precedente": false,
+          "ha_successiva": true,
+          "is_inizio": true,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un gatto vicino a un luogo simbolico della vita cittadina: una moschea, un negozio, un molo, un mercato o l’ingresso di una casa.",
+            "Nella foto deve essere riconoscibile anche il contesto."
+          ]
+        }
+      }
+    },
+    {
+      "id": "003",
+      "nome": "La città che li accoglie",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un segno concreto di cura umana verso gli animali: una ciotola, del cibo lasciato fuori, un riparo improvvisato o una persona che si sta occupando di un gatto. Non vale un oggetto non utilizzato o fuori contesto.",
+      "gruppo": "Custodi delle tradizioni",
+      "scoperta": "L’immagine romantica dei gatti di Istanbul non nasce dal nulla: nasce da una cura quotidiana, fatta di gesti minimi ripetuti da moltissime persone.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "I custodi della città",
+      "successiva": null,
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
+      "slug": "003-la-citta-che-li-accoglie",
+      "tema_principale": "gatti",
+      "temi_secondari": [
+        "cura-collettiva",
+        "animali-urbani"
+      ],
+      "keywords": [
+        "animali-urbani",
+        "cura-collettiva",
+        "gatti",
+        "gatto",
+        "manti",
+        "ricerca"
+      ],
+      "persona_target_backend": [
+        "Custodi delle tradizioni"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 12,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 3,
+        "sequenza": {
+          "nome": "I custodi della città",
+          "ha_precedente": true,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": true
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un segno concreto di cura umana verso gli animali: una ciotola, del cibo lasciato fuori, un riparo improvvisato o una persona che si sta occupando di un gatto.",
+            "Non vale un oggetto non utilizzato o fuori contesto."
+          ]
+        }
+      }
+    },
+    {
+      "id": "005",
+      "nome": "Il gatto assetato",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un gatto che stia bevendo o che abbia appena il muso su una ciotola d’acqua. Nella foto deve vedersi anche il contenitore.",
+      "gruppo": "Custodi delle tradizioni",
+      "scoperta": "Nella tradizione islamica il gatto non è considerato impuro. Un hadith racconta che Maometto permise di usare per le abluzioni l’acqua da cui aveva bevuto un gatto: segno di una familiarità religiosa che aiuta a spiegare la simpatia diffusa verso i felini.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
+      "slug": "005-il-gatto-assetato",
+      "tema_principale": "gatti",
+      "temi_secondari": [
+        "animali-urbani",
+        "religione"
+      ],
+      "keywords": [
+        "animali-urbani",
+        "gatti",
+        "gatto",
+        "religione",
+        "ricerca"
+      ],
+      "persona_target_backend": [
+        "Custodi delle tradizioni"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 5,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un gatto che stia bevendo o che abbia appena il muso su una ciotola d’acqua.",
+            "Nella foto deve vedersi anche il contenitore."
+          ]
+        }
+      }
+    },
+    {
+      "id": "006",
+      "nome": "La bandiera protagonista",
+      "luogo": "ovunque",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto in cui compaia il maggior numero possibile di bandiere turche nello stesso frame. Devono essere chiaramente riconoscibili almeno tre bandiere complete.",
+      "gruppo": "tutti tranne Cacciatori di Leggende",
+      "scoperta": "In Turchia la bandiera è una presenza quotidiana, ma in alcune ricorrenze civili diventa quasi un protagonista urbano. Il 29 ottobre, Festa della Repubblica, e il 10 novembre, anniversario della morte di Atatürk, il rosso e il bianco occupano in modo ancora più evidente lo spazio pubblico.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.",
+      "slug": "006-la-bandiera-protagonista",
+      "tema_principale": "bandiera",
+      "temi_secondari": [
+        "simboli-nazionali",
+        "fotografia"
+      ],
+      "keywords": [
+        "bandiera",
+        "fotografia",
+        "manti",
+        "mezzaluna",
+        "simboli-nazionali",
+        "stella",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti_tranne",
+        "Cacciatori di Leggende"
+      ],
+      "difficolta": 2,
+      "punteggio": 8,
+      "durata_stimata_min": 8,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 6,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto in cui compaia il maggior numero possibile di bandiere turche nello stesso frame.",
+            "Devono essere chiaramente riconoscibili almeno tre bandiere complete."
+          ]
+        }
+      }
+    },
+    {
+      "id": "007",
+      "nome": "La mezzaluna fuori dalla bandiera",
+      "luogo": "Palazzo Topkapi",
+      "tipologia": "ricerca",
+      "descrizione": "A Topkapı cerca un simbolo con mezzaluna e stella che non sia una bandiera: deve far parte dell’architettura, di una decorazione, di uno stemma o di un elemento esposto.",
+      "gruppo": "Decifratori di Simboli",
+      "scoperta": "La mezzaluna e la stella non vivono solo sul tessuto della bandiera: a Istanbul compaiono anche come segni di potere, continuità dinastica e identità statale.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.",
+      "slug": "007-la-mezzaluna-fuori-dalla-bandiera",
+      "tema_principale": "bandiera",
+      "temi_secondari": [
+        "simboli-nazionali",
+        "architettura"
+      ],
+      "keywords": [
+        "architettura",
+        "bandiera",
+        "manti",
+        "mezzaluna",
+        "ricerca",
+        "simboli-nazionali",
+        "stella",
+        "topkapi",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "Decifratori di Simboli"
+      ],
+      "difficolta": 2,
+      "punteggio": 10,
+      "durata_stimata_min": 18,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 7,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "A Topkapı cerca un simbolo con mezzaluna e stella che non sia una bandiera: deve far parte dell’architettura, di una decorazione, di uno stemma o di un elemento esposto."
+          ]
+        }
+      }
+    },
+    {
+      "id": "008",
+      "nome": "La bandiera riflessa",
+      "luogo": "ovunque",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto in cui la bandiera turca sia visibile solo come riflesso: in una vetrina, in uno specchio, in un vetro o sull’acqua.",
+      "gruppo": "Cacciatori di Leggende",
+      "scoperta": "Una delle storie più suggestive legate alla bandiera turca racconta che, dopo una battaglia sanguinosa, la mezzaluna e la stella comparvero riflesse su una distesa rossa. È una leggenda, ma spiega bene quanto questo simbolo sia carico di immaginazione nazionale.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.",
+      "slug": "008-la-bandiera-riflessa",
+      "tema_principale": "bandiera",
+      "temi_secondari": [
+        "simboli-nazionali",
+        "riflessi"
+      ],
+      "keywords": [
+        "bandiera",
+        "fotografia",
+        "manti",
+        "mezzaluna",
+        "riflessi",
+        "simboli-nazionali",
+        "stella",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "Cacciatori di Leggende"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 8,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 8,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto in cui la bandiera turca sia visibile solo come riflesso: in una vetrina, in uno specchio, in un vetro o sull’acqua."
+          ]
+        }
+      }
+    },
+    {
+      "id": "009",
+      "nome": "La torre in mezzo al mare",
+      "luogo": "Kiz Kulesi",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto in cui si percepisca chiaramente che la torre è isolata dalla città e circondata dall’acqua. La riva può comparire, ma la torre deve sembrare separata.",
+      "gruppo": "tutti tranne Cacciatori di Leggende",
+      "scoperta": "La torre è entrata nell’immaginario visivo della città a tal punto da apparire persino sul retro della banconota turca da 10 lire della sesta emissione, in circolazione dal 1966 al 1981. Sul piano simbolico, la torre funziona quasi come una miniatura di Istanbul. Riunisce in un solo punto diversi significati: è una soglia tra Europa e Asia, tra città e mare, tra storia e mito; è insieme fortezza, faro e icona romantica.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
+      "slug": "009-la-torre-in-mezzo-al-mare",
+      "tema_principale": "torre-della-fanciulla",
+      "temi_secondari": [
+        "panorama",
+        "mare"
+      ],
+      "keywords": [
+        "asia",
+        "bosforo",
+        "europa",
+        "fotografia",
+        "kiz-kulesi",
+        "manti",
+        "mare",
+        "panorama",
+        "torre",
+        "torre-della-fanciulla",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti_tranne",
+        "Cacciatori di Leggende"
+      ],
+      "difficolta": 2,
+      "punteggio": 10,
+      "durata_stimata_min": 16,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 9,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto in cui si percepisca chiaramente che la torre è isolata dalla città e circondata dall’acqua.",
+            "La riva può comparire, ma la torre deve sembrare separata."
+          ]
+        }
+      }
+    },
+    {
+      "id": "010",
+      "nome": "Non si sfugge dal destino",
+      "luogo": "Kiz Kulesi",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto in cui si veda una barca, un traghetto o un altro mezzo d’acqua nei pressi della torre. La missione vale solo se la torre e il mezzo sono nello stesso frame.",
+      "gruppo": "Cacciatori di Leggende",
+      "scoperta": "Secondo la leggenda, un sovrano ricevette la profezia che la figlia sarebbe morta per il morso di un serpente al compimento dei diciott’anni. Per salvarla la fece rinchiudere in una torre in mezzo al mare, ma il destino arrivò lo stesso nascosto in un cesto di frutta.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "La torre delle leggende",
+      "successiva": "011",
+      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
+      "slug": "010-non-si-sfugge-dal-destino",
+      "tema_principale": "torre-della-fanciulla",
+      "temi_secondari": [
+        "leggenda",
+        "mare"
+      ],
+      "keywords": [
+        "asia",
+        "bosforo",
+        "fotografia",
+        "kiz-kulesi",
+        "leggenda",
+        "mare",
+        "torre",
+        "torre-della-fanciulla",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "Cacciatori di Leggende"
+      ],
+      "difficolta": 3,
+      "punteggio": 14,
+      "durata_stimata_min": 18,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 10,
+        "sequenza": {
+          "nome": "La torre delle leggende",
+          "ha_precedente": false,
+          "ha_successiva": true,
+          "is_inizio": true,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto in cui si veda una barca, un traghetto o un altro mezzo d’acqua nei pressi della torre.",
+            "La missione vale solo se la torre e il mezzo sono nello stesso frame."
+          ]
+        }
+      }
+    },
+    {
+      "id": "011",
+      "nome": "La luce dell'amore",
+      "luogo": "Kiz Kulesi",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto della torre illuminata di notte. La missione vale solo se la fonte di luce è percepibile chiaramente.",
+      "gruppo": "Cacciatori di Leggende",
+      "scoperta": "Un’altra leggenda collega la torre alla storia di Ero e Leandro: lei accendeva una luce per guidare il giovane attraverso il mare. La storia non nasce a Istanbul, ma la Kız Kulesi è diventata uno dei luoghi a cui la città ha affidato anche questo racconto d’amore.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "La torre delle leggende",
+      "successiva": null,
+      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
+      "slug": "011-la-luce-dell-amore",
+      "tema_principale": "torre-della-fanciulla",
+      "temi_secondari": [
+        "leggenda",
+        "notte"
+      ],
+      "keywords": [
+        "asia",
+        "bosforo",
+        "fotografia",
+        "kiz-kulesi",
+        "leggenda",
+        "notte",
+        "torre",
+        "torre-della-fanciulla",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "Cacciatori di Leggende"
+      ],
+      "difficolta": 4,
+      "punteggio": 22,
+      "durata_stimata_min": 23,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 11,
+        "sequenza": {
+          "nome": "La torre delle leggende",
+          "ha_precedente": true,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": true
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": true,
+          "richiede_ingresso": true,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto della torre illuminata di notte.",
+            "La missione vale solo se la fonte di luce è percepibile chiaramente."
+          ]
+        }
+      }
+    },
+    {
+      "id": "012",
+      "nome": "La colonna che ti cura",
+      "luogo": "Santa Sofia",
+      "tipologia": "ricerca",
+      "descrizione": "Trova la Colonna Piangente all’interno di Santa Sofia. La missione vale solo se nella foto si riconoscono il foro circolare e il rivestimento metallico.",
+      "gruppo": "tutti",
+      "scoperta": "Questo pilastro è famoso perché il foro appare spesso umido. Nei secoli i visitatori gli hanno attribuito poteri curativi, trasformando un dettaglio architettonico in un piccolo rito cittadino.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "Il rituale della colonna",
+      "successiva": "013",
+      "informazioni": "La Colonna Piangente di Hagia Sophia è un pilastro marmoreo situato nella navata nord-occidentale, riconoscibile per il foro circolare rivestito in bronzo, spesso umido al tatto. La sua superficie “sudante” ha dato origine a leggende che la collegano a poteri curativi e all’intercessione divina, talvolta associati a figure come san Gregorio Taumaturgo.",
+      "slug": "012-la-colonna-che-ti-cura",
+      "tema_principale": "santa-sofia",
+      "temi_secondari": [
+        "rituale",
+        "architettura"
+      ],
+      "keywords": [
+        "architettura",
+        "colonna",
+        "hagia-sophia",
+        "ricerca",
+        "rituale",
+        "santa-sofia"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 14,
+      "durata_stimata_min": 20,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 12,
+        "sequenza": {
+          "nome": "Il rituale della colonna",
+          "ha_precedente": false,
+          "ha_successiva": true,
+          "is_inizio": true,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova la Colonna Piangente all’interno di Santa Sofia.",
+            "La missione vale solo se nella foto si riconoscono il foro circolare e il rivestimento metallico."
+          ]
+        }
+      }
+    },
+    {
+      "id": "013",
+      "nome": "Il rito della colonna",
+      "luogo": "Santa Sofia",
+      "tipologia": "azione",
+      "descrizione": "Inserisci il pollice nel foro della colonna e prova a ruotare la mano mantenendo il contatto con la pietra. Poi scatta una foto del gesto oppure del pollice accanto al foro subito dopo il tentativo.",
+      "gruppo": "tutti",
+      "scoperta": "Attorno alla colonna sono nate molte leggende: c’è chi parla delle lacrime dei rivoltosi della Nika, chi delle lacrime di Teodora pentita. La spiegazione più concreta è meno magica ma affascinante lo stesso: l’umidità della pietra è legata all’assorbimento dell’acqua.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "Il rituale della colonna",
+      "successiva": null,
+      "informazioni": "La Colonna Piangente di Hagia Sophia è un pilastro marmoreo situato nella navata nord-occidentale, riconoscibile per il foro circolare rivestito in bronzo, spesso umido al tatto. La sua superficie “sudante” ha dato origine a leggende che la collegano a poteri curativi e all’intercessione divina, talvolta associati a figure come san Gregorio Taumaturgo.",
+      "slug": "013-il-rito-della-colonna",
+      "tema_principale": "santa-sofia",
+      "temi_secondari": [
+        "rituale",
+        "azione"
+      ],
+      "keywords": [
+        "azione",
+        "colonna",
+        "hagia-sophia",
+        "rituale",
+        "santa-sofia"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 15,
+      "durata_stimata_min": 22,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 13,
+        "sequenza": {
+          "nome": "Il rituale della colonna",
+          "ha_precedente": true,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": true
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_gesto_o_oggetto",
+          "criteri": [
+            "Inserisci il pollice nel foro della colonna e prova a ruotare la mano mantenendo il contatto con la pietra.",
+            "Poi scatta una foto del gesto oppure del pollice accanto al foro subito dopo il tentativo."
+          ]
+        }
+      }
+    },
+    {
+      "id": "014",
+      "nome": "Scaccia il malocchio",
+      "luogo": "ovunque",
+      "tipologia": "ricordo materiale",
+      "descrizione": "Compra o fatti regalare un nazar. La missione vale solo se alla fine puoi mostrarlo al gruppo oppure fotografarlo in mano o appeso a qualcosa.",
+      "gruppo": "tutti",
+      "scoperta": "L’occhio serve, per così dire, a “guardare indietro” il pericolo: invece di subire lo sguardo nocivo, lo intercetta e lo respinge. Anche i colori concentrici contano: il blu domina quasi sempre, e nella tradizione popolare anatolica è associato a una funzione protettiva.",
+      "mod_completamento": "foto dell'oggetto ottenuto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il nazar boncuğu è il celebre amuleto a forma di occhio blu usato per proteggersi dal malocchio, cioè dallo sguardo invidioso o malevolo che, secondo molte tradizioni, può portare sfortuna, malessere o perdita. La credenza nel malocchio è molto più antica del nazar “turco” come lo immaginiamo oggi: esisteva già nell’antichità classica e nel Vicino Oriente. Il nazar boncuğu in vetro, invece, è legato alla storia della lavorazione del vetro in Anatolia; fonti ufficiali turche indicano che i primi esempi in vetro prodotti specificamente come amuleti contro il malocchio vennero realizzati a Görece, nella provincia di İzmir.",
+      "slug": "014-scaccia-il-malocchio",
+      "tema_principale": "nazar",
+      "temi_secondari": [
+        "protezione",
+        "souvenir"
+      ],
+      "keywords": [
+        "nazar",
+        "occhio-blu",
+        "protezione",
+        "ricordo materiale",
+        "souvenir",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 13,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 120,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 14,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Compra o fatti regalare un nazar.",
+            "La missione vale solo se alla fine puoi mostrarlo al gruppo oppure fotografarlo in mano o appeso a qualcosa."
+          ]
+        }
+      }
+    },
+    {
+      "id": "015",
+      "nome": "Trova l'occhio",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un nazar usato come protezione reale da qualcuno: all’ingresso di una casa, di un negozio, di un’auto o di un luogo di lavoro. Non valgono souvenir esposti per la vendita o decorazioni palesemente generiche.",
+      "gruppo": "Decifratori di Simboli",
+      "scoperta": "Il nazar viene spesso regalato in occasioni di passaggio o vulnerabilità, per esempio a un neonato, a chi ha appena aperto una casa o un’attività, o a chi parte per un viaggio. È un gesto semplice ma molto radicato nella vita quotidiana.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Le fonti ufficiali turche spiegano che i nazar vengono messi dove tutti possano vederli, perché devono intercettare lo sguardo prima che colpisca la persona o l’oggetto protetto. Questo spiega perché a Istanbul li trovi spesso all’ingresso di case, negozi e luoghi di lavoro.",
+      "slug": "015-trova-l-occhio",
+      "tema_principale": "nazar",
+      "temi_secondari": [
+        "protezione",
+        "vita-quotidiana"
+      ],
+      "keywords": [
+        "nazar",
+        "occhio-blu",
+        "protezione",
+        "ricerca",
+        "vita-quotidiana"
+      ],
+      "persona_target_backend": [
+        "Decifratori di Simboli"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 15,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un nazar usato come protezione reale da qualcuno: all’ingresso di una casa, di un negozio, di un’auto o di un luogo di lavoro.",
+            "Non valgono souvenir esposti per la vendita o decorazioni palesemente generiche."
+          ]
+        }
+      }
+    },
+    {
+      "id": "016",
+      "nome": "Lale Lale",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova e fotografa un tulipano non naturale: un motivo decorativo, una ceramica, un tessuto, un mosaico, una stampa o una forma architettonica che lo richiami.",
+      "gruppo": "tutti tranne Archivisti ed Esploratori",
+      "scoperta": "Nella tradizione ornamentale ottomana il tulipano compare nelle arti decorative e nei motivi floreali naturalistici; la sua stilizzazione alta e affusolata si ritrova in miniature, tessuti, calligrafie e soprattutto nelle ceramiche di İznik. In Turchia, infatti, il tulipano non è percepito soltanto come “romantico”, come spesso avviene in Europa, ma come fiore nobile, disciplinato, quasi cerimoniale.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il tulipano (Lale), a Istanbul, non è solo un fiore decorativo: è quasi un simbolo identitario della città e, più in generale, di una parte importante della cultura ottomana. Le sue origini botaniche sono orientali: la coltivazione del tulipano viene fatta risalire alla Persia già intorno al X secolo, e in seguito il fiore divenne uno dei simboli dell’Impero ottomano. Fu poi osservato dagli europei nel XVI secolo anche nei territori ottomani, e da lì iniziò la sua diffusione verso l’Occidente.",
+      "slug": "016-lale-lale",
+      "tema_principale": "tulipani",
+      "temi_secondari": [
+        "arte-decorativa",
+        "simboli"
+      ],
+      "keywords": [
+        "arte-decorativa",
+        "europa",
+        "manti",
+        "ricerca",
+        "simboli",
+        "tulipani",
+        "tulipano"
+      ],
+      "persona_target_backend": [
+        "tutti_tranne",
+        "Archivisti ed Esploratori"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 16,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova e fotografa un tulipano non naturale: un motivo decorativo, una ceramica, un tessuto, un mosaico, una stampa o una forma architettonica che lo richiami."
+          ]
+        }
+      }
+    },
+    {
+      "id": "017",
+      "nome": "La fontana dell'era dei tulipani",
+      "luogo": "Palazzo Topkapi",
+      "tipologia": "ricerca",
+      "descrizione": "Trova la fontana di Ahmed III fuori da Topkapı. La missione vale solo se nella foto si riconosce che si tratta di una fontana monumentale autonoma, non di un dettaglio qualunque del palazzo.",
+      "gruppo": "Archivisti degli Imperi",
+      "scoperta": "La Lâle Devri, l’Era dei Tulipani, fu un periodo di gusto raffinato e apertura culturale. Le grandi fontane pubbliche di inizio Settecento sono tra i suoi simboli più visibili.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "Sulle tracce della Lâle Devri",
+      "successiva": "018",
+      "informazioni": "La Lâle Devri o era dei tulipani (1718–1730) fu il periodo della storia ottomana compreso tra il Trattato di Passarowitz del 21 luglio 1718 e la rivolta di Patrona Halil del 28 settembre 1730. Fu un periodo relativamente pacifico, durante il quale l'Impero ottomano iniziò a orientarsi verso l'Europa. Il nome deriva dalla mania per i tulipani scoppiata nella corte ottomana. Coltivare questo fiore era diventata una pratica abituale. Durante questo periodo l'élite e la corte ottomana avevano dimostrato un'immensa predilezione per il tulipano, che veniva utilizzato in varie occasioni. I tulipani definivano la nobiltà e il privilegio, sia in termini materiali che simbolici.",
+      "slug": "017-la-fontana-dell-era-dei-tulipani",
+      "tema_principale": "tulipani",
+      "temi_secondari": [
+        "storia-ottomana",
+        "architettura"
+      ],
+      "keywords": [
+        "architettura",
+        "europa",
+        "ricerca",
+        "storia-ottomana",
+        "topkapi",
+        "tulipani",
+        "tulipano"
+      ],
+      "persona_target_backend": [
+        "Archivisti degli Imperi"
+      ],
+      "difficolta": 4,
+      "punteggio": 21,
+      "durata_stimata_min": 24,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 17,
+        "sequenza": {
+          "nome": "Sulle tracce della Lâle Devri",
+          "ha_precedente": false,
+          "ha_successiva": true,
+          "is_inizio": true,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova la fontana di Ahmed III fuori da Topkapı.",
+            "La missione vale solo se nella foto si riconosce che si tratta di una fontana monumentale autonoma, non di un dettaglio qualunque del palazzo."
+          ]
+        }
+      }
+    },
+    {
+      "id": "018",
+      "nome": "I tulipani scolpiti",
+      "luogo": "Palazzo Topkapi",
+      "tipologia": "ricerca",
+      "descrizione": "Sulla fontana di Ahmed III trova un motivo floreale che richiami chiaramente il tulipano. La foto deve isolare il dettaglio decorativo.",
+      "gruppo": "Archivisti degli Imperi",
+      "scoperta": "Nel linguaggio ornamentale ottomano il tulipano diventa disciplina, eleganza, prestigio. Sulla fontana la decorazione floreale non è un abbellimento casuale: è una firma culturale.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "Sulle tracce della Lâle Devri",
+      "successiva": null,
+      "informazioni": "La Lâle Devri o era dei tulipani (1718–1730) fu il periodo della storia ottomana compreso tra il Trattato di Passarowitz del 21 luglio 1718 e la rivolta di Patrona Halil del 28 settembre 1730. Fu un periodo relativamente pacifico, durante il quale l'Impero ottomano iniziò a orientarsi verso l'Europa. Il nome deriva dalla mania per i tulipani scoppiata nella corte ottomana. Coltivare questo fiore era diventata una pratica abituale. Durante questo periodo l'élite e la corte ottomana avevano dimostrato un'immensa predilezione per il tulipano, che veniva utilizzato in varie occasioni. I tulipani definivano la nobiltà e il privilegio, sia in termini materiali che simbolici.",
+      "slug": "018-i-tulipani-scolpiti",
+      "tema_principale": "tulipani",
+      "temi_secondari": [
+        "storia-ottomana",
+        "arte-decorativa"
+      ],
+      "keywords": [
+        "arte-decorativa",
+        "europa",
+        "lingua",
+        "ricerca",
+        "storia-ottomana",
+        "topkapi",
+        "tulipani",
+        "tulipano"
+      ],
+      "persona_target_backend": [
+        "Archivisti degli Imperi"
+      ],
+      "difficolta": 3,
+      "punteggio": 15,
+      "durata_stimata_min": 24,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 18,
+        "sequenza": {
+          "nome": "Sulle tracce della Lâle Devri",
+          "ha_precedente": true,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": true
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Sulla fontana di Ahmed III trova un motivo floreale che richiami chiaramente il tulipano.",
+            "La foto deve isolare il dettaglio decorativo."
+          ]
+        }
+      }
+    },
+    {
+      "id": "019",
+      "nome": "Il giardino colorato",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un’aiuola con tulipani di almeno tre colori diversi. I tre colori devono essere visibili nello stesso frame.",
+      "gruppo": "Esploratori della Città",
+      "scoperta": "I colori dei tulipani nei parchi vengono pianificati come un mosaico per creare disegni geometrici o motivi decorativi",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Ad Istanbul vengono piantati milioni di bulbi ogni anno, soprattuto per il festival della fioritura dei tulipani ad aprile.",
+      "slug": "019-il-giardino-colorato",
+      "tema_principale": "tulipani",
+      "temi_secondari": [
+        "parchi",
+        "primavera"
+      ],
+      "keywords": [
+        "parchi",
+        "primavera",
+        "ricerca",
+        "tulipani",
+        "tulipano"
+      ],
+      "persona_target_backend": [
+        "Esploratori della Città"
+      ],
+      "difficolta": 3,
+      "punteggio": 12,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 19,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "primavera"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un’aiuola con tulipani di almeno tre colori diversi.",
+            "I tre colori devono essere visibili nello stesso frame."
+          ]
+        }
+      }
+    },
+    {
+      "id": "020",
+      "nome": "Sapori stagionali: l'Aşure",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia l’aşure, se lo trovi. La missione vale solo con una foto della porzione prima del primo cucchiaio. Se non è disponibile durante il viaggio, considerala bonus facoltativa.",
+      "gruppo": "tutti",
+      "scoperta": "L’aşure è un dolce di mescolanza e condivisione: ingredienti diversi convivono nella stessa ciotola, proprio come nelle storie che gli vengono attribuite. In Turchia il suo valore è tanto rituale quanto gastronomico.",
+      "mod_completamento": "foto della porzione",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La parola di origine araba aşure significa \"decimo\". Infatti, secondo la tradizione turca, questo dolce viene preparato, specialmente, il decimo giorno del Muharram, ossia il primo mese del calendario turco. Il termine aşure ha però valore anche secondo l'origine etimologica turca: in turco aş indica, genericamente, un porridge misto. Lo troviamo in altri dolci come il Sütlaç (Sütlü Aş), un dolce a base di riso e latte. La parola turca aş deriva infatti, dal termine persiano ashur, ossia mischiato.",
+      "slug": "020-sapori-stagionali-l-asure",
+      "tema_principale": "asure",
+      "temi_secondari": [
+        "dolci",
+        "stagionalita"
+      ],
+      "keywords": [
+        "assaggio",
+        "asure",
+        "dolci",
+        "stagionalita",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 12,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 120,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 20,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "variabile"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia l’aşure, se lo trovi.",
+            "La missione vale solo con una foto della porzione prima del primo cucchiaio.",
+            "Se non è disponibile durante il viaggio, considerala bonus facoltativa."
+          ]
+        }
+      }
+    },
+    {
+      "id": "021",
+      "nome": "I due continenti",
+      "luogo": "ovunque",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto da un punto in cui siano presenti nello stesso frame le due sponde del Bosforo, così da poter dire che Europa e Asia sono entrambe visibili.",
+      "gruppo": "tutti",
+      "scoperta": "Istanbul è l'unica metropoli al mondo situata a cavallo tra due continenti, Europa e Asia, separati dallo stretto del Bosforo.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il Bosforo è lo stretto che unisce il Mar Nero al Mare di Marmara e segna, assieme allo stretto dei Dardanelli, il confine meridionale tra il continente europeo e il continente asiatico. Ha una lunghezza di 31,7 km per una larghezza che va dai 550 ai 3 000 metri. Sulla sponda europea, attorno al Corno d'Oro, si è sviluppata la città di Istanbul, l'antica Costantinopoli, la cui attuale area urbana si estende anche sulla sponda asiatica per circa 18 chilometri.",
+      "slug": "021-i-due-continenti",
+      "tema_principale": "bosforo",
+      "temi_secondari": [
+        "panorama",
+        "due-continenti"
+      ],
+      "keywords": [
+        "asia",
+        "bosforo",
+        "due-continenti",
+        "europa",
+        "fotografia",
+        "panorama"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 8,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 21,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto da un punto in cui siano presenti nello stesso frame le due sponde del Bosforo, così da poter dire che Europa e Asia sono entrambe visibili."
+          ]
+        }
+      }
+    },
+    {
+      "id": "022",
+      "nome": "La chiesa di ferro",
+      "luogo": "Balat",
+      "tipologia": "ricerca",
+      "descrizione": "Trova la chiesa di Santo Stefano dei Bulgari a Balat e scatta una foto che renda riconoscibili i suoi elementi prefabbricati in ghisa. Non basta una veduta troppo lontana.",
+      "gruppo": "tutti",
+      "scoperta": "Dopo che la struttura originale in legno subì un incendio, al suo posto fu costruito il più grande edificio attuale. Un telaio di ferro fu preferito all'armatura di cemento a causa delle deboli condizioni del terreno. I piani di costruzione furono preparati dall'architetto armeno ottomano di Istanbul Hovsep Aznavur.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La Chiesa Bulgara di Santo Stefano è una Chiesa ortodossa bulgara nel quartiere di Balat, ad Istanbul. È famosa per essere fatta di elementi prefabbricati in ghisa in stile neo-bizantino. La chiesa appartiene alla minoranza bulgara della città. I bulgari dell'Impero ottomano erano soliti pregare nelle chiese del Patriarcato ortodosso di Fener in quanto facevano parte del Rūm millet, la comunità dei cristiani ortodossi dell'Impero, ma il movimento nazionalista bulgaro del XIX secolo sostenne la creazione di un'organizzazione ecclesiastica bulgara separata per i cristiani ortodossi bulgari in quanto consideravano il Patriarcato del Phanar un'istituzione prevalentemente greca. Questi sforzi culminarono nel riconoscimento dell'Esarcato bulgaro attraverso un firmano emesso dal sultano dell'Impero Ottomano Abdülaziz nel 1870.",
+      "slug": "022-la-chiesa-di-ferro",
+      "tema_principale": "balat-chiesa-bulgara",
+      "temi_secondari": [
+        "architettura",
+        "minoranza-bulgara"
+      ],
+      "keywords": [
+        "architettura",
+        "balat",
+        "balat-chiesa-bulgara",
+        "minoranza-bulgara",
+        "ricerca"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 14,
+      "durata_stimata_min": 22,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 22,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova la chiesa di Santo Stefano dei Bulgari a Balat e scatta una foto che renda riconoscibili i suoi elementi prefabbricati in ghisa.",
+            "Non basta una veduta troppo lontana."
+          ]
+        }
+      }
+    },
+    {
+      "id": "023",
+      "nome": "L'ora del tè",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia un çay servito nel modo tradizionale. La missione vale con una foto del bicchiere prima di bere.",
+      "gruppo": "tutti",
+      "scoperta": "Il più delle volte, il tè viene servito con biscotti salati o dolci chiamati kurabiye",
+      "mod_completamento": "foto del bicchiere",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il tè è un elemento importante della cultura turca, ed è la bevanda calda più comunemente consumata, nonostante la lunga storia del paese nel consumo di caffè. Servire il tè agli ospiti è parte dell'ospitalità turca. Il tè è più spesso consumato nelle famiglie, nei negozi e nei kıraathane, incontri sociali degli uomini.",
+      "slug": "023-l-ora-del-te",
+      "tema_principale": "cay",
+      "temi_secondari": [
+        "ospitalita",
+        "bevande"
+      ],
+      "keywords": [
+        "assaggio",
+        "bevande",
+        "caffe",
+        "cay",
+        "ospitalita"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 40,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 23,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia un çay servito nel modo tradizionale.",
+            "La missione vale con una foto del bicchiere prima di bere."
+          ]
+        }
+      }
+    },
+    {
+      "id": "024",
+      "nome": "Prima del primo sorso",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova il tipico doppio bollitore usato per preparare il çay, il çaydanlık. La foto deve mostrare chiaramente i due elementi impilati.",
+      "gruppo": "Custodi delle Tradizioni",
+      "scoperta": "Il tè turco nasce da una preparazione a due piani: sotto l’acqua, sopra l’infusione forte. Anche il servizio quotidiano diventa così un piccolo rituale tecnico.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "Il servizio da tè",
+      "successiva": "025",
+      "informazioni": "Per i turchi prendere il tè è un rito che si svolge praticamente lungo tutta la giornata. Con il tè inizia la colazione, si beve un tè tra amici per una chiacchierata, si beve il tè alla fine di un pasto, viene proposto quando si va a far shopping in un negozio; con il tè si inganna l’attesa se bisogna attraversare il Bosforo a Istanbul o il golfo di Izmir. Quando il tè viene offerto è segno che si è benvenuti.",
+      "slug": "024-prima-del-primo-sorso",
+      "tema_principale": "cay",
+      "temi_secondari": [
+        "ospitalita",
+        "preparazione"
+      ],
+      "keywords": [
+        "bosforo",
+        "cay",
+        "caydanlik",
+        "ospitalita",
+        "preparazione",
+        "ricerca",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "Custodi delle Tradizioni"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 12,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 24,
+        "sequenza": {
+          "nome": "Il servizio da tè",
+          "ha_precedente": false,
+          "ha_successiva": true,
+          "is_inizio": true,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova il tipico doppio bollitore usato per preparare il çay, il çaydanlık.",
+            "La foto deve mostrare chiaramente i due elementi impilati."
+          ]
+        }
+      }
+    },
+    {
+      "id": "025",
+      "nome": "Il bicchiere a tulipano",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova il tipico bicchiere da çay a forma di tulipano. La missione vale solo se la forma è ben leggibile nella foto.",
+      "gruppo": "Custodi delle Tradizioni",
+      "scoperta": "La forma del bicchiere non è solo bella: aiuta a tenere il tè caldo e a mostrarne il colore ambrato. Anche qui l’estetica e l’uso pratico coincidono.",
+      "mod_completamento": "foto",
+      "nome_sequenza": "Il servizio da tè",
+      "successiva": null,
+      "informazioni": "Per i turchi prendere il tè è un rito che si svolge praticamente lungo tutta la giornata. Con il tè inizia la colazione, si beve un tè tra amici per una chiacchierata, si beve il tè alla fine di un pasto, viene proposto quando si va a far shopping in un negozio; con il tè si inganna l’attesa se bisogna attraversare il Bosforo a Istanbul o il golfo di Izmir. Quando il tè viene offerto è segno che si è benvenuti.",
+      "slug": "025-il-bicchiere-a-tulipano",
+      "tema_principale": "cay",
+      "temi_secondari": [
+        "ospitalita",
+        "oggetti"
+      ],
+      "keywords": [
+        "bosforo",
+        "cay",
+        "oggetti",
+        "ospitalita",
+        "ricerca",
+        "tulipano"
+      ],
+      "persona_target_backend": [
+        "Custodi delle Tradizioni"
+      ],
+      "difficolta": 2,
+      "punteggio": 8,
+      "durata_stimata_min": 12,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 25,
+        "sequenza": {
+          "nome": "Il servizio da tè",
+          "ha_precedente": true,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": true
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova il tipico bicchiere da çay a forma di tulipano.",
+            "La missione vale solo se la forma è ben leggibile nella foto."
+          ]
+        }
+      }
+    },
+    {
+      "id": "026",
+      "nome": "Graffiti inaspettati",
+      "luogo": "Santa Sofia",
+      "tipologia": "ricerca",
+      "descrizione": "Trova l’iscrizione runica all’interno di Santa Sofia. La missione vale solo con una foto del punto esatto oppure con una foto del pannello/indicazione che la segnala sul posto.",
+      "gruppo": "Archivisti degli Imperi",
+      "scoperta": "Le iscrizioni più note includono sono l'iscrizione di Halfdan e quella di Are. La prima è la più famosa e recita probabilmente \"Halfdan incise queste rune\" o \"Halfdan era qui\". Oggi è parzialmente consumata e difficile da leggere a occhio nudo, protetta da una lastra di vetro. La seconda, rinvenuta più tardi e meno visibile è attribuita a un certo Are (o Ari). Alcuni studiosi ipotizzano che la frase incisa possa essere una parte di formula: “Ári m(ade these runes)” (Ári ha inciso queste rune).",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Sulle balaustre marmoree del matroneo superiore, si trovano delle celebri iscrizioni runiche lasciate dai vichinghi tra il IX e l'XI secolo. Questi graffiti testimoniano la presenza dei guerrieri norreni a Costantinopoli, molti dei quali servivano come mercenari d'élite nella leggendaria Guardia Varangiana dell'imperatore bizantino.",
+      "slug": "026-graffiti-inaspettati",
+      "tema_principale": "santa-sofia",
+      "temi_secondari": [
+        "vichinghi",
+        "graffiti"
+      ],
+      "keywords": [
+        "graffiti",
+        "occhio-blu",
+        "ricerca",
+        "rune",
+        "santa-sofia",
+        "vichinghi"
+      ],
+      "persona_target_backend": [
+        "Archivisti degli Imperi"
+      ],
+      "difficolta": 3,
+      "punteggio": 16,
+      "durata_stimata_min": 23,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 26,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova l’iscrizione runica all’interno di Santa Sofia.",
+            "La missione vale solo con una foto del punto esatto oppure con una foto del pannello/indicazione che la segnala sul posto."
+          ]
+        }
+      }
+    },
+    {
+      "id": "027",
+      "nome": "Un insolito dettaglio",
+      "luogo": "Moschea Blu",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto in cui siano visibili tutti i minareti della Moschea Blu. La missione vale solo se i sei minareti sono realmente distinguibili nell’immagine.",
+      "gruppo": "tutti",
+      "scoperta": "Quando la Moschea Blu fu costruita, solo la grande moschea della Mecca aveva 6 minareti. Costruirne 6 a Istanbul fu visto come un gesto di grande ambizione (quasi arroganza) del sultano Ahmed I. Per evitare polemiche, secondo la tradizione il sultano fece aggiungere un settimo minareto alla Mecca, così da mantenerne la superiorità.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "In genere una moschea ha da 1 a 4 minareti: uno nelle moschee piccole, due in quelle di media importanza e quattro nelle grandi moschee monumentali (soprattutto di tradizione ottomana). Il minareto nasce con una funzione pratica, cioè permettere al muezzin di chiamare i fedeli alla preghiera dall’alto. Con il tempo, però, è diventato anche un simbolo di prestigio: più minareti indicano una moschea più importante o legata al potere politico e religioso. Oggi la funzione pratica è meno rilevante grazie agli altoparlanti, ma il valore simbolico e architettonico rimane.",
+      "slug": "027-un-insolito-dettaglio",
+      "tema_principale": "moschea-blu",
+      "temi_secondari": [
+        "architettura",
+        "panorama"
+      ],
+      "keywords": [
+        "architettura",
+        "fotografia",
+        "minareti",
+        "moschea-blu",
+        "panorama"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 4,
+      "punteggio": 21,
+      "durata_stimata_min": 20,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 27,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto in cui siano visibili tutti i minareti della Moschea Blu.",
+            "La missione vale solo se i sei minareti sono realmente distinguibili nell’immagine."
+          ]
+        }
+      }
+    },
+    {
+      "id": "028",
+      "nome": "Semi e prosperità",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Trova un melograno vero o rappresentato. La missione vale solo se nella foto il frutto è riconoscibile chiaramente come melograno.",
+      "gruppo": "Decifratori di Simboli",
+      "scoperta": "In Turchia, esiste la tradizione secondo cui le spose lanciano a terra un melograno maturo. Il numero di chicchi che escono dal frutto rappresenta il numero di figli che la coppia avrà.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il melograno in Turchia è un potente simbolo di fertilità, abbondanza e prosperità. Tradizionalmente legato alla tradizione rurale e ai matrimoni, rappresenta l'augurio di una vita ricca e numerosa. È comune anche il suo utilizzo decorativo, raffigurato negli stemmi di diverse città turche. Presente anche nella cultura islamica, il melograno è menzionato nel Corano come uno dei frutti del giardino del Paradiso.  Oltre ai matrimoni, viene offerto come dono propiziatorio e consumato come portafortuna per il nuovo anno.",
+      "slug": "028-semi-e-prosperita",
+      "tema_principale": "melograno",
+      "temi_secondari": [
+        "fertilita",
+        "simboli"
+      ],
+      "keywords": [
+        "fertilita",
+        "melograno",
+        "ricerca",
+        "simboli"
+      ],
+      "persona_target_backend": [
+        "Decifratori di Simboli"
+      ],
+      "difficolta": 2,
+      "punteggio": 8,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 28,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Trova un melograno vero o rappresentato.",
+            "La missione vale solo se nella foto il frutto è riconoscibile chiaramente come melograno."
+          ]
+        }
+      }
+    },
+    {
+      "id": "029",
+      "nome": "Non chiamarle polpette!",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia delle köfte. La missione vale con una foto del piatto o del panino prima del primo morso.",
+      "gruppo": "tutti",
+      "scoperta": "Esistono oltre 300 varianti. Alcune delle più note sono: Içli Köfte (polpette ripiene di noci e carne, bollite o fritte), Çiğ Köfte (una versione speziata a base di bulgur, talvolta cruda, nella tradizione originaria, tipica del sud-est) e İnegöl Köfte (polpette dalla forma allungata tipiche di Bursa)",
+      "mod_completamento": "foto del piatto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Le kofte sono polpette speziate tradizionali turche, solitamente a base di carne macinata (agnello o manzo), cipolla, prezzemolo, pane raffermo e spezie come cumino e paprika. Dalla forma allungata o schiacciata, si servono grigliate, fritte o in umido, spesso accompagnate da bulgur, yogurt o all'interno di pite",
+      "slug": "029-non-chiamarle-polpette",
+      "tema_principale": "kofte",
+      "temi_secondari": [
+        "street-food",
+        "carne"
+      ],
+      "keywords": [
+        "assaggio",
+        "carne",
+        "kofte",
+        "street-food"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 180,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 29,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia delle köfte.",
+            "La missione vale con una foto del piatto o del panino prima del primo morso."
+          ]
+        }
+      }
+    },
+    {
+      "id": "030",
+      "nome": "L'ombra del derviscio",
+      "luogo": "ovunque",
+      "tipologia": "azione",
+      "descrizione": "Trova un’immagine, un oggetto, un poster, una miniatura, un menù o una decorazione che rappresenti un derviscio rotante. Non vale imitare la danza: deve essere la città a mostrartelo.",
+      "gruppo": "tutti",
+      "scoperta": "I dervisci rotanti appartengono a una tradizione spirituale e rituale precisa. A Istanbul la loro immagine è diffusissima, ma dietro la figura iconica esiste una pratica religiosa molto più complessa di quanto sembri al turista.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "I dervisci rotanti praticano una forma di meditazione fisicamente attiva che ha avuto origine tra alcune confraternite islamiche sufi e che è ancora praticata dai dervisci della confraternita mevlevi e altri ordini come il Rifa'i-Marufi. È una pratica di meditazione consueta eseguita all'interno del sema, o cerimonia di adorazione, attraverso la quale i dervisci mirano a raggiungere la fonte di ogni perfezione. I dervisci riescono a danzare per lunghi periodi senza sperimentare vertigini o nausea grazie a una combinazione di postura corporea, concentrazione e abbigliamento specifico. Durante la danza, la testa è inclinata di circa venticinque gradi, le braccia sono aperte e lo sguardo è mantenuto semiaperto, creando una \"fissazione ottica\" che contribuisce a stabilizzare la percezione visiva.La danza implica anche l'uso di gonne chiamate \"Tennure\", che si aprono durante il movimento, sfruttando la forza centrifuga per ridurre l'oscillazione e gli scossoni. I dervisci ruotano attorno al piede sinistro, con il corpo che si sposta in una serie di movimenti ripetitivi, il cui obiettivo è minimizzare le vibrazioni e stimolare il centro di equilibrio nell'orecchio interno.",
+      "slug": "030-l-ombra-del-derviscio",
+      "tema_principale": "dervisci",
+      "temi_secondari": [
+        "sufismo",
+        "rappresentazioni"
+      ],
+      "keywords": [
+        "azione",
+        "dervisci",
+        "derviscio",
+        "rappresentazioni",
+        "sufismo"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 13,
+      "durata_stimata_min": 12,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 30,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_gesto_o_oggetto",
+          "criteri": [
+            "Trova un’immagine, un oggetto, un poster, una miniatura, un menù o una decorazione che rappresenti un derviscio rotante.",
+            "Non vale imitare la danza: deve essere la città a mostrartelo."
+          ]
+        }
+      }
+    },
+    {
+      "id": "031",
+      "nome": "Degustazione lenta",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Bevi un caffè turco senza mescolarlo e lascia depositare i fondi. La missione vale con una foto della tazzina appena servita oppure del fondo rimasto alla fine.",
+      "gruppo": "tutti",
+      "scoperta": "Il caffè turco non è solo una bevanda: è un gesto sociale, un tempo lento, una scusa per fermarsi e parlare. Anche i fondi fanno parte dell’esperienza.",
+      "mod_completamento": "foto della tazzina",
+      "nome_sequenza": "Caffeomanti in erba",
+      "successiva": "032",
+      "informazioni": "Il caffè turco racchiude in sé secoli e secoli di storia e può essere sicuramente considerato il padre di tutti i caffè moderni. La sua creazione risale a più di 500 anni fa, ma ancora oggi la sua fama lo precede. Infatti, il caffè è iscritto dall'UNESCO nella lista dei patrimoni culturali immateriali dell'umanità. La lettura del destino nel caffè turco, chiamata anche caffeomanzia, è una pratica tradizionale molto meticolosa in cui si interpreta il futuro osservando i fondi di caffè rimasti nella tazza dopo che quest'ultima è stata bevuta e capovolta. Si tratta di una pratica sociale, capace di coniugare mistero e divertimento, felicità e tristezza; un vero momento di convivialità e di speranza. Una regola fondamentale è non mescolare il caffè una volta versato nella tazzina per evitare di rovinare la \"schiuma\" in superficie, considerata un elemento di pregio.",
+      "slug": "031-degustazione-lenta",
+      "tema_principale": "caffe-turco",
+      "temi_secondari": [
+        "ospitalita",
+        "bevande"
+      ],
+      "keywords": [
+        "assaggio",
+        "bevande",
+        "caffe",
+        "caffe-turco",
+        "ospitalita",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 13,
+      "durata_stimata_min": 17,
+      "budget_stimato_try": 120,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 31,
+        "sequenza": {
+          "nome": "Caffeomanti in erba",
+          "ha_precedente": false,
+          "ha_successiva": true,
+          "is_inizio": true,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Bevi un caffè turco senza mescolarlo e lascia depositare i fondi.",
+            "La missione vale con una foto della tazzina appena servita oppure del fondo rimasto alla fine."
+          ]
+        }
+      }
+    },
+    {
+      "id": "032",
+      "nome": "Leggi i fondi",
+      "luogo": "ovunque",
+      "tipologia": "azione",
+      "descrizione": "Dopo aver capovolto la tazza sul piattino e averla lasciata riposare, osserva i fondi e identifica almeno una forma riconoscibile. La missione vale solo se mostri la tazza al gruppo e dai un’interpretazione in massimo 20 parole.",
+      "gruppo": "tutti",
+      "scoperta": "La caffeomanzia non serve tanto a predire davvero il futuro quanto a trasformare il caffè in racconto condiviso. Il divertimento sta nell’interpretazione, non nella certezza.",
+      "mod_completamento": "foto della tazza capovolta o dei fondi",
+      "nome_sequenza": "Caffeomanti in erba",
+      "successiva": null,
+      "informazioni": "Il caffè turco racchiude in sé secoli e secoli di storia e può essere sicuramente considerato il padre di tutti i caffè moderni. La sua creazione risale a più di 500 anni fa, ma ancora oggi la sua fama lo precede. Infatti, il caffè è iscritto dall'UNESCO nella lista dei patrimoni culturali immateriali dell'umanità. La lettura del destino nel caffè turco, chiamata anche caffeomanzia, è una pratica tradizionale molto meticolosa in cui si interpreta il futuro osservando i fondi di caffè rimasti nella tazza dopo che quest'ultima è stata bevuta e capovolta. Si tratta di una pratica sociale, capace di coniugare mistero e divertimento, felicità e tristezza; un vero momento di convivialità e di speranza. Una regola fondamentale è non mescolare il caffè una volta versato nella tazzina per evitare di rovinare la \"schiuma\" in superficie, considerata un elemento di pregio.",
+      "slug": "032-leggi-i-fondi",
+      "tema_principale": "caffe-turco",
+      "temi_secondari": [
+        "divinazione",
+        "convivialita"
+      ],
+      "keywords": [
+        "azione",
+        "caffe",
+        "caffe-turco",
+        "convivialita",
+        "divinazione",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 4,
+      "punteggio": 19,
+      "durata_stimata_min": 14,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 32,
+        "sequenza": {
+          "nome": "Caffeomanti in erba",
+          "ha_precedente": true,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": true
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": true,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": true,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_piu_racconto",
+          "criteri": [
+            "Dopo aver capovolto la tazza sul piattino e averla lasciata riposare, osserva i fondi e identifica almeno una forma riconoscibile.",
+            "La missione vale solo se mostri la tazza al gruppo e dai un’interpretazione in massimo 20 parole."
+          ]
+        }
+      }
+    },
+    {
+      "id": "033",
+      "nome": "Passione street food",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia un simit. La missione vale con una foto del simit intero prima del primo morso.",
+      "gruppo": "tutti",
+      "scoperta": "Il Simit è stato inventato circa 500 anni fa nell'impero ottomano e da allora si è diffuso nei Balcani. Il viaggiatore del 17 ° secolo Evliya Çelebi scrisse che a Istanbul c'erano 70 panetterie di simit negli anni '30 del 1600.",
+      "mod_completamento": "foto del simit",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il simit, traducibile in italiano come ciambella di sesamo è una pasta lievitata a forma di ciambella con semi di sesamo sulla crosta.",
+      "slug": "033-passione-street-food",
+      "tema_principale": "simit",
+      "temi_secondari": [
+        "street-food",
+        "pane"
+      ],
+      "keywords": [
+        "assaggio",
+        "pane",
+        "simit",
+        "street-food"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 35,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 33,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia un simit.",
+            "La missione vale con una foto del simit intero prima del primo morso."
+          ]
+        }
+      }
+    },
+    {
+      "id": "034",
+      "nome": "Qualcosa di dolce",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia il baklava. La missione vale con una foto del pezzo o del vassoio prima dell’assaggio.",
+      "gruppo": "tutti",
+      "scoperta": "Il Sultano era solito donare vassoi di baklava ai giannizzeri il 15 del mese di Ramadan in una processione cerimoniale chiamata Baklava Alayi",
+      "mod_completamento": "foto del dolce",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il baklava è un dessert ricco di zucchero (o miele) e frutta secca originario dell'odierna Turchia. Era uno dei dolci più popolari della cucina ottomana. La storia del baklava non è ben documentata. È stata rivendicata da molti gruppi etnici, ma molto probabilmente si tratta di un piatto turco proveniente dall'Asia Centrale, sviluppato nella sua forma attuale nelle cucine imperiali del Palazzo di Topkapı.[",
+      "slug": "034-qualcosa-di-dolce",
+      "tema_principale": "baklava",
+      "temi_secondari": [
+        "dolci",
+        "palazzo"
+      ],
+      "keywords": [
+        "asia",
+        "assaggio",
+        "baklava",
+        "dolci",
+        "palazzo",
+        "topkapi",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 120,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 34,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia il baklava.",
+            "La missione vale con una foto del pezzo o del vassoio prima dell’assaggio."
+          ]
+        }
+      }
+    },
+    {
+      "id": "035",
+      "nome": "Il raviolo turco",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia dei mantı. La missione vale con una foto del piatto prima di iniziare a mangiare.",
+      "gruppo": "tutti",
+      "scoperta": "Un tipo popolare di manti turchi è conosciuto come Kayseri mantısı, una particolarità culturale di Kayseri, città dell'Anatolia centrale. Il mantı di Kayseri è piccolo e viene servito con yogurt, burro fuso e condito con menta secca e pepe di Aleppo in scaglie",
+      "mod_completamento": "foto del piatto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il manti è un tipo di pasta ripiena tipico della cucina turca, delle cucine caucasiche e dell'Asia centrale della cucina uigura e della cucina russa. Consistono in ravioli ripieni di carne di agnello, cavallo o manzo macinata e speziata che vengono bolliti o cotti al vapore. Dimensioni e forma dei Manti variano da luogo a luogo. I manti sono strettamente imparentati etimologicamente ai mantou cinesi ma assomigliano molto di più ai jiaozi, al Buuz mongolo, al Momo nepalese e al Mandu coreano. Nella cucina turca moderna, i manti sono tipicamente serviti conditi con yogurt e aglio, speziati con pepe rosso in polvere e burro fuso e conditi con sumac macinato e/o menta secca.",
+      "slug": "035-il-raviolo-turco",
+      "tema_principale": "manti",
+      "temi_secondari": [
+        "pasta-ripiena",
+        "cucina-regionale"
+      ],
+      "keywords": [
+        "asia",
+        "assaggio",
+        "cucina-regionale",
+        "manti",
+        "pasta-ripiena",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 220,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 35,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia dei mantı.",
+            "La missione vale con una foto del piatto prima di iniziare a mangiare."
+          ]
+        }
+      }
+    },
+    {
+      "id": "036",
+      "nome": "La soglia",
+      "luogo": "ovunque",
+      "tipologia": "ricerca",
+      "descrizione": "Osserva l’ingresso di una casa o di una struttura domestica e nota se ci sono scarpe lasciate fuori, ciabatte per ospiti o un mobile predisposto per questo uso. La missione vale solo se almeno uno di questi segnali è visibile chiaramente.",
+      "gruppo": "Custodi delle Tradizioni",
+      "scoperta": "Poiché nelle case turche è comune sedersi su tappeti o divani bassi, mantenere il pavimento immacolato è essenziale. L'usanza deriva anche dalla pratica islamica di pregare su tappeti che devono restare puri da contaminazioni esterne.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Togliersi le scarpe prima di entrare in casa è una tradizione sulla quale i turchi non transigono. In ogni casa turca si mettono sempre a disposizione degli ospiti, delle ciabatte di ogni misura. Solitamente, all’ingresso di ogni casa c’è un mobiletto per contenerle, mentre le proprie scarpe rimangono quasi sempre fuori dall’abitazione.",
+      "slug": "036-la-soglia",
+      "tema_principale": "casa-e-ospitalita",
+      "temi_secondari": [
+        "casa",
+        "ospitalita"
+      ],
+      "keywords": [
+        "casa",
+        "casa-e-ospitalita",
+        "ospitalita",
+        "ricerca"
+      ],
+      "persona_target_backend": [
+        "Custodi delle Tradizioni"
+      ],
+      "difficolta": 2,
+      "punteggio": 8,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 36,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Osserva l’ingresso di una casa o di una struttura domestica e nota se ci sono scarpe lasciate fuori, ciabatte per ospiti o un mobile predisposto per questo uso.",
+            "La missione vale solo se almeno uno di questi segnali è visibile chiaramente."
+          ]
+        }
+      }
+    },
+    {
+      "id": "036b",
+      "nome": "Il caffè salato dello sposo",
+      "luogo": "ovunque",
+      "tipologia": "azione",
+      "descrizione": "Trova un menù, un oggetto, un racconto scritto o un riferimento visivo al rito del caffè salato servito allo sposo. Non devi farlo bere a nessuno: devi rintracciare la traccia culturale del rituale.",
+      "gruppo": "tutti",
+      "scoperta": "Nella tradizione turca la sposa può servire allo sposo un caffè con il sale al posto dello zucchero. Oggi il gesto è ricordato soprattutto come prova simbolica di pazienza e disponibilità.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Nella tradizione turca, prima del matrimonio, la sposa prepara il caffè per lo sposo e glielo serve aggiungendoci il sale al posto dello zucchero. Il caffè salato serve a testare la pazienza e il vero amore dell'uomo: se lo beve senza lamentarsi, dimostra di essere pronto ad affrontare le difficoltà della vita coniugale. La futura sposa prepara il caffè turco per tutti, ma mette il sale al posto dello zucchero nella tazzina del pretendente.  Il rito si svolge durante la visita dei genitori dello sposo a casa della sposa, un momento formale e tradizionale.",
+      "id_originale": "036",
+      "slug": "036b-il-caffe-salato-dello-sposo",
+      "tema_principale": "caffe-salato",
+      "temi_secondari": [
+        "matrimonio",
+        "tradizioni"
+      ],
+      "keywords": [
+        "azione",
+        "caffe",
+        "caffe-salato",
+        "caffe-turco",
+        "matrimonio",
+        "tradizioni",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 13,
+      "durata_stimata_min": 12,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 36,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_gesto_o_oggetto",
+          "criteri": [
+            "Trova un menù, un oggetto, un racconto scritto o un riferimento visivo al rito del caffè salato servito allo sposo.",
+            "Non devi farlo bere a nessuno: devi rintracciare la traccia culturale del rituale."
+          ]
+        }
+      }
+    },
+    {
+      "id": "037",
+      "nome": "Turchese",
+      "luogo": "ovunque",
+      "tipologia": "fotografia",
+      "descrizione": "Scatta una foto in cui il colore predominante sia il turchese. Deve essere evidente che il turchese occupa più spazio visivo di qualunque altro colore nello scatto.",
+      "gruppo": "tutti",
+      "scoperta": "Il nome della pietra è stato poi utilizzato nel XVI secolo (primo uso registrato nel 1573) per descrivere l'omonima sfumatura ciano-verde. I turchi chiamano il colore turchese turkuaz, adattando il prestito francese.",
+      "mod_completamento": "foto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il termine turchese deriva da turquoise in francese antico, che significa letteralmente \"turco\". La pietra preziosa, originaria della Persia, arrivava in Europa attraverso le rotte commerciali controllate dai Turchi Ottomani, portando gli europei a chiamarla \"pietra turca\".",
+      "slug": "037-turchese",
+      "tema_principale": "turchese",
+      "temi_secondari": [
+        "colore",
+        "fotografia"
+      ],
+      "keywords": [
+        "colore",
+        "europa",
+        "fotografia",
+        "turchese",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 1,
+      "punteggio": 5,
+      "durata_stimata_min": 8,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 37,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "evidenza_foto",
+          "criteri": [
+            "Scatta una foto in cui il colore predominante sia il turchese.",
+            "Deve essere evidente che il turchese occupa più spazio visivo di qualunque altro colore nello scatto."
+          ]
+        }
+      }
+    },
+    {
+      "id": "038",
+      "nome": "L'oro del Mar Nero",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia delle nocciole oppure un prodotto in cui la nocciola sia l’ingrediente principale. La missione vale con una foto del prodotto prima dell’assaggio.",
+      "gruppo": "tutti",
+      "scoperta": "La Turchia domina da decenni la produzione mondiale di nocciole. Per questo un ingrediente che sembra semplice collega in realtà mercati globali, dolci famosi e paesaggi agricoli del Mar Nero.",
+      "mod_completamento": "foto del prodotto",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La Turchia è il leader mondiale nella produzione di nocciole, coprendo circa il 65-70% dell'offerta globale. La stagione 2025/26 ha registrato una crisi produttiva, con cali dovuti a gelate e cimici asiatiche, portando a un raddoppio dei prezzi e a tensioni con grandi acquirenti come Ferrero. La produzione è concentrata lungo la regione del Mar Nero.",
+      "slug": "038-l-oro-del-mar-nero",
+      "tema_principale": "nocciole",
+      "temi_secondari": [
+        "mar-nero",
+        "prodotti-locali"
+      ],
+      "keywords": [
+        "asia",
+        "assaggio",
+        "mar-nero",
+        "nocciole",
+        "prodotti-locali"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 120,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 38,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia delle nocciole oppure un prodotto in cui la nocciola sia l’ingrediente principale.",
+            "La missione vale con una foto del prodotto prima dell’assaggio."
+          ]
+        }
+      }
+    },
+    {
+      "id": "039",
+      "nome": "Il cimelio del bazar",
+      "luogo": "Gran Bazar",
+      "tipologia": "azione",
+      "descrizione": "Al Gran Bazar acquista un oggetto spendendo al massimo 300 lire. La missione vale solo se l’oggetto contiene almeno uno dei simboli del libro: nazar, tulipano, mezzaluna, gatto o mosaico.",
+      "gruppo": "tutti",
+      "scoperta": "Il Gran Bazar non è solo un posto dove comprare: è un teatro del commercio ottomano sopravvissuto nei secoli, dove il valore degli oggetti passa anche attraverso racconto, trattativa e messa in scena.",
+      "mod_completamento": "foto dell'oggetto acquistato",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il Gran Bazar è un immenso labirinto con oltre 4.000 negozi, dove si trovano tappeti annodati a mano, ceramiche dipinte, gioielli in oro e argento, spezie profumate, lampade in mosaico di vetro, articoli in pelle, tessuti pregiati, dolci turchi e set da caffè. È famoso anche per la vendita di prodotti artigianali, antichi e souvenir. Ricorda che il prezzo è sempre più alto del reale: spesso ti sarà offerto del tè per iniziare la trattativa. Contratta sempre con tono amichevole, quasi fosse un gioco!",
+      "slug": "039-il-cimelio-del-bazar",
+      "tema_principale": "gran-bazar",
+      "temi_secondari": [
+        "shopping",
+        "simboli"
+      ],
+      "keywords": [
+        "azione",
+        "bazar",
+        "caffe",
+        "gatto",
+        "gran-bazar",
+        "mezzaluna",
+        "nazar",
+        "shopping",
+        "simboli",
+        "tulipano"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 5,
+      "punteggio": 30,
+      "durata_stimata_min": 25,
+      "budget_stimato_try": 300,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 39,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "specifico",
+          "richiede_luogo_specifico": true,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": false,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": true,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_gesto_o_oggetto",
+          "criteri": [
+            "Al Gran Bazar acquista un oggetto spendendo al massimo 300 lire.",
+            "La missione vale solo se l’oggetto contiene almeno uno dei simboli del libro: nazar, tulipano, mezzaluna, gatto o mosaico."
+          ]
+        }
+      }
+    },
+    {
+      "id": "040",
+      "nome": "Il dolce dell'ospitalità",
+      "luogo": "ovunque",
+      "tipologia": "assaggio",
+      "descrizione": "Assaggia un lokum. La missione vale con una foto del pezzo o della scatola prima dell’assaggio.",
+      "gruppo": "tutti",
+      "scoperta": "Offrire lokum è segno di accoglienza e rispetto: viene spesso servito con caffè turco o tè",
+      "mod_completamento": "foto del dolce",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "Il lokum è un prodotto dolciario fatto di amido e zucchero, di consistenza gelatinosa. Viene aromatizzato con arancia, acqua di rose, limone, pistacchi, mandorle, spezie, cannella o menta. Una variante prevede zucchero a velo o farina di cocco con cui ricoprire il tutto a fini conservativi. Comunemente rivendicato come dolce di origine turca, ha in realtà una diffusione ampia e diversificata, radicata in antichi cerimoniali e tradizioni in molti paesi del Mediterraneo orientale, che rende controversa l’attribuzione della sua invenzione a un paese o all’altro.",
+      "slug": "040-il-dolce-dell-ospitalita",
+      "tema_principale": "lokum",
+      "temi_secondari": [
+        "dolci",
+        "ospitalita"
+      ],
+      "keywords": [
+        "assaggio",
+        "caffe",
+        "caffe-turco",
+        "dolci",
+        "lokum",
+        "ospitalita",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 2,
+      "punteggio": 9,
+      "durata_stimata_min": 15,
+      "budget_stimato_try": 120,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 40,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": true,
+          "richiede_consumazione": true,
+          "richiede_interazione": false,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "foto_pre_assaggio",
+          "criteri": [
+            "Assaggia un lokum.",
+            "La missione vale con una foto del pezzo o della scatola prima dell’assaggio."
+          ]
+        }
+      }
+    },
+    {
+      "id": "041",
+      "nome": "Impara la lingua",
+      "luogo": "ovunque",
+      "tipologia": "interazione",
+      "descrizione": "Chiedi a qualcuno di insegnarti una frase o un modo di dire in turco. La missione vale solo se poi la ripeti ad alta voce a un altro membro del gruppo oppure la annoti fotograficamente su un foglio o sul telefono.",
+      "gruppo": "tutti",
+      "scoperta": "Imparare una formula locale cambia subito il modo in cui si entra in relazione con la città. Anche una frase minima può trasformare un’interazione anonima in un piccolo scambio reale.",
+      "mod_completamento": "conferma del gruppo + eventuale foto della frase",
+      "nome_sequenza": null,
+      "successiva": null,
+      "informazioni": "La lingua turca ha origini antiche, radicate nelle steppe dell'Asia Centrale (intorno ai monti Altai) e appartiene alla famiglia delle lingue turche (ramo oghuz). Evolutosi dal Proto-Turco (circa 2.500 anni fa), il turco antico è documentato dalle iscrizioni Orkhon in Mongolia (VI-VIII secolo).",
+      "slug": "041-impara-la-lingua",
+      "tema_principale": "lingua-turca",
+      "temi_secondari": [
+        "interazione",
+        "lingua"
+      ],
+      "keywords": [
+        "asia",
+        "interazione",
+        "lingua",
+        "lingua-turca",
+        "turco"
+      ],
+      "persona_target_backend": [
+        "tutti"
+      ],
+      "difficolta": 3,
+      "punteggio": 13,
+      "durata_stimata_min": 10,
+      "budget_stimato_try": 0,
+      "backend": {
+        "stato": "attiva",
+        "priorita_sort": 41,
+        "sequenza": {
+          "nome": null,
+          "ha_precedente": false,
+          "ha_successiva": false,
+          "is_inizio": false,
+          "is_fine": false
+        },
+        "filtri": {
+          "luogo_tipo": "generico",
+          "richiede_luogo_specifico": false,
+          "richiede_foto": true,
+          "richiede_acquisto": false,
+          "richiede_consumazione": false,
+          "richiede_interazione": true,
+          "richiede_sera": false,
+          "richiede_ingresso": false,
+          "sequenziale": false,
+          "stagionalita": "sempre"
+        },
+        "validazione": {
+          "tipo": "conferma_orale",
+          "criteri": [
+            "Chiedi a qualcuno di insegnarti una frase o un modo di dire in turco.",
+            "La missione vale solo se poi la ripeti ad alta voce a un altro membro del gruppo oppure la annoti fotograficamente su un foglio o sul telefono."
+          ]
+        }
+      }
+    }
+  ]
+};

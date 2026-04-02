@@ -392,6 +392,10 @@ body[data-scene="missionDetail"] .app-backdrop {
   margin-top: 20px;
 }
 
+.action-row-wrap {
+  justify-content: flex-start;
+}
+
 .action-row-split {
   justify-content: space-between;
 }
@@ -686,9 +690,23 @@ body[data-scene="missionDetail"] .app-backdrop {
   line-height: 1.2;
 }
 
-.mission-row__description {
-  margin-top: 8px;
+.mission-row__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mission-fact {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(58, 43, 34, 0.42);
   color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .mission-row__filters {
@@ -696,6 +714,10 @@ body[data-scene="missionDetail"] .app-backdrop {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
+}
+
+.mission-row.is-completed .mission-row__title {
+  color: rgba(233, 218, 202, 0.72);
 }
 
 .mission-tag,
@@ -777,6 +799,57 @@ body[data-scene="missionDetail"] .app-backdrop {
   outline: none;
 }
 
+.filter-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.search-field {
+  display: grid;
+  gap: 8px;
+}
+
+.search-field input,
+.filter-select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(58, 43, 34, 0.7);
+  color: var(--text);
+  font: inherit;
+}
+
+.search-field input::placeholder {
+  color: var(--muted-soft);
+}
+
+.search-field input:focus,
+.filter-select:focus {
+  border-color: var(--line-strong);
+  outline: none;
+}
+
+.filter-stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.filter-group {
+  display: grid;
+  gap: 8px;
+}
+
+.filter-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
 .empty-state {
   margin-top: 18px;
   padding-top: 16px;
@@ -849,6 +922,10 @@ body[data-scene="missionDetail"] .app-backdrop {
   margin: 0;
 }
 
+.mission-detail-copy p + p {
+  margin-top: 12px;
+}
+
 .mission-detail-list {
   margin: 14px 0 0;
   padding-left: 18px;
@@ -898,6 +975,23 @@ body[data-scene="missionDetail"] .app-backdrop {
 
 .mission-step__footer {
   margin-top: 12px;
+}
+
+.sequence-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(57, 42, 33, 0.52);
+}
+
+.sequence-card__title {
+  font-size: 1rem;
+}
+
+.sequence-card__text {
+  color: var(--muted);
 }
 
 .mission-step__footer .support-copy {

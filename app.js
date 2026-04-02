@@ -13,7 +13,8 @@ const primaryQuestionIds = (QUIZ_CONTENT.questions ?? [])
 
 const STORAGE_KEYS = {
   homeUnlocked: "istanbulAdventure.homeUnlocked",
-  categoryId: "istanbulAdventure.categoryId"
+  categoryId: "istanbulAdventure.categoryId",
+  userMissionState: "istanbulAdventure.userMissionState"
 };
 
 const ui = {
@@ -96,7 +97,9 @@ const ui = {
   detailTitle: document.getElementById("detailTitle"),
   detailText: document.getElementById("detailText"),
   detailFilterTitle: document.getElementById("detailFilterTitle"),
-  detailFilterRow: document.getElementById("detailFilterRow"),
+  detailSearchInput: document.getElementById("detailSearchInput"),
+  detailSearchClear: document.getElementById("detailSearchClear"),
+  detailFilterGroups: document.getElementById("detailFilterGroups"),
   detailResultsCount: document.getElementById("detailResultsCount"),
   detailMissionList: document.getElementById("detailMissionList"),
   detailEmptyState: document.getElementById("detailEmptyState"),
@@ -117,6 +120,15 @@ const ui = {
   missionDetailIntro: document.getElementById("missionDetailIntro"),
   missionDetailObjectives: document.getElementById("missionDetailObjectives"),
   missionDetailSteps: document.getElementById("missionDetailSteps"),
+  missionDetailInfoSection: document.getElementById("missionDetailInfoSection"),
+  missionDetailInfoTitle: document.getElementById("missionDetailInfoTitle"),
+  missionDetailInfo: document.getElementById("missionDetailInfo"),
+  missionDetailSequenceSection: document.getElementById("missionDetailSequenceSection"),
+  missionDetailSequenceTitle: document.getElementById("missionDetailSequenceTitle"),
+  missionDetailSequenceCard: document.getElementById("missionDetailSequenceCard"),
+  missionSaveButton: document.getElementById("missionSaveButton"),
+  missionCompleteButton: document.getElementById("missionCompleteButton"),
+  missionNextButton: document.getElementById("missionNextButton"),
   feedbackOverlay: document.getElementById("feedbackOverlay"),
   feedbackText: document.getElementById("feedbackText"),
   feedbackHint: document.getElementById("feedbackHint"),
@@ -132,7 +144,7 @@ let pendingNextId = null;
 let pendingCompletesQuiz = false;
 let resolvedCategoryId = null;
 let activeDetailSection = "general";
-let activeDetailFilter = "all";
+let activeDetailFilters = createDefaultDetailFilters();
 let activeMissionId = null;
 let missionDetailBackScene = "home";
 let categoryScores = {};
@@ -232,9 +244,95 @@ function getStoredCategoryId() {
   return window.localStorage.getItem(STORAGE_KEYS.categoryId) || null;
 }
 
+function normalizeText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function createDefaultDetailFilters() {
+  return {
+    search: "",
+    personality: "all",
+    place: "all",
+    type: "all",
+    theme: "all",
+    difficulty: "all",
+    budget: "all",
+    duration: "all"
+  };
+}
+
+function getDefaultUserMissionState() {
+  return {
+    completedMissionIds: [],
+    savedMissionIds: [],
+    hiddenMissionIds: [],
+    personality: getStoredCategoryId() || undefined
+  };
+}
+
+function getUserMissionState() {
+  const fallback = getDefaultUserMissionState();
+  const rawState = window.localStorage.getItem(STORAGE_KEYS.userMissionState);
+
+  if (!rawState) {
+    return fallback;
+  }
+
+  try {
+    const parsed = JSON.parse(rawState);
+    return {
+      completedMissionIds: Array.isArray(parsed.completedMissionIds) ? parsed.completedMissionIds : [],
+      savedMissionIds: Array.isArray(parsed.savedMissionIds) ? parsed.savedMissionIds : [],
+      hiddenMissionIds: Array.isArray(parsed.hiddenMissionIds) ? parsed.hiddenMissionIds : [],
+      personality: parsed.personality || fallback.personality
+    };
+  } catch (error) {
+    return fallback;
+  }
+}
+
+function persistUserMissionState(nextState) {
+  window.localStorage.setItem(STORAGE_KEYS.userMissionState, JSON.stringify(nextState));
+}
+
+function updateUserMissionState(updater) {
+  const currentState = getUserMissionState();
+  const nextState = updater(currentState);
+  persistUserMissionState(nextState);
+  return nextState;
+}
+
+function toggleMissionStateValue(stateKey, missionId) {
+  return updateUserMissionState((currentState) => {
+    const values = new Set(currentState[stateKey] || []);
+    if (values.has(missionId)) {
+      values.delete(missionId);
+    } else {
+      values.add(missionId);
+    }
+
+    return {
+      ...currentState,
+      [stateKey]: Array.from(values)
+    };
+  });
+}
+
+function getCurrentCategoryId() {
+  return resolvedCategoryId || getStoredCategoryId() || getUserMissionState().personality || null;
+}
+
 function persistHomeProfile(categoryId) {
   window.localStorage.setItem(STORAGE_KEYS.homeUnlocked, "true");
   window.localStorage.setItem(STORAGE_KEYS.categoryId, categoryId || "");
+  updateUserMissionState((currentState) => ({
+    ...currentState,
+    personality: categoryId || currentState.personality
+  }));
 }
 
 function getCategoryIdFromAnswer(answer) {
@@ -465,21 +563,38 @@ function finishQuiz() {
 }
 
 function getSectionContent(sectionKey, categoryId) {
+  const userState = getUserMissionState();
+  const hiddenMissionIds = new Set(userState.hiddenMissionIds || []);
+
   if (sectionKey === "general") {
-    return MISSION_HOME_CONTENT.missions?.general || [];
+    return sortMissions(
+      (MISSION_HOME_CONTENT.missions?.general || [])
+        .filter((mission) => !hiddenMissionIds.has(mission.id))
+        .filter((mission) => isMissionVisibleForCategory(mission, categoryId)),
+      categoryId,
+      userState
+    );
   }
 
   if (sectionKey === "locations") {
-    return MISSION_HOME_CONTENT.missions?.locations || [];
+    return sortMissions(
+      (MISSION_HOME_CONTENT.missions?.locations || [])
+        .filter((mission) => !hiddenMissionIds.has(mission.id))
+        .filter((mission) => isMissionVisibleForCategory(mission, categoryId)),
+      categoryId,
+      userState
+    );
   }
 
-  return MISSION_HOME_CONTENT.missions?.byCategory?.[categoryId] || [];
+  return sortMissions(
+    (MISSION_HOME_CONTENT.missions?.byCategory?.[categoryId] || []).filter((mission) => !hiddenMissionIds.has(mission.id)),
+    categoryId,
+    userState
+  );
 }
 
 function getRecommendedMissions(sectionKey, categoryId) {
-  const missions = getSectionContent(sectionKey, categoryId);
-  const recommended = missions.filter((mission) => mission.recommended);
-  return (recommended.length ? recommended : missions).slice(0, 2);
+  return getSectionContent(sectionKey, categoryId).slice(0, 2);
 }
 
 function getSectionConfig(sectionKey) {
@@ -507,18 +622,223 @@ function createMissionTag(text) {
   return tag;
 }
 
-function createMissionCard(mission) {
+function isMissionVisibleForCategory(mission, categoryId) {
+  if (!categoryId) {
+    return true;
+  }
+
+  return (mission.availableForCategoryIds || []).includes(categoryId);
+}
+
+function isMissionHighlightedForCategory(mission, categoryId) {
+  if (!categoryId) {
+    return false;
+  }
+
+  return (mission.highlightForCategoryIds || []).includes(categoryId);
+}
+
+function sortMissions(missions, categoryId, userState = getUserMissionState()) {
+  const completedIds = new Set(userState.completedMissionIds || []);
+  const savedIds = new Set(userState.savedMissionIds || []);
+
+  return [...missions].sort((left, right) => {
+    const leftScore =
+      (isMissionHighlightedForCategory(left, categoryId) ? 40 : 0) +
+      (savedIds.has(left.id) ? 20 : 0) +
+      (!completedIds.has(left.id) ? 10 : 0) +
+      (left.sequence?.isStart ? 5 : 0);
+    const rightScore =
+      (isMissionHighlightedForCategory(right, categoryId) ? 40 : 0) +
+      (savedIds.has(right.id) ? 20 : 0) +
+      (!completedIds.has(right.id) ? 10 : 0) +
+      (right.sequence?.isStart ? 5 : 0);
+
+    if (leftScore !== rightScore) {
+      return rightScore - leftScore;
+    }
+
+    if (left.sortPriority !== right.sortPriority) {
+      return left.sortPriority - right.sortPriority;
+    }
+
+    if (left.difficulty !== right.difficulty) {
+      return left.difficulty - right.difficulty;
+    }
+
+    return (left.title || "").localeCompare(right.title || "", "it");
+  });
+}
+
+function matchesSearch(mission, query) {
+  const tokens = normalizeText(query).split(/\s+/).filter(Boolean);
+  if (!tokens.length) {
+    return true;
+  }
+
+  return tokens.every((token) => mission.searchIndex?.includes(token));
+}
+
+function matchesFilterValue(mission, filterKey, filterValue) {
+  if (filterValue === "all") {
+    return true;
+  }
+
+  if (filterKey === "personality") {
+    return (mission.availableForCategoryIds || []).includes(filterValue);
+  }
+
+  return mission.filterValues?.[filterKey] === filterValue;
+}
+
+function filterMissions(missions, filters) {
+  return missions.filter((mission) => {
+    if (!matchesSearch(mission, filters.search)) {
+      return false;
+    }
+
+    return ["personality", "place", "type", "theme", "difficulty", "budget", "duration"].every((filterKey) =>
+      matchesFilterValue(mission, filterKey, filters[filterKey])
+    );
+  });
+}
+
+function buildFilterOptions(missions, filterKey) {
+  const counts = new Map();
+  const labels = new Map();
+
+  missions.forEach((mission) => {
+    if (filterKey === "personality") {
+      (mission.availableForCategoryIds || []).forEach((categoryId) => {
+        counts.set(categoryId, (counts.get(categoryId) || 0) + 1);
+        const category = MISSION_HOME_CONTENT.categories?.[categoryId];
+        labels.set(categoryId, category?.shortLabel || category?.title || categoryId);
+      });
+      return;
+    }
+
+    const value = mission.filterValues?.[filterKey];
+    if (!value) {
+      return;
+    }
+
+    counts.set(value, (counts.get(value) || 0) + 1);
+    labels.set(value, mission.filterLabels?.[filterKey] || value);
+  });
+
+  return Array.from(counts.entries())
+    .map(([value, count]) => ({
+      value,
+      count,
+      label: labels.get(value) || value
+    }))
+    .sort((left, right) => {
+      if (filterKey === "difficulty") {
+        return Number(left.value) - Number(right.value);
+      }
+
+      return left.label.localeCompare(right.label, "it");
+    });
+}
+
+function createFilterChip(label, value, filterKey) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `filter-chip${activeDetailFilters[filterKey] === value ? " is-active" : ""}`;
+  button.textContent = label;
+  button.addEventListener("click", () => {
+    activeDetailFilters = {
+      ...activeDetailFilters,
+      [filterKey]: value
+    };
+    renderCategoryDetail();
+  });
+  return button;
+}
+
+function renderDetailFilters(missions) {
+  const groups = [
+    { key: "personality", label: "Personalità", mode: "chips" },
+    { key: "place", label: "Luogo", mode: "chips" },
+    { key: "type", label: "Tipologia", mode: "chips" },
+    { key: "theme", label: "Tema", mode: "select" },
+    { key: "difficulty", label: "Difficoltà", mode: "select" },
+    { key: "budget", label: "Budget", mode: "select" },
+    { key: "duration", label: "Durata", mode: "select" }
+  ];
+
+  const chipGroups = groups.filter((group) => group.mode === "chips");
+  const selectGroups = groups.filter((group) => group.mode === "select");
+  const fragments = [];
+
+  chipGroups.forEach((group) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "filter-group";
+    const label = document.createElement("p");
+    label.className = "filter-label";
+    label.textContent = group.label;
+    const row = document.createElement("div");
+    row.className = "filter-row";
+    row.append(createFilterChip("Tutte", "all", group.key));
+    buildFilterOptions(missions, group.key).forEach((option) => {
+      row.append(createFilterChip(option.label, option.value, group.key));
+    });
+    wrapper.append(label, row);
+    fragments.push(wrapper);
+  });
+
+  const selectGrid = document.createElement("div");
+  selectGrid.className = "filter-select-grid";
+  selectGroups.forEach((group) => {
+    const wrapper = document.createElement("label");
+    wrapper.className = "filter-group";
+    const label = document.createElement("span");
+    label.className = "filter-label";
+    label.textContent = group.label;
+    const select = document.createElement("select");
+    select.className = "filter-select";
+    select.innerHTML = `<option value="all">Tutte</option>`;
+    buildFilterOptions(missions, group.key).forEach((option) => {
+      const element = document.createElement("option");
+      element.value = option.value;
+      element.textContent = option.label;
+      if (activeDetailFilters[group.key] === option.value) {
+        element.selected = true;
+      }
+      select.append(element);
+    });
+    select.value = activeDetailFilters[group.key];
+    select.addEventListener("change", () => {
+      activeDetailFilters = {
+        ...activeDetailFilters,
+        [group.key]: select.value
+      };
+      renderCategoryDetail();
+    });
+    wrapper.append(label, select);
+    selectGrid.append(wrapper);
+  });
+  fragments.push(selectGrid);
+
+  ui.detailFilterGroups.replaceChildren(...fragments);
+  ui.detailSearchInput.value = activeDetailFilters.search;
+}
+
+function createMissionCard(mission, userState, categoryId) {
   const card = document.createElement("article");
-  card.className = "mission-row";
+  const isCompleted = (userState.completedMissionIds || []).includes(mission.id);
+  const isSaved = (userState.savedMissionIds || []).includes(mission.id);
+  const visibleTags = [
+    mission.themeLabel,
+    mission.sequence?.isSequential ? mission.sequence.statusLabel : null,
+    isMissionHighlightedForCategory(mission, categoryId) ? "Per te" : null,
+    isSaved ? "Salvata" : null,
+    isCompleted ? "Completata" : null
+  ].filter(Boolean);
+
+  card.className = `mission-row${isCompleted ? " is-completed" : ""}`;
   card.tabIndex = 0;
   card.setAttribute("role", "button");
-
-  const filters = Array.isArray(mission.filters) ? mission.filters : [];
-  const filterMarkup = filters.length
-    ? `<div class="mission-row__filters">${filters
-        .map((filter) => `<span class="mission-tag">${filter}</span>`)
-        .join("")}</div>`
-    : "";
   const badgeText = (mission.meta || mission.title || "M")
     .replace(/[^A-Za-z0-9]/g, "")
     .slice(0, 2)
@@ -530,8 +850,13 @@ function createMissionCard(mission) {
     <div class="mission-row__body">
       <div class="mission-row__meta">${mission.meta || ""}</div>
       <h3 class="mission-row__title">${mission.title || ""}</h3>
-      <p class="mission-row__description">${mission.description || ""}</p>
-      ${filterMarkup}
+      <div class="mission-row__facts">
+        <span class="mission-fact">${mission.difficultyLabel || ""}</span>
+        <span class="mission-fact">${mission.durationLabel || ""}</span>
+        <span class="mission-fact">${mission.budgetLabel || ""}</span>
+        <span class="mission-fact">${mission.points || 0} pt</span>
+      </div>
+      <div class="mission-row__filters">${visibleTags.map((filter) => `<span class="mission-tag">${filter}</span>`).join("")}</div>
     </div>
     <div class="mission-row__arrow" aria-hidden="true">›</div>
   `;
@@ -548,7 +873,9 @@ function createMissionCard(mission) {
 
 function renderMissionList(container, missions) {
   const items = Array.isArray(missions) ? missions : [];
-  container.replaceChildren(...items.map((mission) => createMissionCard(mission)));
+  const userState = getUserMissionState();
+  const categoryId = getCurrentCategoryId();
+  container.replaceChildren(...items.map((mission) => createMissionCard(mission, userState, categoryId)));
 }
 
 function renderMissionDetail(mission) {
@@ -558,30 +885,73 @@ function renderMissionDetail(mission) {
 
   const detailCopy = MISSION_HOME_CONTENT.missionDetail || {};
   const iconFallback = (mission.meta || mission.title || "M").replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase() || "M";
-  const completionLabels = mission.completionTypes?.map((type) => (type === "photo" ? "Foto" : "Codice/password")) || [];
+  const userState = getUserMissionState();
+  const isSaved = (userState.savedMissionIds || []).includes(mission.id);
+  const isCompleted = (userState.completedMissionIds || []).includes(mission.id);
   const summaryItems = [
-    [detailCopy.summaryType || "Tipo", mission.typeLabel || ""],
-    [detailCopy.summaryAudience || "Accesso", mission.audienceLabel || ""],
-    [detailCopy.summaryFormat || "Formato", mission.formatLabel || ""],
-    [detailCopy.summaryPlace || "Luogo", mission.place?.name || "Ovunque"],
-    [detailCopy.summaryCompletion || "Verifica", completionLabels.join(" + ") || "Codice/password"]
+    [detailCopy.summaryLocation || "Luogo", mission.locationLabel || ""],
+    [detailCopy.summaryType || "Tipologia", mission.typeLabel || ""],
+    [detailCopy.summaryDifficulty || "Difficoltà", mission.difficultyLabel || ""],
+    [detailCopy.summaryDuration || "Durata", mission.durationLabel || ""],
+    [detailCopy.summaryBudget || "Budget", mission.budgetLabel || ""],
+    [detailCopy.summaryPoints || "Punteggio", `${mission.points || 0} pt`]
+  ];
+  const tags = [mission.themeLabel, ...(mission.secondaryThemeLabels || [])].filter(Boolean);
+  const introChildren = [];
+  const descriptionParagraph = document.createElement("p");
+  descriptionParagraph.className = "page-copy page-copy-tight";
+  descriptionParagraph.textContent = mission.description || "";
+  introChildren.push(descriptionParagraph);
+  if (mission.discovery) {
+    const discoveryParagraph = document.createElement("p");
+    discoveryParagraph.className = "page-copy page-copy-tight";
+    discoveryParagraph.textContent = mission.discovery;
+    introChildren.push(discoveryParagraph);
+  }
+  const editorialItems = [
+    mission.groupText ? `Gruppo editoriale: ${mission.groupText}` : null,
+    mission.audience?.label ? `Accesso: ${mission.audience.label}` : null
+  ].filter(Boolean);
+  const flowCards = [
+    {
+      meta: mission.completionLabel || "Completamento",
+      title: mission.completionLabel || "Completamento",
+      description: mission.validationCriteria?.length
+        ? mission.validationCriteria[0]
+        : mission.description || "",
+      footer: mission.validationType || "Verifica locale"
+    },
+    ...(mission.validationCriteria || []).slice(1).map((criterion, index) => ({
+      meta: "Criterio",
+      title: `Passaggio ${index + 2}`,
+      description: criterion,
+      footer: mission.completionLabel || "Verifica"
+    }))
   ];
 
-  ui.missionDetailEyebrow.textContent = mission.typeLabel || "Missione";
+  ui.missionDetailEyebrow.textContent = mission.sequence?.isSequential ? mission.sequence.statusLabel : "Missione";
   ui.missionDetailMeta.textContent = mission.meta || mission.typeLabel || "Missione";
   ui.missionDetailTitle.textContent = mission.title || "";
-  ui.missionDetailDescription.textContent = mission.description || "";
+  ui.missionDetailDescription.textContent = mission.groupText || mission.themeLabel || "";
   ui.missionDetailIcon.innerHTML = createIconMarkup(mission.iconSrc, mission.iconAlt, iconFallback);
   ui.missionDetailTagsLabel.textContent = detailCopy.tagsLabel || "Tag di lettura";
-  ui.missionDetailObjectiveTitle.textContent = detailCopy.objectiveTitle || "Obiettivo e contesto";
+  ui.missionDetailObjectiveTitle.textContent = detailCopy.objectiveTitle || "La missione";
   ui.missionDetailFlowTitle.textContent = detailCopy.flowTitle || "Flusso di completamento";
-  ui.missionDetailFlowCount.textContent = `${mission.steps?.length || 0} ${detailCopy.flowSingle || "step"}`;
+  ui.missionDetailFlowCount.textContent = `${flowCards.length} ${detailCopy.flowSingle || "passaggi"}`;
+  ui.missionDetailInfoTitle.textContent = detailCopy.infoTitle || "Approfondimento";
+  ui.missionDetailSequenceTitle.textContent = detailCopy.sequenceTitle || "Sequenza";
+  ui.missionSaveButton.textContent = isSaved ? detailCopy.savedLabel || "Salvata" : detailCopy.saveLabel || "Salva";
+  ui.missionCompleteButton.textContent = isCompleted
+    ? detailCopy.completedLabel || "Completata"
+    : detailCopy.completeLabel || "Segna come fatta";
+  ui.missionNextButton.textContent = mission.sequence?.hasNext ? detailCopy.nextLabel || "Missione successiva" : detailCopy.noNextLabel || "Fine sequenza";
+  ui.missionNextButton.hidden = !mission.sequence?.hasNext;
 
   ui.missionDetailSummary.replaceChildren(...summaryItems.map(([label, value]) => createSummaryItem(label, value)));
-  ui.missionDetailTags.replaceChildren(...(mission.filters || []).map((filter) => createMissionTag(filter)));
-  ui.missionDetailIntro.innerHTML = `<p class="page-copy page-copy-tight">${mission.intro || ""}</p>`;
+  ui.missionDetailTags.replaceChildren(...tags.map((filter) => createMissionTag(filter)));
+  ui.missionDetailIntro.replaceChildren(...introChildren);
   ui.missionDetailObjectives.replaceChildren(
-    ...(mission.objectives || []).map((objective) => {
+    ...editorialItems.map((objective) => {
       const item = document.createElement("li");
       item.textContent = objective;
       return item;
@@ -589,24 +959,46 @@ function renderMissionDetail(mission) {
   );
 
   ui.missionDetailSteps.replaceChildren(
-    ...((mission.steps || []).map((step) => {
+    ...(flowCards.map((step, index) => {
       const article = document.createElement("article");
       article.className = "mission-step";
       article.innerHTML = `
-        <div class="mission-step__index">${formatCount(step.order)}</div>
+        <div class="mission-step__index">${formatCount(index + 1)}</div>
         <div class="mission-step__body">
-          <div class="mission-step__meta">${step.completion.inputLabel || ""}</div>
+          <div class="mission-step__meta">${step.meta || ""}</div>
           <h4 class="mission-step__title">${step.title || ""}</h4>
           <p class="mission-step__description">${step.description || ""}</p>
           <div class="mission-step__footer">
-            <span class="mission-tag">${step.completion.label || ""}</span>
-            <p class="support-copy">${step.completion.hint || ""}</p>
+            <span class="mission-tag">${step.footer || ""}</span>
           </div>
         </div>
       `;
       return article;
     }))
   );
+
+  if (mission.information) {
+    const infoParagraph = document.createElement("p");
+    infoParagraph.className = "page-copy page-copy-tight";
+    infoParagraph.textContent = mission.information;
+    ui.missionDetailInfo.replaceChildren(infoParagraph);
+    ui.missionDetailInfoSection.hidden = false;
+  } else {
+    ui.missionDetailInfo.replaceChildren();
+    ui.missionDetailInfoSection.hidden = true;
+  }
+
+  if (mission.sequence?.isSequential) {
+    ui.missionDetailSequenceCard.innerHTML = `
+      <p class="mission-row__meta">${mission.sequence.name || ""}</p>
+      <p class="sequence-card__title">${mission.sequence.statusLabel || ""}</p>
+      <p class="sequence-card__text">${mission.sequence.hasNext ? "Questa missione apre il passaggio successivo del filone." : "Questa missione chiude il filone disponibile."}</p>
+    `;
+    ui.missionDetailSequenceSection.hidden = false;
+  } else {
+    ui.missionDetailSequenceCard.replaceChildren();
+    ui.missionDetailSequenceSection.hidden = true;
+  }
 }
 
 function renderHomeProfile(category) {
@@ -627,7 +1019,7 @@ function renderHomeProfile(category) {
 }
 
 function renderHome() {
-  const categoryId = resolvedCategoryId || getStoredCategoryId();
+  const categoryId = getCurrentCategoryId();
   const category = categoryId ? MISSION_HOME_CONTENT.categories?.[categoryId] : null;
   const generalMissions = MISSION_HOME_CONTENT.missions?.general || [];
   const locationMissions = MISSION_HOME_CONTENT.missions?.locations || [];
@@ -675,33 +1067,11 @@ function renderHome() {
   renderMissionList(ui.personalMissionList, recommendedPersonal);
 }
 
-function renderDetailFilters(missions) {
-  const uniqueFilters = Array.from(new Set(missions.flatMap((mission) => mission.filters || [])));
-  const filters = ["all", ...uniqueFilters];
-
-  ui.detailFilterRow.replaceChildren(
-    ...filters.map((filter) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = `filter-chip${filter === activeDetailFilter ? " is-active" : ""}`;
-      button.textContent = filter === "all" ? getUiText("quiz.filterAll", "Tutte") : filter;
-      button.addEventListener("click", () => {
-        activeDetailFilter = filter;
-        renderCategoryDetail();
-      });
-      return button;
-    })
-  );
-}
-
 function renderCategoryDetail() {
-  const categoryId = resolvedCategoryId || getStoredCategoryId();
+  const categoryId = getCurrentCategoryId();
   const section = getSectionConfig(activeDetailSection);
   const missions = getSectionContent(activeDetailSection, categoryId);
-  const filteredMissions =
-    activeDetailFilter === "all"
-      ? missions
-      : missions.filter((mission) => (mission.filters || []).includes(activeDetailFilter));
+  const filteredMissions = filterMissions(missions, activeDetailFilters);
 
   ui.detailTitle.textContent = section.detailTitle || section.title || "Archivio missioni";
   ui.detailText.textContent = section.text || "";
@@ -721,7 +1091,7 @@ function renderCategoryDetail() {
 
 function openCategoryDetail(sectionKey) {
   activeDetailSection = sectionKey;
-  activeDetailFilter = "all";
+  activeDetailFilters = createDefaultDetailFilters();
   renderCategoryDetail();
   setScene("categoryDetail");
 }
@@ -750,13 +1120,47 @@ function closeMissionDetail() {
   showHome();
 }
 
+function toggleActiveMissionSaved() {
+  if (!activeMissionId) {
+    return;
+  }
+
+  toggleMissionStateValue("savedMissionIds", activeMissionId);
+  const mission = getMissionById(activeMissionId);
+  if (mission) {
+    renderMissionDetail(mission);
+  }
+}
+
+function toggleActiveMissionCompleted() {
+  if (!activeMissionId) {
+    return;
+  }
+
+  toggleMissionStateValue("completedMissionIds", activeMissionId);
+  const mission = getMissionById(activeMissionId);
+  if (mission) {
+    renderMissionDetail(mission);
+  }
+}
+
+function openNextMission() {
+  const mission = activeMissionId ? getMissionById(activeMissionId) : null;
+  const nextMissionId = mission?.sequence?.nextMissionId;
+  if (!nextMissionId) {
+    return;
+  }
+
+  openMissionDetail(nextMissionId);
+}
+
 function showHome() {
   if (!isHomeUnlocked()) {
     setScene("entry");
     return;
   }
 
-  resolvedCategoryId = resolvedCategoryId || getStoredCategoryId();
+  resolvedCategoryId = resolvedCategoryId || getCurrentCategoryId();
   renderHome();
   setScene("home");
 }
@@ -768,6 +1172,7 @@ function resetQuizState() {
   pendingNextId = null;
   pendingCompletesQuiz = false;
   resolvedCategoryId = null;
+  activeDetailFilters = createDefaultDetailFilters();
   activeMissionId = null;
   missionDetailBackScene = "home";
   categoryScores = {};
@@ -854,6 +1259,20 @@ ui.locationOpenButton.addEventListener("click", () => openCategoryDetail("locati
 ui.personalOpenButton.addEventListener("click", () => openCategoryDetail("personal"));
 ui.detailBackButton.addEventListener("click", showHome);
 ui.missionDetailBackButton.addEventListener("click", closeMissionDetail);
+ui.missionSaveButton.addEventListener("click", toggleActiveMissionSaved);
+ui.missionCompleteButton.addEventListener("click", toggleActiveMissionCompleted);
+ui.missionNextButton.addEventListener("click", openNextMission);
+ui.detailSearchInput.addEventListener("input", () => {
+  activeDetailFilters = {
+    ...activeDetailFilters,
+    search: ui.detailSearchInput.value
+  };
+  renderCategoryDetail();
+});
+ui.detailSearchClear.addEventListener("click", () => {
+  activeDetailFilters = createDefaultDetailFilters();
+  renderCategoryDetail();
+});
 
 ui.archiveButtons.forEach((button) => {
   button.addEventListener("click", () => openCategoryDetail(button.dataset.section || "general"));

@@ -283,7 +283,14 @@
 
             <div class="filter-block">
               <p class="filter-label" id="detailFilterTitle">Filtra le missioni</p>
-              <div class="filter-row" id="detailFilterRow"></div>
+              <div class="filter-toolbar">
+                <label class="search-field" for="detailSearchInput">
+                  <span class="support-copy">Ricerca locale</span>
+                  <input id="detailSearchInput" type="search" placeholder="Cerca per nome, descrizione o tema" />
+                </label>
+                <button class="button" id="detailSearchClear" type="button">Pulisci</button>
+              </div>
+              <div class="filter-stack" id="detailFilterGroups"></div>
             </div>
 
             <div class="section-header section-header-spaced">
@@ -325,10 +332,15 @@
               <div class="filter-row" id="missionDetailTags"></div>
             </div>
 
+            <div class="action-row action-row-wrap">
+              <button class="button" id="missionSaveButton" type="button">Salva</button>
+              <button class="button button-primary" id="missionCompleteButton" type="button">Segna come fatta</button>
+            </div>
+
             <div class="mission-detail-grid">
               <section class="mission-detail-section">
                 <div class="section-header section-header-spaced">
-                  <h3 class="list-title" id="missionDetailObjectiveTitle">Obiettivo</h3>
+                  <h3 class="list-title" id="missionDetailObjectiveTitle">La missione</h3>
                 </div>
                 <div class="mission-detail-copy" id="missionDetailIntro"></div>
                 <ul class="mission-detail-list" id="missionDetailObjectives"></ul>
@@ -342,6 +354,23 @@
                 <div class="mission-step-list" id="missionDetailSteps"></div>
               </section>
             </div>
+
+            <section class="mission-detail-section" id="missionDetailInfoSection">
+              <div class="section-header section-header-spaced">
+                <h3 class="list-title" id="missionDetailInfoTitle">Approfondimento</h3>
+              </div>
+              <div class="mission-detail-copy" id="missionDetailInfo"></div>
+            </section>
+
+            <section class="mission-detail-section" id="missionDetailSequenceSection">
+              <div class="section-header section-header-spaced">
+                <h3 class="list-title" id="missionDetailSequenceTitle">Sequenza</h3>
+              </div>
+              <div class="sequence-card" id="missionDetailSequenceCard"></div>
+              <div class="action-row">
+                <button class="button" id="missionNextButton" type="button">Missione successiva</button>
+              </div>
+            </section>
           </section>
         </div>
       </section>
@@ -360,6 +389,7 @@
   <script src="./content.js"></script>
   <script src="./quiz-content.js"></script>
   <script src="./mission-0-result-content.js"></script>
+  <script src="./mission-data.js"></script>
   <script src="./mission-home-content.js"></script>
   <script src="./app.js"></script>
 </body>
