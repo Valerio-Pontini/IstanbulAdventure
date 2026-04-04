@@ -1,0 +1,55 @@
+.personality-reveal {
+  position: relative;
+  display: grid;
+  gap: 0.95rem;
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  background:
+    radial-gradient(circle at top, rgba(198, 161, 91, 0.16), transparent 38%),
+    linear-gradient(180deg, rgba(21, 27, 42, 0.96), rgba(11, 18, 29, 0.9));
+  box-shadow: var(--shadow-strong);
+  animation: reveal-rise 700ms var(--transition-slow);
+}
+
+.personality-reveal__eyebrow {
+  margin: 0;
+  color: var(--accent-gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+}
+
+.personality-reveal__kicker {
+  color: var(--text-3);
+  font-size: 0.92rem;
+}
+
+.personality-reveal__description,
+.personality-reveal__placeholder p {
+  margin: 0;
+  color: var(--text-2);
+}
+
+.personality-reveal__placeholder {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.personality-reveal__placeholder h2 {
+  margin: 0;
+  color: var(--text-1);
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

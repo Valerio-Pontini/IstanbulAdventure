@@ -1,0 +1,74 @@
+.choice-card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--border-soft);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+    rgba(9, 18, 29, 0.72);
+  display: flex;
+  gap: 0.9rem;
+  text-align: left;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+.choice-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(198, 161, 91, 0.16), rgba(255, 255, 255, 0.06), transparent 62%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.choice-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-strong);
+}
+
+.choice-card--active {
+  border-color: var(--border-gold);
+  background:
+    radial-gradient(circle at top right, rgba(198, 161, 91, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(27, 41, 58, 0.9), rgba(10, 19, 31, 0.76));
+}
+
+.choice-card__dot {
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.12);
+  color: var(--accent-gold);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(198, 161, 91, 0.24);
+}
+
+.choice-card__content {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.choice-card__label {
+  color: var(--text-1);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.choice-card__description {
+  color: var(--text-3);
+  font-size: 0.9rem;
+}

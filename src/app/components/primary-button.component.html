@@ -1,0 +1,10 @@
+<button
+  class="primary-button"
+  [class.primary-button--secondary]="tone === 'secondary'"
+  [class.primary-button--ghost]="tone === 'ghost'"
+  [attr.type]="buttonType"
+  [disabled]="disabled"
+  (click)="pressed.emit()"
+>
+  <span class="primary-button__label">{{ label }}</span>
+</button>

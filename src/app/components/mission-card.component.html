@@ -1,0 +1,37 @@
+<article class="mission-card" [class.mission-card--highlight]="highlighted" [class.mission-card--completed]="completed">
+  <div class="mission-card__header">
+    <div class="mission-card__intro">
+      <div class="mission-card__meta-row">
+        <span class="mission-card__tag">{{ mission.themeLabel }}</span>
+        <span class="mission-card__difficulty">{{ mission.difficultyLabel }}</span>
+      </div>
+
+      <ia-symbol-badge [iconSrc]="mission.iconSrc" [label]="mission.title" [sublabel]="mission.isSequential ? 'Percorso narrativo' : mission.meta" />
+    </div>
+
+    <div class="mission-card__status">
+      <span>{{ mission.locationLabel }}</span>
+      <span>{{ mission.isSequential ? mission.objectiveCount + ' obiettivi' : 'Missione singola' }}</span>
+      @if (completed) {
+        <strong>Completata</strong>
+      }
+    </div>
+  </div>
+
+  <p class="mission-card__description">{{ mission.description }}</p>
+
+  <div class="mission-card__ribbon">
+    <span>{{ mission.durationLabel }}</span>
+    <span>{{ mission.budgetLabel }}</span>
+    <span>{{ mission.typeLabel }}</span>
+  </div>
+
+  <div class="mission-card__actions">
+    <a class="mission-card__link" [routerLink]="['/mission', mission.id]">Apri percorso</a>
+    <ia-primary-button
+      [label]="saved ? 'Preferita' : 'Salva'"
+      tone="ghost"
+      (pressed)="savedToggle.emit(mission.id)"
+    />
+  </div>
+</article>

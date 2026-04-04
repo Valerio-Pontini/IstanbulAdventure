@@ -1,0 +1,14 @@
+<section class="personality-reveal">
+  <p class="personality-reveal__eyebrow">{{ eyebrow }}</p>
+
+  @if (category; as current) {
+    <p class="personality-reveal__kicker">Il tuo modo di leggere Istanbul</p>
+    <ia-symbol-badge [iconSrc]="current.iconSrc" [label]="current.title" [sublabel]="current.shortLabel" tone="accent" />
+    <p class="personality-reveal__description">{{ current.description }}</p>
+  } @else {
+    <div class="personality-reveal__placeholder">
+      <h2>Il tuo profilo e' ancora nascosto</h2>
+      <p>Completa Missione 0 per sbloccare il percorso che meglio interpreta il tuo sguardo sulla citta'.</p>
+    </div>
+  }
+</section>

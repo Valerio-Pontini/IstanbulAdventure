@@ -1,0 +1,16 @@
+<div class="symbol-badge" [class.symbol-badge--accent]="tone === 'accent'">
+  <div class="symbol-badge__icon" aria-hidden="true">
+    @if (iconSrc) {
+      <img [src]="iconSrc" alt="" />
+    } @else {
+      <span>{{ label.slice(0, 1) }}</span>
+    }
+  </div>
+
+  <div class="symbol-badge__copy">
+    <strong>{{ label }}</strong>
+    @if (sublabel) {
+      <span>{{ sublabel }}</span>
+    }
+  </div>
+</div>

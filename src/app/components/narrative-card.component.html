@@ -1,0 +1,15 @@
+<article class="narrative-card" [class.narrative-card--accent]="tone === 'accent'" [class.narrative-card--quiet]="tone === 'quiet'">
+  @if (eyebrow) {
+    <p class="narrative-card__eyebrow">{{ eyebrow }}</p>
+  }
+
+  @if (title) {
+    <h2 class="narrative-card__title">{{ title }}</h2>
+  }
+
+  @if (text) {
+    <p class="narrative-card__text">{{ text }}</p>
+  }
+
+  <ng-content />
+</article>

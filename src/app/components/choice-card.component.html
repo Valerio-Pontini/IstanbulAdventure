@@ -1,0 +1,10 @@
+<button class="choice-card" type="button" [class.choice-card--active]="active" (click)="select.emit()">
+  <div class="choice-card__dot">{{ index }}</div>
+
+  <div class="choice-card__content">
+    <div class="choice-card__label">{{ label }}</div>
+    @if (description) {
+      <div class="choice-card__description">{{ description }}</div>
+    }
+  </div>
+</button>

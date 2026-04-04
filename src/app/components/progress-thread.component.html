@@ -1,0 +1,11 @@
+<div class="progress-thread">
+  <div class="progress-thread__meta">
+    <span>{{ label }}</span>
+    @if (counter) {
+      <strong>{{ counter }}</strong>
+    }
+  </div>
+  <div class="progress-thread__rail" aria-hidden="true">
+    <span [style.width.%]="progress"></span>
+  </div>
+</div>
