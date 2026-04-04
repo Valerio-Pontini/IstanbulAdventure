@@ -21,89 +21,91 @@ import { UiFeedbackService } from '../services/ui-feedback.service';
         <a class="editorial-link" routerLink="/home">Torna alla home</a>
       </ia-section-header>
 
-      <ia-narrative-card eyebrow="Consultazione rapida" title="Trova il percorso giusto per questo momento">
-        <div class="filter-grid">
-          <label class="filter-field">
-            <span>Ricerca</span>
-            <input [ngModel]="filters().search" (ngModelChange)="updateFilter('search', $event)" placeholder="Titolo, tema o descrizione" />
-          </label>
+      <div id="tutorial-archive-filters" class="tutorial-anchor">
+        <ia-narrative-card eyebrow="Consultazione rapida" title="Trova il percorso giusto per questo momento">
+          <div class="filter-grid">
+            <label class="filter-field">
+              <span>Ricerca</span>
+              <input [ngModel]="filters().search" (ngModelChange)="updateFilter('search', $event)" placeholder="Titolo, tema o descrizione" />
+            </label>
 
-          <label class="filter-field">
-            <span>Personalita'</span>
-            <select [ngModel]="filters().personality" (ngModelChange)="updateFilter('personality', $event)">
-              <option value="all">Tutte</option>
-              @for (option of personalityOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
+            <label class="filter-field">
+              <span>Personalita'</span>
+              <select [ngModel]="filters().personality" (ngModelChange)="updateFilter('personality', $event)">
+                <option value="all">Tutte</option>
+                @for (option of personalityOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
 
-          <label class="filter-field">
-            <span>Luogo</span>
-            <select [ngModel]="filters().place" (ngModelChange)="updateFilter('place', $event)">
-              <option value="all">Tutti</option>
-              @for (option of placeOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
+            <label class="filter-field">
+              <span>Luogo</span>
+              <select [ngModel]="filters().place" (ngModelChange)="updateFilter('place', $event)">
+                <option value="all">Tutti</option>
+                @for (option of placeOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
 
-          <label class="filter-field">
-            <span>Tipologia</span>
-            <select [ngModel]="filters().type" (ngModelChange)="updateFilter('type', $event)">
-              <option value="all">Tutte</option>
-              @for (option of typeOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
+            <label class="filter-field">
+              <span>Tipologia</span>
+              <select [ngModel]="filters().type" (ngModelChange)="updateFilter('type', $event)">
+                <option value="all">Tutte</option>
+                @for (option of typeOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
 
-          <label class="filter-field">
-            <span>Tema</span>
-            <select [ngModel]="filters().theme" (ngModelChange)="updateFilter('theme', $event)">
-              <option value="all">Tutti</option>
-              @for (option of themeOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
+            <label class="filter-field">
+              <span>Tema</span>
+              <select [ngModel]="filters().theme" (ngModelChange)="updateFilter('theme', $event)">
+                <option value="all">Tutti</option>
+                @for (option of themeOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
 
-          <label class="filter-field">
-            <span>Difficolta'</span>
-            <select [ngModel]="filters().difficulty" (ngModelChange)="updateFilter('difficulty', $event)">
-              <option value="all">Tutte</option>
-              @for (option of difficultyOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
+            <label class="filter-field">
+              <span>Difficolta'</span>
+              <select [ngModel]="filters().difficulty" (ngModelChange)="updateFilter('difficulty', $event)">
+                <option value="all">Tutte</option>
+                @for (option of difficultyOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
 
-          <label class="filter-field">
-            <span>Budget</span>
-            <select [ngModel]="filters().budget" (ngModelChange)="updateFilter('budget', $event)">
-              <option value="all">Tutti</option>
-              @for (option of budgetOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
+            <label class="filter-field">
+              <span>Budget</span>
+              <select [ngModel]="filters().budget" (ngModelChange)="updateFilter('budget', $event)">
+                <option value="all">Tutti</option>
+                @for (option of budgetOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
 
-          <label class="filter-field">
-            <span>Durata</span>
-            <select [ngModel]="filters().duration" (ngModelChange)="updateFilter('duration', $event)">
-              <option value="all">Tutte</option>
-              @for (option of durationOptions(); track option.value) {
-                <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-              }
-            </select>
-          </label>
-        </div>
+            <label class="filter-field">
+              <span>Durata</span>
+              <select [ngModel]="filters().duration" (ngModelChange)="updateFilter('duration', $event)">
+                <option value="all">Tutte</option>
+                @for (option of durationOptions(); track option.value) {
+                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
+                }
+              </select>
+            </label>
+          </div>
+        </ia-narrative-card>
+      </div>
 
-        <div class="editorial-links">
-          <button class="editorial-link editorial-link--plain" type="button" (click)="resetFilters()">Pulisci filtri</button>
-          <span class="editorial-counter">{{ filteredMissions().length }} risultati</span>
-        </div>
-      </ia-narrative-card>
+      <div id="tutorial-archive-actions" class="editorial-links tutorial-anchor">
+        <button class="editorial-link editorial-link--plain" type="button" (click)="resetFilters()">Pulisci filtri</button>
+        <span class="editorial-counter">{{ filteredMissions().length }} risultati</span>
+      </div>
 
       @if (filteredMissions().length) {
         <div class="catalog-grid">

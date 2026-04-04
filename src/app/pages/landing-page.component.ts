@@ -57,13 +57,22 @@ import { QuizSessionService } from '../services/quiz-session.service';
 
         <ia-narrative-card
           eyebrow="Rituale di accesso"
-          title="Prima scopri come guardi, poi lasci che la citta' risponda"
-          text="Puoi entrare con un prologo breve oppure iniziare direttamente dalla Missione 0. In pochi passaggi emergera' l'archetipo che aprira' il tuo archivio personale."
+          [title]="state.homeUnlocked() ? 'Il tuo profilo e\\' gia\\' stato fissato' : 'Prima completa obbligatoriamente la Missione 0'"
+          [text]="state.homeUnlocked()
+            ? 'La Missione 0 e\\' gia\\' stata completata: il risultato e\\' stato salvato e viene usato come base del tuo archivio personale.'
+            : 'La Missione 0 e\\' l ingresso obbligatorio dell app. Puoi passare dal prologo oppure entrare subito nel test, ma il profilo emerso verra\\' conservato e non potra\\' essere ricalcolato.'"
         >
-          <div class="editorial-actions">
-            <ia-primary-button label="Leggi il prologo" (pressed)="startStory()" />
-            <ia-primary-button label="Apri Missione 0" tone="secondary" (pressed)="startQuiz()" />
-          </div>
+          @if (state.homeUnlocked()) {
+            <div class="editorial-actions">
+              <a class="editorial-link editorial-link--button" routerLink="/home">Apri la tua home</a>
+              <a class="editorial-link" routerLink="/result">Rivedi il risultato</a>
+            </div>
+          } @else {
+            <div class="editorial-actions">
+              <ia-primary-button label="Leggi il prologo" (pressed)="startStory()" />
+              <ia-primary-button label="Apri Missione 0" tone="secondary" (pressed)="startQuiz()" />
+            </div>
+          }
 
           <div class="badge-cluster">
             @for (category of categories; track category.id) {

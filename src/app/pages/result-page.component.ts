@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { EditorialScreenComponent } from '../components/editorial-screen.component';
 import { NarrativeCardComponent } from '../components/narrative-card.component';
 import { PersonalityRevealComponent } from '../components/personality-reveal.component';
-import { PrimaryButtonComponent } from '../components/primary-button.component';
 import { SectionHeaderComponent } from '../components/section-header.component';
 import { LegacyContentService } from '../services/legacy-content.service';
 import { QuizSessionService } from '../services/quiz-session.service';
@@ -16,8 +15,7 @@ import { QuizSessionService } from '../services/quiz-session.service';
     EditorialScreenComponent,
     SectionHeaderComponent,
     PersonalityRevealComponent,
-    NarrativeCardComponent,
-    PrimaryButtonComponent
+    NarrativeCardComponent
   ],
   template: `
     <ia-editorial-screen tone="reveal">
@@ -33,11 +31,11 @@ import { QuizSessionService } from '../services/quiz-session.service';
         >
           <div class="editorial-actions">
             <a class="editorial-link editorial-link--button" routerLink="/home">{{ result.homeButtonLabel || 'Apri la home' }}</a>
-            <ia-primary-button label="Ricomincia" tone="ghost" (pressed)="restart()" />
+            <a class="editorial-link" routerLink="/">Torna all ingresso</a>
           </div>
 
           <div class="detail-list">
-            <div class="detail-list__item">Le missioni personali si adatteranno al profilo appena emerso.</div>
+            <div class="detail-list__item">Le missioni personali si adatteranno al profilo emerso nella tua unica Missione 0.</div>
           </div>
         </ia-narrative-card>
       </div>
@@ -48,12 +46,6 @@ import { QuizSessionService } from '../services/quiz-session.service';
 })
 export class ResultPageComponent {
   private readonly quiz = inject(QuizSessionService);
-  private readonly router = inject(Router);
   readonly result = inject(LegacyContentService).result;
   readonly resolvedCategory = computed(() => this.quiz.resultCategory());
-
-  restart(): void {
-    this.quiz.reset();
-    void this.router.navigateByUrl('/');
-  }
 }

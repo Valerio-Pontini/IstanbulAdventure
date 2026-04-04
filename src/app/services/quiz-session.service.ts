@@ -52,6 +52,13 @@ export class QuizSessionService {
   }
 
   reset(): void {
+    if (this.state.homeUnlocked()) {
+      this.resultCategoryIdSignal.set(this.state.categoryId());
+      this.currentQuestionIdSignal.set(null);
+      this.feedbackSignal.set(null);
+      return;
+    }
+
     this.storyIndexSignal.set(0);
     this.currentQuestionIdSignal.set(null);
     this.completedPrimaryCountSignal.set(0);
@@ -62,6 +69,13 @@ export class QuizSessionService {
   }
 
   startQuiz(): void {
+    if (this.state.homeUnlocked()) {
+      this.currentQuestionIdSignal.set(null);
+      this.feedbackSignal.set(null);
+      this.resultCategoryIdSignal.set(this.state.categoryId());
+      return;
+    }
+
     this.completedPrimaryCountSignal.set(0);
     this.categoryScoresSignal.set({});
     this.categoryTrailSignal.set([]);

@@ -1,15 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AppToastComponent } from './components/app-toast.component';
+import { GuidedTourComponent } from './components/guided-tour.component';
 import { PrimaryButtonComponent } from './components/primary-button.component';
 import { ShellFooterComponent } from './components/shell-footer.component';
 import { ShellHeaderComponent } from './components/shell-header.component';
+import { GuidedTourService } from './services/guided-tour.service';
 import { OnboardingService } from './services/onboarding.service';
 
 @Component({
   selector: 'ia-root',
   standalone: true,
-  imports: [RouterOutlet, ShellHeaderComponent, ShellFooterComponent, AppToastComponent, PrimaryButtonComponent],
+  imports: [RouterOutlet, ShellHeaderComponent, ShellFooterComponent, AppToastComponent, PrimaryButtonComponent, GuidedTourComponent],
   template: `
     <div class="app-backdrop" aria-hidden="true"></div>
     <div class="app-shell">
@@ -72,15 +74,26 @@ import { OnboardingService } from './services/onboarding.service';
           </p>
 
           <div class="onboarding-card__actions">
-            <ia-primary-button label="Continua" (pressed)="onboarding.dismissInstallTutorial()" />
+            <ia-primary-button label="Continua" (pressed)="continueAfterInstallTutorial()" />
           </div>
         </section>
       </div>
     }
 
+    <ia-guided-tour />
     <ia-app-toast />
   `
 })
 export class AppComponent {
   readonly onboarding = inject(OnboardingService);
+  private readonly router = inject(Router);
+  private readonly guidedTour = inject(GuidedTourService);
+
+  continueAfterInstallTutorial(): void {
+    this.onboarding.dismissInstallTutorial();
+
+    if (this.router.url.startsWith('/home') && this.onboarding.showHomeTutorial()) {
+      void this.guidedTour.startIfNeeded();
+    }
+  }
 }

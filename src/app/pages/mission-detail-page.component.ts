@@ -32,19 +32,21 @@ import { UiFeedbackService } from '../services/ui-feedback.service';
             </div>
           </ia-narrative-card>
 
-          <ia-narrative-card tone="quiet" eyebrow="Stato" title="Tieni questa missione a portata di mano">
-            <div class="editorial-actions">
-              <ia-primary-button
-                [label]="isSaved() ? 'Rimuovi dai salvati' : 'Salva missione'"
-                tone="ghost"
-                (pressed)="toggleSaved(mission.id)"
-              />
-              <ia-primary-button
-                [label]="isCompleted() ? 'Segnata come completata' : 'Segna come fatta'"
-                (pressed)="toggleCompleted(mission.id)"
-              />
-            </div>
-          </ia-narrative-card>
+          <div id="tutorial-mission-status" class="tutorial-anchor">
+            <ia-narrative-card tone="quiet" eyebrow="Stato" title="Tieni questa missione a portata di mano">
+              <div class="editorial-actions">
+                <ia-primary-button
+                  [label]="isSaved() ? 'Rimuovi dai salvati' : 'Salva missione'"
+                  tone="ghost"
+                  (pressed)="toggleSaved(mission.id)"
+                />
+                <ia-primary-button
+                  [label]="isCompleted() ? 'Segnata come completata' : 'Segna come fatta'"
+                  (pressed)="toggleCompleted(mission.id)"
+                />
+              </div>
+            </ia-narrative-card>
+          </div>
         </div>
 
         @if (mission.context) {

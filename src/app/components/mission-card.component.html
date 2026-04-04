@@ -27,7 +27,7 @@
   </div>
 
   <div class="mission-card__actions">
-    <a class="mission-card__link" [routerLink]="['/mission', mission.id]">Apri percorso</a>
+    <a class="mission-card__link mission-card__link--open" [routerLink]="['/mission', mission.id]">Apri percorso</a>
     <ia-primary-button
       [label]="saved ? 'Preferita' : 'Salva'"
       tone="ghost"
