@@ -1,4 +1,9 @@
-<article class="narrative-card" [class.narrative-card--accent]="tone === 'accent'" [class.narrative-card--quiet]="tone === 'quiet'">
+<article
+  class="narrative-card"
+  [class.narrative-card--accent]="tone === 'accent'"
+  [class.narrative-card--quiet]="tone === 'quiet'"
+  [class.narrative-card--hero]="variant === 'hero'"
+>
   @if (eyebrow) {
     <p class="narrative-card__eyebrow">{{ eyebrow }}</p>
   }

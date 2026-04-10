@@ -1,7 +1,9 @@
-<div class="progress-thread">
-  <div class="progress-thread__meta">
-    <span>{{ label }}</span>
-  </div>
+<div class="progress-thread" [class.progress-thread--compact]="variant === 'compact'">
+  @if (label) {
+    <div class="progress-thread__meta">
+      <span>{{ label }}</span>
+    </div>
+  }
   <div
     class="progress-thread__steps"
     role="progressbar"

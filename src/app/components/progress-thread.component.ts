@@ -13,6 +13,7 @@ export class ProgressThreadComponent {
   @Input() totalSteps = 1;
   @Input() progress: number | null = null;
   @Input() counter = '';
+  @Input() variant: 'default' | 'compact' = 'default';
 
   get resolvedTotalSteps(): number {
     const fromCounter = this.parseCounter();

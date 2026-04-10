@@ -27,16 +27,17 @@ import { QuizSessionService } from '../services/quiz-session.service';
           title="Segui cio' che ti chiama per primo"
           description="Non rispondere come in un test. Scegli come se stessi sfiorando un indizio nel margine del tuo diario."
           [counter]="quiz.questionCounter()"
-        />
+        >
+          <ia-progress-thread
+            variant="compact"
+            label=""
+            [counter]="quiz.questionCounter()"
+            [progress]="quiz.questionProgress()"
+          />
+        </ia-section-header>
 
         <div class="screen-grid">
-          <ia-narrative-card eyebrow="Nodo narrativo" title="Scegli l'immagine che trattieni" [text]="currentQuestion.text" />
-          <ia-narrative-card tone="quiet" eyebrow="Filo del percorso" title="Ogni scelta apre una nuova direzione">
-            <ia-progress-thread label="Missione 0" [counter]="quiz.questionCounter()" [progress]="quiz.questionProgress()" />
-            <div class="detail-list">
-              <div class="detail-list__item">Le risposte non sono giuste o sbagliate: fanno emergere il tuo archetipo di esplorazione.</div>
-            </div>
-          </ia-narrative-card>
+          <ia-narrative-card tone="accent" variant="hero" [text]="currentQuestion.text" />
         </div>
 
         <div class="choice-stack">
@@ -55,7 +56,7 @@ import { QuizSessionService } from '../services/quiz-session.service';
 
     @if (quiz.feedback(); as feedback) {
       <div class="overlay">
-        <ia-narrative-card class="overlay__card" tone="accent" eyebrow="Indizio emerso" title="La citta' risponde subito" [text]="feedback.text">
+        <ia-narrative-card class="overlay__card" tone="accent" title="La citta' risponde subito" [text]="feedback.text">
           <ia-primary-button [label]="tapLabel()" tone="secondary" (pressed)="dismissFeedback()" />
         </ia-narrative-card>
       </div>

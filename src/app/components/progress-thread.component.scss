@@ -33,3 +33,65 @@
   box-shadow: 0 0 26px rgba(198, 161, 91, 0.28);
   transform: scaleY(1.05);
 }
+
+.progress-thread--compact {
+  gap: 0.35rem;
+}
+
+.progress-thread--compact .progress-thread__steps {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.progress-thread--compact .progress-thread__step {
+  position: relative;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  transition:
+    transform 180ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    opacity 220ms ease;
+}
+
+.progress-thread--compact .progress-thread__step::after {
+  content: '';
+  position: absolute;
+  inset: -0.3rem;
+  border-radius: inherit;
+  border: 1px solid rgba(198, 161, 91, 0);
+  transition: border-color 220ms ease, transform 220ms ease;
+}
+
+.progress-thread--compact .progress-thread__step--completed {
+  background: linear-gradient(135deg, rgba(169, 54, 54, 0.82), rgba(198, 161, 91, 0.9));
+  box-shadow: 0 0 14px rgba(198, 161, 91, 0.16);
+}
+
+.progress-thread--compact .progress-thread__step--active {
+  background: var(--accent-gold);
+  box-shadow: 0 0 18px rgba(198, 161, 91, 0.28);
+  transform: scale(1.2);
+  animation: progress-thread-pulse 1.5s ease-in-out infinite;
+}
+
+.progress-thread--compact .progress-thread__step--active::after {
+  border-color: rgba(198, 161, 91, 0.4);
+  transform: scale(1.08);
+}
+
+@keyframes progress-thread-pulse {
+  0%,
+  100% {
+    transform: scale(1.15);
+  }
+
+  50% {
+    transform: scale(1.28);
+  }
+}

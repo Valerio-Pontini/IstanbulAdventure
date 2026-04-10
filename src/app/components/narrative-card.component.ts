@@ -12,4 +12,5 @@ export class NarrativeCardComponent {
   @Input() title = '';
   @Input() text = '';
   @Input() tone: 'default' | 'accent' | 'quiet' = 'default';
+  @Input() variant: 'default' | 'hero' = 'default';
 }
