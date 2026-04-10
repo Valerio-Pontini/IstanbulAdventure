@@ -3,6 +3,8 @@ import { FilterOption, MissionBundle, MissionFilterState, MissionItem, MissionOb
 import { LegacyContentService } from './legacy-content.service';
 import { MissionStateService } from './mission-state.service';
 
+const LAST_SUGGESTED_MISSION_KEY = 'istanbulAdventure.lastSuggestedMissionId';
+
 @Injectable({ providedIn: 'root' })
 export class MissionCatalogService {
   private readonly bundleIndex: Record<string, MissionBundle>;
@@ -31,6 +33,39 @@ export class MissionCatalogService {
 
   getRecommended(section: SectionKey, categoryId: string | null, limit = 3): MissionBundle[] {
     return this.getSectionMissions(section, categoryId).slice(0, limit);
+  }
+
+  getSuggestedMission(categoryId: string | null): MissionBundle | null {
+    const personal = this.getSectionMissions('personal', categoryId);
+    const general = this.getSectionMissions('general', categoryId);
+    const locations = this.getSectionMissions('locations', categoryId);
+    const candidates = [...personal, ...general, ...locations].filter((mission) => !this.isCompleted(mission));
+
+    if (!candidates.length) {
+      return [...personal, ...general, ...locations][0] ?? null;
+    }
+
+    const lastSuggestedMissionId = window.localStorage.getItem(LAST_SUGGESTED_MISSION_KEY);
+    const bestCandidate = [...candidates].sort((left, right) => this.getSuggestedScore(right, categoryId) - this.getSuggestedScore(left, categoryId))[0];
+    const alternativeCandidate = [...candidates]
+      .filter((mission) => mission.id !== bestCandidate?.id)
+      .sort((left, right) => this.getSuggestedScore(right, categoryId) - this.getSuggestedScore(left, categoryId))
+      .find((mission) => {
+        if (!bestCandidate) {
+          return true;
+        }
+
+        return mission.typeLabel !== bestCandidate.typeLabel || mission.themeLabel !== bestCandidate.themeLabel;
+      });
+
+    const suggestedMission =
+      lastSuggestedMissionId && bestCandidate?.id === lastSuggestedMissionId && alternativeCandidate ? alternativeCandidate : bestCandidate;
+
+    if (suggestedMission) {
+      window.localStorage.setItem(LAST_SUGGESTED_MISSION_KEY, suggestedMission.id);
+    }
+
+    return suggestedMission ?? null;
   }
 
   getFilterOptions(missions: MissionBundle[], filterKey: keyof Omit<MissionFilterState, 'search'>): FilterOption[] {
@@ -79,6 +114,12 @@ export class MissionCatalogService {
   isCompleted(bundle: MissionBundle): boolean {
     const completed = new Set(this.state.userState().completedMissionIds);
     return bundle.missionIds.every((missionId) => completed.has(missionId));
+  }
+
+  isInProgress(bundle: MissionBundle): boolean {
+    const completed = new Set(this.state.userState().completedMissionIds);
+    const completedCount = bundle.missionIds.filter((missionId) => completed.has(missionId)).length;
+    return completedCount > 0 && completedCount < bundle.missionIds.length;
   }
 
   toggleSaved(bundle: MissionBundle): void {
@@ -158,8 +199,12 @@ export class MissionCatalogService {
       locationLabel: first.locationLabel,
       typeLabel: missions.length > 1 ? 'Percorso sequenziale' : first.typeLabel,
       themeLabel: first.themeLabel,
+      secondaryThemeLabels: first.secondaryThemeLabels,
+      difficulty: maxDifficulty,
       difficultyLabel: missions.length > 1 ? `Fino a ${maxDifficulty}/5` : first.difficultyLabel,
+      durationMin: totalDuration > 0 ? totalDuration : first.durationMin,
       durationLabel: totalDuration > 0 ? `${totalDuration} min` : first.durationLabel,
+      budgetTry: totalBudget > 0 ? totalBudget : first.budgetTry,
       budgetLabel: totalBudget > 0 ? `~${totalBudget} TRY` : first.budgetLabel,
       meta: missions.length > 1 ? `${first.locationLabel} • ${missions.length} obiettivi` : first.meta,
       iconSrc: first.iconSrc,
@@ -176,6 +221,7 @@ export class MissionCatalogService {
       highlightForCategoryIds: [...new Set(missions.flatMap((mission) => mission.highlightForCategoryIds))],
       sortPriority: Math.min(...missions.map((mission) => mission.sortPriority)),
       isSequential: missions.length > 1,
+      isStandalone: first.sequence.isStandalone,
       sequenceName: first.sequence.name,
       objectiveCount: objectives.length,
       missionIds: missions.map((mission) => mission.id),
@@ -232,6 +278,27 @@ export class MissionCatalogService {
       (this.isSaved(mission) ? 20 : 0) +
       (!this.isCompleted(mission) ? 10 : 0) +
       (mission.isSequential ? 5 : 0)
+    );
+  }
+
+  private getSuggestedScore(mission: MissionBundle, categoryId: string | null): number {
+    const isPersonalityMatch = !!categoryId && mission.highlightForCategoryIds.includes(categoryId);
+    const isGenericAnywhere = mission.locationLabel.toLowerCase() === 'ovunque';
+    const isShort = mission.durationMin > 0 && mission.durationMin <= 15;
+    const isStandalone = mission.isStandalone;
+    const isSaved = this.isSaved(mission);
+    const isInProgress = this.isInProgress(mission);
+
+    return (
+      (isPersonalityMatch ? 60 : 0) +
+      (mission.filterValues.place === 'ovunque' || isGenericAnywhere ? 35 : 0) +
+      (isShort ? 30 : Math.max(0, 20 - mission.durationMin)) +
+      (isStandalone ? 20 : 0) +
+      (!mission.isSequential ? 12 : 0) +
+      (isSaved ? 8 : 0) +
+      (isInProgress ? 6 : 0) +
+      Math.max(0, 8 - mission.difficulty) -
+      mission.sortPriority / 100
     );
   }
 

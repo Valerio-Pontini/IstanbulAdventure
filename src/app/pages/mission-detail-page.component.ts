@@ -23,8 +23,6 @@ import { UiFeedbackService } from '../services/ui-feedback.service';
             <div class="detail-ribbon">
               <span>{{ mission.locationLabel }}</span>
               <span>{{ mission.typeLabel }}</span>
-              <span>{{ mission.difficultyLabel }}</span>
-              <span>{{ mission.durationLabel }}</span>
               <span>{{ mission.budgetLabel }}</span>
               @if (mission.isSequential) {
                 <span>{{ mission.objectiveCount }} obiettivi</span>

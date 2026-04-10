@@ -6,11 +6,17 @@
 
   const personaAliases = new Map([
     ["archivisti degli imperi", ["a"]],
+    ["archivisti-imperi", ["a"]],
     ["cacciatori di leggende", ["c"]],
+    ["cacciatori-di-leggende", ["c"]],
     ["esploratori della citta", ["e"]],
+    ["esploratori-della-citta", ["e"]],
     ["custodi delle tradizioni", ["cu"]],
+    ["custodi-delle-tradizioni", ["cu"]],
     ["decifratori di simboli", ["d"]],
+    ["decifratori-di-simboli", ["d"]],
     ["decifratori dei simboli", ["d"]],
+    ["decifratori-dei-simboli", ["d"]],
     ["archivisti ed esploratori", ["a", "e"]]
   ]);
 
@@ -58,18 +64,61 @@
     return normalized.charAt(0).toUpperCase() + normalized.slice(1);
   }
 
+  function resolveCategoryId(value) {
+    const normalizedValue = normalizeText(value);
+    const slugValue = slugify(value);
+    const aliasMatch = personaAliases.get(normalizedValue) ?? personaAliases.get(slugValue);
+    if (aliasMatch?.length) {
+      return aliasMatch;
+    }
+
+    return Object.entries(categories)
+      .filter(([, category]) => {
+        const title = normalizeText(category?.title);
+        const shortLabel = normalizeText(category?.shortLabel);
+        return (
+          normalizedValue === title ||
+          normalizedValue === shortLabel ||
+          slugValue === slugify(category?.title) ||
+          slugValue === slugify(category?.shortLabel)
+        );
+      })
+      .map(([categoryId]) => categoryId);
+  }
+
   function resolvePersonaCategoryIds(values = []) {
-    const resolvedIds = values.flatMap((value) => personaAliases.get(normalizeText(value)) ?? []);
+    const resolvedIds = values.flatMap((value) => resolveCategoryId(value));
     return Array.from(new Set(resolvedIds)).filter((categoryId) => categories[categoryId]);
   }
 
-  function buildAudience(values = []) {
-    if (!values.length || values.includes("tutti")) {
+  function parseGroupFallback(groupText = "") {
+    const normalizedGroup = normalizeText(groupText);
+
+    if (!normalizedGroup) {
+      return [];
+    }
+
+    if (normalizedGroup === "tutti") {
+      return ["tutti"];
+    }
+
+    if (normalizedGroup.startsWith("tutti tranne ")) {
+      return ["tutti_tranne", normalizedGroup.replace(/^tutti tranne\s+/, "")];
+    }
+
+    return [normalizedGroup];
+  }
+
+  function buildAudience(values = [], groupText = "") {
+    const normalizedValues = (values ?? []).map((value) => normalizeText(value)).filter(Boolean);
+    const sourceValues = normalizedValues.length ? normalizedValues : parseGroupFallback(groupText);
+
+    if (!sourceValues.length || sourceValues.includes("tutti")) {
       return { mode: "all", categoryIds: [], label: "Per tutti" };
     }
 
-    if (values[0] === "tutti_tranne") {
-      const categoryIds = resolvePersonaCategoryIds(values.slice(1));
+    if (sourceValues[0] === "tutti_tranne") {
+      const categoryIds = resolvePersonaCategoryIds(sourceValues.slice(1));
       const titles = categoryIds.map((categoryId) => categories[categoryId]?.shortLabel || categories[categoryId]?.title).filter(Boolean);
       return {
         mode: "exclude",
@@ -78,7 +127,7 @@
       };
     }
 
-    const categoryIds = resolvePersonaCategoryIds(values);
+    const categoryIds = resolvePersonaCategoryIds(sourceValues);
     const titles = categoryIds.map((categoryId) => categories[categoryId]?.shortLabel || categories[categoryId]?.title).filter(Boolean);
     return {
       mode: "include",
@@ -216,7 +265,7 @@
   }
 
   function buildMission(rawMission) {
-    const audience = buildAudience(rawMission.persona_target_backend);
+    const audience = buildAudience(rawMission.persona_target_backend, rawMission.gruppo);
     const sectionKey = rawMission.backend?.filtri?.richiede_luogo_specifico ? "locations" : "general";
     const availableForCategoryIds = getAvailableCategoryIds(audience);
     const highlightForCategoryIds = audience.mode === "all" ? [] : availableForCategoryIds;

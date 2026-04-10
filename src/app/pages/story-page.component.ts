@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { EditorialScreenComponent } from '../components/editorial-screen.component';
 import { PrimaryButtonComponent } from '../components/primary-button.component';
 import { ProgressThreadComponent } from '../components/progress-thread.component';
-import { SectionHeaderComponent } from '../components/section-header.component';
 import { QuizSessionService } from '../services/quiz-session.service';
 
 @Component({
@@ -11,20 +10,13 @@ import { QuizSessionService } from '../services/quiz-session.service';
   standalone: true,
   imports: [
     EditorialScreenComponent,
-    SectionHeaderComponent,
     ProgressThreadComponent,
     PrimaryButtonComponent
   ],
   template: `
     <ia-editorial-screen>
-      <ia-section-header
-        eyebrow="Prologo"
-        title="Lascia che Istanbul ti raggiunga prima delle risposte"
-        description="Un breve attraversamento per entrare nella frequenza giusta: piu' vicino a un invito editoriale che a un tutorial."
-      />
-
       <ia-progress-thread
-        label="Rituale"
+        label=""
         [currentStep]="currentIndex() + 1"
         [totalSteps]="totalSlides"
       />
@@ -81,6 +73,18 @@ import { QuizSessionService } from '../services/quiz-session.service';
       text-wrap: balance;
     }
 
+    .editorial-actions {
+      display: flex;
+      align-items: stretch;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+
+    .editorial-actions ia-primary-button {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
     @media (max-width: 640px) {
       .story-focus {
         padding: 1.5rem 1.25rem 2rem;
@@ -96,13 +100,18 @@ import { QuizSessionService } from '../services/quiz-session.service';
 export class StoryPageComponent {
   private readonly quiz = inject(QuizSessionService);
   private readonly router = inject(Router);
+  private readonly slides = [
+    'Lascia che Istanbul ti raggiunga prima delle risposte',
+    ...this.quiz.storySlides
+  ];
+  private readonly storyIndexSignal = signal(0);
 
-  readonly totalSlides = this.quiz.storySlides.length;
-  readonly currentIndex = this.quiz.storyIndex;
-  readonly currentSlide = computed(() => this.quiz.storySlides[this.currentIndex()] ?? '');
+  readonly totalSlides = this.slides.length;
+  readonly currentIndex = this.storyIndexSignal.asReadonly();
+  readonly currentSlide = computed(() => this.slides[this.currentIndex()] ?? '');
 
   prev(): void {
-    this.quiz.previousStory();
+    this.storyIndexSignal.update((index) => Math.max(index - 1, 0));
   }
 
   next(): void {
@@ -112,6 +121,6 @@ export class StoryPageComponent {
       return;
     }
 
-    this.quiz.nextStory();
+    this.storyIndexSignal.update((index) => Math.min(index + 1, this.totalSlides - 1));
   }
 }

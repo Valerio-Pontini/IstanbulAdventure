@@ -1,82 +1,107 @@
-import { ChangeDetectionStrategy, Component, inject, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EditorialScreenComponent } from '../components/editorial-screen.component';
 import { MissionCardComponent } from '../components/mission-card.component';
-import { NarrativeCardComponent } from '../components/narrative-card.component';
 import { PersonalityRevealComponent } from '../components/personality-reveal.component';
 import { SectionHeaderComponent } from '../components/section-header.component';
-import { MissionBundle } from '../models/app.models';
-import { LegacyContentService } from '../services/legacy-content.service';
+import { MissionBundle, SectionKey } from '../models/app.models';
 import { GuidedTourService } from '../services/guided-tour.service';
+import { LegacyContentService } from '../services/legacy-content.service';
 import { MissionCatalogService } from '../services/mission-catalog.service';
 import { MissionStateService } from '../services/mission-state.service';
 import { OnboardingService } from '../services/onboarding.service';
 import { UiFeedbackService } from '../services/ui-feedback.service';
 
+type HomeEntryPoint = {
+  key: SectionKey;
+  title: string;
+  subtitle: string;
+  count: number;
+  cta: string;
+};
+
+type HomePreviewSection = {
+  key: SectionKey;
+  kicker: string;
+  title: string;
+  text: string;
+  missions: MissionBundle[];
+};
+
 @Component({
   selector: 'ia-home-page',
   standalone: true,
-  imports: [
-    RouterLink,
-    EditorialScreenComponent,
-    SectionHeaderComponent,
-    NarrativeCardComponent,
-    PersonalityRevealComponent,
-    MissionCardComponent
-  ],
+  imports: [RouterLink, EditorialScreenComponent, SectionHeaderComponent, PersonalityRevealComponent, MissionCardComponent],
   template: `
     <ia-editorial-screen>
-      <ia-section-header
-        [eyebrow]="copy.hero?.kicker || 'Home missioni'"
-        [title]="copy.hero?.title || 'Le tue missioni a Istanbul'"
-        [description]="copy.hero?.text || ''"
-      />
+      <section class="home-hero">
+        <p class="home-hero__eyebrow">{{ copy.hero?.kicker || 'Home missioni' }}</p>
+        <h1 class="home-hero__title">{{ copy.hero?.title || 'Le tue missioni a Istanbul' }}</h1>
+        <p class="home-hero__text">
+          Qui trovi missioni immediate, percorsi legati ai luoghi e il filo personale emerso dal quiz.
+        </p>
+      </section>
 
-      <div class="screen-grid">
-        <ia-narrative-card eyebrow="Panoramica" title="Muoviti tra archivi, luoghi e percorso personale">
-          <div class="editorial-metrics editorial-metrics--compact">
+      @if (suggestedMission(); as mission) {
+        <section class="home-priority">
+          <div class="home-priority__header">
             <div>
-              <span>{{ copy.overview?.stats?.totalLabel || 'Missioni totali' }}</span>
-              <strong>{{ totalCount() }}</strong>
+              <p class="home-priority__eyebrow">Da fare ora</p>
+              <h2 class="home-priority__title">Prova questa</h2>
             </div>
-            <div>
-              <span>{{ copy.overview?.stats?.generalLabel || 'Generiche' }}</span>
-              <strong>{{ generalCount() }}</strong>
-            </div>
-            <div>
-              <span>{{ copy.overview?.stats?.locationLabel || 'Luoghi' }}</span>
-              <strong>{{ locationCount() }}</strong>
-            </div>
-            <div>
-              <span>{{ copy.overview?.stats?.personalLabel || 'Per te' }}</span>
-              <strong>{{ personalCount() }}</strong>
-            </div>
+            <span class="home-priority__hint">Perfetta se vuoi iniziare subito senza cambiare percorso.</span>
           </div>
-        </ia-narrative-card>
 
-        <ia-personality-reveal [category]="profile()" [eyebrow]="copy.profileCard?.kicker || 'Personalita\\' emersa'" />
-      </div>
+          <ia-mission-card
+            [mission]="mission"
+            [highlighted]="isHighlighted(mission.id)"
+            [saved]="isSaved(mission)"
+            [completed]="isCompleted(mission)"
+            [inProgress]="isInProgress(mission)"
+            [featured]="true"
+            [supportText]="'Perfetta se vuoi iniziare subito senza cambiare percorso.'"
+            (savedToggle)="toggleSaved($event)"
+          />
+        </section>
+      }
 
-      <div id="tutorial-home-archives" class="editorial-links tutorial-anchor">
-        <a class="editorial-link" routerLink="/archive/general">Apri archivio generale</a>
-        <a class="editorial-link" routerLink="/archive/locations">Apri archivio luoghi</a>
-        <a class="editorial-link editorial-link--button" routerLink="/archive/personal">Apri archivio personale</a>
-      </div>
+      <section class="home-entrypoints" aria-labelledby="home-entrypoints-title">
+        <div class="home-entrypoints__header">
+          <p class="home-entrypoints__eyebrow">Percorsi disponibili</p>
+          <h2 id="home-entrypoints-title" class="home-entrypoints__title">Scegli da dove entrare nel gioco</h2>
+        </div>
+
+        <div class="home-entrypoints__grid" id="tutorial-home-archives">
+          @for (entry of entryPoints(); track entry.key) {
+            <a class="entry-card tutorial-anchor" [routerLink]="['/archive', entry.key]">
+              <div class="entry-card__top">
+                <span class="entry-card__label">{{ entry.title }}</span>
+                <span class="entry-card__count">{{ entry.count }} missioni</span>
+              </div>
+              <p class="entry-card__text">{{ entry.subtitle }}</p>
+              <span class="entry-card__cta">{{ entry.cta }}</span>
+            </a>
+          }
+        </div>
+      </section>
+
+      <ia-personality-reveal [category]="profile()" [eyebrow]="copy.profileCard?.kicker || 'Profilo emerso'" />
 
       <section class="section-stack">
         @for (section of sections(); track section.key) {
           <article class="catalog-section">
             <ia-section-header [eyebrow]="section.kicker" [title]="section.title" [description]="section.text">
-              <a class="editorial-link" [routerLink]="['/archive', section.key]">Vedi tutto</a>
+              <a class="editorial-link editorial-link--plain" [routerLink]="['/archive', section.key]">Vedi tutto</a>
             </ia-section-header>
 
-            <div class="catalog-grid">
+            <div class="catalog-grid catalog-grid--preview">
               @for (mission of section.missions; track mission.id) {
                 <ia-mission-card
                   [mission]="mission"
                   [highlighted]="isHighlighted(mission.id)"
                   [saved]="isSaved(mission)"
                   [completed]="isCompleted(mission)"
+                  [inProgress]="isInProgress(mission)"
                   (savedToggle)="toggleSaved($event)"
                 />
               }
@@ -86,6 +111,7 @@ import { UiFeedbackService } from '../services/ui-feedback.service';
       </section>
     </ia-editorial-screen>
   `,
+  styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePageComponent {
@@ -105,29 +131,53 @@ export class HomePageComponent {
   readonly generalCount = computed(() => this.catalog.getSectionMissions('general', this.profileId()).length);
   readonly locationCount = computed(() => this.catalog.getSectionMissions('locations', this.profileId()).length);
   readonly personalCount = computed(() => this.catalog.getSectionMissions('personal', this.profileId()).length);
-  readonly totalCount = computed(() => this.generalCount() + this.locationCount() + this.personalCount());
+  readonly suggestedMission = computed(() => this.catalog.getSuggestedMission(this.profileId()));
 
-  readonly sections = computed(() => [
+  readonly entryPoints = computed<HomeEntryPoint[]>(() => [
     {
       key: 'general',
-      kicker: this.copy.sections?.general?.kicker || 'Missioni generiche',
-      title: this.copy.sections?.general?.title || 'Azioni leggere',
-      text: this.copy.sections?.general?.text || '',
-      missions: this.catalog.getRecommended('general', this.profileId())
+      title: 'Generiche',
+      subtitle: 'Azioni leggere da fare quasi ovunque.',
+      count: this.generalCount(),
+      cta: 'Apri le missioni generiche'
     },
     {
       key: 'locations',
-      kicker: this.copy.sections?.locations?.kicker || 'Missioni luogo',
-      title: this.copy.sections?.locations?.title || 'Luoghi iconici',
-      text: this.copy.sections?.locations?.text || '',
-      missions: this.catalog.getRecommended('locations', this.profileId())
+      title: 'Luoghi',
+      subtitle: 'Missioni che si attivano quando arrivi in punti iconici.',
+      count: this.locationCount(),
+      cta: 'Apri le missioni luogo'
     },
     {
       key: 'personal',
-      kicker: this.copy.sections?.personal?.kicker || 'Per te',
-      title: this.copy.sections?.personal?.title || 'Percorso personale',
-      text: this.copy.sections?.personal?.text || '',
-      missions: this.catalog.getRecommended('personal', this.profileId())
+      title: 'Per te',
+      subtitle: 'Missioni piu coerenti con il tuo sguardo.',
+      count: this.personalCount(),
+      cta: 'Apri il tuo archivio'
+    }
+  ]);
+
+  readonly sections = computed<HomePreviewSection[]>(() => [
+    {
+      key: 'general',
+      kicker: 'Missioni generiche',
+      title: 'Azioni che puoi fare quasi ovunque',
+      text: 'Una selezione rapida per muoverti senza pianificare troppo.',
+      missions: this.catalog.getRecommended('general', this.profileId(), 2)
+    },
+    {
+      key: 'locations',
+      kicker: 'Missioni luogo',
+      title: 'Quando arrivi in un punto iconico',
+      text: 'Preview di missioni pensate per essere colte sul posto, senza GPS.',
+      missions: this.catalog.getRecommended('locations', this.profileId(), 2)
+    },
+    {
+      key: 'personal',
+      kicker: 'Missioni personalita\'',
+      title: 'Calibrate sul tuo sguardo',
+      text: 'Le missioni che meglio risuonano con la personalita emersa dal quiz.',
+      missions: this.catalog.getRecommended('personal', this.profileId(), 2)
     }
   ]);
 
@@ -156,6 +206,10 @@ export class HomePageComponent {
 
   isCompleted(mission: MissionBundle): boolean {
     return this.catalog.isCompleted(mission);
+  }
+
+  isInProgress(mission: MissionBundle): boolean {
+    return this.catalog.isInProgress(mission);
   }
 
   isSaved(mission: MissionBundle): boolean {

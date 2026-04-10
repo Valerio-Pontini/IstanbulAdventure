@@ -60,30 +60,10 @@ import { UiFeedbackService } from '../services/ui-feedback.service';
             </label>
 
             <label class="filter-field">
-              <span>Difficolta'</span>
-              <select [ngModel]="filters().difficulty" (ngModelChange)="updateFilter('difficulty', $event)">
-                <option value="all">Tutte</option>
-                @for (option of difficultyOptions(); track option.value) {
-                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-                }
-              </select>
-            </label>
-
-            <label class="filter-field">
               <span>Budget</span>
               <select [ngModel]="filters().budget" (ngModelChange)="updateFilter('budget', $event)">
                 <option value="all">Tutti</option>
                 @for (option of budgetOptions(); track option.value) {
-                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-                }
-              </select>
-            </label>
-
-            <label class="filter-field">
-              <span>Durata</span>
-              <select [ngModel]="filters().duration" (ngModelChange)="updateFilter('duration', $event)">
-                <option value="all">Tutte</option>
-                @for (option of durationOptions(); track option.value) {
                   <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
                 }
               </select>
@@ -137,9 +117,7 @@ export class ArchivePageComponent {
   readonly placeOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'place'));
   readonly typeOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'type'));
   readonly themeOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'theme'));
-  readonly difficultyOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'difficulty'));
   readonly budgetOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'budget'));
-  readonly durationOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'duration'));
 
   constructor() {
     this.route.paramMap.subscribe((params) => {

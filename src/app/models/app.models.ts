@@ -127,8 +127,12 @@ export type MissionBundle = {
   locationLabel: string;
   typeLabel: string;
   themeLabel: string;
+  secondaryThemeLabels: string[];
+  difficulty: number;
   difficultyLabel: string;
+  durationMin: number;
   durationLabel: string;
+  budgetTry: number;
   budgetLabel: string;
   meta: string;
   iconSrc: string;
@@ -140,6 +144,7 @@ export type MissionBundle = {
   highlightForCategoryIds: string[];
   sortPriority: number;
   isSequential: boolean;
+  isStandalone: boolean;
   sequenceName: string | null;
   objectiveCount: number;
   missionIds: string[];

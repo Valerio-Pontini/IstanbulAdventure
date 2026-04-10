@@ -2,7 +2,11 @@
   <p class="personality-reveal__eyebrow">{{ eyebrow }}</p>
 
   @if (category; as current) {
-    <p class="personality-reveal__kicker">Il tuo modo di leggere Istanbul</p>
+    <div class="personality-reveal__top">
+      <p class="personality-reveal__kicker">Il tuo modo di leggere Istanbul</p>
+      <a class="personality-reveal__link" routerLink="/archive/personal">Apri archivio personale</a>
+    </div>
+
     <ia-symbol-badge [iconSrc]="current.iconSrc" [label]="current.title" [sublabel]="current.shortLabel" tone="accent" />
     <p class="personality-reveal__description">{{ current.description }}</p>
   } @else {

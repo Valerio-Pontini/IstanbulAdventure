@@ -1,37 +1,41 @@
-<article class="mission-card" [class.mission-card--highlight]="highlighted" [class.mission-card--completed]="completed">
-  <div class="mission-card__header">
-    <div class="mission-card__intro">
-      <div class="mission-card__meta-row">
-        <span class="mission-card__tag">{{ mission.themeLabel }}</span>
-        <span class="mission-card__difficulty">{{ mission.difficultyLabel }}</span>
-      </div>
-
-      <ia-symbol-badge [iconSrc]="mission.iconSrc" [label]="mission.title" [sublabel]="mission.isSequential ? 'Percorso narrativo' : mission.meta" />
-    </div>
-
-    <div class="mission-card__status">
-      <span>{{ mission.locationLabel }}</span>
-      <span>{{ mission.isSequential ? mission.objectiveCount + ' obiettivi' : 'Missione singola' }}</span>
-      @if (completed) {
-        <strong>Completata</strong>
+<article
+  class="mission-card"
+  [class.mission-card--highlight]="highlighted"
+  [class.mission-card--completed]="completed"
+  [class.mission-card--saved]="saved && !completed"
+  [class.mission-card--progress]="inProgress"
+  [class.mission-card--featured]="featured"
+>
+  <div class="mission-card__topline">
+    <div class="mission-card__meta-row">
+      <span class="mission-card__tag">{{ mission.themeLabel }}</span>
+      @if (mission.secondaryThemeLabels.length) {
+        <span class="mission-card__tag mission-card__tag--muted">{{ mission.secondaryThemeLabels[0] }}</span>
       }
     </div>
+    <span class="mission-card__state">{{ statusLabel }}</span>
+  </div>
+
+  <div class="mission-card__header">
+    <ia-symbol-badge [iconSrc]="mission.iconSrc" [label]="mission.title" [sublabel]="mission.locationLabel + ' • ' + mission.typeLabel" />
   </div>
 
   <p class="mission-card__description">{{ mission.description }}</p>
 
+  @if (supportText) {
+    <p class="mission-card__support">{{ supportText }}</p>
+  }
+
   <div class="mission-card__ribbon">
-    <span>{{ mission.durationLabel }}</span>
     <span>{{ mission.budgetLabel }}</span>
     <span>{{ mission.typeLabel }}</span>
+    @if (mission.isSequential) {
+      <span>{{ mission.objectiveCount }} tappe</span>
+    }
   </div>
 
   <div class="mission-card__actions">
-    <a class="mission-card__link mission-card__link--open" [routerLink]="['/mission', mission.id]">Apri percorso</a>
-    <ia-primary-button
-      [label]="saved ? 'Preferita' : 'Salva'"
-      tone="ghost"
-      (pressed)="savedToggle.emit(mission.id)"
-    />
+    <a class="mission-card__link mission-card__link--open" [routerLink]="['/mission', mission.id]">Apri missione</a>
+    <ia-primary-button [label]="saveLabel" tone="ghost" (pressed)="savedToggle.emit(mission.id)" />
   </div>
 </article>
