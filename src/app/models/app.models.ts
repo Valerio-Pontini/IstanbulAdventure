@@ -155,7 +155,6 @@ export type UserMissionState = {
 
 export type MissionFilterState = {
   search: string;
-  personality: string;
   place: string;
   type: string;
   theme: string;

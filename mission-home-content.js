@@ -307,6 +307,14 @@
     });
   }
 
+  function isPersonalArchiveMissionForCategory(mission, categoryId) {
+    return (
+      mission.audience?.mode === "include" &&
+      mission.audience.categoryIds.length === 1 &&
+      mission.audience.categoryIds[0] === categoryId
+    );
+  }
+
   const missionIndex = Object.fromEntries(rawMissions.map((mission) => {
     const builtMission = buildMission(mission);
     return [builtMission.id, builtMission];
@@ -319,7 +327,7 @@
     categoryIds.map((categoryId) => [
       categoryId,
       sortMissionList(
-        missionList.filter((mission) => mission.isPersonalized && mission.availableForCategoryIds.includes(categoryId))
+        missionList.filter((mission) => isPersonalArchiveMissionForCategory(mission, categoryId))
       )
     ])
   );

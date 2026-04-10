@@ -4,32 +4,32 @@
 }
 
 .progress-thread__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
   color: var(--text-3);
   font-size: 0.88rem;
 }
 
-.progress-thread__meta strong {
-  color: var(--accent-gold);
-  font-weight: 600;
+.progress-thread__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.55rem;
 }
 
-.progress-thread__rail {
-  position: relative;
-  height: 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
-.progress-thread__rail span {
+.progress-thread__step {
   display: block;
-  height: 100%;
-  border-radius: inherit;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: background var(--transition-slow), box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+
+.progress-thread__step--completed {
+  background: linear-gradient(90deg, rgba(169, 54, 54, 0.92), rgba(198, 161, 91, 0.95));
+  box-shadow: 0 0 18px rgba(198, 161, 91, 0.22);
+}
+
+.progress-thread__step--active {
   background: linear-gradient(90deg, var(--accent-red), var(--accent-gold), rgba(77, 135, 132, 0.95));
-  transition: width var(--transition-slow);
   box-shadow: 0 0 26px rgba(198, 161, 91, 0.28);
+  transform: scaleY(1.05);
 }

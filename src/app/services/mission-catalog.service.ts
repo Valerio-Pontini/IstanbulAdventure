@@ -22,7 +22,7 @@ export class MissionCatalogService {
           ? this.content.missions.locations
           : this.content.missions.general;
 
-    return this.sortBundles(this.createBundles(source), categoryId);
+    return this.sortBundles(this.createBundles(source).filter((mission) => this.isVisibleForCategory(mission, categoryId)), categoryId);
   }
 
   getMissionById(missionId: string): MissionBundle | null {
@@ -37,19 +37,6 @@ export class MissionCatalogService {
     const counts = new Map<string, FilterOption>();
 
     missions.forEach((mission) => {
-      if (filterKey === 'personality') {
-        mission.availableForCategoryIds.forEach((categoryId) => {
-          const category = this.content.categories[categoryId];
-          const current = counts.get(categoryId);
-          counts.set(categoryId, {
-            value: categoryId,
-            label: category?.shortLabel ?? category?.title ?? categoryId,
-            count: (current?.count ?? 0) + 1
-          });
-        });
-        return;
-      }
-
       const value = mission.filterValues[filterKey];
       const label = mission.filterLabels[filterKey];
       const current = counts.get(value);
@@ -77,10 +64,6 @@ export class MissionCatalogService {
         .every(([key, value]) => {
           if (value === 'all') {
             return true;
-          }
-
-          if (key === 'personality') {
-            return mission.availableForCategoryIds.includes(value);
           }
 
           return this.matchesFilterValue(mission, key, value);
@@ -252,6 +235,14 @@ export class MissionCatalogService {
     );
   }
 
+  private isVisibleForCategory(mission: MissionBundle, categoryId: string | null): boolean {
+    if (!categoryId) {
+      return mission.highlightForCategoryIds.length === 0;
+    }
+
+    return mission.availableForCategoryIds.includes(categoryId);
+  }
+
   private normalize(value: string): string {
     return value
       .normalize('NFD')
@@ -261,7 +252,7 @@ export class MissionCatalogService {
   }
 
   private matchesFilterValue(mission: MissionBundle, key: keyof MissionFilterState, value: string): boolean {
-    if (key === 'search' || key === 'personality') {
+    if (key === 'search') {
       return true;
     }
 

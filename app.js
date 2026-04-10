@@ -255,7 +255,6 @@ function normalizeText(value) {
 function createDefaultDetailFilters() {
   return {
     search: "",
-    personality: "all",
     place: "all",
     type: "all",
     theme: "all",
@@ -624,7 +623,7 @@ function createMissionTag(text) {
 
 function isMissionVisibleForCategory(mission, categoryId) {
   if (!categoryId) {
-    return true;
+    return mission.audience?.mode === "all";
   }
 
   return (mission.availableForCategoryIds || []).includes(categoryId);
@@ -684,10 +683,6 @@ function matchesFilterValue(mission, filterKey, filterValue) {
     return true;
   }
 
-  if (filterKey === "personality") {
-    return (mission.availableForCategoryIds || []).includes(filterValue);
-  }
-
   return mission.filterValues?.[filterKey] === filterValue;
 }
 
@@ -697,7 +692,7 @@ function filterMissions(missions, filters) {
       return false;
     }
 
-    return ["personality", "place", "type", "theme", "difficulty", "budget", "duration"].every((filterKey) =>
+    return ["place", "type", "theme", "difficulty", "budget", "duration"].every((filterKey) =>
       matchesFilterValue(mission, filterKey, filters[filterKey])
     );
   });
@@ -708,15 +703,6 @@ function buildFilterOptions(missions, filterKey) {
   const labels = new Map();
 
   missions.forEach((mission) => {
-    if (filterKey === "personality") {
-      (mission.availableForCategoryIds || []).forEach((categoryId) => {
-        counts.set(categoryId, (counts.get(categoryId) || 0) + 1);
-        const category = MISSION_HOME_CONTENT.categories?.[categoryId];
-        labels.set(categoryId, category?.shortLabel || category?.title || categoryId);
-      });
-      return;
-    }
-
     const value = mission.filterValues?.[filterKey];
     if (!value) {
       return;
@@ -758,7 +744,6 @@ function createFilterChip(label, value, filterKey) {
 
 function renderDetailFilters(missions) {
   const groups = [
-    { key: "personality", label: "Personalità", mode: "chips" },
     { key: "place", label: "Luogo", mode: "chips" },
     { key: "type", label: "Tipologia", mode: "chips" },
     { key: "theme", label: "Tema", mode: "select" },

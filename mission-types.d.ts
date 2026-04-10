@@ -82,7 +82,6 @@ export type MissionItem = {
 
 export type MissionFilterState = {
   search: string;
-  personality: string;
   place: string;
   type: string;
   theme: string;

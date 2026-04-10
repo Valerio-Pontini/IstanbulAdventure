@@ -1,11 +1,22 @@
 <div class="progress-thread">
   <div class="progress-thread__meta">
     <span>{{ label }}</span>
-    @if (counter) {
-      <strong>{{ counter }}</strong>
-    }
   </div>
-  <div class="progress-thread__rail" aria-hidden="true">
-    <span [style.width.%]="progress"></span>
+  <div
+    class="progress-thread__steps"
+    role="progressbar"
+    [attr.aria-label]="label || 'Progress'"
+    [attr.aria-valuemin]="1"
+    [attr.aria-valuemax]="resolvedTotalSteps"
+    [attr.aria-valuenow]="resolvedCurrentStep"
+  >
+    @for (step of steps; track step) {
+      <span
+        class="progress-thread__step"
+        [class.progress-thread__step--completed]="step < resolvedCurrentStep"
+        [class.progress-thread__step--active]="step === resolvedCurrentStep"
+        aria-hidden="true"
+      ></span>
+    }
   </div>
 </div>

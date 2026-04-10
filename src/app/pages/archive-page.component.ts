@@ -30,16 +30,6 @@ import { UiFeedbackService } from '../services/ui-feedback.service';
             </label>
 
             <label class="filter-field">
-              <span>Personalita'</span>
-              <select [ngModel]="filters().personality" (ngModelChange)="updateFilter('personality', $event)">
-                <option value="all">Tutte</option>
-                @for (option of personalityOptions(); track option.value) {
-                  <option [value]="option.value">{{ option.label }} ({{ option.count }})</option>
-                }
-              </select>
-            </label>
-
-            <label class="filter-field">
               <span>Luogo</span>
               <select [ngModel]="filters().place" (ngModelChange)="updateFilter('place', $event)">
                 <option value="all">Tutti</option>
@@ -144,7 +134,6 @@ export class ArchivePageComponent {
   });
   readonly text = computed(() => this.copy.sections?.[this.section()]?.text || '');
 
-  readonly personalityOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'personality'));
   readonly placeOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'place'));
   readonly typeOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'type'));
   readonly themeOptions = computed(() => this.catalog.getFilterOptions(this.baseMissions(), 'theme'));
@@ -195,7 +184,6 @@ export class ArchivePageComponent {
   private getDefaultFilters(): MissionFilterState {
     return {
       search: '',
-      personality: 'all',
       place: 'all',
       type: 'all',
       theme: 'all',
