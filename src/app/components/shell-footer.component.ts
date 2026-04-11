@@ -20,13 +20,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           <strong>Home</strong>
           <span>Percorsi</span>
         </a>
-        <a routerLink="/archive/personal" routerLinkActive="shell-footer__link--active">
-          <strong>Archivio</strong>
-          <span>Per te</span>
+        <a routerLink="/missions" routerLinkActive="shell-footer__link--active">
+          <strong>Missioni</strong>
+          <span>Elenco</span>
         </a>
       </nav>
 
-      <p class="shell-footer__note">Ogni missione e' un invito a guardare Istanbul con piu' attenzione, curiosita' e meraviglia.</p>
+      <p class="shell-footer__note">Ogni missione è un invito a guardare Istanbul con più attenzione, curiosità e meraviglia.</p>
     </footer>
   `
 })

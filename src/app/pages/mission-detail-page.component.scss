@@ -1,0 +1,208 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.mission-detail {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  padding-bottom: 0.4rem;
+}
+
+.mission-detail--empty {
+  min-height: 40svh;
+  align-content: start;
+}
+
+.mission-detail__top-actions,
+.mission-detail__steps-card,
+.mission-detail__objective-group {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1.2rem;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at top right, rgba(198, 161, 91, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(13, 29, 45, 0.96), rgba(8, 18, 30, 0.92));
+  box-shadow: var(--shadow-soft);
+}
+
+.mission-detail__top-actions-header,
+.mission-detail__steps-header,
+.mission-detail__objectives-header,
+.mission-detail__objective-group-header {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.mission-detail__eyebrow {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mission-detail__steps-title,
+.mission-detail__objectives-title,
+.mission-detail__objective-group-title {
+  font-size: 1.3rem;
+  line-height: 1.06;
+}
+
+.mission-detail__top-actions-hint,
+.mission-detail__objective-group-hint {
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.mission-detail__top-actions-grid,
+.mission-detail__objective-stack {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.mission-detail__step span {
+  color: var(--text-3);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mission-detail__step strong {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-1);
+}
+
+.mission-detail__steps-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.mission-detail__step {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.mission-detail__step p {
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.mission-detail__objectives {
+  display: grid;
+  gap: 1rem;
+}
+
+.mission-detail__objective-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.mission-detail__objective-group {
+  gap: 1rem;
+}
+
+.mission-detail__objective-group--active {
+  border-color: var(--border-gold);
+}
+
+.mission-detail__objective-group--done {
+  border-color: rgba(99, 177, 143, 0.28);
+}
+
+.mission-detail__objective-group--locked {
+  opacity: 0.88;
+}
+
+.mission-detail__objective-group-copy {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.mission-detail__objective-group-title {
+  font-size: 1.08rem;
+}
+
+.mission-detail__objective-group-hint {
+  max-width: 34ch;
+}
+
+.mission-detail__hidden-objective {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 1rem 1.05rem;
+  border: 1px dashed rgba(198, 161, 91, 0.45);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+    rgba(8, 18, 30, 0.52);
+}
+
+.mission-detail__hidden-objective-header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.mission-detail__hidden-objective-title {
+  font-size: 1.05rem;
+  line-height: 1.12;
+}
+
+.mission-detail__hidden-objective-copy {
+  color: var(--text-2);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+.mission-detail__progress-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.mission-detail__progress-dot {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mission-detail__progress-dot--done {
+  background: linear-gradient(90deg, rgba(99, 177, 143, 0.92), rgba(151, 219, 188, 0.92));
+}
+
+.mission-detail__progress-dot--active {
+  background: linear-gradient(90deg, rgba(198, 161, 91, 0.92), rgba(240, 214, 161, 0.92));
+}
+
+.mission-detail__anchor {
+  position: relative;
+  top: -0.25rem;
+  scroll-margin-top: calc(var(--safe-top) + 6.4rem);
+}
+
+@media (min-width: 720px) {
+  .mission-detail {
+    gap: 1.15rem;
+  }
+
+  .mission-detail__top-actions-grid,
+  .mission-detail__steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mission-detail__objective-group-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+}

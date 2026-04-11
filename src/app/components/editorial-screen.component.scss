@@ -4,7 +4,9 @@
 
 .editorial-screen__frame {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
+  min-width: 0;
+  isolation: isolate;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-xl);
   padding: clamp(1.1rem, 3vw, 2rem);

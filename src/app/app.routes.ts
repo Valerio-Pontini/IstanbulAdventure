@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router, Routes } from '@angular/router';
+import { AllMissionsPageComponent } from './pages/all-missions-page.component';
 import { ArchivePageComponent } from './pages/archive-page.component';
 import { HomePageComponent } from './pages/home-page.component';
 import { LandingPageComponent } from './pages/landing-page.component';
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'quiz', component: QuizPageComponent, title: 'Istanbul Adventure | Missione 0', canActivate: [requireMissionZeroPending] },
   { path: 'result', component: ResultPageComponent, title: 'Istanbul Adventure | Esito', canActivate: [requireMissionZeroResult] },
   { path: 'home', component: HomePageComponent, title: 'Istanbul Adventure | Home', canActivate: [requireMissionZeroCompletion] },
+  { path: 'missions', component: AllMissionsPageComponent, title: 'Istanbul Adventure | Tutte le missioni', canActivate: [requireMissionZeroCompletion] },
   { path: 'archive/:section', component: ArchivePageComponent, title: 'Istanbul Adventure | Archivio', canActivate: [requireMissionZeroCompletion] },
   { path: 'mission/:id', component: MissionDetailPageComponent, title: 'Istanbul Adventure | Missione', canActivate: [requireMissionZeroCompletion] },
   { path: '**', redirectTo: '' }

@@ -1,0 +1,15 @@
+<article class="mission-facts-card">
+  <div class="mission-facts-card__header">
+    <p class="mission-facts-card__eyebrow">{{ eyebrow }}</p>
+    <h2 class="mission-facts-card__title">{{ title }}</h2>
+  </div>
+
+  <div class="mission-facts-card__grid">
+    @for (item of items; track item.label) {
+      <div class="mission-facts-card__item">
+        <span>{{ item.label }}</span>
+        <strong>{{ item.value }}</strong>
+      </div>
+    }
+  </div>
+</article>

@@ -2,7 +2,8 @@
   position: relative;
   display: grid;
   gap: 0.95rem;
-  overflow: hidden;
+  overflow: clip;
+  min-width: 0;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
   padding: 1.25rem;

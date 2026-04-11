@@ -1,0 +1,18 @@
+<details class="mission-collapsible-card" [class.mission-collapsible-card--compact]="compact">
+  <summary class="mission-collapsible-card__summary">
+    <div class="mission-collapsible-card__copy">
+      @if (eyebrow) {
+        <p class="mission-collapsible-card__eyebrow">{{ eyebrow }}</p>
+      }
+      <h3 class="mission-collapsible-card__title">{{ title }}</h3>
+      @if (preview) {
+        <p class="mission-collapsible-card__preview">{{ preview }}</p>
+      }
+    </div>
+    <span class="mission-collapsible-card__toggle">Apri</span>
+  </summary>
+
+  <div class="mission-collapsible-card__content">
+    <p>{{ content }}</p>
+  </div>
+</details>

@@ -24,7 +24,7 @@ import { QuizSessionService } from '../services/quiz-session.service';
       @if (question(); as currentQuestion) {
         <ia-section-header
           eyebrow="Missione 0"
-          title="Segui cio' che ti chiama per primo"
+          title="Segui ciò che ti chiama per primo"
           description="Non rispondere come in un test. Scegli come se stessi sfiorando un indizio nel margine del tuo diario."
           [counter]="quiz.questionCounter()"
         >
@@ -56,7 +56,7 @@ import { QuizSessionService } from '../services/quiz-session.service';
 
     @if (quiz.feedback(); as feedback) {
       <div class="overlay">
-        <ia-narrative-card class="overlay__card" tone="accent" title="La citta' risponde subito" [text]="feedback.text">
+        <ia-narrative-card class="overlay__card" tone="accent" title="La città risponde subito" [text]="feedback.text">
           <ia-primary-button [label]="tapLabel()" tone="secondary" (pressed)="dismissFeedback()" />
         </ia-narrative-card>
       </div>

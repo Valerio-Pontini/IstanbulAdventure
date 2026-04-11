@@ -417,7 +417,7 @@ window.APP_TEXT = {
             ]
           },
           "p2": {
-            "prompt": "Nel Grand Bazar un venditore ti invita a entrare",
+            "prompt": "Nel Gran Bazar un venditore ti invita a entrare",
             "answers": [
               {
                 "label": "Inizia a parlare con lui",
@@ -629,7 +629,7 @@ window.APP_TEXT = {
           },
           "a_3": {
             "prompt": "Chi conquistò Costantinopoli nel 1453?",
-            "feedback": "Mehemet II, detto 'Il Conquistatore' aveva solo 21 anni",
+            "feedback": "Mehmet II, detto 'Il Conquistatore', aveva solo 21 anni",
             "nextId": "p2",
             "answers": [
               "Alessandro Magno",
@@ -650,7 +650,7 @@ window.APP_TEXT = {
             ]
           },
           "a_8": {
-            "prompt": "Il Grand Bazar nasce",
+            "prompt": "Il Gran Bazar nasce",
             "feedback": "Nel 1400, è uno dei mercati coperti più antichi del mondo",
             "nextId": "a_9",
             "answers": [
@@ -683,7 +683,7 @@ window.APP_TEXT = {
             ]
           },
           "a_14": {
-            "prompt": "Hagia Sofia è stata costruita in:",
+            "prompt": "Hagia Sophia è stata costruita in:",
             "feedback": "Fu incredibilmente costruita in 5 anni",
             "nextId": "a_15",
             "answers": [
@@ -727,7 +727,7 @@ window.APP_TEXT = {
             ]
           },
           "a_21": {
-            "prompt": "Hagia Sofia ha:",
+            "prompt": "Hagia Sophia ha:",
             "feedback": "Entrambi, un mix unico di simboli religiosi",
             "nextId": "p8",
             "answers": [
@@ -860,37 +860,45 @@ window.APP_TEXT = {
           },
           "c_6": {
             "prompt": "Qual è l’unica fonte letteraria nota che racconta il volo di Hezarfen?",
-            "feedback": "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi【14†L103-L110】.",
+            "feedback": "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi.",
             "answers": [
               {
-                "label": "p3"
+                "label": "Il Seyahatnâme di Evliya Çelebi",
+                "nextId": "p3"
               },
               {
-                "label": "p3"
+                "label": "Un salmo bizantino",
+                "nextId": "p3"
               },
               {
-                "label": "p3"
+                "label": "Un diario ottomano",
+                "nextId": "p3"
               },
               {
-                "label": "p3"
+                "label": "Una cronaca persiana",
+                "nextId": "p3"
               }
             ]
           },
           "c_7": {
             "prompt": "Qual è il soprannome turco della Cisterna Basilica?",
-            "feedback": "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'【15†L149-L156】.",
+            "feedback": "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'.",
             "answers": [
               {
-                "label": "c_8"
+                "label": "Yerebatan Sarayı (Palazzo sommerso)",
+                "nextId": "c_8"
               },
               {
-                "label": "c_8"
+                "label": "Subterraneo Regale",
+                "nextId": "c_8"
               },
               {
-                "label": "c_8"
+                "label": "Abisso di Giustiniano",
+                "nextId": "c_8"
               },
               {
-                "label": "c_8"
+                "label": "Sala delle Meduse",
+                "nextId": "c_8"
               }
             ]
           },
@@ -899,16 +907,20 @@ window.APP_TEXT = {
             "feedback": "Şahmeran è descritta come un essere mitologico metà donna e metà serpente.",
             "answers": [
               {
-                "label": "c_9"
+                "label": "Metà donna, metà serpente",
+                "nextId": "c_9"
               },
               {
-                "label": "c_9"
+                "label": "Un drago alato",
+                "nextId": "c_9"
               },
               {
-                "label": "c_9"
+                "label": "Una ninfa dei boschi",
+                "nextId": "c_9"
               },
               {
-                "label": "c_9"
+                "label": "Una statua vivente",
+                "nextId": "c_9"
               }
             ]
           },
@@ -917,16 +929,20 @@ window.APP_TEXT = {
             "feedback": "Nasreddin è noto per racconti umoristici che capovolgono la logica comune.",
             "answers": [
               {
-                "label": "p4"
+                "label": "Umorismo paradossale",
+                "nextId": "p4"
               },
               {
-                "label": "p4"
+                "label": "Tragedie storiche",
+                "nextId": "p4"
               },
               {
-                "label": "p4"
+                "label": "Scienza e invenzioni",
+                "nextId": "p4"
               },
               {
-                "label": "p4"
+                "label": "Ricette culinarie",
+                "nextId": "p4"
               }
             ]
           },
@@ -935,88 +951,108 @@ window.APP_TEXT = {
             "feedback": "Dede Korkut è il saggio narratore e figura guida nell’epica popolare degli Oghuz.",
             "answers": [
               {
-                "label": "c_11"
+                "label": "Saggio narratore e consigliere epico",
+                "nextId": "c_11"
               },
               {
-                "label": "c_11"
+                "label": "Re guerriero degli imperatori",
+                "nextId": "c_11"
               },
               {
-                "label": "c_11"
+                "label": "Demone della foresta",
+                "nextId": "c_11"
               },
               {
-                "label": "c_11"
+                "label": "Drago marino",
+                "nextId": "c_11"
               }
             ]
           },
           "c_11": {
             "prompt": "Chi sono Karagöz e Hacivat?",
-            "feedback": "Karagöz e Hacivat sono i protagonisti del tradizionale teatro di ombre turco (teatro di figura)【13†L166-L174】.",
+            "feedback": "Karagöz e Hacivat sono i protagonisti del tradizionale teatro di ombre turco.",
             "answers": [
               {
-                "label": "c_12"
+                "label": "Personaggi del teatro di ombre turco",
+                "nextId": "c_12"
               },
               {
-                "label": "c_12"
+                "label": "Due moschee a Istanbul",
+                "nextId": "c_12"
               },
               {
-                "label": "c_12"
+                "label": "Due re della dinastia ottomana",
+                "nextId": "c_12"
               },
               {
-                "label": "c_12"
+                "label": "Due montagne sacre",
+                "nextId": "c_12"
               }
             ]
           },
           "c_12": {
             "prompt": "Quale sultano ottomano introdusse il caffè in Turchia secondo la leggenda?",
-            "feedback": "Secondo la tradizione, il caffè entrò in uso all’epoca di Solimano il Magnifico nel XVI secolo【11†L376-L384】.",
+            "feedback": "Secondo la tradizione, il caffè entrò in uso all’epoca di Solimano il Magnifico nel XVI secolo.",
             "answers": [
               {
-                "label": "p5"
+                "label": "Solimano il Magnifico",
+                "nextId": "p5"
               },
               {
-                "label": "p5"
+                "label": "Mehmed II",
+                "nextId": "p5"
               },
               {
-                "label": "p5"
+                "label": "Suleyman il Vecchio",
+                "nextId": "p5"
               },
               {
-                "label": "p5"
+                "label": "Mahmud II",
+                "nextId": "p5"
               }
             ]
           },
           "c_13": {
             "prompt": "Cosa racconta la leggenda sulla resa dei turchi a Vienna nel 1683 legata al caffè?",
-            "feedback": "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa【11†L380-L388】.",
+            "feedback": "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa.",
             "answers": [
               {
-                "label": "c_14"
+                "label": "Abbandono di sacchi di caffè",
+                "nextId": "c_14"
               },
               {
-                "label": "c_14"
+                "label": "Riscatto con caffè speziato",
+                "nextId": "c_14"
               },
               {
-                "label": "c_14"
+                "label": "Tariffa sul caffè imposta ai vinti",
+                "nextId": "c_14"
               },
               {
-                "label": "c_14"
+                "label": "Il caffè portato in volo dagli angeli",
+                "nextId": "c_14"
               }
             ]
           },
           "c_14": {
             "prompt": "Quale libro di viaggio del 1600 menziona il volo di Hezarfen?",
-            "feedback": "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo)【14†L103-L110】.",
+            "feedback": "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo).",
             "answers": [
               {
-                "label": "c_15"
+                "label": "Seyahatnâme di Evliya Çelebi",
+                "nextId": "c_15"
               },
               {
-                "label": "c_15"
+                "label": "Le Mille e una Notte",
+                "nextId": "c_15"
               },
               {
-                "label": "c_15"
+                "label": "Divan di Rumi",
+                "nextId": "c_15"
               },
               {
-                "label": "c_15"
+                "label": "Enciclopedia del Cielo",
+                "nextId": "c_15"
               }
             ]
           },
@@ -1025,16 +1061,20 @@ window.APP_TEXT = {
             "feedback": "Il nome Şahmeran significa letteralmente **\"Re dei serpenti\"** (persiano shah: re, maran: serpenti).",
             "answers": [
               {
-                "label": "p6"
+                "label": "Re dei serpenti",
+                "nextId": "p6"
               },
               {
-                "label": "p6"
+                "label": "Signora delle acque",
+                "nextId": "p6"
               },
               {
-                "label": "p6"
+                "label": "Regina delle fate",
+                "nextId": "p6"
               },
               {
-                "label": "p6"
+                "label": "Dea della saggezza",
+                "nextId": "p6"
               }
             ]
           },
@@ -1043,16 +1083,20 @@ window.APP_TEXT = {
             "feedback": "Si narra che chi vede Şahmeran sviluppa delle **squame serpentine** sul corpo.",
             "answers": [
               {
-                "label": "c_17"
+                "label": "Squame serpentine",
+                "nextId": "c_17"
               },
               {
-                "label": "c_17"
+                "label": "Ali d'angelo",
+                "nextId": "c_17"
               },
               {
-                "label": "c_17"
+                "label": "Occhi di fuoco",
+                "nextId": "c_17"
               },
               {
-                "label": "c_17"
+                "label": "Nessun segno",
+                "nextId": "c_17"
               }
             ]
           },
@@ -1061,16 +1105,20 @@ window.APP_TEXT = {
             "feedback": "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di **Ergenekon** fino alla loro liberazione.",
             "answers": [
               {
-                "label": "c_18"
+                "label": "Valle di Ergenekon",
+                "nextId": "c_18"
               },
               {
-                "label": "c_18"
+                "label": "Grotta di Catalhoyuk",
+                "nextId": "c_18"
               },
               {
-                "label": "c_18"
+                "label": "Isola di Creta",
+                "nextId": "c_18"
               },
               {
-                "label": "c_18"
+                "label": "Deserto di Gobi",
+                "nextId": "c_18"
               }
             ]
           },
@@ -1079,16 +1127,20 @@ window.APP_TEXT = {
             "feedback": "L’**Anka kuşu** è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri.",
             "answers": [
               {
-                "label": "p7"
+                "label": "La fenice mitica",
+                "nextId": "p7"
               },
               {
-                "label": "p7"
+                "label": "Una montagna sacra",
+                "nextId": "p7"
               },
               {
-                "label": "p7"
+                "label": "Un eroe epico",
+                "nextId": "p7"
               },
               {
-                "label": "p7"
+                "label": "Una pianta medicinale",
+                "nextId": "p7"
               }
             ]
           },
@@ -1097,16 +1149,20 @@ window.APP_TEXT = {
             "feedback": "Il profeta leggendario **Khidr (Hızır)** è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca.",
             "answers": [
               {
-                "label": "c_20"
+                "label": "Khidr (Hızır)",
+                "nextId": "c_20"
               },
               {
-                "label": "c_20"
+                "label": "Orfeo",
+                "nextId": "c_20"
               },
               {
-                "label": "c_20"
+                "label": "Aquila",
+                "nextId": "c_20"
               },
               {
-                "label": "c_20"
+                "label": "Pandora",
+                "nextId": "c_20"
               }
             ]
           },
@@ -1115,16 +1171,20 @@ window.APP_TEXT = {
             "feedback": "La leggenda dice che un fabbro forgiò una spada e ruppe la montagna di Ergenekon, liberando così il popolo.",
             "answers": [
               {
-                "label": "c_21"
+                "label": "Un fabbro forgiò una spada e aprì la montagna",
+                "nextId": "c_21"
               },
               {
-                "label": "c_21"
+                "label": "Un angelo discese dal cielo",
+                "nextId": "c_21"
               },
               {
-                "label": "c_21"
+                "label": "Un drago sorvolò la valle",
+                "nextId": "c_21"
               },
               {
-                "label": "c_21"
+                "label": "Un re spezzò la valle con il suo scettro",
+                "nextId": "c_21"
               }
             ]
           },
@@ -1133,16 +1193,20 @@ window.APP_TEXT = {
             "feedback": "Durante Hıdrellez si crede che appaia **Hızır**, figura misteriosa associata a fortuna, guarigione e desideri realizzati.",
             "answers": [
               {
-                "label": "p8"
+                "label": "Hızır",
+                "nextId": "p8"
               },
               {
-                "label": "p8"
+                "label": "Ercole",
+                "nextId": "p8"
               },
               {
-                "label": "p8"
+                "label": "Odino",
+                "nextId": "p8"
               },
               {
-                "label": "p8"
+                "label": "Anubi",
+                "nextId": "p8"
               }
             ]
           },
@@ -1151,16 +1215,20 @@ window.APP_TEXT = {
             "feedback": "Molte storie raccontano che nella Cisterna Basilica si sentano **voci e sussurri**, alimentando l’atmosfera misteriosa del luogo sotterraneo.",
             "answers": [
               {
-                "label": "c_26"
+                "label": "Si sentono voci e sussurri",
+                "nextId": "c_26"
               },
               {
-                "label": "c_26"
+                "label": "L'acqua scompare",
+                "nextId": "c_26"
               },
               {
-                "label": "c_26"
+                "label": "Le statue si muovono",
+                "nextId": "c_26"
               },
               {
-                "label": "c_26"
+                "label": "Appare un re",
+                "nextId": "c_26"
               }
             ]
           },
@@ -1169,16 +1237,20 @@ window.APP_TEXT = {
             "feedback": "Şahmeran è una figura leggendaria metà donna e metà serpente, considerata la **regina dei serpenti e simbolo di conoscenza e saggezza nascosta**.",
             "answers": [
               {
-                "label": "c_27"
+                "label": "Una regina dei serpenti",
+                "nextId": "c_27"
               },
               {
-                "label": "c_27"
+                "label": "Una guerriera umana",
+                "nextId": "c_27"
               },
               {
-                "label": "c_27"
+                "label": "Una dea del mare",
+                "nextId": "c_27"
               },
               {
-                "label": "c_27"
+                "label": "Una strega malvagia",
+                "nextId": "c_27"
               }
             ]
           },
@@ -1187,16 +1259,20 @@ window.APP_TEXT = {
             "feedback": "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca.",
             "answers": [
               {
-                "label": "p10"
+                "label": "Anka",
+                "nextId": "p10"
               },
               {
-                "label": "p10"
+                "label": "Simurgh",
+                "nextId": "p10"
               },
               {
-                "label": "p10"
+                "label": "Grifone",
+                "nextId": "p10"
               },
               {
-                "label": "p10"
+                "label": "Pegaso",
+                "nextId": "p10"
               }
             ]
           },
@@ -1642,7 +1718,7 @@ window.APP_TEXT = {
           },
           "e_1": {
             "prompt": "Quanti sono i colli storici di Istanbul, come nella tradizione antica?",
-            "feedback": "Sette colli. Istanbul è nota come la città dai sette colli, in analogia con Bisanzio【17†L130-L133】.",
+            "feedback": "Sette colli. Istanbul è nota come la città dai sette colli, in analogia con Bisanzio.",
             "nextId": "e_2",
             "answers": [
               "5",
@@ -1653,7 +1729,7 @@ window.APP_TEXT = {
           },
           "e_2": {
             "prompt": "Circa quante moschee si trovano a Istanbul?",
-            "feedback": "Oltre 3.000 moschee. Istanbul ospita più di 3.000 moschee【14†L48-L53】.",
+            "feedback": "Oltre 3.000 moschee. Istanbul ospita più di 3.000 moschee.",
             "nextId": "e_3",
             "answers": [
               "500",
@@ -1664,7 +1740,7 @@ window.APP_TEXT = {
           },
           "e_3": {
             "prompt": "Quale celebre mezzo di trasporto storico è ancora operativo sulla via Istiklal di Istanbul?",
-            "feedback": "Tram storico rosso. Sulla via Istiklal di Istanbul circola ancora il famoso tram storico di colore rosso, vero simbolo locale【11†L243-L249】.",
+            "feedback": "Tram storico rosso. Sulla via Istiklal di Istanbul circola ancora il famoso tram storico di colore rosso, vero simbolo locale.",
             "nextId": "p2",
             "answers": [
               "Vecchio tram rosso storico",
@@ -1675,7 +1751,7 @@ window.APP_TEXT = {
           },
           "e_4": {
             "prompt": "Quanti paesi confinano via terra con la Turchia?",
-            "feedback": "8 paesi. La Turchia confina con 8 stati (Grecia, Bulgaria, Georgia, Armenia, Azerbaigian, Iran, Iraq e Siria)【28†L186-L190】.",
+            "feedback": "8 paesi. La Turchia confina con 8 stati: Grecia, Bulgaria, Georgia, Armenia, Azerbaigian, Iran, Iraq e Siria.",
             "nextId": "e_5",
             "answers": [
               "6",
@@ -1686,7 +1762,7 @@ window.APP_TEXT = {
           },
           "e_5": {
             "prompt": "Qual è la montagna più alta della Turchia?",
-            "feedback": "Monte Ararat. Con 5.165 m è la vetta più alta della Turchia【20†L230-L233】.",
+            "feedback": "Monte Ararat. Con 5.165 m è la vetta più alta della Turchia.",
             "nextId": "e_6",
             "answers": [
               "Monte Ararat (5.165 m)",

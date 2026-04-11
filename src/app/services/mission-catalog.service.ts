@@ -27,6 +27,26 @@ export class MissionCatalogService {
     return this.sortBundles(this.createBundles(source).filter((mission) => this.isVisibleForCategory(mission, categoryId)), categoryId);
   }
 
+  getAllMissions(categoryId: string | null): MissionBundle[] {
+    const general = this.getSectionMissions('general', categoryId);
+    const locations = this.getSectionMissions('locations', categoryId);
+    const personal = this.getSectionMissions('personal', categoryId);
+    const merged = [...personal, ...locations, ...general];
+    const unique = new Map<string, MissionBundle>();
+
+    merged.forEach((mission) => {
+      if (!unique.has(mission.id)) {
+        unique.set(mission.id, mission);
+      }
+    });
+
+    return this.sortBundles([...unique.values()], categoryId);
+  }
+
+  getCatalogMissions(): MissionBundle[] {
+    return this.sortBundles(this.createBundles(this.content.missions.all), null);
+  }
+
   getMissionById(missionId: string): MissionBundle | null {
     return this.bundleIndex[missionId] ?? null;
   }

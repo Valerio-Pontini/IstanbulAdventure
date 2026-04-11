@@ -1,0 +1,75 @@
+.mission-collapsible-card {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.mission-collapsible-card__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  align-items: start;
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.mission-collapsible-card__summary::-webkit-details-marker {
+  display: none;
+}
+
+.mission-collapsible-card__copy {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.mission-collapsible-card__eyebrow {
+  color: var(--accent-gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mission-collapsible-card__title {
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.mission-collapsible-card__preview,
+.mission-collapsible-card__content p {
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.mission-collapsible-card__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  color: var(--text-3);
+  font-size: 0.76rem;
+}
+
+.mission-collapsible-card__content {
+  padding: 0 1rem 1rem;
+}
+
+.mission-collapsible-card[open] .mission-collapsible-card__toggle {
+  color: var(--text-1);
+  border-color: var(--border-gold);
+}
+
+.mission-collapsible-card[open] .mission-collapsible-card__toggle::after {
+  content: ' richiuso';
+  display: none;
+}
+
+.mission-collapsible-card--compact .mission-collapsible-card__preview {
+  font-size: 0.94rem;
+}

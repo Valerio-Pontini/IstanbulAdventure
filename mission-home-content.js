@@ -377,7 +377,7 @@
       categoryId,
       sortMissionList(
         missionList.filter((mission) => isPersonalArchiveMissionForCategory(mission, categoryId))
-      )
+      ).slice(0, 8)
     ])
   );
 

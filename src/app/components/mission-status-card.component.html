@@ -1,0 +1,25 @@
+<article class="mission-status-card">
+  <div class="mission-status-card__header">
+    <p class="mission-status-card__eyebrow">{{ eyebrow }}</p>
+    <div class="mission-status-card__headline">
+      <h2 class="mission-status-card__title">{{ title }}</h2>
+      @if (statusLabel) {
+        <span class="mission-status-card__pill">{{ statusLabel }}</span>
+      }
+    </div>
+  </div>
+
+  @if (summary) {
+    <p class="mission-status-card__summary">{{ summary }}</p>
+  }
+
+  @if (helper) {
+    <p class="mission-status-card__helper">{{ helper }}</p>
+  }
+
+  <div class="mission-status-card__actions">
+    <ia-primary-button [label]="primaryLabel" [disabled]="primaryDisabled" (pressed)="primary.emit()" />
+    <ia-primary-button [label]="secondaryLabel" tone="ghost" (pressed)="secondary.emit()" />
+    <a class="mission-status-card__back" [routerLink]="backLink">{{ backLabel }}</a>
+  </div>
+</article>

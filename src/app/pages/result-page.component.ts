@@ -25,7 +25,7 @@ import { QuizSessionService } from '../services/quiz-session.service';
         <ia-personality-reveal [category]="resolvedCategory()" eyebrow="Archetipo rivelato" />
 
         <ia-narrative-card
-          title="Da ora non guarderai Istanbul, seguirari i suoi percorsi"
+          title="Da ora non guarderai Istanbul, seguirai i suoi percorsi"
         >
           <div class="editorial-actions">
             <a class="editorial-link editorial-link--button" routerLink="/home">Vai alla tua Istanbul</a>

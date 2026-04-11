@@ -17,7 +17,8 @@ import { filter } from 'rxjs/operators';
         <nav class="shell-header__nav" aria-label="Navigazione principale">
           <a class="shell-nav-link" routerLink="/" routerLinkActive="shell-nav-link--active" [routerLinkActiveOptions]="{ exact: true }">Ingresso</a>
           <a class="shell-nav-link" routerLink="/quiz" routerLinkActive="shell-nav-link--active">Missione 0</a>
-          <a class="shell-nav-link" routerLink="/home" routerLinkActive="shell-nav-link--active">Archivio</a>
+          <a class="shell-nav-link" routerLink="/home" routerLinkActive="shell-nav-link--active">Home</a>
+          <a class="shell-nav-link" routerLink="/missions" routerLinkActive="shell-nav-link--active">Missioni</a>
         </nav>
 
         <div class="status-pill" [attr.aria-label]="'Vista corrente: ' + currentLabel()">
@@ -56,6 +57,11 @@ export class ShellHeaderComponent {
 
     if (url.startsWith('/archive')) {
       this.currentLabel.set('Archivio');
+      return;
+    }
+
+    if (url.startsWith('/missions')) {
+      this.currentLabel.set('Tutte le missioni');
       return;
     }
 

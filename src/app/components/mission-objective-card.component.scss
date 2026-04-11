@@ -1,0 +1,102 @@
+.mission-objective-card {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1.2rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)),
+    rgba(8, 18, 30, 0.62);
+  box-shadow: var(--shadow-soft);
+}
+
+.mission-objective-card--active {
+  border-color: var(--border-gold);
+  background:
+    radial-gradient(circle at top right, rgba(198, 161, 91, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(13, 28, 42, 0.94), rgba(8, 18, 30, 0.9));
+}
+
+.mission-objective-card--done {
+  border-color: rgba(99, 177, 143, 0.28);
+}
+
+.mission-objective-card--locked {
+  opacity: 0.82;
+}
+
+.mission-objective-card__header {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mission-objective-card__copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mission-objective-card__eyebrow {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mission-objective-card__title {
+  font-size: 1.25rem;
+  line-height: 1.06;
+}
+
+.mission-objective-card__pill {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.38rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-2);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.mission-objective-card__instruction {
+  color: var(--text-1);
+  line-height: 1.55;
+}
+
+.mission-objective-card__criteria {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mission-objective-card__criterion {
+  position: relative;
+  padding: 0.9rem 1rem 0.9rem 1.3rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.mission-objective-card__criterion::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 0.72rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-gold), #efd4a1);
+}
+
+@media (min-width: 720px) {
+  .mission-objective-card__header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+}

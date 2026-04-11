@@ -1,0 +1,24 @@
+<article
+  class="mission-objective-card"
+  [class.mission-objective-card--active]="state === 'active'"
+  [class.mission-objective-card--done]="state === 'done'"
+  [class.mission-objective-card--locked]="state === 'locked'"
+>
+  <div class="mission-objective-card__header">
+    <div class="mission-objective-card__copy">
+      <p class="mission-objective-card__eyebrow">{{ label }}</p>
+      <h2 class="mission-objective-card__title">{{ title }}</h2>
+    </div>
+    <span class="mission-objective-card__pill">{{ statusLabel }}</span>
+  </div>
+
+  @if (instruction) {
+    <p class="mission-objective-card__instruction">{{ instruction }}</p>
+  }
+
+  <div class="mission-objective-card__criteria">
+    @for (item of successItems; track item) {
+      <div class="mission-objective-card__criterion">{{ item }}</div>
+    }
+  </div>
+</article>

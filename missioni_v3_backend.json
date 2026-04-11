@@ -89,7 +89,7 @@
         "vita-quotidiana"
       ],
       "persona_target_backend": [
-        "Custodi delle tradizioni"
+        "Custodi delle Tradizioni"
       ],
       "difficolta": 1,
       "punteggio": 5,
@@ -152,7 +152,7 @@
         "ricerca"
       ],
       "persona_target_backend": [
-        "Custodi delle tradizioni"
+        "Custodi delle Tradizioni"
       ],
       "difficolta": 1,
       "punteggio": 5,
@@ -652,7 +652,7 @@
       "luogo": "Santa Sofia",
       "tipologia": "ricerca",
       "descrizione": "Trova la Colonna Piangente all’interno di Santa Sofia. La missione vale solo se nella foto si riconoscono il foro circolare e il rivestimento metallico.",
-      "gruppo": "tutti",
+      "gruppo": "Archivisti degli Imperi",
       "mod_completamento": "foto",
       "nome_sequenza": "Il rituale della colonna",
       "successiva": "013",
@@ -672,7 +672,7 @@
         "santa-sofia"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Archivisti degli Imperi"
       ],
       "difficolta": 3,
       "punteggio": 14,
@@ -715,7 +715,7 @@
       "luogo": "Santa Sofia",
       "tipologia": "azione",
       "descrizione": "Inserisci il pollice nel foro della colonna e prova a ruotare la mano mantenendo il contatto con la pietra. Poi scatta una foto del gesto oppure del pollice accanto al foro subito dopo il tentativo.",
-      "gruppo": "tutti",
+      "gruppo": "Archivisti degli Imperi",
       "mod_completamento": "foto",
       "nome_sequenza": "Il rituale della colonna",
       "successiva": null,
@@ -734,7 +734,7 @@
         "santa-sofia"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Archivisti degli Imperi"
       ],
       "difficolta": 3,
       "punteggio": 15,
@@ -777,7 +777,7 @@
       "luogo": "ovunque",
       "tipologia": "ricordo materiale",
       "descrizione": "Compra o fatti regalare un nazar. La missione vale solo se alla fine puoi mostrarlo al gruppo oppure fotografarlo in mano o appeso a qualcosa.",
-      "gruppo": "tutti",
+      "gruppo": "Custodi delle Tradizioni",
       "mod_completamento": "foto dell'oggetto ottenuto",
       "nome_sequenza": null,
       "successiva": null,
@@ -797,7 +797,7 @@
         "turco"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Custodi delle Tradizioni"
       ],
       "difficolta": 3,
       "punteggio": 13,
@@ -1099,7 +1099,7 @@
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Ad Istanbul vengono piantati milioni di bulbi ogni anno, soprattuto per il festival della fioritura dei tulipani ad aprile.\n\nPerche' conta: I colori dei tulipani nei parchi vengono pianificati come un mosaico per creare disegni geometrici o motivi decorativi",
+      "informazioni": "A Istanbul vengono piantati milioni di bulbi ogni anno, soprattutto per il festival della fioritura dei tulipani ad aprile.\n\nPerche' conta: I colori dei tulipani nei parchi vengono pianificati come un mosaico per creare disegni geometrici o motivi decorativi.",
       "slug": "019-il-giardino-colorato",
       "tema_principale": "tulipani",
       "temi_secondari": [
@@ -1157,7 +1157,7 @@
       "luogo": "ovunque",
       "tipologia": "assaggio",
       "descrizione": "Assaggia l’aşure, se lo trovi. La missione vale solo con una foto della porzione prima del primo cucchiaio.",
-      "gruppo": "tutti",
+      "gruppo": "Custodi delle Tradizioni",
       "mod_completamento": "foto della porzione",
       "nome_sequenza": null,
       "successiva": null,
@@ -1176,7 +1176,7 @@
         "turco"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Custodi delle Tradizioni"
       ],
       "difficolta": 3,
       "punteggio": 12,
@@ -1220,7 +1220,7 @@
       "luogo": "ovunque",
       "tipologia": "fotografia",
       "descrizione": "Scatta una foto da un punto in cui siano presenti nello stesso frame le due sponde del Bosforo, così da poter dire che Europa e Asia sono entrambe visibili.",
-      "gruppo": "tutti",
+      "gruppo": "Archivisti degli Imperi",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -1240,7 +1240,7 @@
         "panorama"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Archivisti degli Imperi"
       ],
       "difficolta": 2,
       "punteggio": 9,
@@ -1282,7 +1282,7 @@
       "luogo": "Balat",
       "tipologia": "ricerca",
       "descrizione": "Trova la chiesa di Santo Stefano dei Bulgari a Balat e scatta una foto che renda riconoscibili i suoi elementi prefabbricati in ghisa.",
-      "gruppo": "tutti",
+      "gruppo": "Archivisti degli Imperi",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -1301,7 +1301,7 @@
         "ricerca"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Archivisti degli Imperi"
       ],
       "difficolta": 3,
       "punteggio": 14,
@@ -1344,7 +1344,7 @@
       "luogo": "ovunque",
       "tipologia": "assaggio",
       "descrizione": "Assaggia un çay servito nel modo tradizionale. La missione vale con una foto del bicchiere prima di bere.",
-      "gruppo": "tutti",
+      "gruppo": "Custodi delle Tradizioni",
       "mod_completamento": "foto del bicchiere",
       "nome_sequenza": null,
       "successiva": null,
@@ -1363,7 +1363,7 @@
         "ospitalita"
       ],
       "persona_target_backend": [
-        "tutti"
+        "Custodi delle Tradizioni"
       ],
       "difficolta": 2,
       "punteggio": 9,
@@ -2848,7 +2848,7 @@
       "luogo": "Cisterna Basilica",
       "tipologia": "ricerca",
       "descrizione": "Scatta una foto in cui si vedano insieme una testa di Medusa e la colonna che sostiene.",
-      "gruppo": "Archivisti degli Imperi",
+      "gruppo": "tutti",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -2867,7 +2867,7 @@
         "riuso"
       ],
       "persona_target_backend": [
-        "Archivisti degli Imperi"
+        "tutti"
       ],
       "difficolta": 3,
       "punteggio": 15,
@@ -2973,7 +2973,7 @@
       "luogo": "Piazza Sultanahmet",
       "tipologia": "ricerca",
       "descrizione": "Trova la Colonna Serpentina e scatta una foto in cui si vedano chiaramente i corpi intrecciati dei serpenti.",
-      "gruppo": "Archivisti degli Imperi",
+      "gruppo": "tutti",
       "mod_completamento": "foto",
       "nome_sequenza": "Trofei dell'Ippodromo",
       "successiva": "057",
@@ -2992,7 +2992,7 @@
         "trofei"
       ],
       "persona_target_backend": [
-        "Archivisti degli Imperi"
+        "tutti"
       ],
       "difficolta": 3,
       "punteggio": 15,
@@ -3500,7 +3500,7 @@
         "stato": "attiva",
         "priorita_sort": 66,
         "sequenza": {
-          "nome": "L'ambizione di Ahmed I",
+          "nome": null,
           "ha_precedente": false,
           "ha_successiva": false,
           "is_inizio": false,
@@ -4105,7 +4105,7 @@
       "luogo": "Spice Bazaar",
       "tipologia": "ricerca",
       "descrizione": "Trova e fotografa una fila di prodotti essiccati appesi, come melanzane, peperoncini, pomodori o simili. La missione vale solo se si capisce chiaramente che sono appesi in serie per esposizione o conservazione, non un singolo oggetto isolato.",
-      "gruppo": "Custodi delle Tradizioni",
+      "gruppo": "tutti",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -4125,7 +4125,7 @@
         "spice-bazaar"
       ],
       "persona_target_backend": [
-        "Custodi delle Tradizioni"
+        "tutti"
       ],
       "difficolta": 2,
       "punteggio": 9,
@@ -4296,7 +4296,7 @@
       "luogo": "Crociera sul Bosforo",
       "tipologia": "ricerca",
       "descrizione": "Durante la crociera individua e fotografa una fortezza costiera sul Bosforo. La missione vale solo se nella foto si riconosce chiaramente un complesso fortificato con torri o mura affacciato direttamente sull’acqua. Se durante la stessa crociera ne vedi una seconda sulla sponda opposta, segnalo al gruppo come bonus narrativo.",
-      "gruppo": "Archivisti degli Imperi",
+      "gruppo": "tutti",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -4319,7 +4319,7 @@
         "storia-ottomana"
       ],
       "persona_target_backend": [
-        "Archivisti degli Imperi"
+        "tutti"
       ],
       "difficolta": 3,
       "punteggio": 15,
@@ -4426,7 +4426,7 @@
       "luogo": "Crociera sul Bosforo",
       "tipologia": "ricerca",
       "descrizione": "Trova e fotografa uno yalı o una casa di riva costruita a filo d’acqua. La missione vale solo se si vede chiaramente che l’edificio appartiene quasi direttamente al Bosforo, senza una larga strada o una piazza tra facciata e acqua.",
-      "gruppo": "Custodi delle Tradizioni",
+      "gruppo": "tutti",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -4446,7 +4446,7 @@
         "yali"
       ],
       "persona_target_backend": [
-        "Custodi delle Tradizioni"
+        "tutti"
       ],
       "difficolta": 2,
       "punteggio": 10,
@@ -5009,7 +5009,7 @@
       "luogo": "Fener e Balat",
       "tipologia": "ricerca",
       "descrizione": "Trova una casa storica con bovindo o sporgenza di facciata chiaramente leggibile e scatta una foto in cui si vedano insieme il bovindo e almeno una parte del piano sottostante. Non vale un dettaglio ambiguo di finestra.",
-      "gruppo": "Custodi delle Tradizioni",
+      "gruppo": "tutti",
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
@@ -5031,7 +5031,7 @@
         "ricerca"
       ],
       "persona_target_backend": [
-        "Custodi delle Tradizioni"
+        "tutti"
       ],
       "difficolta": 2,
       "punteggio": 9,
@@ -5331,7 +5331,7 @@
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "il Balıkçılar Çarşısı è un mercato animato vicino al molo, dove convivono pesce, spezie, pane, frutta e prodotti secchi.\n\nPerche' conta: Il mercato vicino al molo racconta un’Üsküdar quotidiana, non solo monumentale. Qui la riva è fatta anche di provviste, voci, dispensa e scambi pratici.",
+      "informazioni": "Il Balıkçılar Çarşısı è un mercato animato vicino al molo, dove convivono pesce, spezie, pane, frutta e prodotti secchi.\n\nPerche' conta: Il mercato vicino al molo racconta un’Üsküdar quotidiana, non solo monumentale. Qui la riva è fatta anche di provviste, voci, dispensa e scambi pratici.",
       "slug": "130-non-e-solo-un-mercato-del-pesce",
       "tema_principale": "ortakoy-uskudar-kuzguncuk",
       "temi_secondari": [
@@ -5929,7 +5929,7 @@
       },
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Gli usi imprevisti degli oggetti urbani mostrano come Istanbul venga adattata ogni giorno da chi la abita. Il riuso spontaneo rende visibile una citta' pragmatica, flessibile e creativa.\n\nPerche' conta: La città reale viene continuamente reinterpretata da chi la vive.",
+      "informazioni": "Gli usi imprevisti degli oggetti urbani mostrano come Istanbul venga adattata ogni giorno da chi la abita. Il riuso spontaneo rende visibile una città pragmatica, flessibile e creativa.\n\nPerche' conta: La città reale viene continuamente reinterpretata da chi la vive.",
       "temi_secondari": [
         "spazio-pubblico",
         "adattamento-urbano"

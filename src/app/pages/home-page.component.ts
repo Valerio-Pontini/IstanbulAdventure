@@ -69,6 +69,7 @@ type HomePreviewSection = {
         <div class="home-entrypoints__header">
           <p class="home-entrypoints__eyebrow">Percorsi disponibili</p>
           <h2 id="home-entrypoints-title" class="home-entrypoints__title">Scegli da dove entrare nel gioco</h2>
+          <a class="editorial-link editorial-link--plain" routerLink="/missions">Vedi tutte le missioni</a>
         </div>
 
         <div class="home-entrypoints__grid" id="tutorial-home-archives">
@@ -151,7 +152,7 @@ export class HomePageComponent {
     {
       key: 'personal',
       title: 'Per te',
-      subtitle: 'Missioni piu coerenti con il tuo sguardo.',
+      subtitle: 'Missioni più coerenti con il tuo sguardo.',
       count: this.personalCount(),
       cta: 'Apri il tuo archivio'
     }
@@ -174,9 +175,9 @@ export class HomePageComponent {
     },
     {
       key: 'personal',
-      kicker: 'Missioni personalita\'',
+      kicker: 'Missioni personalità',
       title: 'Calibrate sul tuo sguardo',
-      text: 'Le missioni che meglio risuonano con la personalita emersa dal quiz.',
+      text: 'Le missioni che meglio risuonano con la personalità emersa dal quiz.',
       missions: this.catalog.getRecommended('personal', this.profileId(), 2)
     }
   ]);

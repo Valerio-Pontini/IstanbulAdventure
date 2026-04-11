@@ -70,7 +70,7 @@ import { OnboardingService } from './services/onboarding.service';
           }
 
           <p class="onboarding-card__hint">
-            Se hai gia' aggiunto l'app alla Home, puoi continuare subito.
+            Se hai già aggiunto l'app alla Home, puoi continuare subito.
           </p>
 
           <div class="onboarding-card__actions">
