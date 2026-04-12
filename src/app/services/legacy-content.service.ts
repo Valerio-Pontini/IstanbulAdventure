@@ -14,6 +14,7 @@ declare global {
   interface Window {
     APP_TEXT?: {
       it?: {
+        ui?: Record<string, unknown>;
         content?: {
           app?: { storySlides?: string[] };
           quiz?: { tapToContinueLabel?: string; completion?: { title?: string; text?: string }; questionsById?: Record<string, unknown> };
@@ -47,17 +48,19 @@ declare global {
 
 @Injectable({ providedIn: 'root' })
 export class LegacyContentService {
+  readonly ui = window.APP_TEXT?.it?.ui ?? {};
+
   // Keep technical authoring notes out of the user experience.
   readonly story: StoryContent = {
     slides: window.APP_TEXT?.it?.content?.app?.storySlides ?? []
   };
 
   readonly result: ResultContent = {
-    kicker: window.MISSION_ZERO_RESULT_CONTENT?.kicker ?? 'Esito missione',
-    title: window.MISSION_ZERO_RESULT_CONTENT?.title ?? 'Il viaggio ha trovato il tuo sguardo',
+    kicker: window.MISSION_ZERO_RESULT_CONTENT?.kicker ?? window.APP_TEXT?.it?.content?.result?.kicker ?? this.t('angular.shellHeader.outcome', 'Esito'),
+    title: window.MISSION_ZERO_RESULT_CONTENT?.title ?? window.APP_TEXT?.it?.content?.result?.title ?? 'Il viaggio ha trovato il tuo sguardo',
     text: window.MISSION_ZERO_RESULT_CONTENT?.text ?? '',
     cardNote: '',
-    homeButtonLabel: window.MISSION_ZERO_RESULT_CONTENT?.homeButtonLabel ?? 'Apri la home'
+    homeButtonLabel: window.MISSION_ZERO_RESULT_CONTENT?.homeButtonLabel ?? this.t('actions.openHome', 'Apri la home')
   };
 
   readonly homeCopy: HomeCopy = {
@@ -84,6 +87,20 @@ export class LegacyContentService {
     index: window.MISSION_HOME_CONTENT?.missionIndex ?? {}
   };
 
+  t(path: string, fallback: string): string {
+    const segments = path.split('.').filter(Boolean);
+    let current: unknown = this.ui;
+
+    for (const segment of segments) {
+      if (!current || typeof current !== 'object') {
+        return fallback;
+      }
+      current = (current as Record<string, unknown>)[segment];
+    }
+
+    return typeof current === 'string' && current.trim() ? current : fallback;
+  }
+
   private buildQuizContent(): QuizContent {
     const categories = new Set(Object.keys(this.categories));
     const rawQuestionsById =
@@ -103,7 +120,7 @@ export class LegacyContentService {
       startQuestionId: window.QUIZ_CONTENT?.startQuestionId ?? 'p1',
       primaryQuestionIds:
         window.QUIZ_FLOW?.primary ?? questions.filter((question) => question.id.startsWith('p')).map((question) => question.id),
-      tapToContinueLabel: window.QUIZ_CONTENT?.tapToContinueLabel ?? 'Continua',
+      tapToContinueLabel: window.QUIZ_CONTENT?.tapToContinueLabel ?? this.t('angular.common.continue', 'Continua'),
       completion: window.QUIZ_CONTENT?.completion,
       questions
     };
@@ -134,7 +151,9 @@ export class LegacyContentService {
 
     const source = rawAnswer as { label?: string; nextId?: string | null; feedback?: string | null; categoryId?: string | null };
     const derivedNextId = source.nextId ?? (this.isQuestionId(source.label) ? source.label ?? null : inheritedNextId);
-    const derivedLabel = this.isQuestionId(source.label) && !source.nextId ? 'Continua' : source.label ?? '';
+    const derivedLabel = this.isQuestionId(source.label) && !source.nextId
+      ? this.t('angular.common.continue', 'Continua')
+      : source.label ?? '';
 
     return this.createAnswer(
       derivedLabel,

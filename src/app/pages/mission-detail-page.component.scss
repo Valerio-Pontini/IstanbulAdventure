@@ -15,7 +15,6 @@
   align-content: start;
 }
 
-.mission-detail__top-actions,
 .mission-detail__steps-card,
 .mission-detail__objective-group {
   position: relative;
@@ -23,15 +22,24 @@
   gap: 1rem;
   min-width: 0;
   padding: 1.2rem;
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
   background:
-    radial-gradient(circle at top right, rgba(198, 161, 91, 0.12), transparent 22%),
-    linear-gradient(180deg, rgba(13, 29, 45, 0.96), rgba(8, 18, 30, 0.92));
+    radial-gradient(circle at 90% 6%, rgba(191, 151, 79, 0.2), transparent 32%),
+    linear-gradient(180deg, rgba(13, 24, 37, 0.96), rgba(7, 16, 26, 0.94));
   box-shadow: var(--shadow-soft);
 }
 
-.mission-detail__top-actions-header,
+.mission-detail__steps-card::before,
+.mission-detail__objective-group::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('assets/generated/dossier-grid.svg') center / cover no-repeat;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
 .mission-detail__steps-header,
 .mission-detail__objectives-header,
 .mission-detail__objective-group-header {
@@ -42,25 +50,23 @@
 
 .mission-detail__eyebrow {
   color: var(--accent-gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .mission-detail__steps-title,
 .mission-detail__objectives-title,
 .mission-detail__objective-group-title {
-  font-size: 1.3rem;
-  line-height: 1.06;
+  font-size: 1.36rem;
+  line-height: 0.94;
 }
 
-.mission-detail__top-actions-hint,
 .mission-detail__objective-group-hint {
   color: var(--text-2);
   line-height: 1.5;
 }
 
-.mission-detail__top-actions-grid,
 .mission-detail__objective-stack {
   display: grid;
   gap: 0.8rem;
@@ -68,14 +74,14 @@
 
 .mission-detail__step span {
   color: var(--text-3);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .mission-detail__step strong {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--text-1);
 }
 
@@ -88,9 +94,9 @@
   display: grid;
   gap: 0.35rem;
   padding: 0.95rem 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.035);
+  border-radius: 10px;
+  border: 1px solid rgba(233, 213, 173, 0.14);
+  background: rgba(233, 213, 173, 0.06);
 }
 
 .mission-detail__step p {
@@ -98,11 +104,7 @@
   line-height: 1.5;
 }
 
-.mission-detail__objectives {
-  display: grid;
-  gap: 1rem;
-}
-
+.mission-detail__objectives,
 .mission-detail__objective-stack {
   display: grid;
   gap: 1rem;
@@ -117,7 +119,7 @@
 }
 
 .mission-detail__objective-group--done {
-  border-color: rgba(99, 177, 143, 0.28);
+  border-color: rgba(109, 179, 146, 0.38);
 }
 
 .mission-detail__objective-group--locked {
@@ -130,7 +132,7 @@
 }
 
 .mission-detail__objective-group-title {
-  font-size: 1.08rem;
+  font-size: 1.1rem;
 }
 
 .mission-detail__objective-group-hint {
@@ -142,11 +144,11 @@
   gap: 0.7rem;
   min-width: 0;
   padding: 1rem 1.05rem;
-  border: 1px dashed rgba(198, 161, 91, 0.45);
-  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(191, 151, 79, 0.52);
+  border-radius: 14px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
-    rgba(8, 18, 30, 0.52);
+    linear-gradient(180deg, rgba(236, 223, 195, 0.08), rgba(236, 223, 195, 0.02)),
+    rgba(8, 18, 30, 0.58);
 }
 
 .mission-detail__hidden-objective-header {
@@ -155,8 +157,8 @@
 }
 
 .mission-detail__hidden-objective-title {
-  font-size: 1.05rem;
-  line-height: 1.12;
+  font-size: 1.08rem;
+  line-height: 1.02;
 }
 
 .mission-detail__hidden-objective-copy {
@@ -172,17 +174,17 @@
 }
 
 .mission-detail__progress-dot {
-  height: 6px;
-  border-radius: 999px;
+  height: 7px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
 }
 
 .mission-detail__progress-dot--done {
-  background: linear-gradient(90deg, rgba(99, 177, 143, 0.92), rgba(151, 219, 188, 0.92));
+  background: linear-gradient(90deg, rgba(109, 179, 146, 0.92), rgba(151, 219, 188, 0.92));
 }
 
 .mission-detail__progress-dot--active {
-  background: linear-gradient(90deg, rgba(198, 161, 91, 0.92), rgba(240, 214, 161, 0.92));
+  background: linear-gradient(90deg, rgba(191, 151, 79, 0.92), rgba(240, 214, 161, 0.92));
 }
 
 .mission-detail__anchor {
@@ -191,12 +193,44 @@
   scroll-margin-top: calc(var(--safe-top) + 6.4rem);
 }
 
+.mission-detail__action-bar {
+  position: sticky;
+  bottom: calc(var(--safe-bottom) + 0.6rem);
+  z-index: 7;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: stretch;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid rgba(212, 162, 74, 0.28);
+  border-radius: 8px 20px 16px 8px;
+  background:
+    linear-gradient(175deg, rgba(10, 16, 26, 0.97), rgba(3, 6, 10, 0.98)),
+    url('assets/generated/paper-grain.svg') center / 180px repeat;
+  box-shadow:
+    0 -8px 40px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+}
+
+.mission-detail__back-link {
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent-ivory);
+  font-size: 1.3rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
 @media (min-width: 720px) {
   .mission-detail {
     gap: 1.15rem;
   }
 
-  .mission-detail__top-actions-grid,
   .mission-detail__steps-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -205,4 +239,82 @@
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
   }
+}
+
+@media (max-width: 640px) {
+  .mission-detail__action-bar {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .mission-detail__action-bar ia-primary-button:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.mission-detail__scene-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.mission-detail__scene-progress {
+  margin: 0;
+  color: var(--text-3);
+  font-size: 0.85rem;
+}
+
+.mission-detail__context-trigger {
+  display: flex;
+  justify-content: center;
+}
+
+.mission-detail__context-btn {
+  min-height: 44px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-gold);
+  color: var(--accent-ivory);
+  background: rgba(191, 151, 79, 0.1);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.mission-detail__context-btn:hover {
+  background: rgba(191, 151, 79, 0.18);
+}
+
+.mission-detail__scene-nav {
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+
+.mission-detail__action-bar--scene {
+  position: static;
+  margin-top: var(--space-5);
+  bottom: auto;
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.mission-detail__empty-title {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--accent-ivory);
+}
+
+.mission-detail__empty-text {
+  margin: 0 0 var(--space-5);
+  max-width: 40ch;
+  color: var(--text-2);
+  line-height: 1.55;
 }

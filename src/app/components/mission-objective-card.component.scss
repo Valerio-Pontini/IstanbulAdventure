@@ -4,23 +4,23 @@
   gap: 1rem;
   min-width: 0;
   padding: 1.2rem;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)),
-    rgba(8, 18, 30, 0.62);
+    linear-gradient(180deg, rgba(236, 223, 195, 0.08), rgba(236, 223, 195, 0.02)),
+    rgba(8, 16, 25, 0.84);
   box-shadow: var(--shadow-soft);
 }
 
 .mission-objective-card--active {
   border-color: var(--border-gold);
   background:
-    radial-gradient(circle at top right, rgba(198, 161, 91, 0.14), transparent 24%),
-    linear-gradient(180deg, rgba(13, 28, 42, 0.94), rgba(8, 18, 30, 0.9));
+    radial-gradient(circle at top right, rgba(191, 151, 79, 0.22), transparent 30%),
+    linear-gradient(180deg, rgba(13, 28, 42, 0.94), rgba(8, 18, 30, 0.92));
 }
 
 .mission-objective-card--done {
-  border-color: rgba(99, 177, 143, 0.28);
+  border-color: rgba(109, 179, 146, 0.4);
 }
 
 .mission-objective-card--locked {
@@ -39,14 +39,14 @@
 
 .mission-objective-card__eyebrow {
   color: var(--accent-gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .mission-objective-card__title {
-  font-size: 1.25rem;
-  line-height: 1.06;
+  font-size: 1.26rem;
+  line-height: 1.03;
 }
 
 .mission-objective-card__pill {
@@ -54,13 +54,13 @@
   width: fit-content;
   align-items: center;
   min-height: 34px;
-  padding: 0.38rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.04);
+  padding: 0.36rem 0.66rem;
+  border-radius: 8px;
+  border: 1px solid rgba(233, 213, 173, 0.24);
+  background: rgba(233, 213, 173, 0.08);
   color: var(--text-2);
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-size: 0.74rem;
+  font-weight: 700;
 }
 
 .mission-objective-card__instruction {
@@ -75,10 +75,10 @@
 
 .mission-objective-card__criterion {
   position: relative;
-  padding: 0.9rem 1rem 0.9rem 1.3rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.035);
+  padding: 0.88rem 1rem 0.88rem 1.3rem;
+  border-radius: 10px;
+  border: 1px solid rgba(233, 213, 173, 0.15);
+  background: rgba(233, 213, 173, 0.06);
   color: var(--text-2);
   line-height: 1.5;
 }

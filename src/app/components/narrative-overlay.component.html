@@ -1,0 +1,10 @@
+<div
+  class="ia-overlay ia-overlay--modal"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-labelledby]="title ? titleId : null"
+>
+  <ia-narrative-card class="ia-overlay__card" [tone]="tone" [title]="title" [titleDomId]="titleId" [text]="text">
+    <ng-content />
+  </ia-narrative-card>
+</div>

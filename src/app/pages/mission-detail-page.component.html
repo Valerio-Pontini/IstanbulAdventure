@@ -1,152 +1,51 @@
 @if (mission(); as mission) {
   <ia-editorial-screen tone="atlas">
     <section class="mission-detail">
-      <ia-mission-hero-card [title]="mission.title" [description]="mission.description" backLabel="Torna alle missioni" backLink="/home" />
+      <ia-mission-hero-card [title]="mission.title" [backLabel]="t('angular.missionDetail.heroBack', 'Torna al hub')" backLink="/home" />
 
-      <section id="tutorial-mission-actions" class="mission-detail__top-actions">
-        <div class="mission-detail__top-actions-header">
-          <p class="mission-detail__eyebrow">Azioni rapide</p>
-          <p class="mission-detail__top-actions-hint">{{ topActionHint() }}</p>
+      <ia-scene-viewport [tone]="viewportTone()" id="tutorial-mission-actions">
+        <div class="mission-detail__scene-meta">
+          <p class="mission-detail__eyebrow">{{ t('angular.missionDetail.sceneLabel', 'Scene') }}</p>
+          <p class="mission-detail__scene-progress">{{ runtime.progressLabel() }}</p>
         </div>
 
-        <div class="mission-detail__top-actions-grid">
+        <ia-progress-thread label="" [currentStep]="runtime.flatBeatIndex() + 1" [totalSteps]="runtime.totalBeats()" />
+
+        @if (dialogue(); as line) {
+          <ia-dialogue-layer [text]="line.text" [speaker]="line.speaker" [role]="line.role" />
+        }
+
+        @if (mission.context?.trim()) {
+          <div class="mission-detail__context-trigger">
+            <button type="button" class="mission-detail__context-btn" (click)="openContext()">{{ t('angular.missionDetail.contextButton', 'Approfondisci il contesto') }}</button>
+          </div>
+        }
+
+        <div class="mission-detail__scene-nav editorial-actions">
+          <ia-primary-button [label]="t('angular.common.back', 'Indietro')" tone="ghost" [disabled]="runtime.isAtStart()" (pressed)="scenePrev()" />
+          <ia-primary-button [label]="t('angular.missionDetail.nextScene', 'Avanti nel racconto')" tone="ghost" [disabled]="runtime.isAtEnd()" (pressed)="sceneNext()" />
+        </div>
+
+        <section class="mission-detail__action-bar mission-detail__action-bar--scene">
+          <a class="mission-detail__back-link" routerLink="/home" [attr.aria-label]="t('angular.missionDetail.backAria', 'Torna al hub')">←</a>
           <ia-primary-button [label]="primaryActionLabel()" (pressed)="handlePrimaryAction()" />
           <ia-primary-button [label]="secondaryActionLabel()" tone="ghost" (pressed)="toggleSaved()" />
-        </div>
-      </section>
-
-      <ia-mission-facts-card [items]="factItems()" />
-
-      @if (mission.isSequential) {
-        <section class="mission-detail__objectives">
-          <div class="mission-detail__objectives-header">
-            <p class="mission-detail__eyebrow">Progressione</p>
-            <h2 class="mission-detail__objectives-title">Obiettivi del percorso</h2>
-            <div class="mission-detail__progress-track" aria-hidden="true">
-              @for (objective of mission.objectives; track objective.id; let index = $index) {
-                <span
-                  class="mission-detail__progress-dot"
-                  [class.mission-detail__progress-dot--done]="objectiveState(index, objective.id) === 'done'"
-                  [class.mission-detail__progress-dot--active]="objectiveState(index, objective.id) === 'active'"
-                ></span>
-              }
-            </div>
-          </div>
-
-          <div class="mission-detail__objective-stack">
-            @for (objective of mission.objectives; track objective.id; let index = $index) {
-              @if (shouldRevealObjective(index)) {
-                <article
-                  class="mission-detail__objective-group"
-                  [class.mission-detail__objective-group--active]="objectiveState(index, objective.id) === 'active'"
-                  [class.mission-detail__objective-group--done]="objectiveState(index, objective.id) === 'done'"
-                  [class.mission-detail__objective-group--locked]="objectiveState(index, objective.id) === 'locked'"
-                >
-                  <div class="mission-detail__anchor" [attr.id]="'objective-' + (index + 1)"></div>
-
-                  <div class="mission-detail__objective-group-header">
-                    <div class="mission-detail__objective-group-copy">
-                      <p class="mission-detail__eyebrow">{{ objectiveProgressLabel(index) }}</p>
-                      <h3 class="mission-detail__objective-group-title">Obiettivo {{ index + 1 }}</h3>
-                    </div>
-                    <p class="mission-detail__objective-group-hint">{{ objectiveProgressHint(index, objective.id) }}</p>
-                  </div>
-
-                  <ia-mission-objective-card
-                    [label]="'Obiettivo ' + (index + 1)"
-                    [title]="objective.title"
-                    [instruction]="objectiveInstruction(index, objective)"
-                    [successItems]="objective.validationCriteria"
-                    [statusLabel]="objectiveStatusLabel(index, objective.id)"
-                    [state]="objectiveState(index, objective.id)"
-                  />
-
-                  <article class="mission-detail__steps-card">
-                    <div class="mission-detail__steps-header">
-                      <p class="mission-detail__eyebrow">Come affrontarlo sul posto</p>
-                      <h3 class="mission-detail__steps-title">Quattro passaggi chiari</h3>
-                    </div>
-
-                    <div class="mission-detail__steps-grid">
-                      @for (step of objectiveOnSiteSteps(index); track step.title; let stepIndex = $index) {
-                        <div class="mission-detail__step">
-                          <span>0{{ stepIndex + 1 }}</span>
-                          <strong>{{ step.title }}</strong>
-                          <p>{{ step.text }}</p>
-                        </div>
-                      }
-                    </div>
-                  </article>
-                </article>
-              }
-            }
-
-            @if (hiddenObjectiveCount() > 0) {
-              <article class="mission-detail__hidden-objective">
-                <div class="mission-detail__hidden-objective-header">
-                  <p class="mission-detail__eyebrow">Parte nascosta</p>
-                  <h3 class="mission-detail__hidden-objective-title">{{ hiddenObjectiveTitle() }}</h3>
-                </div>
-                <p class="mission-detail__hidden-objective-copy">{{ hiddenObjectiveHint() }}</p>
-              </article>
-            }
-          </div>
         </section>
-      } @else {
-        @if (mission.objectives[0]; as objective) {
-          <section class="mission-detail__objectives">
-            <div class="mission-detail__objective-stack">
-              <article class="mission-detail__objective-group mission-detail__objective-group--single">
-                <ia-mission-objective-card
-                  label="Obiettivo"
-                  [title]="objective.title"
-                  [instruction]="objectiveInstruction(0, objective)"
-                  [successItems]="objective.validationCriteria"
-                  [statusLabel]="objectiveStatusLabel(0, objective.id)"
-                  [state]="objectiveState(0, objective.id)"
-                />
-
-                <article class="mission-detail__steps-card">
-                  <div class="mission-detail__steps-header">
-                    <p class="mission-detail__eyebrow">Come affrontarla sul posto</p>
-                    <h3 class="mission-detail__steps-title">Quattro passaggi chiari</h3>
-                  </div>
-
-                  <div class="mission-detail__steps-grid">
-                    @for (step of objectiveOnSiteSteps(0); track step.title; let stepIndex = $index) {
-                      <div class="mission-detail__step">
-                        <span>0{{ stepIndex + 1 }}</span>
-                        <strong>{{ step.title }}</strong>
-                        <p>{{ step.text }}</p>
-                      </div>
-                    }
-                  </div>
-                </article>
-              </article>
-            </div>
-          </section>
-        }
-      }
-
-      @if (mission.context) {
-        <ia-mission-collapsible-card
-          eyebrow="Contesto"
-          title="Perché questa missione conta"
-          [preview]="contextPreview()"
-          [content]="mission.context"
-        />
-      }
+      </ia-scene-viewport>
     </section>
   </ia-editorial-screen>
+
+  @if (contextOpen() && mission.context?.trim()) {
+    <ia-narrative-overlay [title]="t('angular.missionDetail.contextTitle', 'Perche questa missione conta')" [text]="mission.context" tone="accent">
+      <ia-primary-button [label]="t('angular.missionDetail.close', 'Chiudi')" tone="secondary" (pressed)="closeContext()" />
+    </ia-narrative-overlay>
+  }
 } @else {
   <ia-editorial-screen>
     <section class="mission-detail mission-detail--empty">
-      <ia-mission-collapsible-card
-        eyebrow="Dettaglio missione"
-        title="Missione non trovata"
-        preview="Il percorso che stai cercando non e' disponibile."
-        content="Prova a tornare alla lista missioni e aprire un'altra scheda."
-      />
+      <p class="mission-detail__empty-title">{{ t('angular.missionDetail.notFoundTitle', 'Missione non trovata') }}</p>
+      <p class="mission-detail__empty-text">{{ t('angular.missionDetail.notFoundText', "Il percorso che stai cercando non e' disponibile. Torna al hub e scegli un'altra missione.") }}</p>
+      <a class="editorial-link" routerLink="/home">{{ t('angular.missionDetail.notFoundBack', 'Torna al hub') }}</a>
     </section>
   </ia-editorial-screen>
 }

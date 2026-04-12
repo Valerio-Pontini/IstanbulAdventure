@@ -22,23 +22,26 @@ import { QuizSessionService } from '../services/quiz-session.service';
       <ia-section-header [title]="result.title" [description]="result.text" />
 
       <div class="screen-grid">
-        <ia-personality-reveal [category]="resolvedCategory()" eyebrow="Archetipo rivelato" />
+        <ia-personality-reveal [category]="resolvedCategory()" [eyebrow]="t('angular.result.archetypeEyebrow', 'Archetipo rivelato')" />
 
-        <ia-narrative-card
-          title="Da ora non guarderai Istanbul, seguirai i suoi percorsi"
-        >
+        <ia-narrative-card [title]="t('angular.result.cardTitle', 'Da ora non guarderai Istanbul, seguirai i suoi percorsi')">
           <div class="editorial-actions">
-            <a class="editorial-link editorial-link--button" routerLink="/home">Vai alla tua Istanbul</a>
+            <a class="editorial-link editorial-link--button" routerLink="/home">{{ t('angular.result.goHome', 'Vai alla tua Istanbul') }}</a>
           </div>
         </ia-narrative-card>
       </div>
     </ia-editorial-screen>
-  `
-  ,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResultPageComponent {
+  private readonly content = inject(LegacyContentService);
   private readonly quiz = inject(QuizSessionService);
-  readonly result = inject(LegacyContentService).result;
+  readonly result = this.content.result;
   readonly resolvedCategory = computed(() => this.quiz.resultCategory());
+  readonly t = (path: string, fallback: string) => this.content.t(path, fallback);
+
+  constructor() {
+    this.quiz.consumeFreshResult();
+  }
 }

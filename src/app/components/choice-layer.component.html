@@ -1,0 +1,5 @@
+<div class="choice-layer" role="group" [attr.aria-label]="ariaLabel" tabindex="0">
+  @for (opt of options; track opt.id) {
+    <ia-choice-card [index]="$index + 1" [label]="opt.label" (select)="pick(opt.id)" />
+  }
+</div>

@@ -18,6 +18,7 @@ export class QuizSessionService {
   private readonly categoryTrailSignal = signal<string[]>([]);
   private readonly questionsById: Map<string, QuizQuestion>;
   private readonly resultCategoryIdSignal: ReturnType<typeof signal<string | null>>;
+  private readonly freshResultSignal = signal(false);
   private readonly feedbackSignal = signal<FeedbackState | null>(null);
   readonly storySlides: string[];
 
@@ -41,6 +42,7 @@ export class QuizSessionService {
     const categoryId = this.resultCategoryIdSignal();
     return categoryId ? this.content.categories[categoryId] ?? null : null;
   });
+  readonly hasFreshResult = this.freshResultSignal.asReadonly();
 
   constructor(
     private readonly content: LegacyContentService,
@@ -56,6 +58,7 @@ export class QuizSessionService {
       this.resultCategoryIdSignal.set(this.state.categoryId());
       this.currentQuestionIdSignal.set(null);
       this.feedbackSignal.set(null);
+      this.freshResultSignal.set(false);
       return;
     }
 
@@ -66,6 +69,7 @@ export class QuizSessionService {
     this.categoryTrailSignal.set([]);
     this.feedbackSignal.set(null);
     this.resultCategoryIdSignal.set(this.state.categoryId());
+    this.freshResultSignal.set(false);
   }
 
   startQuiz(): void {
@@ -73,6 +77,7 @@ export class QuizSessionService {
       this.currentQuestionIdSignal.set(null);
       this.feedbackSignal.set(null);
       this.resultCategoryIdSignal.set(this.state.categoryId());
+      this.freshResultSignal.set(false);
       return;
     }
 
@@ -81,6 +86,11 @@ export class QuizSessionService {
     this.categoryTrailSignal.set([]);
     this.feedbackSignal.set(null);
     this.currentQuestionIdSignal.set(this.content.quiz.startQuestionId);
+    this.freshResultSignal.set(false);
+  }
+
+  consumeFreshResult(): void {
+    this.freshResultSignal.set(false);
   }
 
   nextStory(): void {
@@ -150,6 +160,7 @@ export class QuizSessionService {
     const categoryId = this.resolveCategoryId();
     this.resultCategoryIdSignal.set(categoryId);
     this.currentQuestionIdSignal.set(null);
+    this.freshResultSignal.set(true);
     this.state.markHomeUnlocked(categoryId);
   }
 

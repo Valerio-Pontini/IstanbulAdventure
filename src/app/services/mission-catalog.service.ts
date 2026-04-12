@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FilterOption, MissionBundle, MissionFilterState, MissionItem, MissionObjective, SectionKey } from '../models/app.models';
+import { FilterOption, MissionBundle, MissionFilterState, MissionItem, MissionObjective, SectionKey, UserMissionState } from '../models/app.models';
 import { LegacyContentService } from './legacy-content.service';
 import { MissionStateService } from './mission-state.service';
 
@@ -8,23 +8,42 @@ const LAST_SUGGESTED_MISSION_KEY = 'istanbulAdventure.lastSuggestedMissionId';
 @Injectable({ providedIn: 'root' })
 export class MissionCatalogService {
   private readonly bundleIndex: Record<string, MissionBundle>;
+  private readonly sectionBundles: Record<'general' | 'locations', MissionBundle[]>;
+  private readonly personalBundlesByCategory: Record<string, MissionBundle[]>;
+  private readonly allBundles: MissionBundle[];
+  private readonly sectionCache = new Map<string, { stateRef: UserMissionState; missions: MissionBundle[] }>();
+  private readonly stateSnapshotCache = new WeakMap<
+    UserMissionState,
+    { saved: Set<string>; completed: Set<string> }
+  >();
 
   constructor(
     private readonly content: LegacyContentService,
     private readonly state: MissionStateService
   ) {
+    this.allBundles = this.createBundles(this.content.missions.all);
+    this.sectionBundles = {
+      general: this.createBundles(this.content.missions.general),
+      locations: this.createBundles(this.content.missions.locations)
+    };
+    this.personalBundlesByCategory = Object.fromEntries(
+      Object.entries(this.content.missions.byCategory).map(([categoryId, missions]) => [categoryId, this.createBundles(missions)])
+    );
     this.bundleIndex = this.buildBundleIndex();
   }
 
   getSectionMissions(section: SectionKey, categoryId: string | null): MissionBundle[] {
-    const source =
-      section === 'personal'
-        ? this.content.missions.byCategory[categoryId ?? ''] ?? []
-        : section === 'locations'
-          ? this.content.missions.locations
-          : this.content.missions.general;
+    const stateRef = this.state.userState();
+    const cacheKey = `${section}|${categoryId ?? ''}`;
+    const cached = this.sectionCache.get(cacheKey);
+    if (cached && cached.stateRef === stateRef) {
+      return cached.missions;
+    }
 
-    return this.sortBundles(this.createBundles(source).filter((mission) => this.isVisibleForCategory(mission, categoryId)), categoryId);
+    const source = this.getSourceBundles(section, categoryId);
+    const sorted = this.sortBundles(source.filter((mission) => this.isVisibleForCategory(mission, categoryId)), categoryId, stateRef);
+    this.sectionCache.set(cacheKey, { stateRef, missions: sorted });
+    return sorted;
   }
 
   getAllMissions(categoryId: string | null): MissionBundle[] {
@@ -44,7 +63,15 @@ export class MissionCatalogService {
   }
 
   getCatalogMissions(): MissionBundle[] {
-    return this.sortBundles(this.createBundles(this.content.missions.all), null);
+    const stateRef = this.state.userState();
+    const cacheKey = 'catalog|';
+    const cached = this.sectionCache.get(cacheKey);
+    if (cached && cached.stateRef === stateRef) {
+      return cached.missions;
+    }
+    const sorted = this.sortBundles(this.allBundles, null, stateRef);
+    this.sectionCache.set(cacheKey, { stateRef, missions: sorted });
+    return sorted;
   }
 
   getMissionById(missionId: string): MissionBundle | null {
@@ -56,30 +83,50 @@ export class MissionCatalogService {
   }
 
   getSuggestedMission(categoryId: string | null): MissionBundle | null {
+    const stateRef = this.state.userState();
     const personal = this.getSectionMissions('personal', categoryId);
     const general = this.getSectionMissions('general', categoryId);
     const locations = this.getSectionMissions('locations', categoryId);
-    const candidates = [...personal, ...general, ...locations].filter((mission) => !this.isCompleted(mission));
+    const candidates = [...personal, ...general, ...locations].filter((mission) => !this.isCompleted(mission, stateRef));
 
     if (!candidates.length) {
       return [...personal, ...general, ...locations][0] ?? null;
     }
 
     const lastSuggestedMissionId = window.localStorage.getItem(LAST_SUGGESTED_MISSION_KEY);
-    const bestCandidate = [...candidates].sort((left, right) => this.getSuggestedScore(right, categoryId) - this.getSuggestedScore(left, categoryId))[0];
-    const alternativeCandidate = [...candidates]
-      .filter((mission) => mission.id !== bestCandidate?.id)
-      .sort((left, right) => this.getSuggestedScore(right, categoryId) - this.getSuggestedScore(left, categoryId))
-      .find((mission) => {
-        if (!bestCandidate) {
-          return true;
-        }
+    let bestCandidate: MissionBundle | null = null;
+    let bestScore = Number.NEGATIVE_INFINITY;
 
-        return mission.typeLabel !== bestCandidate.typeLabel || mission.themeLabel !== bestCandidate.themeLabel;
-      });
+    for (const mission of candidates) {
+      const score = this.getSuggestedScore(mission, categoryId, stateRef);
+      if (score > bestScore) {
+        bestCandidate = mission;
+        bestScore = score;
+      }
+    }
 
-    const suggestedMission =
-      lastSuggestedMissionId && bestCandidate?.id === lastSuggestedMissionId && alternativeCandidate ? alternativeCandidate : bestCandidate;
+    let alternativeCandidate: MissionBundle | null = null;
+    let alternativeScore = Number.NEGATIVE_INFINITY;
+    for (const mission of candidates) {
+      if (!bestCandidate || mission.id === bestCandidate.id) {
+        continue;
+      }
+
+      if (mission.typeLabel === bestCandidate.typeLabel && mission.themeLabel === bestCandidate.themeLabel) {
+        continue;
+      }
+
+      const score = this.getSuggestedScore(mission, categoryId, stateRef);
+      if (score > alternativeScore) {
+        alternativeCandidate = mission;
+        alternativeScore = score;
+      }
+    }
+
+    let suggestedMission: MissionBundle | null = bestCandidate;
+    if (lastSuggestedMissionId && bestCandidate && bestCandidate.id === lastSuggestedMissionId && alternativeCandidate) {
+      suggestedMission = alternativeCandidate;
+    }
 
     if (suggestedMission) {
       window.localStorage.setItem(LAST_SUGGESTED_MISSION_KEY, suggestedMission.id);
@@ -127,18 +174,18 @@ export class MissionCatalogService {
   }
 
   isSaved(bundle: MissionBundle): boolean {
-    const saved = new Set(this.state.userState().savedMissionIds);
-    return bundle.missionIds.some((missionId) => saved.has(missionId));
+    const snapshot = this.getStateSnapshot(this.state.userState());
+    return bundle.missionIds.some((missionId) => snapshot.saved.has(missionId));
   }
 
-  isCompleted(bundle: MissionBundle): boolean {
-    const completed = new Set(this.state.userState().completedMissionIds);
-    return bundle.missionIds.every((missionId) => completed.has(missionId));
+  isCompleted(bundle: MissionBundle, stateRef = this.state.userState()): boolean {
+    const snapshot = this.getStateSnapshot(stateRef);
+    return bundle.missionIds.every((missionId) => snapshot.completed.has(missionId));
   }
 
   isInProgress(bundle: MissionBundle): boolean {
-    const completed = new Set(this.state.userState().completedMissionIds);
-    const completedCount = bundle.missionIds.filter((missionId) => completed.has(missionId)).length;
+    const snapshot = this.getStateSnapshot(this.state.userState());
+    const completedCount = bundle.missionIds.filter((missionId) => snapshot.completed.has(missionId)).length;
     return completedCount > 0 && completedCount < bundle.missionIds.length;
   }
 
@@ -153,7 +200,14 @@ export class MissionCatalogService {
   }
 
   private buildBundleIndex(): Record<string, MissionBundle> {
-    return Object.fromEntries(this.createBundles(this.content.missions.all).map((bundle) => [bundle.id, bundle]));
+    return Object.fromEntries(this.allBundles.map((bundle) => [bundle.id, bundle]));
+  }
+
+  private getSourceBundles(section: SectionKey, categoryId: string | null): MissionBundle[] {
+    if (section === 'personal') {
+      return this.personalBundlesByCategory[categoryId ?? ''] ?? [];
+    }
+    return section === 'locations' ? this.sectionBundles.locations : this.sectionBundles.general;
   }
 
   private createBundles(missions: MissionItem[]): MissionBundle[] {
@@ -217,7 +271,7 @@ export class MissionCatalogService {
       description,
       context: this.buildBundleContext(missions),
       locationLabel: first.locationLabel,
-      typeLabel: missions.length > 1 ? 'Percorso sequenziale' : first.typeLabel,
+      typeLabel: missions.length > 1 ? this.content.t('angular.catalog.sequentialPathLabel', 'Percorso sequenziale') : first.typeLabel,
       themeLabel: first.themeLabel,
       secondaryThemeLabels: first.secondaryThemeLabels,
       difficulty: maxDifficulty,
@@ -275,10 +329,11 @@ export class MissionCatalogService {
     return uniqueContexts.join('\n\n');
   }
 
-  private sortBundles(missions: MissionBundle[], categoryId: string | null): MissionBundle[] {
+  private sortBundles(missions: MissionBundle[], categoryId: string | null, stateRef = this.state.userState()): MissionBundle[] {
+    const stateSnapshot = this.getStateSnapshot(stateRef);
     return [...missions].sort((left, right) => {
-      const leftScore = this.getMissionScore(left, categoryId);
-      const rightScore = this.getMissionScore(right, categoryId);
+      const leftScore = this.getMissionScore(left, categoryId, stateSnapshot);
+      const rightScore = this.getMissionScore(right, categoryId, stateSnapshot);
 
       if (leftScore !== rightScore) {
         return rightScore - leftScore;
@@ -292,22 +347,30 @@ export class MissionCatalogService {
     });
   }
 
-  private getMissionScore(mission: MissionBundle, categoryId: string | null): number {
+  private getMissionScore(
+    mission: MissionBundle,
+    categoryId: string | null,
+    stateSnapshot: { saved: Set<string>; completed: Set<string> }
+  ): number {
+    const isSaved = mission.missionIds.some((missionId) => stateSnapshot.saved.has(missionId));
+    const isCompleted = mission.missionIds.every((missionId) => stateSnapshot.completed.has(missionId));
     return (
       (categoryId && mission.highlightForCategoryIds.includes(categoryId) ? 40 : 0) +
-      (this.isSaved(mission) ? 20 : 0) +
-      (!this.isCompleted(mission) ? 10 : 0) +
+      (isSaved ? 20 : 0) +
+      (!isCompleted ? 10 : 0) +
       (mission.isSequential ? 5 : 0)
     );
   }
 
-  private getSuggestedScore(mission: MissionBundle, categoryId: string | null): number {
+  private getSuggestedScore(mission: MissionBundle, categoryId: string | null, stateRef: UserMissionState): number {
+    const stateSnapshot = this.getStateSnapshot(stateRef);
     const isPersonalityMatch = !!categoryId && mission.highlightForCategoryIds.includes(categoryId);
     const isGenericAnywhere = mission.locationLabel.toLowerCase() === 'ovunque';
     const isShort = mission.durationMin > 0 && mission.durationMin <= 15;
     const isStandalone = mission.isStandalone;
-    const isSaved = this.isSaved(mission);
-    const isInProgress = this.isInProgress(mission);
+    const completedCount = mission.missionIds.filter((missionId) => stateSnapshot.completed.has(missionId)).length;
+    const isSaved = mission.missionIds.some((missionId) => stateSnapshot.saved.has(missionId));
+    const isInProgress = completedCount > 0 && completedCount < mission.missionIds.length;
 
     return (
       (isPersonalityMatch ? 60 : 0) +
@@ -344,5 +407,19 @@ export class MissionCatalogService {
     }
 
     return mission.filterValues[key] === value;
+  }
+
+  private getStateSnapshot(stateRef: UserMissionState): { saved: Set<string>; completed: Set<string> } {
+    const cached = this.stateSnapshotCache.get(stateRef);
+    if (cached) {
+      return cached;
+    }
+
+    const snapshot = {
+      saved: new Set(stateRef.savedMissionIds),
+      completed: new Set(stateRef.completedMissionIds)
+    };
+    this.stateSnapshotCache.set(stateRef, snapshot);
+    return snapshot;
   }
 }

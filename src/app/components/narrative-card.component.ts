@@ -10,6 +10,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class NarrativeCardComponent {
   @Input() eyebrow = '';
   @Input() title = '';
+  /** Optional DOM id for the title heading (e.g. dialog aria-labelledby). */
+  @Input() titleDomId = '';
   @Input() text = '';
   @Input() tone: 'default' | 'accent' | 'quiet' = 'default';
   @Input() variant: 'default' | 'hero' = 'default';

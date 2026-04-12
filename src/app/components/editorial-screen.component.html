@@ -3,8 +3,10 @@
   [class.editorial-screen--atlas]="tone === 'atlas'"
   [class.editorial-screen--reveal]="tone === 'reveal'"
 >
+  <div class="editorial-screen__ambient" aria-hidden="true"></div>
   <div class="editorial-screen__frame">
     <div class="editorial-screen__ornament" aria-hidden="true"></div>
+    <div class="editorial-screen__vignette" aria-hidden="true"></div>
     <ng-content />
   </div>
 </section>

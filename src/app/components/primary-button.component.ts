@@ -14,4 +14,21 @@ export class PrimaryButtonComponent {
   @Input() buttonType: 'button' | 'submit' = 'button';
 
   @Output() readonly pressed = new EventEmitter<void>();
+
+  private cooldownUntil = 0;
+
+  onClick(): void {
+    if (this.disabled) {
+      return;
+    }
+
+    const now = Date.now();
+    if (now < this.cooldownUntil) {
+      return;
+    }
+
+    // Prevent accidental rapid multi-tap from firing concurrent flows.
+    this.cooldownUntil = now + 180;
+    this.pressed.emit();
+  }
 }

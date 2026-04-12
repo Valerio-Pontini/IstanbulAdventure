@@ -3,14 +3,32 @@
   display: grid;
   gap: 0.85rem;
   overflow: hidden;
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-lg);
-  padding: 1.2rem;
+  border: 1px solid rgba(212, 162, 74, 0.38);
+  border-radius: 8px 24px 22px 10px;
+  padding: 1.25rem;
   background:
-    radial-gradient(circle at top, rgba(198, 161, 91, 0.16), transparent 38%),
-    linear-gradient(180deg, rgba(21, 27, 42, 0.96), rgba(11, 18, 29, 0.9));
-  box-shadow: var(--shadow-strong);
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212, 162, 74, 0.2), transparent 50%),
+    radial-gradient(circle at top, rgba(191, 151, 79, 0.18), transparent 42%),
+    linear-gradient(168deg, rgba(16, 22, 36, 0.98), rgba(6, 11, 18, 0.96));
+  box-shadow:
+    var(--shadow-strong),
+    0 0 60px rgba(212, 162, 74, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   animation: reveal-rise 700ms var(--transition-slow);
+}
+
+.personality-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('assets/generated/topographic-lines.svg') center / cover no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.personality-reveal > * {
+  position: relative;
+  z-index: 1;
 }
 
 .personality-reveal__top {
@@ -21,28 +39,26 @@
 }
 
 .personality-reveal__eyebrow {
-  margin: 0;
   color: var(--accent-gold);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
 }
 
 .personality-reveal__kicker {
   color: var(--text-3);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .personality-reveal__link {
   color: var(--accent-gold);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   white-space: nowrap;
 }
 
 .personality-reveal__description,
 .personality-reveal__placeholder p {
-  margin: 0;
   color: var(--text-2);
   display: -webkit-box;
   overflow: hidden;
@@ -56,7 +72,6 @@
 }
 
 .personality-reveal__placeholder h2 {
-  margin: 0;
   color: var(--text-1);
 }
 

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { LegacyContentService } from '../services/legacy-content.service';
 import { PrimaryButtonComponent } from './primary-button.component';
 
 @Component({
@@ -11,15 +12,16 @@ import { PrimaryButtonComponent } from './primary-button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MissionStatusCardComponent {
-  @Input() eyebrow = 'Stato';
-  @Input() title = 'Azioni rapide';
+  private readonly content = inject(LegacyContentService);
+  @Input() eyebrow = this.content.t('angular.components.missionStatusEyebrow', 'Stato');
+  @Input() title = this.content.t('angular.components.missionStatusTitle', 'Azioni rapide');
   @Input() statusLabel = '';
   @Input() summary = '';
   @Input() helper = '';
   @Input() primaryLabel = '';
   @Input() primaryDisabled = false;
   @Input() secondaryLabel = '';
-  @Input() backLabel = 'Torna alle missioni';
+  @Input() backLabel = this.content.t('angular.components.missionStatusBack', 'Torna alle missioni');
   @Input() backLink = '/home';
 
   @Output() readonly primary = new EventEmitter<void>();

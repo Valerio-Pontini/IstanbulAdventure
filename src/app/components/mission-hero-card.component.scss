@@ -3,29 +3,73 @@
   display: grid;
   gap: 1rem;
   min-width: 0;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid rgba(198, 161, 91, 0.28);
+  border-radius: 6px 22px 20px 10px;
+  background:
+    linear-gradient(90deg, rgba(212, 162, 74, 0.06), transparent 45%),
+    radial-gradient(circle at top right, rgba(191, 151, 79, 0.2), transparent 36%),
+    linear-gradient(172deg, rgba(14, 22, 34, 0.97), rgba(5, 10, 16, 0.95)),
+    url('assets/generated/dossier-grid.svg') center / cover no-repeat;
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.mission-hero-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 6px 0 0 10px;
+  background: linear-gradient(180deg, var(--signal-amber), rgba(79, 140, 135, 0.65));
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.mission-hero-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(125deg, rgba(212, 162, 74, 0.35), rgba(255, 255, 255, 0.05), transparent 55%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .mission-hero-card__copy {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 0.7rem;
   min-width: 0;
+  padding-left: 0.35rem;
 }
 
 .mission-hero-card__eyebrow {
   color: var(--accent-gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .mission-hero-card__title {
-  font-size: clamp(1.95rem, 7vw, 3rem);
-  line-height: 0.94;
+  font-family: var(--font-chapter);
+  font-size: clamp(2.2rem, 7vw, 3.25rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .mission-hero-card__description {
-  max-width: 38rem;
+  max-width: 40rem;
   color: var(--text-2);
   line-height: 1.5;
   display: -webkit-box;
@@ -35,14 +79,16 @@
 }
 
 .mission-hero-card__back {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
   min-height: 44px;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border-soft);
-  border-radius: 999px;
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(198, 161, 91, 0.22);
+  border-radius: 6px 14px 12px 6px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-2);
   font-weight: 600;
@@ -55,7 +101,7 @@
 .mission-hero-card__back:hover {
   transform: translateY(-1px);
   border-color: var(--border-gold);
-  background: rgba(198, 161, 91, 0.08);
+  background: rgba(191, 151, 79, 0.12);
 }
 
 @media (min-width: 720px) {

@@ -9,7 +9,7 @@
   }
 
   @if (title) {
-    <h2 class="narrative-card__title">{{ title }}</h2>
+    <h2 class="narrative-card__title" [attr.id]="titleDomId || null">{{ title }}</h2>
   }
 
   @if (text) {

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { LegacyContentService } from '../services/legacy-content.service';
 
 @Component({
   selector: 'ia-mission-hero-card',
@@ -10,9 +11,9 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MissionHeroCardComponent {
-  @Input() eyebrow = 'Scheda missione';
+  private readonly content = inject(LegacyContentService);
+  @Input() eyebrow = this.content.t('angular.components.missionHeroEyebrow', 'Scheda missione');
   @Input() title = '';
-  @Input() description = '';
-  @Input() backLabel = 'Torna alle missioni';
+  @Input() backLabel = this.content.t('angular.components.missionHeroBack', 'Torna alle missioni');
   @Input() backLink = '/home';
 }

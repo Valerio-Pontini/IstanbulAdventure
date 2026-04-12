@@ -4,7 +4,7 @@
   [class.primary-button--ghost]="tone === 'ghost'"
   [attr.type]="buttonType"
   [disabled]="disabled"
-  (click)="pressed.emit()"
+  (click)="onClick()"
 >
   <span class="primary-button__label">{{ label }}</span>
 </button>

@@ -1,0 +1,12 @@
+<section
+  class="dialogue-layer"
+  [class.dialogue-layer--narrator]="role === 'narrator'"
+  [class.dialogue-layer--player]="role === 'player'"
+  [class.dialogue-layer--npc]="role === 'npc'"
+  aria-live="polite"
+>
+  @if (speaker) {
+    <p class="dialogue-layer__speaker">{{ speaker }}</p>
+  }
+  <p class="dialogue-layer__text">{{ text }}</p>
+</section>

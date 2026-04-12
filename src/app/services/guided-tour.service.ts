@@ -2,9 +2,11 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MissionCatalogService } from './mission-catalog.service';
 import { MissionStateService } from './mission-state.service';
+import { LegacyContentService } from './legacy-content.service';
 import { OnboardingService } from './onboarding.service';
 
 type GuidedTourStep = {
+  id: string;
   route: string;
   selector: string;
   title: string;
@@ -18,40 +20,74 @@ export class GuidedTourService {
   private readonly catalog = inject(MissionCatalogService);
   private readonly missionState = inject(MissionStateService);
   private readonly onboarding = inject(OnboardingService);
+  private readonly content = inject(LegacyContentService);
 
   private readonly activeSignal = signal(false);
+  private readonly pendingSignal = signal(false);
   private readonly stepIndexSignal = signal(0);
+  private readonly stepsSignal = signal<GuidedTourStep[]>([]);
 
   readonly active = this.activeSignal.asReadonly();
+  readonly pending = this.pendingSignal.asReadonly();
   readonly stepIndex = this.stepIndexSignal.asReadonly();
-  readonly steps = computed(() => this.buildSteps());
-  readonly currentStep = computed(() => this.steps()[this.stepIndexSignal()] ?? null);
-  readonly totalSteps = computed(() => this.steps().length);
+  readonly steps = this.stepsSignal.asReadonly();
+  readonly currentStep = computed(() => this.stepsSignal()[this.stepIndexSignal()] ?? null);
+  readonly currentStepId = computed(() => this.currentStep()?.id ?? null);
+  readonly totalSteps = computed(() => this.stepsSignal().length);
 
   async startIfNeeded(): Promise<void> {
     if (!this.onboarding.showHomeTutorial() || this.activeSignal()) {
       return;
     }
 
+    const steps = this.buildSteps();
+    if (!steps.length) {
+      return;
+    }
+
+    this.stepsSignal.set(steps);
     this.activeSignal.set(true);
     this.stepIndexSignal.set(0);
-    await this.ensureCurrentRoute();
+    this.pendingSignal.set(true);
+    try {
+      await this.ensureCurrentRoute();
+    } finally {
+      this.pendingSignal.set(false);
+    }
   }
 
   async next(): Promise<void> {
+    if (this.pendingSignal()) {
+      return;
+    }
+
     const lastIndex = this.steps().length - 1;
     if (this.stepIndexSignal() >= lastIndex) {
       this.complete();
       return;
     }
 
+    this.pendingSignal.set(true);
     this.stepIndexSignal.update((index) => Math.min(lastIndex, index + 1));
-    await this.ensureCurrentRoute();
+    try {
+      await this.ensureCurrentRoute();
+    } finally {
+      this.pendingSignal.set(false);
+    }
   }
 
   async previous(): Promise<void> {
+    if (this.pendingSignal()) {
+      return;
+    }
+
+    this.pendingSignal.set(true);
     this.stepIndexSignal.update((index) => Math.max(0, index - 1));
-    await this.ensureCurrentRoute();
+    try {
+      await this.ensureCurrentRoute();
+    } finally {
+      this.pendingSignal.set(false);
+    }
   }
 
   skip(): void {
@@ -59,7 +95,10 @@ export class GuidedTourService {
   }
 
   complete(): void {
+    this.pendingSignal.set(false);
     this.activeSignal.set(false);
+    this.stepIndexSignal.set(0);
+    this.stepsSignal.set([]);
     this.onboarding.dismissHomeTutorial();
   }
 
@@ -69,56 +108,62 @@ export class GuidedTourService {
       return;
     }
 
-    await this.router.navigateByUrl(step.route);
+    // Safeguard: never leave the tutorial in a pending state if navigation hangs.
+    await Promise.race([
+      this.router.navigateByUrl(step.route, { replaceUrl: true }),
+      new Promise<void>((resolve) => setTimeout(resolve, 1600))
+    ]);
   }
 
   private buildSteps(): GuidedTourStep[] {
     const categoryId = this.missionState.categoryId();
-    const personalMission = this.catalog.getSectionMissions('personal', categoryId)[0]
-      ?? this.catalog.getSectionMissions('general', categoryId)[0]
-      ?? this.catalog.getSectionMissions('locations', categoryId)[0]
-      ?? null;
+    const personalMission = this.catalog.getSectionMissions('personal', categoryId)[0] ?? null;
     const archiveRoute = categoryId ? '/archive/personal' : '/archive/general';
-    const detailRoute = personalMission ? `/mission/${personalMission.id}` : '/home';
+    const detailRoute = personalMission ? `/mission/${personalMission.id}` : null;
 
     const steps: GuidedTourStep[] = [
       {
+        id: 'home_paths',
         route: '/home',
         selector: '#tutorial-home-archives',
-        title: 'Da qui apri i tre archivi principali',
-        text: 'Questi pulsanti ti portano subito nell’archivio generale, nei luoghi oppure nella selezione personale costruita per il tuo profilo.',
-        accent: 'Archivi'
+        title: this.content.t('angular.guidedTour.homePathsTitle', 'Parti dai tre archivi principali'),
+        text: this.content.t('angular.guidedTour.homePathsText', 'Da qui scegli subito il tipo di esplorazione: generale, luoghi o percorso personale. Tocca una card e continui in un tap.'),
+        accent: this.content.t('angular.guidedTour.homePathsAccent', 'Hub')
       },
       {
+        id: 'archive_filters_toggle',
+        route: archiveRoute,
+        selector: '#tutorial-archive-filter-toggle',
+        title: this.content.t('angular.guidedTour.archiveFiltersToggleTitle', 'Apri o chiudi i filtri quando serve'),
+        text: this.content.t('angular.guidedTour.archiveFiltersToggleText', 'Il pulsante filtri mantiene la pagina pulita su mobile. Aprili solo quando devi affinare la ricerca.'),
+        accent: this.content.t('angular.guidedTour.archiveFiltersToggleAccent', 'Filtro rapido')
+      },
+      {
+        id: 'archive_filters',
         route: archiveRoute,
         selector: '#tutorial-archive-filters',
-        title: 'Qui filtri l’archivio in base al momento',
-        text: 'Ricerca, luogo, tipologia, tema e budget servono per restringere rapidamente le missioni più adatte a dove sei e a quanto tempo hai.',
-        accent: 'Filtri'
+        title: this.content.t('angular.guidedTour.archiveFiltersTitle', 'Scegli i filtri con pochi tocchi'),
+        text: this.content.t('angular.guidedTour.archiveFiltersText', 'Ricerca, luogo, tipo, tema e budget riducono l’elenco in tempo reale. Cosi trovi subito missioni fattibili nel momento giusto.'),
+        accent: this.content.t('angular.guidedTour.archiveFiltersAccent', 'Selezione')
       },
       {
+        id: 'archive_results',
         route: archiveRoute,
-        selector: '#tutorial-archive-actions',
-        title: 'Qui pulisci i filtri e controlli i risultati',
-        text: 'Con "Pulisci filtri" torni all’elenco completo; accanto vedi subito quante missioni restano disponibili dopo la selezione.',
-        accent: 'Controllo risultati'
-      },
-      {
-        route: archiveRoute,
-        selector: 'ia-mission-card:first-of-type .mission-card__actions',
-        title: 'Ogni card ha due azioni rapide',
-        text: 'Con "Apri missione" entri nel dettaglio della missione. Con "Salva" la tieni tra i preferiti per ritrovarla al volo.',
-        accent: 'Azioni rapide'
+        selector: '#tutorial-archive-actions, #tutorial-archive-cards .mission-card',
+        title: this.content.t('angular.guidedTour.archiveResultsTitle', 'Controlla risultati e apri la missione'),
+        text: this.content.t('angular.guidedTour.archiveResultsText', 'In alto vedi quante missioni restano. Poi apri la card migliore o salvala per dopo, senza perdere il contesto.'),
+        accent: this.content.t('angular.guidedTour.archiveResultsAccent', 'Risultati')
       }
     ];
 
-    if (personalMission) {
+    if (personalMission && detailRoute) {
       steps.push({
+        id: 'mission_actions',
         route: detailRoute,
         selector: '#tutorial-mission-actions',
-        title: 'Nel dettaglio gestisci il tuo avanzamento',
-        text: 'Qui puoi salvare la missione per recuperarla dopo oppure segnarla come fatta quando l’hai completata davvero.',
-        accent: 'Salva e completato'
+        title: this.content.t('angular.guidedTour.missionActionsTitle', 'Nel dettaglio gestisci il progresso'),
+        text: this.content.t('angular.guidedTour.missionActionsText', 'Qui fai avanzare la scena, salvi la missione o la segni completata. Tutte le azioni chiave sono a portata di pollice.'),
+        accent: this.content.t('angular.guidedTour.missionActionsAccent', 'Avanzamento')
       });
     }
 

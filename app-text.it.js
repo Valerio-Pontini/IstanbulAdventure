@@ -40,7 +40,7 @@ window.APP_TEXT = {
         "profileCard": {
           "kicker": "Personalità emersa",
           "fallbackTitle": "Personalità in attesa",
-          "fallbackText": "Completa Missione 0 per sbloccare il tuo percorso personale."
+          "fallbackText": "Completa la Missione 0 per sbloccare il tuo percorso personale."
         },
         "overview": {
           "kicker": "Mappa operativa",
@@ -79,20 +79,20 @@ window.APP_TEXT = {
             "anchorLabel": "Generiche",
             "kicker": "Missioni generiche",
             "title": "Azioni che puoi fare quasi ovunque",
-            "text": "Missioni leggere e immediate, pensate per accompagnare il viaggio senza imporre un itinerario.",
+            "text": "Missioni leggere e immediate, pensate per accompagnare il viaggio.",
             "detailTitle": "Archivio missioni generiche"
           },
           "locations": {
             "anchorLabel": "Luoghi",
             "kicker": "Missioni luogo",
-            "title": "Missioni legate a punti iconici",
+            "title": "Missioni legate a punti specifici",
             "text": "Obiettivi che si accendono quando arrivi in luoghi simbolici della città.",
             "detailTitle": "Archivio missioni per luogo"
           },
           "personal": {
             "anchorLabel": "Per te",
             "kicker": "Missioni personalità",
-            "title": "Missioni calibrate sul tuo sguardo",
+            "title": "Missioni calibrate sulla personalità della tua tribù",
             "text": "Il quiz ha individuato il tuo modo di leggere Istanbul. Qui trovi le missioni più coerenti con quella personalità.",
             "detailTitle": "Archivio missioni personali"
           }
@@ -388,7 +388,7 @@ window.APP_TEXT = {
       },
       "quiz": {
         "introTitle": "Missione 0",
-        "introText": "Scegli ogni risposta d'istinto. Alcune scelte apriranno un indizio prima della domanda successiva.",
+        "introText": "Scegli ogni risposta d'istinto.",
         "tapToContinueLabel": "Tocca per continuare",
         "completion": {
           "title": "Percorso avviato",
@@ -407,7 +407,7 @@ window.APP_TEXT = {
                 "nextId": "c_1"
               },
               {
-                "label": "Guardi il percorso dove potresti sceglere",
+                "label": "Guardi il percorso per arrivarci",
                 "nextId": "e_1"
               },
               {
@@ -420,7 +420,7 @@ window.APP_TEXT = {
             "prompt": "Nel Gran Bazar un venditore ti invita a entrare",
             "answers": [
               {
-                "label": "Inizia a parlare con lui",
+                "label": "Inizi a parlare con lui",
                 "nextId": "cu_4"
               },
               {
@@ -495,7 +495,7 @@ window.APP_TEXT = {
                 "nextId": "d_13"
               },
               {
-                "label": "Ti chiedi cosa è successp lì",
+                "label": "Ti chiedi cosa è successo lì",
                 "nextId": "a_13"
               }
             ]
@@ -618,13 +618,13 @@ window.APP_TEXT = {
           },
           "a_2": {
             "prompt": "Prima di chiamarsi Istanbul come si chiamava?",
-            "feedback": "Costantinopoli è stato il nome principale per oltre 1000 anni",
+            "feedback": "la città nacque come colonia greca chiamata Bisanzio nel VII secolo a.C. Nel 330 d.C. l'imperatore Costantino I la rifondò come nuova capitale dell'Impero Romano chiamandola Costantinopoli. Costantinopoli fu il centro dell'impero Bizantino per oltre 1000 anni. Il nome Istanbul divenne ufficilae nel 1930 nonostante fosse già usato informalmente dalla popolazione da secoli ",
             "nextId": "a_3",
             "answers": [
-              "Troia",
+              "Izmir",
               "Costantinopoli",
               "Efeso",
-              "Antiochia"
+              "Bisanzio"
             ]
           },
           "a_3": {
@@ -632,15 +632,15 @@ window.APP_TEXT = {
             "feedback": "Mehmet II, detto 'Il Conquistatore', aveva solo 21 anni",
             "nextId": "p2",
             "answers": [
-              "Alessandro Magno",
+              "Bayezid I",
               "Mehmet II",
-              "Cesare",
-              "Napoleone"
+              "Murad II",
+              "gedik Ahmet"
             ]
           },
           "a_7": {
             "prompt": "Quale edificio è stato sia chiesa che moschea?",
-            "feedback": "Hagia Sophia è uno dei simboli più incredibili della città",
+            "feedback": "Hagia Sophia è uno dei simboli più incredibili della città. Costruita nel 537 d.C. sotto l'imperatode Giustiniano I fu dapprima chiesa fino al 1453, poi divenne moschea fino al 1934. Dal 1935 Santa Sofia è diventata un vero e proprio museo, per tornare ad essere una moschea solo nel 2020.",
             "nextId": "a_8",
             "answers": [
               "Topkapi",
@@ -695,7 +695,7 @@ window.APP_TEXT = {
           },
           "a_15": {
             "prompt": "I sultani ottomani vivevano:",
-            "feedback": "Topkapi era praticamente una città dentro la città",
+            "feedback": "In un complesso enorme con centinaia di stanze: Topkapi era praticamente una città dentro la città",
             "nextId": "p6",
             "answers": [
               "Sempre nello stesso palazzo",
@@ -709,10 +709,10 @@ window.APP_TEXT = {
             "feedback": "Tre livelli difensivi: fossa, mura esterne e interne",
             "nextId": "a_20",
             "answers": [
-              "Una sola linea",
-              "Due linee",
-              "Tre linee",
-              "Nessuna linea"
+              "Una sola linea difensiva",
+              "Due linee difensive",
+              "Tre linee difensive",
+              "Nessuna linea difensiva"
             ]
           },
           "a_20": {
@@ -743,7 +743,7 @@ window.APP_TEXT = {
             "nextId": "a_23",
             "answers": [
               "Una prigione",
-              "Un magazzino d'acqa",
+              "Una riserva d'acqa",
               "Un tempio",
               "Un teatro"
             ]
@@ -760,14 +760,14 @@ window.APP_TEXT = {
             ]
           },
           "a_24": {
-            "prompt": "I Giannizzeri (guardie d'èlite) erano",
+            "prompt": "I Giannizzeri erano",
             "feedback": "Bambini presi da altre regioni. Venivano reclutati da giovani e addestrati per servire il sultano",
             "nextId": "p9",
             "answers": [
-              "Tutti turchi",
+              "Soldati di famiglie nobili",
               "Bambini presi da altre regioni",
               "Mercenari europei",
-              "Nobili"
+              "Prigionieri"
             ]
           },
           "a_25": {
@@ -786,10 +786,10 @@ window.APP_TEXT = {
             "feedback": "è il secondo sistema sotterraneo urbano più antico dopo Londra",
             "nextId": "a_27",
             "answers": [
-              "La prima metro al mondo",
+              "La seconda seggiovia al mondo",
               "La seconda metro al mondo",
-              "Un ascensore turistico",
-              "Una funivia moderna"
+              "Il primo ascensore al mondo",
+              "La prima funivia moderna"
             ]
           },
           "a_27": {
@@ -860,7 +860,7 @@ window.APP_TEXT = {
           },
           "c_6": {
             "prompt": "Qual è l’unica fonte letteraria nota che racconta il volo di Hezarfen?",
-            "feedback": "Il volo è descritto solo nel *Seyahatnâme* di Evliya Çelebi.",
+            "feedback": "Il volo è descritto solo nel Seyahatnâme di Evliya Çelebi. Secondo la leggenda Hezarfen si lanciò dalla Torre di galata usando ali artificiali da lui stesso costruite, attraversò il Bosforo planando ed atterrò nel quartiere di Üsküdar, sulla sponda asiatica.",
             "answers": [
               {
                 "label": "Il Seyahatnâme di Evliya Çelebi",
@@ -882,14 +882,14 @@ window.APP_TEXT = {
           },
           "c_7": {
             "prompt": "Qual è il soprannome turco della Cisterna Basilica?",
-            "feedback": "È comunemente chiamata **Yerebatan Sarayı**, che significa 'Palazzo sommerso'.",
+            "feedback": "È comunemente chiamata Yerebatan Sarayı, che significa 'Palazzo sommerso'.",
             "answers": [
               {
-                "label": "Yerebatan Sarayı (Palazzo sommerso)",
+                "label": "Palazzo sommerso",
                 "nextId": "c_8"
               },
               {
-                "label": "Subterraneo Regale",
+                "label": "Sotterraneo Regale",
                 "nextId": "c_8"
               },
               {
@@ -904,7 +904,7 @@ window.APP_TEXT = {
           },
           "c_8": {
             "prompt": "Come viene rappresentata Şahmeran nella mitologia turca?",
-            "feedback": "Şahmeran è descritta come un essere mitologico metà donna e metà serpente.",
+            "feedback": "Şahmeran è descritta come un essere mitologico metà donna e metà serpente ed è simbolo di saggezza, conoscen<a e mistero.",
             "answers": [
               {
                 "label": "Metà donna, metà serpente",
@@ -1014,51 +1014,51 @@ window.APP_TEXT = {
           },
           "c_13": {
             "prompt": "Cosa racconta la leggenda sulla resa dei turchi a Vienna nel 1683 legata al caffè?",
-            "feedback": "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè, così il caffè entrò in Europa.",
+            "feedback": "La leggenda narra che i turchi, sconfitti a Vienna, abbandonarono sacchi di caffè. In questo modo il caffè entrò in Europa.",
             "answers": [
               {
-                "label": "Abbandono di sacchi di caffè",
+                "label": "Abbandonarono sacchi di caffè",
                 "nextId": "c_14"
               },
               {
-                "label": "Riscatto con caffè speziato",
+                "label": "Pagarono un riscatto con caffè speziato",
                 "nextId": "c_14"
               },
               {
-                "label": "Tariffa sul caffè imposta ai vinti",
+                "label": "Ai vinti fu imposta una tariffa sul caffè",
                 "nextId": "c_14"
               },
               {
-                "label": "Il caffè portato in volo dagli angeli",
+                "label": "I turchi rubarono tutto il caffè di Vienna",
                 "nextId": "c_14"
               }
             ]
           },
           "c_14": {
-            "prompt": "Quale libro di viaggio del 1600 menziona il volo di Hezarfen?",
-            "feedback": "Il volo di Hezarfen è raccontato nel *Seyahatnâme* di Evliya Çelebi (XVII secolo).",
+            "prompt": "Chi è Asena",
+            "feedback": "Asena è una figura centrale nei miti delle origini dei popoli turchi. Secondo la leggenda, una lupa trova un bambino ferito (unico sopravvissuto di una tribù distrutta), lo salva e lo alleva. Da questo bambino nascerà una discendenza che darà origine a al popolo turco.",
             "answers": [
               {
-                "label": "Seyahatnâme di Evliya Çelebi",
+                "label": "Una dea del mare che protegge i marinai",
                 "nextId": "c_15"
               },
               {
-                "label": "Le Mille e una Notte",
+                "label": "Una lupa che salva e dà origine al popolo turco",
                 "nextId": "c_15"
               },
               {
-                "label": "Divan di Rumi",
+                "label": "Una principessa guerriera trasformata in aquila",
                 "nextId": "c_15"
               },
               {
-                "label": "Enciclopedia del Cielo",
+                "label": "Una strega che vieve nelle montagne",
                 "nextId": "c_15"
               }
             ]
           },
           "c_15": {
             "prompt": "Cosa significa il nome Şahmeran nella lingua persiana?",
-            "feedback": "Il nome Şahmeran significa letteralmente **\"Re dei serpenti\"** (persiano shah: re, maran: serpenti).",
+            "feedback": "Il nome Şahmeran significa letteralmente \"Re dei serpenti\"(persiano shah: re, maran: serpenti).",
             "answers": [
               {
                 "label": "Re dei serpenti",
@@ -1080,7 +1080,7 @@ window.APP_TEXT = {
           },
           "c_16": {
             "prompt": "Secondo la leggenda, quale segno compare sul corpo di chi vede Şahmeran?",
-            "feedback": "Si narra che chi vede Şahmeran sviluppa delle **squame serpentine** sul corpo.",
+            "feedback": "Si narra che chi vede Şahmeran sviluppa delle squame serpentine sul corpo.",
             "answers": [
               {
                 "label": "Squame serpentine",
@@ -1102,7 +1102,7 @@ window.APP_TEXT = {
           },
           "c_17": {
             "prompt": "Secondo il mito di Ergenekon, in quale luogo leggendario i Turchi furono imprigionati?",
-            "feedback": "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di **Ergenekon** fino alla loro liberazione.",
+            "feedback": "Il mito narra che gli antichi Turchi furono rinchiusi nella valle di Ergenekon fino alla loro liberazione.",
             "answers": [
               {
                 "label": "Valle di Ergenekon",
@@ -1124,7 +1124,7 @@ window.APP_TEXT = {
           },
           "c_18": {
             "prompt": "Cos’è l’Anka kuşu nella mitologia turca?",
-            "feedback": "L’**Anka kuşu** è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri.",
+            "feedback": "L’Anka kuşu è la figura della fenice nella mitologia turca, un uccello leggendario che rinasce dalle proprie ceneri.",
             "answers": [
               {
                 "label": "La fenice mitica",
@@ -1146,10 +1146,10 @@ window.APP_TEXT = {
           },
           "c_19": {
             "prompt": "Quale figura leggendaria è strettamente associata alle acque e alla guarigione nella tradizione popolare turca?",
-            "feedback": "Il profeta leggendario **Khidr (Hızır)** è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca.",
+            "feedback": "Il profeta leggendario Khidr Hızır è spesso associato a sorgenti sacre e guarigione nella tradizione popolare turca.",
             "answers": [
               {
-                "label": "Khidr (Hızır)",
+                "label": "Khidr Hızır",
                 "nextId": "c_20"
               },
               {
@@ -1157,11 +1157,11 @@ window.APP_TEXT = {
                 "nextId": "c_20"
               },
               {
-                "label": "Aquila",
+                "label": "Ülgen",
                 "nextId": "c_20"
               },
               {
-                "label": "Pandora",
+                "label": "Erlik",
                 "nextId": "c_20"
               }
             ]
@@ -1190,18 +1190,18 @@ window.APP_TEXT = {
           },
           "c_21": {
             "prompt": "Quale figura leggendaria appare nella notte di Hıdrellez secondo la tradizione?",
-            "feedback": "Durante Hıdrellez si crede che appaia **Hızır**, figura misteriosa associata a fortuna, guarigione e desideri realizzati.",
+            "feedback": "Durante Hıdrellez si crede che appaia Hızır, figura misteriosa associata a fortuna, guarigione e desideri realizzati.",
             "answers": [
               {
                 "label": "Hızır",
                 "nextId": "p8"
               },
               {
-                "label": "Ercole",
+                "label": "Basat",
                 "nextId": "p8"
               },
               {
-                "label": "Odino",
+                "label": "Topegöz",
                 "nextId": "p8"
               },
               {
@@ -1212,7 +1212,7 @@ window.APP_TEXT = {
           },
           "c_25": {
             "prompt": "Secondo alcune leggende, cosa succede di notte nella Cisterna Basilica?",
-            "feedback": "Molte storie raccontano che nella Cisterna Basilica si sentano **voci e sussurri**, alimentando l’atmosfera misteriosa del luogo sotterraneo.",
+            "feedback": "Molte storie raccontano che nella Cisterna Basilica si sentano voci e sussurri, alimentando l’atmosfera misteriosa del luogo sotterraneo.",
             "answers": [
               {
                 "label": "Si sentono voci e sussurri",
@@ -1233,30 +1233,30 @@ window.APP_TEXT = {
             ]
           },
           "c_26": {
-            "prompt": "Chi era Şahmeran nella tradizione anatolica?",
-            "feedback": "Şahmeran è una figura leggendaria metà donna e metà serpente, considerata la **regina dei serpenti e simbolo di conoscenza e saggezza nascosta**.",
+            "prompt": "Chi era Erlik nella tradizione anatolica?",
+            "feedback": "Erlik è la divinità che governa il mondo sotterraneo nella mitologia turca. È associato alla morte, all’oscurità e al giudizio delle anime. Spesso è visto come l’opposto di Ülgen, il dio del cielo, creando un equilibrio tra bene e male nell’universo mitologico.",
             "answers": [
               {
-                "label": "Una regina dei serpenti",
+                "label": "Il dio del cielo e della luce",
                 "nextId": "c_27"
               },
               {
-                "label": "Una guerriera umana",
+                "label": "Il signore degli inferi e delle forze oscure",
                 "nextId": "c_27"
               },
               {
-                "label": "Una dea del mare",
+                "label": "Un eroe guerriero delle steppe",
                 "nextId": "c_27"
               },
               {
-                "label": "Una strega malvagia",
+                "label": "Uno spirito protettore degli animali",
                 "nextId": "c_27"
               }
             ]
           },
           "c_27": {
             "prompt": "Quale figura mitologica turca rappresenta un uccello immortale che rinasce?",
-            "feedback": "L’**Anka** è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca.",
+            "feedback": "L’Anka è un uccello mitologico simile alla fenice, simbolo di rinascita e immortalità nella tradizione turca.",
             "answers": [
               {
                 "label": "Anka",
@@ -1314,15 +1314,15 @@ window.APP_TEXT = {
             "feedback": "Quaranta anni. Il proverbio turco recita «bir fincan kahvenin kırk yıl hatırı vardır», cioè 'un caffè ha memoria per 40 anni'.",
             "nextId": "cu_17",
             "answers": [
-              "10",
-              "100",
+              "1",
+              "74",
               "40",
-              "1000"
+              "111"
             ]
           },
           "cu_17": {
             "prompt": "Quale tradizione turca è riconosciuta Patrimonio Immateriale UNESCO dal 2013?",
-            "feedback": "Il rituale del caffè turco. La preparazione e l’offerta del caffè secondo la tradizione ottomana sono state inscritte nel 2013 fra i Patrimoni Culturali Immateriali dell'UNESCO.",
+            "feedback": "Il rituale del caffè turco. La preparazione e l’offerta del caffè secondo la tradizione ottomana sono state inserite nel 2013 fra i Patrimoni Culturali Immateriali dell'UNESCO.",
             "nextId": "cu_18",
             "answers": [
               "Il rito del caffè turco",
@@ -1380,7 +1380,7 @@ window.APP_TEXT = {
             "feedback": "Svegliare i fedeli per il sahur. I tamburini suonano di notte per svegliare la gente a consumare il pasto prima dell'alba.",
             "nextId": "cu_23",
             "answers": [
-              "Annunciare il mezzodì",
+              "Annunciare la mezzanotte",
               "Svegliare i fedeli per il sahur",
               "Raccogliere offerte",
               "Guidare processioni"
@@ -1394,7 +1394,7 @@ window.APP_TEXT = {
               "Il caffè della sposa è dolce",
               "Il caffè dello sposo è salato",
               "Si beve solo tè",
-              "Non si serve bevanda"
+              "La bevanda non viene mai servita"
             ]
           },
           "cu_24": {
@@ -1469,7 +1469,7 @@ window.APP_TEXT = {
             "nextId": "d_6",
             "answers": [
               "Con il piede destro",
-              "Con il piede sinistro",
+              "In punta di piedi",
               "Di spalle",
               "Gridando"
             ]
@@ -1498,12 +1498,12 @@ window.APP_TEXT = {
           },
           "d_8": {
             "prompt": "Come si chiama la festa che segna la fine del Ramadan in Turchia?",
-            "feedback": "Şeker Bayramı (festa dello zucchero). Questa festa (Eid al-Fitr) celebra la fine del Ramadan e si festeggia mangiando dolci e passando tempo con la famiglia.",
+            "feedback": "Şeker Bayramı (festa dello zucchero). Questa festa celebra la fine del Ramadan e si festeggia mangiando dolci e passando tempo con la famiglia.",
             "nextId": "d_9",
             "answers": [
               "Kurban Bayramı",
               "Nevruz",
-              "Şeker Bayramı (festa dello zucchero)",
+              "Şeker Bayramı",
               "Hıdırellez"
             ]
           },
@@ -1545,8 +1545,8 @@ window.APP_TEXT = {
             "feedback": "Ferhad, che pianse la morte di Shirin. Le sue lacrime di amore e dolore si trasformarono in tulipani rossi.",
             "nextId": "p5",
             "answers": [
-              "Ferhad, che pianse la morte di Shirin",
-              "Shirin, che pianse la morte di Ferhad",
+              "Ferhad",
+              "Shirin",
               "Suleiman il Magnifico",
               "Un sultano sconosciuto"
             ]
@@ -1601,7 +1601,7 @@ window.APP_TEXT = {
             "nextId": "d_18",
             "answers": [
               "Solo estetica",
-              "Concetti simbolici come protezione e infinito",
+              "Concetti simbolici",
               "Mappe geografiche",
               "Scene di caccia"
             ]
@@ -1623,7 +1623,7 @@ window.APP_TEXT = {
             "nextId": "d_20",
             "answers": [
               "Bandierine decorative",
-              "Scritture luminose",
+              "Scritte luminose",
               "Specchi riflettenti",
               "Campane decorative"
             ]
@@ -1644,7 +1644,7 @@ window.APP_TEXT = {
             "feedback": "Trasmettere testi religiosi. La calligrafia sostituisce spesso le immagini figurative.",
             "nextId": "p8",
             "answers": [
-              "Decorare senza significato",
+              "Decorare",
               "Trasmettere testi religiosi",
               "Indicare uscite",
               "Firmare gli artisti"
@@ -1668,8 +1668,8 @@ window.APP_TEXT = {
             "answers": [
               "Tradizione sportiva",
               "Rispetto e purificazione",
-              "Controllo sicurezza",
-              "Regola turistica"
+              "Controllo e sicurezza",
+              "Sottomissione"
             ]
           },
           "d_24": {
@@ -1677,14 +1677,14 @@ window.APP_TEXT = {
             "feedback": "Status e identità familiare. Le decorazioni avevano significato sociale.",
             "nextId": "p9",
             "answers": [
-              "Solo gusto estetico",
+              "Gusto estetico",
               "Status e identità familiare",
               "Prezzi delle case",
               "Percorsi urbani"
             ]
           },
           "d_25": {
-            "prompt": "Il gesto di versare il tè dall’alto ha anche una funzione simbolica di:",
+            "prompt": "Il gesto di versare il tè dall’alto ha una funzione simbolica di:",
             "feedback": "Cura e attenzione verso l’ospite. È parte del rituale del servizio del tè.",
             "nextId": "d_26",
             "answers": [
@@ -1700,7 +1700,7 @@ window.APP_TEXT = {
             "nextId": "d_27",
             "answers": [
               "Formalità burocratica",
-              "Rispetto sincero",
+              "Rispetto",
               "Segnale religioso obbligatorio",
               "Richiesta di aiuto"
             ]
@@ -1718,7 +1718,7 @@ window.APP_TEXT = {
           },
           "e_1": {
             "prompt": "Quanti sono i colli storici di Istanbul, come nella tradizione antica?",
-            "feedback": "Sette colli. Istanbul è nota come la città dai sette colli, in analogia con Bisanzio.",
+            "feedback": "Sette colli. Istanbul è nota come la città dai sette colli.",
             "nextId": "e_2",
             "answers": [
               "5",
@@ -1743,10 +1743,10 @@ window.APP_TEXT = {
             "feedback": "Tram storico rosso. Sulla via Istiklal di Istanbul circola ancora il famoso tram storico di colore rosso, vero simbolo locale.",
             "nextId": "p2",
             "answers": [
-              "Vecchio tram rosso storico",
-              "Tram moderno a inizio secolo",
-              "Treni a vapore",
-              "Carri trainati da buoi"
+              "Tram rosso",
+              "Autobus a due piani",
+              "Treno a vapore",
+              "Carro trainati da buoi"
             ]
           },
           "e_4": {
@@ -1765,15 +1765,15 @@ window.APP_TEXT = {
             "feedback": "Monte Ararat. Con 5.165 m è la vetta più alta della Turchia.",
             "nextId": "e_6",
             "answers": [
-              "Monte Ararat (5.165 m)",
-              "Monte Erciyes (3.916 m)",
-              "Monte Uludağ (2.543 m)",
-              "Monte Hasan (3.257 m)"
+              "Monte Ararat",
+              "Monte Erciyes",
+              "Monte Uludağ",
+              "Monte Hasan"
             ]
           },
           "e_6": {
             "prompt": "Il quartiere di Sultanahmet è famoso perché:",
-            "feedback": "È il cuore storico: Hagia Sophia, Moschea Blu e antica Costantinopoli.",
+            "feedback": "È il cuore storico: al suo interno ci sono Hagia Sophia, Moschea Blu e antica Costantinopoli.",
             "nextId": "p3",
             "answers": [
               "È il centro storico",
@@ -1788,14 +1788,14 @@ window.APP_TEXT = {
             "nextId": "e_8",
             "answers": [
               "Vita notturna e cultura",
-              "Solo moschee storiche",
+              "Moschee storiche",
               "Campi agricoli",
               "Miniere sotterranee"
             ]
           },
           "e_8": {
             "prompt": "Il quartiere di Balat è famoso per:",
-            "feedback": "Balat è uno dei quartieri più fotografati, pieno di storia e colori.",
+            "feedback": "Case colorate e storia multiculturale. Balat è uno dei quartieri più fotografati, pieno di storia e colori.",
             "nextId": "e_9",
             "answers": [
               "Case colorate e storia multiculturale",
@@ -1806,7 +1806,7 @@ window.APP_TEXT = {
           },
           "e_9": {
             "prompt": "Il Corno d’Oro è:",
-            "feedback": "È una baia che separa la parte storica da quella più moderna.",
+            "feedback": "Un'insenatura naturale. È una baia che separa la parte storica da quella più moderna.",
             "nextId": "p4",
             "answers": [
               "Un'insenatura naturale",
@@ -1817,7 +1817,7 @@ window.APP_TEXT = {
           },
           "e_10": {
             "prompt": "Le Isole dei Principi sono:",
-            "feedback": "Sono famose per l’assenza di auto e per la tranquillità.",
+            "feedback": "Isole senza traffico urbano. Sono famose per l’assenza di auto e per la tranquillità.",
             "nextId": "e_11",
             "answers": [
               "Isole senza traffico urbano",
@@ -1828,7 +1828,7 @@ window.APP_TEXT = {
           },
           "e_11": {
             "prompt": "Il Marmaray è:",
-            "feedback": "Collega Europa e Asia via ferrovia sotto il mare.",
+            "feedback": "Un tunnel ferroviario sotto il Bosforo. Collega Europa e Asia via ferrovia sotto il mare.",
             "nextId": "e_12",
             "answers": [
               "Un tunnel ferroviario sotto il Bosforo",
@@ -1850,10 +1850,10 @@ window.APP_TEXT = {
           },
           "e_13": {
             "prompt": "Il ponte sul Bosforo inaugurato nel 1973 si chiama:",
-            "feedback": "È stato il primo ponte tra Europa e Asia.",
+            "feedback": "Ponte dei Martiri del 15 Luglio. È stato il primo ponte tra Europa e Asia.",
             "nextId": "e_14",
             "answers": [
-              "Ponte del Bosforo (15 July Martyrs Bridge)",
+              "Ponte dei Martiri del 15 Luglio",
               "Ponte Galata",
               "Golden Bridge",
               "Ponte Marmara"
@@ -1861,10 +1861,10 @@ window.APP_TEXT = {
           },
           "e_14": {
             "prompt": "Istanbul ha circa quanti abitanti?",
-            "feedback": "È una delle città più popolose al mondo.",
+            "feedback": "15 milioni. È una delle città più popolose al mondo.",
             "nextId": "e_15",
             "answers": [
-              "Oltre 15 milioni",
+              "15 milioni",
               "2 milioni",
               "5 milioni",
               "50 milioni"
@@ -1872,29 +1872,29 @@ window.APP_TEXT = {
           },
           "e_15": {
             "prompt": "Il Grand Bazaar contiene circa:",
-            "feedback": "È uno dei mercati coperti più grandi al mondo.",
+            "feedback": "4000 negozi. È uno dei mercati coperti più grandi al mondo.",
             "nextId": "p6",
             "answers": [
-              "Oltre 4000 negozi",
+              "4000 negozi",
               "100 negozi",
               "500 negozi",
               "10000 negozi"
             ]
           },
           "e_16": {
-            "prompt": "Istanbul ha circa quanti ponti sul Bosforo?",
+            "prompt": "Quanti ponti ha Istanbul sul Bosforo?",
             "feedback": "Ci sono tre grandi ponti sospesi che collegano i continenti.",
             "nextId": "e_17",
             "answers": [
-              "3 principali",
+              "3",
               "1",
               "10",
-              "0"
+              "5"
             ]
           },
           "e_17": {
             "prompt": "Sul ponte di Galata sotto il livello stradale si trovano:",
-            "feedback": "Il ponte ha due livelli, con ristoranti sotto.",
+            "feedback": "Ristoranti e locali. Il ponte ha due livelli, con ristoranti sotto.",
             "nextId": "e_18",
             "answers": [
               "Ristoranti e locali",
@@ -1905,7 +1905,7 @@ window.APP_TEXT = {
           },
           "e_18": {
             "prompt": "Il 'dolmuş' è:",
-            "feedback": "È un mezzo di trasporto pubblico molto usato.",
+            "feedback": "Un minibus condiviso. È un mezzo di trasporto pubblico molto usato. Segue percorsi fissi ma è possibile salire e scendere quasi ovunque lungo il tragitto. Il mezzo parte quando è (quasi) pieno, infatti \"dolmuş\" significa \"riempito\"",
             "nextId": "p7",
             "answers": [
               "Un minibus condiviso",
@@ -1916,10 +1916,10 @@ window.APP_TEXT = {
           },
           "e_22": {
             "prompt": "Ortaköy è famoso per:",
-            "feedback": "È uno dei luoghi più fotografati.",
+            "feedback": "Vista sul Bosforo. È uno dei luoghi più fotografati.",
             "nextId": "e_23",
             "answers": [
-              "Street food e vista sul Bosforo",
+              "Vista sul Bosforo",
               "Miniere",
               "Industria",
               "Aeroporti"
@@ -1927,18 +1927,18 @@ window.APP_TEXT = {
           },
           "e_23": {
             "prompt": "Dolmabahçe Palace è famoso per:",
-            "feedback": "È molto diverso dall’architettura ottomana tradizionale.",
+            "feedback": "Stile europeo molto decorato. È molto diverso dall’architettura ottomana tradizionale.",
             "nextId": "e_24",
             "answers": [
-              "Stile europeo molto decorato",
-              "Essere una moschea",
+              "Avere uno stile europeo molto decorato",
+              "Essere un palazzo-moschea",
               "Essere sotterraneo",
               "Essere in legno semplice"
             ]
           },
           "e_24": {
             "prompt": "Dolmabahçe Palace contiene:",
-            "feedback": "Il lampadario principale è gigantesco e in cristallo.",
+            "feedback": "Il lampadario principale è gigantesco e in cristallo di Boemia, pesa circa 4,5 tonnellate ed ospita 750 lampadine.",
             "nextId": "p9",
             "answers": [
               "Uno dei lampadari più grandi al mondo",
@@ -1949,7 +1949,7 @@ window.APP_TEXT = {
           },
           "e_25": {
             "prompt": "In piazza Taksim si trova:",
-            "feedback": "Celebra la nascita della Repubblica turca.",
+            "feedback": "Il Monumento alla Repubblica. Celebra la nascita della Repubblica turca nel 1923.",
             "nextId": "e_26",
             "answers": [
               "Il Monumento alla Repubblica",
@@ -1960,17 +1960,17 @@ window.APP_TEXT = {
           },
           "e_26": {
             "prompt": "Molte case tradizionali di Istanbul sono riconoscibili perché:",
-            "feedback": "Sono tipiche dell’architettura ottomana residenziale.",
+            "feedback": "Hanno balconi sporgenti in legno. Sono tipiche dell’architettura ottomana residenziale.",
             "nextId": "e_27",
             "answers": [
               "Hanno balconi sporgenti in legno",
-              "Sono tutte in vetro",
+              "Sono tutte colorate",
               "Sono sotterranee",
               "Sono senza finestre"
             ]
           },
           "e_27": {
-            "prompt": "L’Hippodromo di Costantinopoli oggi corrisponde a:",
+            "prompt": "L’Ippodromo di Costantinopoli oggi corrisponde a:",
             "feedback": "L’antico ippodromo si trova oggi nell’attuale piazza Sultanahmet.",
             "nextId": "p10",
             "answers": [
@@ -2027,6 +2027,228 @@ window.APP_TEXT = {
         },
         "detail": {
           "availableTitle": "Missioni disponibili"
+        }
+      },
+      "angular": {
+        "common": {
+          "continue": "Continua",
+          "back": "Indietro",
+          "showFilters": "Mostra filtri",
+          "hideFilters": "Nascondi filtri",
+          "clearFilters": "Pulisci filtri",
+          "allMasculine": "Tutti",
+          "allFeminine": "Tutte"
+        },
+        "app": {
+          "install": {
+            "eyebrow": "Prima di iniziare",
+            "title": "Aggiungi la web app alla schermata Home",
+            "lead": "Per usare l'esperienza in modalita' mobile come previsto, apri questa web app dalla Home del telefono. Ti basta farlo una volta.",
+            "platformLabel": "Scegli il tuo telefono",
+            "iosLabel": "iPhone / iPad",
+            "androidLabel": "Android",
+            "iosStep1": "Apri la web app in Safari.",
+            "iosStep2": "Tocca il tasto Condividi nella barra del browser.",
+            "iosStep3": "Seleziona \"Aggiungi a Home\" e conferma.",
+            "iosStep4": "Da quel momento entra sempre dall'icona creata sulla Home.",
+            "androidStep1": "Apri la web app in Chrome.",
+            "androidStep2": "Tocca il menu con i tre puntini in alto a destra.",
+            "androidStep3": "Scegli \"Aggiungi a schermata Home\" oppure \"Installa app\".",
+            "androidStep4": "Conferma e poi apri sempre la web app dall'icona sulla Home.",
+            "hint": "Se hai già aggiunto l'app alla Home, puoi continuare subito.",
+            "button": "Continua"
+          }
+        },
+        "landing": {
+          "eyebrow": "Ingresso segreto",
+          "title": "Apri Istanbul dal lato che ti osserva",
+          "description": "Istanbul non si mostra a tutti allo stesso modo",
+          "reopenArchive": "Riapri il tuo archivio",
+          "cardEyebrow": "Rituale di accesso",
+          "start": "Inizia il viaggio"
+        },
+        "home": {
+          "heroText": "Non sei in una dashboard: sei al tavolo del companion. Scegli un filo narrativo e lasciati portare dalla città.",
+          "priorityTitle": "Il filo che ti conviene ora",
+          "priorityHint": "Una missione pronta da seguire senza pianificare.",
+          "prioritySupport": "Inizia da qui se vuoi continuità con il tuo profilo.",
+          "pathsEyebrow": "Percorsi",
+          "pathsTitle": "Tre strade nella stessa città",
+          "pathsDescription": "Ogni voce apre un capitolo diverso dello stesso viaggio.",
+          "openIndex": "Apri l'indice completo",
+          "moreTitle": "Altri sentieri",
+          "moreText": "L'archivio è vasto: quando vuoi sfogliare tutto senza filtri narrativi, usa l'indice missioni.",
+          "goToIndex": "Vai all'indice missioni",
+          "entryGeneralTitle": "Generiche",
+          "entryGeneralSubtitle": "Azioni leggere da fare quasi ovunque, come battiti nel diario.",
+          "entryGeneralCta": "Entra nel capitolo",
+          "entryLocationsTitle": "Luoghi",
+          "entryLocationsSubtitle": "Si accendono quando arrivi in punti iconici, senza bisogno di GPS.",
+          "entryLocationsCta": "Segui i luoghi",
+          "entryPersonalTitle": "Per te",
+          "entryPersonalSubtitle": "Missioni in sintonia con il tuo sguardo emerso dal rituale iniziale.",
+          "entryPersonalCta": "Apri il filo personale",
+          "saveAdded": "Missione salvata tra i preferiti.",
+          "saveRemoved": "Missione rimossa dai preferiti."
+        },
+        "archive": {
+          "eyebrow": "Archivio missioni",
+          "backHome": "Torna alla home",
+          "search": "Ricerca",
+          "searchPlaceholder": "Titolo, tema o descrizione",
+          "place": "Luogo",
+          "type": "Tipologia",
+          "theme": "Tema",
+          "budget": "Budget",
+          "resultsSuffix": "risultati",
+          "emptyTitle": "Nessuna missione",
+          "emptyText": "Prova con filtri diversi.",
+          "fallbackTitle": "Archivio missioni",
+          "saveAdded": "Missione salvata tra i preferiti.",
+          "saveRemoved": "Missione rimossa dai preferiti."
+        },
+        "allMissions": {
+          "eyebrow": "Tutte le missioni",
+          "title": "Vista completa delle missioni",
+          "description": "Il catalogo completo delle missioni, con filtri rapidi per capire cosa ti resta da fare, cosa hai salvato e cosa hai già chiuso.",
+          "backHome": "Torna alla home",
+          "searchLabel": "Cerca una missione",
+          "searchPlaceholder": "Titolo, tema o luogo",
+          "filterByStatus": "Filtra per stato",
+          "resetFilters": "Azzera filtri",
+          "visibleSuffix": "missioni visibili",
+          "emptyTitle": "Nessuna missione per questo filtro",
+          "emptyText": "Prova a cambiare stato o ricerca per tornare all'elenco completo.",
+          "chipAll": "Tutte",
+          "chipTodo": "Da fare",
+          "chipSaved": "Salvate",
+          "chipCompleted": "Completate",
+          "saveAdded": "Missione salvata tra i preferiti.",
+          "saveRemoved": "Missione rimossa dai preferiti."
+        },
+        "story": {
+          "finish": "Entra nella Missione 0"
+        },
+        "quiz": {
+          "eyebrow": "Missione 0",
+          "title": "Segui ciò che ti chiama per primo",
+          "description": "Non rispondere come in un test. Scegli come se stessi sfiorando un indizio nel margine del tuo diario.",
+          "choicesAria": "Risposte alla domanda",
+          "revealingEyebrow": "Rivelazione in corso",
+          "revealingTitle": "Il tuo sguardo sta prendendo forma",
+          "revealingDescription": "Sto aprendo il risultato della Missione 0.",
+          "feedbackTitle": "La città risponde subito"
+        },
+        "result": {
+          "archetypeEyebrow": "Archetipo rivelato",
+          "cardTitle": "Da ora non guarderai Istanbul, seguirai i suoi percorsi",
+          "goHome": "Vai alla tua Istanbul"
+        },
+        "personality": {
+          "eyebrow": "Profilo emerso",
+          "kicker": "Il tuo modo di leggere Istanbul",
+          "openPersonalArchive": "Apri archivio personale",
+          "lockedTitle": "Il tuo profilo è ancora nascosto",
+          "lockedText": "Completa Missione 0 per sbloccare il percorso che meglio interpreta il tuo sguardo sulla città."
+        },
+        "shellHeader": {
+          "brandKicker": "Secret Companion",
+          "brandTitle": "Istanbul Adventure",
+          "navAria": "Navigazione principale",
+          "entry": "Ingresso",
+          "mission0": "Missione 0",
+          "home": "Home",
+          "missions": "Missioni",
+          "menu": "Menu",
+          "currentViewPrefix": "Vista corrente: ",
+          "pauseTitle": "Menu di pausa",
+          "pauseLead": "Torna al hub, sfoglia l'elenco, o riprendi da qui.",
+          "quickLinksAria": "Collegamenti rapidi",
+          "hubMissions": "Hub missioni",
+          "allMissions": "Tutte le missioni",
+          "prologue": "Prologo",
+          "outcome": "Esito",
+          "archive": "Archivio",
+          "mission": "Missione"
+        },
+        "shellFooter": {
+          "mobileNavAria": "Navigazione mobile",
+          "entryTitle": "Ingresso",
+          "entrySubtitle": "Rituale",
+          "quizTitle": "Quiz",
+          "quizSubtitle": "Missione 0",
+          "homeTitle": "Home",
+          "homeSubtitle": "Percorsi",
+          "missionsTitle": "Missioni",
+          "missionsSubtitle": "Elenco",
+          "note": "Ogni missione è un invito a guardare Istanbul con più attenzione, curiosità e meraviglia."
+        },
+        "missionCard": {
+          "completed": "Completata",
+          "inProgress": "In corso",
+          "saved": "Salvata",
+          "toStart": "Da iniziare",
+          "save": "Salva"
+        },
+        "missionDetail": {
+          "heroBack": "Torna al hub",
+          "sceneLabel": "Scene",
+          "contextButton": "Approfondisci il contesto",
+          "nextScene": "Avanti nel racconto",
+          "backAria": "Torna al hub",
+          "contextTitle": "Perché questa missione conta",
+          "close": "Chiudi",
+          "notFoundTitle": "Missione non trovata",
+          "notFoundText": "Il percorso che stai cercando non e' disponibile. Torna al hub e scegli un'altra missione.",
+          "notFoundBack": "Torna al hub",
+          "reopenMission": "Riapri missione",
+          "markDone": "Segna come fatta",
+          "markObjectiveDonePrefix": "Segna obiettivo",
+          "markObjectiveDoneSuffix": "completato",
+          "removeSaved": "Rimuovi dai salvati",
+          "saveMission": "Salva missione",
+          "saveAdded": "Missione salvata tra i preferiti.",
+          "saveRemoved": "Missione rimossa dai salvati.",
+          "missionReopened": "Missione riaperta.",
+          "advanceHint": "Avanza nel racconto fino al passaggio attivo per segnarlo completato.",
+          "completeActiveFirst": "Completa prima l’obiettivo attivo.",
+          "objectiveDoneNext": "Obiettivo completato. Puoi passare al successivo.",
+          "missionCompleted": "Missione completata.",
+          "objectiveReopened": "Obiettivo riaperto."
+        },
+        "guidedTour": {
+          "close": "Chiudi tutorial",
+          "next": "Avanti",
+          "finish": "Fine",
+          "back": "Indietro",
+          "homePathsTitle": "Parti dai tre archivi principali",
+          "homePathsText": "Da qui scegli subito il tipo di esplorazione: generale, luoghi o percorso personale. Tocca una card e continui in un tap.",
+          "homePathsAccent": "Hub",
+          "archiveFiltersToggleTitle": "Apri o chiudi i filtri quando serve",
+          "archiveFiltersToggleText": "Il pulsante filtri mantiene la pagina pulita su mobile. Aprili solo quando devi affinare la ricerca.",
+          "archiveFiltersToggleAccent": "Filtro rapido",
+          "archiveFiltersTitle": "Scegli i filtri con pochi tocchi",
+          "archiveFiltersText": "Ricerca, luogo, tipo, tema e budget riducono l’elenco in tempo reale. Cosi trovi subito missioni fattibili nel momento giusto.",
+          "archiveFiltersAccent": "Selezione",
+          "archiveResultsTitle": "Controlla risultati e apri la missione",
+          "archiveResultsText": "In alto vedi quante missioni restano. Poi apri la card migliore o salvala per dopo, senza perdere il contesto.",
+          "archiveResultsAccent": "Risultati",
+          "missionActionsTitle": "Nel dettaglio gestisci il progresso",
+          "missionActionsText": "Qui fai avanzare la scena, salvi la missione o la segni completata. Tutte le azioni chiave sono a portata di pollice.",
+          "missionActionsAccent": "Avanzamento"
+        },
+        "components": {
+          "choiceLayerAria": "Scelte disponibili",
+          "missionHeroEyebrow": "Scheda missione",
+          "missionHeroBack": "Torna alle missioni",
+          "missionFactsEyebrow": "Coordinate essenziali",
+          "missionFactsTitle": "Coordinate essenziali",
+          "missionStatusEyebrow": "Stato",
+          "missionStatusTitle": "Azioni rapide",
+          "missionStatusBack": "Torna alle missioni"
+        },
+        "catalog": {
+          "sequentialPathLabel": "Percorso sequenziale"
         }
       },
       "actions": {

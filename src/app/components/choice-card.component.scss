@@ -2,18 +2,20 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  padding: 1rem 1.05rem;
-  border: 1px solid var(--border-soft);
+  border-radius: 6px 20px 18px 8px;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(198, 161, 91, 0.16);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
-    rgba(9, 18, 29, 0.72);
+    linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
+    linear-gradient(180deg, rgba(10, 20, 32, 0.88), rgba(6, 12, 20, 0.86));
   display: flex;
   gap: 0.9rem;
   text-align: left;
   transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
   cursor: pointer;
-  box-shadow: var(--shadow-soft);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .choice-card::after {
@@ -32,9 +34,11 @@
 }
 
 .choice-card:hover {
-  transform: translateY(-1px);
-  border-color: var(--border-gold);
-  box-shadow: var(--shadow-strong);
+  transform: translateY(-2px);
+  border-color: rgba(212, 162, 74, 0.4);
+  box-shadow:
+    var(--shadow-strong),
+    0 0 0 1px rgba(91, 169, 154, 0.12);
 }
 
 .choice-card--active {

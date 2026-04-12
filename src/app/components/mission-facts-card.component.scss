@@ -3,11 +3,11 @@
   display: grid;
   gap: 1rem;
   padding: 1.2rem;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
-    rgba(8, 17, 28, 0.58);
+    linear-gradient(180deg, rgba(236, 223, 195, 0.09), rgba(236, 223, 195, 0.02)),
+    rgba(8, 15, 24, 0.78);
   box-shadow: var(--shadow-soft);
 }
 
@@ -18,14 +18,14 @@
 
 .mission-facts-card__eyebrow {
   color: var(--accent-gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .mission-facts-card__title {
-  font-size: 1.15rem;
-  line-height: 1.05;
+  font-size: 1.18rem;
+  line-height: 1.02;
 }
 
 .mission-facts-card__grid {
@@ -38,16 +38,16 @@
   display: grid;
   gap: 0.35rem;
   min-width: 0;
-  padding: 0.85rem 0.9rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.035);
+  padding: 0.86rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(233, 213, 173, 0.16);
+  background: rgba(233, 213, 173, 0.06);
 }
 
 .mission-facts-card__item span {
   color: var(--text-3);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 

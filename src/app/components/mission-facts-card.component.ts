@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { LegacyContentService } from '../services/legacy-content.service';
 
 export type MissionFactItem = {
   label: string;
@@ -13,7 +14,8 @@ export type MissionFactItem = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MissionFactsCardComponent {
-  @Input() eyebrow = 'Coordinate essenziali';
-  @Input() title = 'Coordinate essenziali';
+  private readonly content = inject(LegacyContentService);
+  @Input() eyebrow = this.content.t('angular.components.missionFactsEyebrow', 'Coordinate essenziali');
+  @Input() title = this.content.t('angular.components.missionFactsTitle', 'Coordinate essenziali');
   @Input() items: MissionFactItem[] = [];
 }

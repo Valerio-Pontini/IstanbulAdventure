@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MissionBundle } from '../models/app.models';
+import { LegacyContentService } from '../services/legacy-content.service';
 import { PrimaryButtonComponent } from './primary-button.component';
 import { SymbolBadgeComponent } from './symbol-badge.component';
 
@@ -13,6 +14,7 @@ import { SymbolBadgeComponent } from './symbol-badge.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MissionCardComponent {
+  private readonly content = inject(LegacyContentService);
   @Input({ required: true }) mission!: MissionBundle;
   @Input() highlighted = false;
   @Input() saved = false;
@@ -22,23 +24,25 @@ export class MissionCardComponent {
   @Input() supportText = '';
   @Output() readonly savedToggle = new EventEmitter<string>();
 
+  readonly t = (path: string, fallback: string) => this.content.t(path, fallback);
+
   get statusLabel(): string {
     if (this.completed) {
-      return 'Completata';
+      return this.t('angular.missionCard.completed', 'Completata');
     }
 
     if (this.inProgress) {
-      return 'In corso';
+      return this.t('angular.missionCard.inProgress', 'In corso');
     }
 
     if (this.saved) {
-      return 'Salvata';
+      return this.t('angular.missionCard.saved', 'Salvata');
     }
 
-    return 'Da iniziare';
+    return this.t('angular.missionCard.toStart', 'Da iniziare');
   }
 
   get saveLabel(): string {
-    return this.saved ? 'Salvata' : 'Salva';
+    return this.saved ? this.t('angular.missionCard.saved', 'Salvata') : this.t('angular.missionCard.save', 'Salva');
   }
 }

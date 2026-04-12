@@ -1,0 +1,121 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.scene-viewport {
+  position: relative;
+  border-radius: 6px calc(var(--radius-lg) + 6px) calc(var(--radius-lg) + 2px) 10px;
+  border: 1px solid rgba(198, 161, 91, 0.2);
+  background: var(--scene-bg, linear-gradient(180deg, rgba(16, 30, 46, 0.96), rgba(9, 18, 30, 0.94)));
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  min-height: min(52vh, 520px);
+}
+
+.scene-viewport[data-tone='atlas'] {
+  border-color: rgba(198, 161, 91, 0.22);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(79, 140, 135, 0.12), transparent 42%),
+    radial-gradient(circle at 88% 18%, rgba(191, 151, 79, 0.1), transparent 45%),
+    linear-gradient(180deg, rgba(14, 24, 38, 0.98), rgba(7, 13, 23, 0.94));
+}
+
+.scene-viewport[data-tone='reveal'] {
+  border-color: rgba(191, 151, 79, 0.32);
+  background:
+    radial-gradient(circle at top center, rgba(198, 161, 91, 0.16), transparent 40%),
+    linear-gradient(180deg, rgba(18, 28, 42, 0.98), rgba(8, 14, 24, 0.95));
+}
+
+.scene-viewport__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 82% 65% at 50% 42%, transparent 32%, var(--scene-vignette, rgba(2, 4, 8, 0.62)) 100%);
+  opacity: 0.95;
+}
+
+.scene-viewport__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--scene-grain-opacity, 0.12);
+  background-image: url('/assets/generated/dossier-grid.svg');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: overlay;
+}
+
+.scene-viewport__viewfinder {
+  position: absolute;
+  inset: 14px;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid rgba(212, 162, 74, 0.2);
+  border-radius: 4px calc(var(--radius-md) - 2px) calc(var(--radius-md) - 4px) 6px;
+  box-shadow: inset 0 0 48px rgba(0, 0, 0, 0.18);
+  opacity: 0.9;
+}
+
+.scene-viewport__viewfinder::before,
+.scene-viewport__viewfinder::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(212, 162, 74, 0.5);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.scene-viewport__viewfinder::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: 2px 0 0 0;
+}
+
+.scene-viewport__viewfinder::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 2px 0;
+}
+
+.scene-viewport__inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  min-height: inherit;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scene-viewport {
+    animation: scene-viewport-in var(--transition-base) both;
+  }
+}
+
+@keyframes scene-viewport-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-viewport {
+    animation: none;
+  }
+}
