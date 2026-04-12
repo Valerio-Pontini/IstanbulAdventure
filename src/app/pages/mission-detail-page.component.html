@@ -4,22 +4,19 @@
       <ia-mission-hero-card [title]="mission.title" [backLabel]="t('angular.missionDetail.heroBack', 'Torna al hub')" backLink="/home" />
 
       <ia-scene-viewport [tone]="viewportTone()" id="tutorial-mission-actions">
-        <div class="mission-detail__scene-meta">
-          <p class="mission-detail__eyebrow">{{ t('angular.missionDetail.sceneLabel', 'Scene') }}</p>
-          <p class="mission-detail__scene-progress">{{ runtime.progressLabel() }}</p>
-        </div>
-
-        <ia-progress-thread label="" [currentStep]="runtime.flatBeatIndex() + 1" [totalSteps]="runtime.totalBeats()" />
-
-        @if (dialogue(); as line) {
-          <ia-dialogue-layer [text]="line.text" [speaker]="line.speaker" [role]="line.role" />
-        }
-
         @if (mission.context?.trim()) {
           <div class="mission-detail__context-trigger">
             <button type="button" class="mission-detail__context-btn" (click)="openContext()">{{ t('angular.missionDetail.contextButton', 'Approfondisci il contesto') }}</button>
           </div>
         }
+
+        <section class="mission-detail__objective-card" aria-labelledby="mission-objective-title">
+          <p class="mission-detail__objective-eyebrow">{{ t('angular.missionDetail.objectiveTitle', 'Obiettivo missione') }}</p>
+          <h2 id="mission-objective-title" class="mission-detail__objective-title">{{ activeObjectiveTitle() }}</h2>
+          <div class="mission-detail__objective-copy">
+            <p>{{ activeObjectiveDescription() }}</p>
+          </div>
+        </section>
 
         <div class="mission-detail__scene-nav editorial-actions">
           <ia-primary-button [label]="t('angular.common.back', 'Indietro')" tone="ghost" [disabled]="runtime.isAtStart()" (pressed)="scenePrev()" />

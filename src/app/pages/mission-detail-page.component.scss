@@ -270,6 +270,47 @@
   justify-content: center;
 }
 
+.mission-detail__objective-card {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(191, 151, 79, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(13, 24, 37, 0.96), rgba(7, 16, 26, 0.94));
+  box-shadow: var(--shadow-soft);
+}
+
+.mission-detail__objective-eyebrow {
+  margin: 0;
+  color: var(--accent-gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mission-detail__objective-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.7vw, 1.7rem);
+  line-height: 1.12;
+  color: var(--accent-ivory);
+}
+
+.mission-detail__objective-copy {
+  max-height: min(42svh, 320px);
+  overflow: auto;
+  padding-right: 0.35rem;
+}
+
+.mission-detail__objective-copy p {
+  margin: 0;
+  color: var(--text-1);
+  line-height: 1.58;
+}
+
 .mission-detail__context-btn {
   min-height: 44px;
   padding: 0.5rem 1.1rem;

@@ -1,21 +1,16 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, untracked } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { buildMissionNarrativeScript } from '../content/mission.narrative';
-import { DialogueLayerComponent } from '../components/dialogue-layer.component';
 import { EditorialScreenComponent } from '../components/editorial-screen.component';
 import { MissionHeroCardComponent } from '../components/mission-hero-card.component';
 import { NarrativeOverlayComponent } from '../components/narrative-overlay.component';
 import { PrimaryButtonComponent } from '../components/primary-button.component';
-import { ProgressThreadComponent } from '../components/progress-thread.component';
 import { SceneViewportComponent } from '../components/scene-viewport.component';
-import { isDialogueBeat } from '../models/narrative.models';
 import { LegacyContentService } from '../services/legacy-content.service';
 import { MissionCatalogService } from '../services/mission-catalog.service';
 import { MissionStateService } from '../services/mission-state.service';
 import { SceneRuntimeService } from '../services/scene-runtime.service';
 import { UiFeedbackService } from '../services/ui-feedback.service';
-
-type ObjectiveViewState = 'locked' | 'active' | 'done' | 'pending';
 
 @Component({
   selector: 'ia-mission-detail-page',
@@ -26,8 +21,6 @@ type ObjectiveViewState = 'locked' | 'active' | 'done' | 'pending';
     MissionHeroCardComponent,
     PrimaryButtonComponent,
     SceneViewportComponent,
-    ProgressThreadComponent,
-    DialogueLayerComponent,
     NarrativeOverlayComponent
   ],
   templateUrl: './mission-detail-page.component.html',
@@ -85,26 +78,23 @@ export class MissionDetailPageComponent {
       ? this.t('angular.missionDetail.removeSaved', 'Rimuovi dai salvati')
       : this.t('angular.missionDetail.saveMission', 'Salva missione')
   ));
-  readonly dialogue = computed(() => {
-    const beat = this.runtime.currentBeat();
-    return isDialogueBeat(beat) ? beat : null;
-  });
   readonly viewportTone = computed(() => this.runtime.currentScene()?.backgroundTone ?? 'atlas');
-  readonly objectiveSceneIndex = computed(() => {
-    const id = this.runtime.currentScene()?.id ?? '';
-    const match = /-objective-(\d+)$/.exec(id);
-    return match ? Number.parseInt(match[1], 10) : null;
-  });
-  readonly showObjectivePrimary = computed(() => {
+  readonly activeObjectiveTitle = computed(() => {
     const mission = this.mission();
-    if (!mission || this.isCompleted()) {
-      return false;
+    if (!mission) {
+      return '';
     }
-    const sceneIdx = this.objectiveSceneIndex();
-    if (sceneIdx === null) {
-      return false;
+
+    return mission.objectives[this.activeObjectiveIndex()]?.title || mission.title;
+  });
+  readonly activeObjectiveDescription = computed(() => {
+    const mission = this.mission();
+    if (!mission) {
+      return '';
     }
-    return sceneIdx === this.activeObjectiveIndex();
+
+    const activeObjective = mission.objectives[this.activeObjectiveIndex()];
+    return activeObjective?.description || mission.description;
   });
   readonly contextOpen = signal(false);
 
@@ -138,31 +128,6 @@ export class MissionDetailPageComponent {
     this.contextOpen.set(false);
   }
 
-  objectiveState(index: number, objectiveId: string): ObjectiveViewState {
-    if (this.completedIds().has(objectiveId)) {
-      return 'done';
-    }
-
-    const mission = this.mission();
-    if (!mission) {
-      return 'pending';
-    }
-
-    if (!mission.isSequential) {
-      return 'active';
-    }
-
-    if (index < this.activeObjectiveIndex()) {
-      return 'done';
-    }
-
-    if (index === this.activeObjectiveIndex()) {
-      return 'active';
-    }
-
-    return 'locked';
-  }
-
   toggleSaved(): void {
     const mission = this.mission();
     if (!mission) {
@@ -191,47 +156,23 @@ export class MissionDetailPageComponent {
       return;
     }
 
-    if (!this.showObjectivePrimary()) {
-      this.feedback.show(this.t('angular.missionDetail.advanceHint', 'Avanza nel racconto fino al passaggio attivo per segnarlo completato.'), 'default');
-      return;
-    }
-
     const objective = mission.objectives[this.activeObjectiveIndex()];
     if (!objective) {
       return;
     }
 
-    this.toggleObjective(objective.id);
-  }
-
-  toggleObjective(objectiveId: string): void {
-    const mission = this.mission();
-    if (!mission) {
-      return;
-    }
-
-    const objectiveIndex = mission.objectives.findIndex((objective) => objective.id === objectiveId);
-    if (objectiveIndex === -1) {
-      return;
-    }
-
-    const state = this.objectiveState(objectiveIndex, objectiveId);
-    if (state === 'locked') {
-      this.feedback.show(this.t('angular.missionDetail.completeActiveFirst', 'Completa prima l’obiettivo attivo.'), 'default');
-      return;
-    }
-
     const completedIds = this.completedIds();
-    const shouldComplete = !completedIds.has(objectiveId);
-    this.missionState.setCompletedForMissionIds([objectiveId], shouldComplete);
+    const shouldComplete = !completedIds.has(objective.id);
+    this.missionState.setCompletedForMissionIds([objective.id], shouldComplete);
 
     if (shouldComplete) {
-      const remainingObjectives = mission.objectives.filter((objective) => !completedIds.has(objective.id) && objective.id !== objectiveId);
-      if (remainingObjectives.length) {
-        this.feedback.show(this.t('angular.missionDetail.objectiveDoneNext', 'Obiettivo completato. Puoi passare al successivo.'), 'success');
-      } else {
-        this.feedback.show(this.t('angular.missionDetail.missionCompleted', 'Missione completata.'), 'success');
-      }
+      const remainingObjectives = mission.objectives.filter((item) => !completedIds.has(item.id) && item.id !== objective.id);
+      this.feedback.show(
+        remainingObjectives.length
+          ? this.t('angular.missionDetail.objectiveDoneNext', 'Obiettivo completato. Puoi passare al successivo.')
+          : this.t('angular.missionDetail.missionCompleted', 'Missione completata.'),
+        'success'
+      );
       return;
     }
 

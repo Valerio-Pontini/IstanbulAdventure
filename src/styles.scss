@@ -443,6 +443,10 @@ p {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
 }
 
+.shell-footer__nav--compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .shell-footer__nav a {
   position: relative;
   display: grid;

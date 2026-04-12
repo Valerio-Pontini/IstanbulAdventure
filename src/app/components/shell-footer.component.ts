@@ -10,7 +10,11 @@ import { MissionStateService } from '../services/mission-state.service';
   imports: [RouterLink, RouterLinkActive],
   template: `
     <footer class="shell-footer">
-      <nav class="shell-footer__nav" [attr.aria-label]="t('angular.shellFooter.mobileNavAria', 'Navigazione mobile')">
+      <nav
+        class="shell-footer__nav"
+        [class.shell-footer__nav--compact]="!homeUnlocked()"
+        [attr.aria-label]="t('angular.shellFooter.mobileNavAria', 'Navigazione mobile')"
+      >
         @if (!homeUnlocked()) {
           <a routerLink="/" routerLinkActive="shell-footer__link--active" [routerLinkActiveOptions]="{ exact: true }">
             <strong>{{ t('angular.shellFooter.entryTitle', 'Ingresso') }}</strong>
