@@ -298,6 +298,31 @@
   color: var(--accent-ivory);
 }
 
+.mission-detail__objective-strip {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.mission-detail__objective-chip {
+  min-width: 2rem;
+  min-height: 2rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-2);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mission-detail__objective-chip.is-active {
+  border-color: var(--border-gold);
+  background: rgba(191, 151, 79, 0.18);
+  color: var(--text-1);
+}
+
 .mission-detail__objective-copy {
   max-height: min(42svh, 320px);
   overflow: auto;

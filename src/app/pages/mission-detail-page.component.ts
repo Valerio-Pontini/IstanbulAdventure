@@ -79,13 +79,26 @@ export class MissionDetailPageComponent {
       : this.t('angular.missionDetail.saveMission', 'Salva missione')
   ));
   readonly viewportTone = computed(() => this.runtime.currentScene()?.backgroundTone ?? 'atlas');
+  readonly viewedObjectiveIndex = signal(0);
+  readonly objectiveTabLabels = computed(() => {
+    const mission = this.mission();
+    if (!mission?.isSequential) {
+      return [];
+    }
+
+    return mission.objectives.map((objective, index) => ({
+      index,
+      label: objective.title || `${this.t('angular.missionDetail.objectiveTitle', 'Obiettivo')} ${index + 1}`
+    }));
+  });
   readonly activeObjectiveTitle = computed(() => {
     const mission = this.mission();
     if (!mission) {
       return '';
     }
 
-    return mission.objectives[this.activeObjectiveIndex()]?.title || mission.title;
+    const index = mission.isSequential ? this.viewedObjectiveIndex() : this.activeObjectiveIndex();
+    return mission.objectives[index]?.title || mission.title;
   });
   readonly activeObjectiveDescription = computed(() => {
     const mission = this.mission();
@@ -93,7 +106,8 @@ export class MissionDetailPageComponent {
       return '';
     }
 
-    const activeObjective = mission.objectives[this.activeObjectiveIndex()];
+    const index = mission.isSequential ? this.viewedObjectiveIndex() : this.activeObjectiveIndex();
+    const activeObjective = mission.objectives[index];
     return activeObjective?.description || mission.description;
   });
   readonly contextOpen = signal(false);
@@ -117,6 +131,18 @@ export class MissionDetailPageComponent {
       if (previousId === script.id) {
         this.runtime.restoreToFlatIndex(previousFlat);
       }
+    });
+
+    effect(() => {
+      const mission = this.mission();
+      if (!mission) {
+        this.viewedObjectiveIndex.set(0);
+        return;
+      }
+
+      const maxIndex = Math.max(mission.objectives.length - 1, 0);
+      const preferredIndex = mission.isSequential ? this.activeObjectiveIndex() : 0;
+      this.viewedObjectiveIndex.set(Math.max(0, Math.min(preferredIndex, maxIndex)));
     });
   }
 
@@ -181,6 +207,16 @@ export class MissionDetailPageComponent {
 
   scenePrev(): void {
     this.runtime.previous();
+  }
+
+  selectObjective(index: number): void {
+    const mission = this.mission();
+    if (!mission?.isSequential) {
+      return;
+    }
+
+    const maxIndex = mission.objectives.length - 1;
+    this.viewedObjectiveIndex.set(Math.max(0, Math.min(index, maxIndex)));
   }
 
 }

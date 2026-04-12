@@ -13,6 +13,13 @@ export type QuizQuestion = {
   answers: QuizAnswer[];
 };
 
+export type QuizAnswerReview = {
+  questionId: string;
+  questionText: string;
+  answerLabel: string;
+  feedbackText: string | null;
+};
+
 export type QuizContent = {
   startQuestionId: string;
   primaryQuestionIds: string[];

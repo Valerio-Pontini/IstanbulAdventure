@@ -1,13 +1,15 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { LegacyContentService } from './legacy-content.service';
 import { MissionStateService } from './mission-state.service';
-import { Category, QuizAnswer, QuizQuestion } from '../models/app.models';
+import { Category, QuizAnswer, QuizAnswerReview, QuizQuestion } from '../models/app.models';
 
 type FeedbackState = {
   text: string;
   nextId: string | null;
   completesQuiz: boolean;
 };
+
+const QUIZ_HISTORY_STORAGE_KEY = 'istanbulAdventure.quizAnswerHistory';
 
 @Injectable({ providedIn: 'root' })
 export class QuizSessionService {
@@ -20,6 +22,7 @@ export class QuizSessionService {
   private readonly resultCategoryIdSignal: ReturnType<typeof signal<string | null>>;
   private readonly freshResultSignal = signal(false);
   private readonly feedbackSignal = signal<FeedbackState | null>(null);
+  private readonly answerHistorySignal = signal<QuizAnswerReview[]>(this.readAnswerHistory());
   readonly storySlides: string[];
 
   readonly storyIndex = this.storyIndexSignal.asReadonly();
@@ -43,6 +46,7 @@ export class QuizSessionService {
     return categoryId ? this.content.categories[categoryId] ?? null : null;
   });
   readonly hasFreshResult = this.freshResultSignal.asReadonly();
+  readonly answerHistory = this.answerHistorySignal.asReadonly();
 
   constructor(
     private readonly content: LegacyContentService,
@@ -68,6 +72,7 @@ export class QuizSessionService {
     this.categoryScoresSignal.set({});
     this.categoryTrailSignal.set([]);
     this.feedbackSignal.set(null);
+    this.setAnswerHistory([]);
     this.resultCategoryIdSignal.set(this.state.categoryId());
     this.freshResultSignal.set(false);
   }
@@ -85,6 +90,7 @@ export class QuizSessionService {
     this.categoryScoresSignal.set({});
     this.categoryTrailSignal.set([]);
     this.feedbackSignal.set(null);
+    this.setAnswerHistory([]);
     this.currentQuestionIdSignal.set(this.content.quiz.startQuestionId);
     this.freshResultSignal.set(false);
   }
@@ -105,9 +111,21 @@ export class QuizSessionService {
 
   answer(answer: QuizAnswer): void {
     const currentId = this.currentQuestionIdSignal();
-    if (!currentId) {
+    const currentQuestion = this.currentQuestion();
+    if (!currentId || !currentQuestion) {
       return;
     }
+
+    this.answerHistorySignal.update((history) => [
+      ...history,
+      {
+        questionId: currentQuestion.id,
+        questionText: currentQuestion.text,
+        answerLabel: answer.label,
+        feedbackText: answer.feedback ?? null
+      }
+    ]);
+    this.persistAnswerHistory();
 
     if (currentId.startsWith('p')) {
       this.completedPrimaryCountSignal.update((count) => count + 1);
@@ -162,6 +180,42 @@ export class QuizSessionService {
     this.currentQuestionIdSignal.set(null);
     this.freshResultSignal.set(true);
     this.state.markHomeUnlocked(categoryId);
+  }
+
+  private setAnswerHistory(history: QuizAnswerReview[]): void {
+    this.answerHistorySignal.set(history);
+    this.persistAnswerHistory();
+  }
+
+  private persistAnswerHistory(): void {
+    try {
+      window.localStorage.setItem(QUIZ_HISTORY_STORAGE_KEY, JSON.stringify(this.answerHistorySignal()));
+    } catch {
+      // Ignore write errors (private mode/storage quota) without impacting gameplay.
+    }
+  }
+
+  private readAnswerHistory(): QuizAnswerReview[] {
+    try {
+      const raw = window.localStorage.getItem(QUIZ_HISTORY_STORAGE_KEY);
+      if (!raw) {
+        return [];
+      }
+      const parsed = JSON.parse(raw) as QuizAnswerReview[];
+      if (!Array.isArray(parsed)) {
+        return [];
+      }
+      return parsed
+        .filter((item) => item && typeof item.questionId === 'string' && typeof item.questionText === 'string' && typeof item.answerLabel === 'string')
+        .map((item) => ({
+          questionId: item.questionId,
+          questionText: item.questionText,
+          answerLabel: item.answerLabel,
+          feedbackText: item.feedbackText ?? null
+        }));
+    } catch {
+      return [];
+    }
   }
 
   private goToNextOrComplete(nextId: string): void {

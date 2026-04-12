@@ -12,6 +12,20 @@
 
         <section class="mission-detail__objective-card" aria-labelledby="mission-objective-title">
           <p class="mission-detail__objective-eyebrow">{{ t('angular.missionDetail.objectiveTitle', 'Obiettivo missione') }}</p>
+          @if (mission.isSequential) {
+            <div class="mission-detail__objective-strip" role="tablist" [attr.aria-label]="t('angular.missionDetail.objectiveScrollerAria', 'Scorri gli obiettivi della missione')">
+              @for (item of objectiveTabLabels(); track item.index) {
+                <button
+                  type="button"
+                  class="mission-detail__objective-chip"
+                  [class.is-active]="viewedObjectiveIndex() === item.index"
+                  (click)="selectObjective(item.index)"
+                >
+                  {{ item.index + 1 }}
+                </button>
+              }
+            </div>
+          }
           <h2 id="mission-objective-title" class="mission-detail__objective-title">{{ activeObjectiveTitle() }}</h2>
           <div class="mission-detail__objective-copy">
             <p>{{ activeObjectiveDescription() }}</p>
