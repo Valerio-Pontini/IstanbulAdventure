@@ -53,8 +53,6 @@ import { MissionStateService } from '../services/mission-state.service';
           <h2 id="pause-menu-title" class="pause-menu__title">{{ t('angular.shellHeader.pauseTitle', 'Menu di pausa') }}</h2>
           <p class="pause-menu__lead">{{ t('angular.shellHeader.pauseLead', 'Torna al hub, sfoglia l\'elenco, o riprendi da qui.') }}</p>
           <nav class="pause-menu__nav" [attr.aria-label]="t('angular.shellHeader.quickLinksAria', 'Collegamenti rapidi')">
-            <a class="pause-menu__link" routerLink="/" (click)="closePause()">{{ t('angular.shellHeader.entry', 'Ingresso') }}</a>
-            <a class="pause-menu__link" routerLink="/quiz" (click)="closePause()">{{ t('angular.shellHeader.mission0', 'Missione 0') }}</a>
             <a class="pause-menu__link" routerLink="/result" (click)="closePause()">{{ t('angular.shellHeader.reviewMission0', 'Rivedi Missione 0') }}</a>
             <a class="pause-menu__link" routerLink="/home" (click)="closePause()">{{ t('angular.shellHeader.hubMissions', 'Hub missioni') }}</a>
             <a class="pause-menu__link" routerLink="/missions" (click)="closePause()">{{ t('angular.shellHeader.allMissions', 'Tutte le missioni') }}</a>
