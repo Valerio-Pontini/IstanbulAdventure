@@ -27,10 +27,21 @@ const requireResultAvailability: CanActivateFn = () => {
   const state = inject(MissionStateService);
   const quiz = inject(QuizSessionService);
   const router = inject(Router);
+
+  const hasStoredReview = (() => {
+    try {
+      const raw = window.localStorage.getItem('istanbulAdventure.quizAnswerHistory');
+      const parsed = raw ? JSON.parse(raw) : null;
+      return Array.isArray(parsed) && parsed.length > 0;
+    } catch {
+      return false;
+    }
+  })();
+
   if (!state.homeUnlocked()) {
     return true;
   }
-  return quiz.hasFreshResult() ? true : router.createUrlTree(['/home']);
+  return quiz.hasFreshResult() || hasStoredReview ? true : router.createUrlTree(['/home']);
 };
 
 export const routes: Routes = [
