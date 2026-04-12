@@ -1,396 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#18120f" />
-  <meta
-    name="description"
-    content="Istanbul Adventure, un'app narrativa mobile-first per esplorare Istanbul attraverso missioni, storie e percorsi personali."
-  />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" href="./assets/icon-192.png" />
-  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
-  <link rel="stylesheet" href="./styles.css" />
-  <title>Istanbul Adventure</title>
-</head>
-<body>
-  <div class="app-shell">
-    <div class="app-backdrop" aria-hidden="true"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#111827" />
+    <title>Istanbul Adventure</title>
+    <meta
+      name="description"
+      content="Redirect alla versione Angular aggiornata di Istanbul Adventure."
+    />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: #0b1220;
+        color: #f5efe1;
+      }
 
-    <header class="app-bar">
-      <div class="app-bar__brand">
-        <span class="app-bar__city" data-text-key="brand.city">Istanbul</span>
-        <span class="app-bar__project" data-text-key="brand.project">Adventure</span>
-      </div>
-      <div class="app-bar__status" id="statusPill">Missione 0</div>
-    </header>
+      .card {
+        width: min(560px, calc(100% - 2rem));
+        border: 1px solid rgba(212, 162, 74, 0.45);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+        background: rgba(12, 19, 30, 0.92);
+      }
 
-    <main class="app-main">
-      <section class="view is-active" id="scene-entry" aria-label="Ingresso">
-        <div class="entry-layout">
-          <div class="entry-hero">
-            <div class="entry-hero__media" aria-hidden="true"></div>
-            <div class="entry-hero__grid" aria-hidden="true"></div>
-          </div>
+      p {
+        margin: 0;
+        line-height: 1.5;
+      }
 
-          <div class="entry-panel">
-            <div class="entry-panel__meta">
-              <span class="entry-panel__route" data-text-key="entry.route">Bosphorus Route</span>
-              <span class="entry-panel__season" data-text-key="entry.season">Mobile experience</span>
-            </div>
-
-            <h1 class="page-title" data-text-key="entry.title">Una città diversa per ogni viaggiatore</h1>
-            <p class="page-copy" data-text-key="entry.copy">
-              Una missione iniziale ti assegna una personalità di esplorazione. Da lì si aprono missioni, luoghi e percorsi speciali costruiti sul modo in cui guardi Istanbul.
-            </p>
-
-            <div class="action-row">
-              <button class="button button-primary" id="enterButton" type="button">Inizia Missione 0</button>
-              <button class="button" id="jumpToMissionButton" type="button">Vai subito al quiz</button>
-            </div>
-
-            <div class="entry-facts">
-              <div class="entry-fact">
-                <p class="entry-fact__label" data-text-key="entry.factFormatLabel">Formato</p>
-                <p class="entry-fact__value" data-text-key="entry.factFormatValue">Flusso narrativo in tap</p>
-              </div>
-              <div class="entry-fact">
-                <p class="entry-fact__label" data-text-key="entry.factDurationLabel">Durata</p>
-                <p class="entry-fact__value" data-text-key="entry.factDurationValue">Missione rapida + archivio personale</p>
-              </div>
-              <div class="entry-fact">
-                <p class="entry-fact__label" data-text-key="entry.factOutputLabel">Output</p>
-                <p class="entry-fact__value" data-text-key="entry.factOutputValue">Profilo, missioni consigliate, filtri</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="view" id="scene-story" aria-label="Prologo" hidden>
-        <div class="story-layout">
-          <aside class="story-rail" aria-hidden="true">
-            <div class="story-rail__map"></div>
-            <div class="story-rail__line"></div>
-          </aside>
-
-          <article class="story-sheet">
-            <div class="story-sheet__head">
-              <div class="story-sheet__chapter" data-text-key="story.chapter">Prologo</div>
-              <p class="section-count" id="storyIndex">1 / 4</p>
-            </div>
-
-            <div class="story-sheet__body">
-              <p class="story-text" id="storyText"></p>
-            </div>
-
-            <div class="progress-line" aria-hidden="true">
-              <span id="storyProgress"></span>
-            </div>
-
-            <div class="action-row action-row-split">
-              <button class="button" id="storyPrev" type="button">Indietro</button>
-              <button class="button button-primary" id="storyNext" type="button">Continua</button>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="view" id="scene-mission" aria-label="Missione 0" hidden>
-        <div class="mission-layout">
-          <header class="mission-header">
-            <div>
-              <p class="mission-header__eyeline" id="missionTitle">Missione 0</p>
-              <p class="page-copy page-copy-tight" id="missionIntro"></p>
-            </div>
-            <div class="mission-header__status">
-              <p class="section-count" id="questionCounter">1 / 10</p>
-              <p class="section-count" id="questionMeta">Nodo narrativo</p>
-            </div>
-          </header>
-
-          <div class="progress-line progress-line-strong" aria-hidden="true">
-            <span id="questionProgress"></span>
-          </div>
-
-          <div class="mission-frame">
-            <div class="mission-frame__prompt">
-              <div class="mission-frame__hint" id="tapHint">Scegli d'istinto</div>
-              <p class="question-text" id="questionText"></p>
-            </div>
-
-            <div class="answer-list" id="answerGrid" aria-live="polite"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="view" id="scene-complete" aria-label="Completamento" hidden>
-        <div class="result-layout">
-          <section class="result-main">
-            <p class="result-main__meta" id="completionKicker">Esito missione</p>
-            <h2 class="page-title page-title-small" id="completionTitleText">Il viaggio ha preso una direzione.</h2>
-            <p class="page-copy" id="completionText"></p>
-
-            <div class="profile-panel" id="completionProfileCard" hidden>
-              <div class="profile-panel__badge" id="completionProfileBadge" aria-hidden="true"></div>
-              <div>
-                <p class="profile-panel__label" data-text-key="result.profileLabel">Profilo emerso</p>
-                <p class="profile-panel__title" id="completionProfileTitle"></p>
-                <p class="profile-panel__text" id="completionProfileDescription"></p>
-              </div>
-            </div>
-
-            <p class="support-copy" id="completionNote" hidden></p>
-
-            <div class="action-row">
-              <button class="button button-primary" id="completionHomeButton" type="button">Apri la home</button>
-              <button class="button" id="restartButton" type="button">Ricomincia</button>
-            </div>
-          </section>
-
-          <aside class="result-sidecard" id="completionVisual" hidden>
-            <div class="result-sidecard__map" aria-hidden="true"></div>
-            <div class="result-sidecard__content">
-              <p class="result-sidecard__label" data-text-key="result.sideLabel">Archivio sbloccato</p>
-              <p class="result-sidecard__text" data-text-key="result.sideText">Da qui puoi leggere le missioni generali, quelle dei luoghi e il percorso legato al tuo profilo.</p>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="view" id="scene-home" aria-label="Home missioni" hidden>
-        <div class="home-layout">
-          <section class="home-intro">
-            <div class="home-intro__copy">
-              <p class="home-intro__route" data-text-key="home.route">Archivio personale</p>
-              <h2 class="page-title page-title-small" id="homeTitle">Le tue missioni</h2>
-              <p class="page-copy page-copy-tight" id="homeText"></p>
-            </div>
-
-            <div class="summary-grid">
-              <div class="summary-item">
-                <span id="totalMissionLabel">Missioni raccomandate</span>
-                <strong id="totalMissionCount">00</strong>
-              </div>
-              <div class="summary-item">
-                <span id="generalMissionLabel">Generali</span>
-                <strong id="generalMissionCount">00</strong>
-              </div>
-              <div class="summary-item">
-                <span id="locationMissionLabel">Luoghi</span>
-                <strong id="locationMissionCount">00</strong>
-              </div>
-              <div class="summary-item">
-                <span id="personalMissionLabel">Profilo</span>
-                <strong id="personalMissionCount">00</strong>
-              </div>
-            </div>
-          </section>
-
-          <aside class="home-side">
-            <section class="home-side__panel">
-              <h2 class="section-title" id="homeProfileTitle">Profilo in attesa</h2>
-              <p class="page-copy page-copy-tight" id="homeProfileText"></p>
-
-              <div class="profile-panel profile-panel-compact" id="homeProfileChip" hidden>
-                <div class="profile-panel__badge" id="homeProfileBadge" aria-hidden="true"></div>
-                <div>
-                  <p class="profile-panel__label" data-text-key="home.profileCategoryLabel">Categoria</p>
-                  <p class="profile-panel__title" id="homeProfileChipTitle"></p>
-                </div>
-              </div>
-            </section>
-
-            <section class="home-side__panel">
-              <p class="page-copy page-copy-tight" id="homeOverviewText"></p>
-
-              <div class="archive-grid">
-                <button class="archive-link" type="button" data-section="general">
-                  <span id="homeNavGeneralLabel">Generali</span>
-                  <strong id="homeNavGeneralCount">00</strong>
-                </button>
-                <button class="archive-link" type="button" data-section="locations">
-                  <span id="homeNavLocationsLabel">Luoghi</span>
-                  <strong id="homeNavLocationsCount">00</strong>
-                </button>
-                <button class="archive-link" type="button" data-section="personal">
-                  <span id="homeNavPersonalLabel">Profilo</span>
-                  <strong id="homeNavPersonalCount">00</strong>
-                </button>
-              </div>
-            </section>
-          </aside>
-
-          <section class="panel mission-panel">
-            <div class="section-header">
-              <div>
-                <h2 class="section-title" id="generalPanelTitle">Missioni generali</h2>
-                <p class="page-copy page-copy-tight" id="generalPanelText"></p>
-              </div>
-              <div class="section-actions">
-                <span class="section-count" id="generalSectionCount">0</span>
-                <button class="button" id="generalOpenButton" type="button">Apri archivio</button>
-              </div>
-            </div>
-            <div class="mission-list" id="generalMissionList"></div>
-          </section>
-
-          <section class="panel mission-panel">
-            <div class="section-header">
-              <div>
-                <h2 class="section-title" id="locationPanelTitle">Missioni luogo</h2>
-                <p class="page-copy page-copy-tight" id="locationPanelText"></p>
-              </div>
-              <div class="section-actions">
-                <span class="section-count" id="locationSectionCount">0</span>
-                <button class="button" id="locationOpenButton" type="button">Apri archivio</button>
-              </div>
-            </div>
-            <div class="mission-list" id="locationMissionList"></div>
-          </section>
-
-          <section class="panel mission-panel">
-            <div class="section-header">
-              <div>
-                <h2 class="section-title" id="personalPanelTitle">Missioni profilo</h2>
-                <p class="page-copy page-copy-tight" id="personalPanelText"></p>
-              </div>
-              <div class="section-actions">
-                <span class="section-count" id="personalSectionCount">0</span>
-                <button class="button" id="personalOpenButton" type="button">Apri archivio</button>
-              </div>
-            </div>
-            <div class="mission-list" id="personalMissionList"></div>
-          </section>
-        </div>
-      </section>
-
-      <section class="view" id="scene-category-detail" aria-label="Archivio missioni" hidden>
-        <div class="detail-layout">
-          <header class="detail-layout__header">
-            <button class="button" id="detailBackButton" type="button">Torna alla home</button>
-            <span class="section-count" id="detailCategoryCount">0 missioni</span>
-          </header>
-
-          <section class="panel panel-detail">
-            <h2 class="section-title" id="detailTitle">Archivio missioni</h2>
-            <p class="page-copy page-copy-tight" id="detailText"></p>
-
-            <div class="filter-block">
-              <p class="filter-label" id="detailFilterTitle">Filtra le missioni</p>
-              <div class="filter-toolbar">
-                <label class="search-field" for="detailSearchInput">
-                  <span class="support-copy">Ricerca locale</span>
-                  <input id="detailSearchInput" type="search" placeholder="Cerca per nome, descrizione o tema" />
-                </label>
-                <button class="button" id="detailSearchClear" type="button">Pulisci</button>
-              </div>
-              <div class="filter-stack" id="detailFilterGroups"></div>
-            </div>
-
-            <div class="section-header section-header-spaced">
-              <h3 class="list-title" data-text-key="detail.availableTitle">Missioni disponibili</h3>
-              <span class="section-count" id="detailResultsCount">0 risultati</span>
-            </div>
-
-            <div class="mission-list" id="detailMissionList"></div>
-
-            <div class="empty-state" id="detailEmptyState" hidden>
-              <h3 class="list-title" id="detailEmptyTitle">Nessuna missione</h3>
-              <p class="page-copy page-copy-tight" id="detailEmptyText"></p>
-            </div>
-          </section>
-        </div>
-      </section>
-
-      <section class="view" id="scene-mission-detail" aria-label="Dettaglio missione" hidden>
-        <div class="detail-layout">
-          <header class="detail-layout__header">
-            <button class="button" id="missionDetailBackButton" type="button">Torna indietro</button>
-            <span class="section-count" id="missionDetailEyebrow">Missione</span>
-          </header>
-
-          <section class="panel mission-detail-panel">
-            <div class="mission-detail-hero">
-              <div class="mission-detail-hero__icon" id="missionDetailIcon" aria-hidden="true"></div>
-              <div>
-                <p class="mission-header__eyeline" id="missionDetailMeta">Missione</p>
-                <h2 class="section-title mission-detail-title" id="missionDetailTitle">Titolo missione</h2>
-                <p class="page-copy page-copy-tight" id="missionDetailDescription"></p>
-              </div>
-            </div>
-
-            <div class="mission-detail-summary" id="missionDetailSummary"></div>
-
-            <div class="filter-block">
-              <p class="filter-label" id="missionDetailTagsLabel">Tag di lettura</p>
-              <div class="filter-row" id="missionDetailTags"></div>
-            </div>
-
-            <div class="action-row action-row-wrap">
-              <button class="button" id="missionSaveButton" type="button">Salva</button>
-              <button class="button button-primary" id="missionCompleteButton" type="button">Segna come fatta</button>
-            </div>
-
-            <div class="mission-detail-grid">
-              <section class="mission-detail-section">
-                <div class="section-header section-header-spaced">
-                  <h3 class="list-title" id="missionDetailObjectiveTitle">La missione</h3>
-                </div>
-                <div class="mission-detail-copy" id="missionDetailIntro"></div>
-                <ul class="mission-detail-list" id="missionDetailObjectives"></ul>
-              </section>
-
-              <section class="mission-detail-section">
-                <div class="section-header section-header-spaced">
-                  <h3 class="list-title" id="missionDetailFlowTitle">Come si completa</h3>
-                  <span class="section-count" id="missionDetailFlowCount">1 step</span>
-                </div>
-                <div class="mission-step-list" id="missionDetailSteps"></div>
-              </section>
-            </div>
-
-            <section class="mission-detail-section" id="missionDetailInfoSection">
-              <div class="section-header section-header-spaced">
-                <h3 class="list-title" id="missionDetailInfoTitle">Approfondimento</h3>
-              </div>
-              <div class="mission-detail-copy" id="missionDetailInfo"></div>
-            </section>
-
-            <section class="mission-detail-section" id="missionDetailSequenceSection">
-              <div class="section-header section-header-spaced">
-                <h3 class="list-title" id="missionDetailSequenceTitle">Sequenza</h3>
-              </div>
-              <div class="sequence-card" id="missionDetailSequenceCard"></div>
-              <div class="action-row">
-                <button class="button" id="missionNextButton" type="button">Missione successiva</button>
-              </div>
-            </section>
-          </section>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <div class="feedback-overlay" id="feedbackOverlay" hidden>
-    <div class="feedback-card" role="dialog" aria-modal="true" aria-labelledby="feedbackText">
-      <p class="story-text story-text-small" id="feedbackText"></p>
-      <p class="support-copy" id="feedbackHint"></p>
-      <button class="button button-primary" id="overlayDismiss" type="button">Continua</button>
+      a {
+        color: #f0d6a1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <p>Caricamento della versione aggiornata in corso...</p>
+      <p>
+        Se non avviene automaticamente,
+        <a id="manual-link" href="./dist/istanbul-adventure/browser/">apri qui</a>.
+      </p>
     </div>
-  </div>
 
-  <script src="./app-text.it.js"></script>
-  <script src="./content.js"></script>
-  <script src="./quiz-content.js"></script>
-  <script src="./mission-0-result-content.js"></script>
-  <script src="./mission-data.js"></script>
-  <script src="./mission-home-content.js"></script>
-  <script src="./app.js"></script>
-</body>
+    <script>
+      (async () => {
+        try {
+          if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map((registration) => registration.unregister()));
+          }
+
+          if ('caches' in window) {
+            const cacheNames = await caches.keys();
+            await Promise.all(cacheNames.map((name) => caches.delete(name)));
+          }
+        } catch (_) {
+          // no-op
+        }
+
+        const target = './dist/istanbul-adventure/browser/';
+        const version = Date.now().toString();
+        const manual = document.getElementById('manual-link');
+        if (manual) {
+          manual.href = target + '?v=' + version;
+        }
+        window.location.replace(target + '?v=' + version);
+      })();
+    </script>
+  </body>
 </html>
