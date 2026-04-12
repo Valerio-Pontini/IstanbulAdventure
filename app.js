@@ -218,7 +218,8 @@ function setScene(sceneName) {
   };
 
   ui.statusPill.textContent = labels[sceneName] || getUiText("document.title", "Istanbul Adventure");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // Keep scene switches deterministic on mobile webviews; smooth scroll can queue up and feel like a freeze.
+  window.scrollTo({ top: 0, behavior: "auto" });
 }
 
 function setProgress(element, value) {
@@ -1187,13 +1188,17 @@ function syncSceneWithHash() {
   const hash = window.location.hash;
 
   if (hash === "#missione-0") {
-    showMission();
+    if (currentScene !== "mission") {
+      showMission();
+    }
     return;
   }
 
   if (hash === (MISSION_ZERO_RESULT_CONTENT.homeRoute || "#home") && isHomeUnlocked()) {
     resolvedCategoryId = getStoredCategoryId();
-    showHome();
+    if (currentScene !== "home") {
+      showHome();
+    }
     return;
   }
 
@@ -1203,7 +1208,6 @@ function syncSceneWithHash() {
 ui.enterButton.addEventListener("click", showStory);
 ui.jumpToMissionButton.addEventListener("click", () => {
   window.location.hash = "#missione-0";
-  showMission();
 });
 
 ui.storyPrev.addEventListener("click", () => {
@@ -1223,7 +1227,6 @@ ui.storyNext.addEventListener("click", () => {
   }
 
   window.location.hash = "#missione-0";
-  showMission();
 });
 
 ui.overlayDismiss.addEventListener("click", closeFeedback);
@@ -1235,7 +1238,6 @@ ui.feedbackOverlay.addEventListener("click", (event) => {
 
 ui.completionHomeButton.addEventListener("click", () => {
   window.location.hash = MISSION_ZERO_RESULT_CONTENT.homeRoute || "#home";
-  showHome();
 });
 
 ui.restartButton.addEventListener("click", restartExperience);
