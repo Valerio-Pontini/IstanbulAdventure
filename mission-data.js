@@ -12,7 +12,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.\n\nPerche' conta: A Istanbul i gatti non sembrano intrusi: sembrano residenti con pieni diritti. La città li tollera, li nutre e li integra. Questa convivenza racconta un’idea di spazio pubblico condiviso, dove anche gli animali diventano parte del paesaggio umano.",
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
       "slug": "001-il-cittadino-con-i-baffi",
       "tema_principale": "gatti",
       "temi_secondari": [
@@ -74,7 +74,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "I custodi della città",
       "successiva": "003",
-      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.\n\nPerche' conta: Il gatto non vive ai margini: compare proprio dove la città si muove. È parte della scena urbana, non un dettaglio separato.",
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
       "slug": "002-primo-avvistamento",
       "tema_principale": "gatti",
       "temi_secondari": [
@@ -136,7 +136,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "I custodi della città",
       "successiva": null,
-      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.\n\nPerche' conta: L’immagine romantica dei gatti di Istanbul non nasce dal nulla: nasce da una cura quotidiana, fatta di gesti minimi ripetuti da moltissime persone.",
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
       "slug": "003-la-citta-che-li-accoglie",
       "tema_principale": "gatti",
       "temi_secondari": [
@@ -199,7 +199,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.\n\nPerche' conta: Nella tradizione islamica il gatto non è considerato impuro. Un hadith racconta che Maometto permise di usare per le abluzioni l’acqua da cui aveva bevuto un gatto: segno di una familiarità religiosa che aiuta a spiegare la simpatia diffusa verso i felini.",
+      "informazioni": "I gatti di Istanbul rappresentano un raro equilibrio tra libertà animale e responsabilità collettiva. Non sono randagi nel senso tradizionale: sono cittadini non ufficiali, rispettati e accuditi, che contribuiscono al carattere unico e umano della città. La tolleranza, e spesso l'affetto, verso i gatti ha anche un fondamento islamico. Nella tradizione, il profeta Maometto è associato a episodi di grande affetto verso i felini, contribuendo a una percezione positiva ancora oggi diffusa.",
       "slug": "005-il-gatto-assetato",
       "tema_principale": "gatti",
       "temi_secondari": [
@@ -261,7 +261,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e viene poi mantenuto dalla Repubblica di Turchia, proclamata nel 1923. Le misure e i dettagli geometrici vengono fissati per legge nel 1936.\n\nPerche' conta: In Turchia la bandiera è una presenza quotidiana, ma in alcune ricorrenze civili diventa quasi un protagonista urbano. Il 29 ottobre, Festa della Repubblica, e il 10 novembre, anniversario della morte di Atatürk, il rosso e il bianco occupano in modo ancora più evidente lo spazio pubblico.",
+      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e viene poi mantenuto dalla Repubblica di Turchia, proclamata nel 1923. Le misure e i dettagli geometrici vengono fissati per legge nel 1936.",
       "slug": "006-la-bandiera-protagonista",
       "tema_principale": "bandiera",
       "temi_secondari": [
@@ -326,7 +326,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.\n\nPerche' conta: La mezzaluna e la stella non vivono solo sul tessuto della bandiera: a Istanbul compaiono anche come segni di potere, continuità dinastica e identità statale.",
+      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.",
       "slug": "007-la-mezzaluna-fuori-dalla-bandiera",
       "tema_principale": "bandiera",
       "temi_secondari": [
@@ -391,7 +391,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.\n\nPerche' conta: Una delle storie più suggestive legate alla bandiera turca racconta che, dopo una battaglia sanguinosa, la mezzaluna e la stella comparvero riflesse su una distesa rossa. È una leggenda, ma spiega bene quanto questo simbolo sia carico di immaginazione nazionale.",
+      "informazioni": "La bandiera turca è una delle più riconoscibili al mondo: fondo rosso, mezzaluna bianca e stella bianca a cinque punte, con proporzioni ufficiali 2:3. La forma attuale deriva dall’ultima fase dell’Impero ottomano: il modello rosso con mezzaluna e stella si afferma nel XIX secolo, in particolare nel 1844, e la Repubblica di Turchia, proclamata nel 1923, lo mantiene; poi le misure e i dettagli geometrici vengono fissati per legge nel 1936 e ribaditi dalla normativa successiva. Storicamente, la combinazione di rosso, mezzaluna e stella viene dall’eredità ottomana tardo-imperiale. Invece, l’idea che la mezzaluna e la stella rappresentino da sempre e solo l’Islam è una semplificazione: questi simboli esistevano già in contesti precedenti e, nel caso turco, sono arrivati alla bandiera nazionale soprattutto attraverso la tradizione statale ottomana.",
       "slug": "008-la-bandiera-riflessa",
       "tema_principale": "bandiera",
       "temi_secondari": [
@@ -455,7 +455,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.\n\nPerche' conta: La torre è entrata nell’immaginario visivo della città a tal punto da apparire persino sul retro della banconota turca da 10 lire della sesta emissione, in circolazione dal 1966 al 1981. Sul piano simbolico, la torre funziona quasi come una miniatura di Istanbul. Riunisce in un solo punto diversi significati: è una soglia tra Europa e Asia, tra città e mare, tra storia e mito; è insieme fortezza, faro e icona romantica.",
+      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
       "slug": "009-la-torre-in-mezzo-al-mare",
       "tema_principale": "torre-della-fanciulla",
       "temi_secondari": [
@@ -524,7 +524,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "La torre delle leggende",
       "successiva": "011",
-      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.\n\nPerche' conta: Secondo la leggenda, un sovrano ricevette la profezia che la figlia sarebbe morta per il morso di un serpente al compimento dei diciott’anni. Per salvarla la fece rinchiudere in una torre in mezzo al mare, ma il destino arrivò lo stesso nascosto in un cesto di frutta.",
+      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
       "slug": "010-non-si-sfugge-dal-destino",
       "tema_principale": "torre-della-fanciulla",
       "temi_secondari": [
@@ -590,7 +590,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "La torre delle leggende",
       "successiva": null,
-      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.\n\nPerche' conta: Un’altra leggenda collega la torre alla storia di Ero e Leandro: lei accendeva una luce per guidare il giovane attraverso il mare. La storia non nasce a Istanbul, ma la Kız Kulesi è diventata uno dei luoghi a cui la città ha affidato anche questo racconto d’amore.",
+      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
       "slug": "011-la-luce-dell-amore",
       "tema_principale": "torre-della-fanciulla",
       "temi_secondari": [
@@ -656,7 +656,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Il rituale della colonna",
       "successiva": "013",
-      "informazioni": "La Colonna Piangente di Hagia Sophia è un pilastro marmoreo situato nella navata nord-occidentale, riconoscibile per il foro circolare rivestito in bronzo, spesso umido al tatto. La sua superficie “sudante” ha dato origine a leggende che la collegano a poteri curativi e all’intercessione divina, talvolta associati a figure come San Gregorio Taumaturgo.\n\nPerche' conta: Questo pilastro è famoso perché il foro appare spesso umido. Nei secoli i visitatori gli hanno attribuito poteri curativi, trasformando un dettaglio architettonico in un piccolo rito cittadino.",
+      "informazioni": "La Colonna Piangente di Hagia Sophia è un pilastro marmoreo situato nella navata nord-occidentale, riconoscibile per il foro circolare rivestito in bronzo, spesso umido al tatto. La sua superficie “sudante” ha dato origine a leggende che la collegano a poteri curativi e all’intercessione divina, talvolta associati a figure come San Gregorio Taumaturgo.",
       "slug": "012-la-colonna-che-ti-cura",
       "tema_principale": "santa-sofia",
       "temi_secondari": [
@@ -719,7 +719,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Il rituale della colonna",
       "successiva": null,
-      "informazioni": "La Colonna Piangente di Hagia Sophia è un pilastro marmoreo situato nella navata nord-occidentale, riconoscibile per il foro circolare rivestito in bronzo, spesso umido al tatto. La sua superficie “sudante” ha dato origine a leggende che la collegano a poteri curativi e all’intercessione divina, talvolta associati a figure come san Gregorio Taumaturgo.\n\nPerche' conta: Attorno alla colonna sono nate molte leggende: c’è chi parla delle lacrime dei rivoltosi della Nika, chi delle lacrime di Teodora pentita. La spiegazione più concreta è meno magica ma affascinante lo stesso: l’umidità della pietra è legata all’assorbimento dell’acqua.",
+      "informazioni": "La Colonna Piangente di Hagia Sophia è un pilastro marmoreo situato nella navata nord-occidentale, riconoscibile per il foro circolare rivestito in bronzo, spesso umido al tatto. La sua superficie “sudante” ha dato origine a leggende che la collegano a poteri curativi e all’intercessione divina, talvolta associati a figure come san Gregorio Taumaturgo.",
       "slug": "013-il-rito-della-colonna",
       "tema_principale": "santa-sofia",
       "temi_secondari": [
@@ -781,7 +781,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto dell'oggetto ottenuto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il nazar boncuğu è il celebre amuleto a forma di occhio blu usato per proteggersi dal malocchio, cioè dallo sguardo invidioso o malevolo che, secondo molte tradizioni, può portare sfortuna, malessere o perdita. La credenza nel malocchio è molto più antica del nazar “turco” come lo immaginiamo oggi: esisteva già nell’antichità classica e nel Vicino Oriente. Il nazar boncuğu in vetro, invece, è legato alla storia della lavorazione del vetro in Anatolia; fonti ufficiali turche indicano che i primi esempi in vetro prodotti specificamente come amuleti contro il malocchio vennero realizzati a Görece, nella provincia di İzmir.\n\nPerche' conta: L’occhio serve, per così dire, a “guardare indietro”: invece di subire lo sguardo nocivo, lo intercetta e lo respinge. Anche i colori concentrici contano: il blu domina quasi sempre, e nella tradizione popolare anatolica è associato a una funzione protettiva.",
+      "informazioni": "Il nazar boncuğu è il celebre amuleto a forma di occhio blu usato per proteggersi dal malocchio, cioè dallo sguardo invidioso o malevolo che, secondo molte tradizioni, può portare sfortuna, malessere o perdita. La credenza nel malocchio è molto più antica del nazar “turco” come lo immaginiamo oggi: esisteva già nell’antichità classica e nel Vicino Oriente. Il nazar boncuğu in vetro, invece, è legato alla storia della lavorazione del vetro in Anatolia; fonti ufficiali turche indicano che i primi esempi in vetro prodotti specificamente come amuleti contro il malocchio vennero realizzati a Görece, nella provincia di İzmir.",
       "slug": "014-scaccia-il-malocchio",
       "tema_principale": "nazar",
       "temi_secondari": [
@@ -844,7 +844,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le fonti ufficiali turche spiegano che i nazar vengono messi dove tutti possano vederli, perché devono intercettare lo sguardo prima che colpisca la persona o l’oggetto protetto. Questo spiega perché a Istanbul li trovi spesso all’ingresso di case, negozi e luoghi di lavoro.\n\nPerche' conta: Il nazar viene spesso regalato in occasioni di passaggio o vulnerabilità, per esempio a un neonato, a chi ha appena aperto una casa o un’attività, o a chi parte per un viaggio. È un gesto semplice ma molto radicato nella vita quotidiana.",
+      "informazioni": "Le fonti ufficiali turche spiegano che i nazar vengono messi dove tutti possano vederli, perché devono intercettare lo sguardo prima che colpisca la persona o l’oggetto protetto. Questo spiega perché a Istanbul li trovi spesso all’ingresso di case, negozi e luoghi di lavoro.",
       "slug": "015-trova-l-occhio",
       "tema_principale": "nazar",
       "temi_secondari": [
@@ -906,7 +906,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il tulipano (Lale), a Istanbul, non è solo un fiore decorativo: è quasi un simbolo identitario della città e, più in generale, di una parte importante della cultura ottomana. Le sue origini botaniche sono orientali: la coltivazione del tulipano viene fatta risalire alla Persia già intorno al X secolo. In seguito il fiore divenne uno dei simboli dell’Impero ottomano.\n\nPerche' conta: Nella tradizione ornamentale ottomana il tulipano compare nelle arti decorative e nei motivi floreali naturalistici; la sua stilizzazione alta e affusolata si ritrova in miniature, tessuti, calligrafie e soprattutto nelle ceramiche di İznik. In Turchia, infatti, il tulipano non è percepito soltanto come “romantico”, ma come fiore nobile, disciplinato, quasi cerimoniale.",
+      "informazioni": "Il tulipano (Lale), a Istanbul, non è solo un fiore decorativo: è quasi un simbolo identitario della città e, più in generale, di una parte importante della cultura ottomana. Le sue origini botaniche sono orientali: la coltivazione del tulipano viene fatta risalire alla Persia già intorno al X secolo. In seguito il fiore divenne uno dei simboli dell’Impero ottomano.",
       "slug": "016-lale-lale",
       "tema_principale": "tulipani",
       "temi_secondari": [
@@ -970,7 +970,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Sulle tracce della Lâle Devri",
       "successiva": "018",
-      "informazioni": "La Lâle Devri o era dei tulipani (1718–1730) fu il periodo della storia ottomana compreso tra il Trattato di Passarowitz del 21 luglio 1718 e la rivolta di Patrona Halil del 28 settembre 1730. Fu un periodo relativamente pacifico, durante il quale l'Impero ottomano iniziò a orientarsi verso l'Europa. Il nome deriva dalla mania per i tulipani scoppiata nella corte ottomana. Coltivare questo fiore era diventata una pratica abituale. Durante questo periodo l'élite e la corte ottomana avevano dimostrato un'immensa predilezione per il tulipano, che veniva utilizzato in varie occasioni. I tulipani definivano la nobiltà e il privilegio, sia in termini materiali che simbolici.\n\nPerche' conta: La Lâle Devri, l’Era dei Tulipani, fu un periodo di gusto raffinato e apertura culturale. Le grandi fontane pubbliche di inizio Settecento sono tra i suoi simboli più visibili.",
+      "informazioni": "La Lâle Devri o era dei tulipani (1718–1730) fu il periodo della storia ottomana compreso tra il Trattato di Passarowitz del 21 luglio 1718 e la rivolta di Patrona Halil del 28 settembre 1730. Fu un periodo relativamente pacifico, durante il quale l'Impero ottomano iniziò a orientarsi verso l'Europa. Il nome deriva dalla mania per i tulipani scoppiata nella corte ottomana. Coltivare questo fiore era diventata una pratica abituale. Durante questo periodo l'élite e la corte ottomana avevano dimostrato un'immensa predilezione per il tulipano, che veniva utilizzato in varie occasioni. I tulipani definivano la nobiltà e il privilegio, sia in termini materiali che simbolici.",
       "slug": "017-la-fontana-dell-era-dei-tulipani",
       "tema_principale": "tulipani",
       "temi_secondari": [
@@ -1034,7 +1034,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Sulle tracce della Lâle Devri",
       "successiva": null,
-      "informazioni": "La Lâle Devri o era dei tulipani (1718–1730) fu il periodo della storia ottomana compreso tra il Trattato di Passarowitz del 21 luglio 1718 e la rivolta di Patrona Halil del 28 settembre 1730. Fu un periodo relativamente pacifico, durante il quale l'Impero ottomano iniziò a orientarsi verso l'Europa. Il nome deriva dalla mania per i tulipani scoppiata nella corte ottomana. Coltivare questo fiore era diventata una pratica abituale. Durante questo periodo l'élite e la corte ottomana avevano dimostrato un'immensa predilezione per il tulipano, che veniva utilizzato in varie occasioni. I tulipani definivano la nobiltà e il privilegio, sia in termini materiali che simbolici.\n\nPerche' conta: Nel linguaggio ornamentale ottomano il tulipano diventa disciplina, eleganza, prestigio. Sulla fontana la decorazione floreale non è un abbellimento casuale: è una firma culturale.",
+      "informazioni": "La Lâle Devri o era dei tulipani (1718–1730) fu il periodo della storia ottomana compreso tra il Trattato di Passarowitz del 21 luglio 1718 e la rivolta di Patrona Halil del 28 settembre 1730. Fu un periodo relativamente pacifico, durante il quale l'Impero ottomano iniziò a orientarsi verso l'Europa. Il nome deriva dalla mania per i tulipani scoppiata nella corte ottomana. Coltivare questo fiore era diventata una pratica abituale. Durante questo periodo l'élite e la corte ottomana avevano dimostrato un'immensa predilezione per il tulipano, che veniva utilizzato in varie occasioni. I tulipani definivano la nobiltà e il privilegio, sia in termini materiali che simbolici.",
       "slug": "018-i-tulipani-scolpiti",
       "tema_principale": "tulipani",
       "temi_secondari": [
@@ -1099,7 +1099,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "A Istanbul vengono piantati milioni di bulbi ogni anno, soprattutto per il festival della fioritura dei tulipani ad aprile.\n\nPerche' conta: I colori dei tulipani nei parchi vengono pianificati come un mosaico per creare disegni geometrici o motivi decorativi.",
+      "informazioni": "A Istanbul vengono piantati milioni di bulbi ogni anno, soprattutto per il festival della fioritura dei tulipani ad aprile.",
       "slug": "019-il-giardino-colorato",
       "tema_principale": "tulipani",
       "temi_secondari": [
@@ -1161,7 +1161,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto della porzione",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La parola di origine araba aşure significa \"decimo\". Infatti, secondo la tradizione turca, questo dolce viene preparato, il decimo giorno del Muharram, ossia il primo mese del calendario turco. Il termine aşure ha però valore anche secondo l'origine etimologica turca: in turco aş indica, genericamente, un porridge misto. Lo troviamo in altri dolci come il Sütlaç (Sütlü Aş), un dolce a base di riso e latte. La parola turca aş deriva infatti, dal termine persiano ashur, ossia mischiato.\n\nPerche' conta: L’aşure è un dolce di mescolanza e condivisione: ingredienti diversi convivono nella stessa ciotola, proprio come nelle storie che gli vengono attribuite. In Turchia il suo valore è tanto rituale quanto gastronomico.",
+      "informazioni": "La parola di origine araba aşure significa \"decimo\". Infatti, secondo la tradizione turca, questo dolce viene preparato, il decimo giorno del Muharram, ossia il primo mese del calendario turco. Il termine aşure ha però valore anche secondo l'origine etimologica turca: in turco aş indica, genericamente, un porridge misto. Lo troviamo in altri dolci come il Sütlaç (Sütlü Aş), un dolce a base di riso e latte. La parola turca aş deriva infatti, dal termine persiano ashur, ossia mischiato.",
       "slug": "020-sapori-stagionali-l-asure",
       "tema_principale": "asure",
       "temi_secondari": [
@@ -1224,7 +1224,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il Bosforo è lo stretto che unisce il Mar Nero al Mare di Marmara e segna, assieme allo stretto dei Dardanelli, il confine meridionale tra il continente europeo e il continente asiatico. Ha una lunghezza di 31,7 km per una larghezza che va dai 550 ai 3 000 metri. Sulla sponda europea, attorno al Corno d'Oro, si è sviluppata la città di Istanbul, l'antica Costantinopoli, la cui attuale area urbana si estende anche sulla sponda asiatica per circa 18 chilometri.\n\nPerche' conta: Istanbul è l'unica metropoli al mondo situata a cavallo tra due continenti, Europa e Asia, separati dallo stretto del Bosforo.",
+      "informazioni": "Il Bosforo è lo stretto che unisce il Mar Nero al Mare di Marmara e segna, assieme allo stretto dei Dardanelli, il confine meridionale tra il continente europeo e il continente asiatico. Ha una lunghezza di 31,7 km per una larghezza che va dai 550 ai 3 000 metri. Sulla sponda europea, attorno al Corno d'Oro, si è sviluppata la città di Istanbul, l'antica Costantinopoli, la cui attuale area urbana si estende anche sulla sponda asiatica per circa 18 chilometri.",
       "slug": "021-i-due-continenti",
       "tema_principale": "bosforo",
       "temi_secondari": [
@@ -1286,7 +1286,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Chiesa Bulgara di Santo Stefano è una Chiesa ortodossa bulgara nel quartiere di Balat, ad Istanbul. È famosa per essere fatta di elementi prefabbricati in ghisa in stile neo-bizantino. La chiesa appartiene alla minoranza bulgara della città. I bulgari dell'Impero ottomano erano soliti pregare nelle chiese del Patriarcato ortodosso di Fener in quanto facevano parte del Rūm millet, la comunità dei cristiani ortodossi dell'Impero, ma il movimento nazionalista bulgaro del XIX secolo sostenne la creazione di un'organizzazione ecclesiastica bulgara separata per i cristiani ortodossi bulgari in quanto consideravano il Patriarcato del Phanar un'istituzione prevalentemente greca. Questi sforzi culminarono nel riconoscimento dell'Esarcato bulgaro attraverso un firmano emesso dal sultano dell'Impero Ottomano Abdülaziz nel 1870.\n\nPerche' conta: Dopo che la struttura originale in legno subì un incendio, al suo posto fu costruito il più grande edificio attuale. Un telaio di ferro fu preferito all'armatura di cemento a causa delle deboli condizioni del terreno. I piani di costruzione furono preparati dall'architetto armeno ottomano di Istanbul Hovsep Aznavur.",
+      "informazioni": "La Chiesa Bulgara di Santo Stefano è una Chiesa ortodossa bulgara nel quartiere di Balat, ad Istanbul. È famosa per essere fatta di elementi prefabbricati in ghisa in stile neo-bizantino. La chiesa appartiene alla minoranza bulgara della città. I bulgari dell'Impero ottomano erano soliti pregare nelle chiese del Patriarcato ortodosso di Fener in quanto facevano parte del Rūm millet, la comunità dei cristiani ortodossi dell'Impero, ma il movimento nazionalista bulgaro del XIX secolo sostenne la creazione di un'organizzazione ecclesiastica bulgara separata per i cristiani ortodossi bulgari in quanto consideravano il Patriarcato del Phanar un'istituzione prevalentemente greca. Questi sforzi culminarono nel riconoscimento dell'Esarcato bulgaro attraverso un firmano emesso dal sultano dell'Impero Ottomano Abdülaziz nel 1870.",
       "slug": "022-la-chiesa-di-ferro",
       "tema_principale": "balat-chiesa-bulgara",
       "temi_secondari": [
@@ -1348,7 +1348,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del bicchiere",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il tè è un elemento importante della cultura turca, ed è la bevanda calda più comunemente consumata, nonostante la lunga storia del paese nel consumo di caffè. Servire il tè agli ospiti è parte dell'ospitalità turca. Il tè è più spesso consumato nelle famiglie, nei negozi e nei kıraathane, incontri sociali degli uomini.\n\nPerche' conta: Il più delle volte, il tè viene servito con biscotti salati o dolci chiamati kurabiye",
+      "informazioni": "Il tè è un elemento importante della cultura turca, ed è la bevanda calda più comunemente consumata, nonostante la lunga storia del paese nel consumo di caffè. Servire il tè agli ospiti è parte dell'ospitalità turca. Il tè è più spesso consumato nelle famiglie, nei negozi e nei kıraathane, incontri sociali degli uomini.",
       "slug": "023-l-ora-del-te",
       "tema_principale": "cay",
       "temi_secondari": [
@@ -1410,7 +1410,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Il servizio da tè",
       "successiva": "025",
-      "informazioni": "Per i turchi prendere il tè è un rito che si svolge praticamente lungo tutta la giornata. Con il tè inizia la colazione, si beve un tè tra amici per una chiacchierata, si beve il tè alla fine di un pasto, viene proposto quando si va a far shopping in un negozio; con il tè si inganna l’attesa se bisogna attraversare il Bosforo a Istanbul o il golfo di Izmir. Quando il tè viene offerto è segno che si è benvenuti.\n\nPerche' conta: Il tè turco nasce da una preparazione a due piani: sotto l’acqua, sopra l’infusione forte. Anche il servizio quotidiano diventa così un piccolo rituale tecnico.",
+      "informazioni": "Per i turchi prendere il tè è un rito che si svolge praticamente lungo tutta la giornata. Con il tè inizia la colazione, si beve un tè tra amici per una chiacchierata, si beve il tè alla fine di un pasto, viene proposto quando si va a far shopping in un negozio; con il tè si inganna l’attesa se bisogna attraversare il Bosforo a Istanbul o il golfo di Izmir. Quando il tè viene offerto è segno che si è benvenuti.",
       "slug": "024-prima-del-primo-sorso",
       "tema_principale": "cay",
       "temi_secondari": [
@@ -1474,7 +1474,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Il servizio da tè",
       "successiva": null,
-      "informazioni": "Per i turchi prendere il tè è un rito che si svolge praticamente lungo tutta la giornata. Con il tè inizia la colazione, si beve un tè tra amici per una chiacchierata, si beve il tè alla fine di un pasto, viene proposto quando si va a far shopping in un negozio; con il tè si inganna l’attesa se bisogna attraversare il Bosforo a Istanbul o il golfo di Izmir. Quando il tè viene offerto è segno che si è benvenuti.\n\nPerche' conta: La forma del bicchiere non è solo bella: aiuta a tenere il tè caldo e a mostrarne il colore ambrato. Anche qui l’estetica e l’uso pratico coincidono.",
+      "informazioni": "Per i turchi prendere il tè è un rito che si svolge praticamente lungo tutta la giornata. Con il tè inizia la colazione, si beve un tè tra amici per una chiacchierata, si beve il tè alla fine di un pasto, viene proposto quando si va a far shopping in un negozio; con il tè si inganna l’attesa se bisogna attraversare il Bosforo a Istanbul o il golfo di Izmir. Quando il tè viene offerto è segno che si è benvenuti.",
       "slug": "025-il-bicchiere-a-tulipano",
       "tema_principale": "cay",
       "temi_secondari": [
@@ -1537,7 +1537,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Sulle balaustre marmoree del matroneo superiore, si trovano delle celebri iscrizioni runiche lasciate dai vichinghi tra il IX e l'XI secolo. Questi graffiti testimoniano la presenza dei guerrieri norreni a Costantinopoli, molti dei quali servivano come mercenari d'élite nella leggendaria Guardia Varangiana dell'imperatore bizantino.\n\nPerche' conta: Le iscrizioni più note includono sono l'iscrizione di Halfdan e quella di Are. La prima è la più famosa e recita probabilmente \"Halfdan incise queste rune\" o \"Halfdan era qui\". Oggi è parzialmente consumata e difficile da leggere a occhio nudo, protetta da una lastra di vetro. La seconda, rinvenuta più tardi e meno visibile è attribuita a un certo Are (o Ari). Alcuni studiosi ipotizzano che la frase incisa possa essere una parte di formula: “Ári m(ade these runes)” (Ári ha inciso queste rune).",
+      "informazioni": "Sulle balaustre marmoree del matroneo superiore, si trovano delle celebri iscrizioni runiche lasciate dai vichinghi tra il IX e l'XI secolo. Questi graffiti testimoniano la presenza dei guerrieri norreni a Costantinopoli, molti dei quali servivano come mercenari d'élite nella leggendaria Guardia Varangiana dell'imperatore bizantino.",
       "slug": "026-graffiti-inaspettati",
       "tema_principale": "santa-sofia",
       "temi_secondari": [
@@ -1600,7 +1600,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "In genere una moschea ha da 1 a 4 minareti: uno nelle moschee piccole, due in quelle di media importanza e quattro nelle grandi moschee monumentali (soprattutto di tradizione ottomana). Il minareto nasce con una funzione pratica, cioè permettere al muezzin di chiamare i fedeli alla preghiera dall’alto. Con il tempo, però, è diventato anche un simbolo di prestigio: più minareti indicano una moschea più importante o legata al potere politico e religioso. Oggi la funzione pratica è meno rilevante grazie agli altoparlanti, ma il valore simbolico e architettonico rimane.\n\nPerche' conta: Quando la Moschea Blu fu costruita, solo la grande moschea della Mecca aveva 6 minareti. Costruirne 6 a Istanbul fu visto come un gesto di grande ambizione (quasi arroganza) del sultano Ahmed I. Per evitare polemiche, secondo la tradizione il sultano fece aggiungere un settimo minareto alla Mecca, così da mantenerne la superiorità.",
+      "informazioni": "In genere una moschea ha da 1 a 4 minareti: uno nelle moschee piccole, due in quelle di media importanza e quattro nelle grandi moschee monumentali (soprattutto di tradizione ottomana). Il minareto nasce con una funzione pratica, cioè permettere al muezzin di chiamare i fedeli alla preghiera dall’alto. Con il tempo, però, è diventato anche un simbolo di prestigio: più minareti indicano una moschea più importante o legata al potere politico e religioso. Oggi la funzione pratica è meno rilevante grazie agli altoparlanti, ma il valore simbolico e architettonico rimane.",
       "slug": "027-un-insolito-dettaglio",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -1662,7 +1662,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il melograno in Turchia è un potente simbolo di fertilità, abbondanza e prosperità. Tradizionalmente legato alla tradizione rurale e ai matrimoni, rappresenta l'augurio di una vita ricca e numerosa. È comune anche il suo utilizzo decorativo, raffigurato negli stemmi di diverse città turche. Presente anche nella cultura islamica, il melograno è menzionato nel Corano come uno dei frutti del giardino del Paradiso.  Oltre ai matrimoni, viene offerto come dono propiziatorio e consumato come portafortuna per il nuovo anno.\n\nPerche' conta: In Turchia, esiste la tradizione secondo cui le spose lanciano a terra un melograno maturo. Il numero di chicchi che escono dal frutto rappresenta il numero di figli che la coppia avrà.",
+      "informazioni": "Il melograno in Turchia è un potente simbolo di fertilità, abbondanza e prosperità. Tradizionalmente legato alla tradizione rurale e ai matrimoni, rappresenta l'augurio di una vita ricca e numerosa. È comune anche il suo utilizzo decorativo, raffigurato negli stemmi di diverse città turche. Presente anche nella cultura islamica, il melograno è menzionato nel Corano come uno dei frutti del giardino del Paradiso.  Oltre ai matrimoni, viene offerto come dono propiziatorio e consumato come portafortuna per il nuovo anno.",
       "slug": "028-semi-e-prosperita",
       "tema_principale": "melograno",
       "temi_secondari": [
@@ -1723,7 +1723,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del piatto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le kofte sono polpette speziate tradizionali turche, solitamente a base di carne macinata (agnello o manzo), cipolla, prezzemolo, pane raffermo e spezie come cumino e paprika. Dalla forma allungata o schiacciata, si servono grigliate, fritte o in umido, spesso accompagnate da bulgur, yogurt o all'interno di pite\n\nPerche' conta: Esistono oltre 300 varianti. Alcune delle più note sono: Içli Köfte (polpette ripiene di noci e carne, bollite o fritte), Çiğ Köfte (una versione speziata a base di bulgur, talvolta cruda, nella tradizione originaria, tipica del sud-est) e İnegöl Köfte (polpette dalla forma allungata tipiche di Bursa)",
+      "informazioni": "Le kofte sono polpette speziate tradizionali turche, solitamente a base di carne macinata (agnello o manzo), cipolla, prezzemolo, pane raffermo e spezie come cumino e paprika. Dalla forma allungata o schiacciata, si servono grigliate, fritte o in umido, spesso accompagnate da bulgur, yogurt o all'interno di pite",
       "slug": "029-non-chiamarle-polpette",
       "tema_principale": "kofte",
       "temi_secondari": [
@@ -1784,7 +1784,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "I dervisci rotanti praticano una forma di meditazione fisicamente attiva che ha avuto origine tra alcune confraternite islamiche sufi e che è ancora praticata dai dervisci della confraternita mevlevi e altri ordini come il Rifa'i-Marufi. È una pratica di meditazione consueta eseguita all'interno del sema, o cerimonia di adorazione, attraverso la quale i dervisci mirano a raggiungere la fonte di ogni perfezione. I dervisci riescono a danzare per lunghi periodi senza sperimentare vertigini o nausea grazie a una combinazione di postura corporea, concentrazione e abbigliamento specifico. Durante la danza, la testa è inclinata di circa venticinque gradi, le braccia sono aperte e lo sguardo è mantenuto semiaperto, creando una \"fissazione ottica\" che contribuisce a stabilizzare la percezione visiva.La danza implica anche l'uso di gonne chiamate \"Tennure\", che si aprono durante il movimento, sfruttando la forza centrifuga per ridurre l'oscillazione e gli scossoni. I dervisci ruotano attorno al piede sinistro, con il corpo che si sposta in una serie di movimenti ripetitivi, il cui obiettivo è minimizzare le vibrazioni e stimolare il centro di equilibrio nell'orecchio interno.\n\nPerche' conta: I dervisci rotanti appartengono a una tradizione spirituale e rituale precisa. A Istanbul la loro immagine è diffusissima, ma dietro la figura iconica esiste una pratica religiosa molto più complessa di quanto sembri al turista.",
+      "informazioni": "I dervisci rotanti praticano una forma di meditazione fisicamente attiva che ha avuto origine tra alcune confraternite islamiche sufi e che è ancora praticata dai dervisci della confraternita mevlevi e altri ordini come il Rifa'i-Marufi. È una pratica di meditazione consueta eseguita all'interno del sema, o cerimonia di adorazione, attraverso la quale i dervisci mirano a raggiungere la fonte di ogni perfezione. I dervisci riescono a danzare per lunghi periodi senza sperimentare vertigini o nausea grazie a una combinazione di postura corporea, concentrazione e abbigliamento specifico. Durante la danza, la testa è inclinata di circa venticinque gradi, le braccia sono aperte e lo sguardo è mantenuto semiaperto, creando una \"fissazione ottica\" che contribuisce a stabilizzare la percezione visiva.La danza implica anche l'uso di gonne chiamate \"Tennure\", che si aprono durante il movimento, sfruttando la forza centrifuga per ridurre l'oscillazione e gli scossoni. I dervisci ruotano attorno al piede sinistro, con il corpo che si sposta in una serie di movimenti ripetitivi, il cui obiettivo è minimizzare le vibrazioni e stimolare il centro di equilibrio nell'orecchio interno.",
       "slug": "030-l-ombra-del-derviscio",
       "tema_principale": "dervisci",
       "temi_secondari": [
@@ -1843,7 +1843,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto della tazzina",
       "nome_sequenza": "Caffeomanti in erba",
       "successiva": "032",
-      "informazioni": "Il caffè turco racchiude in sé secoli e secoli di storia e può essere sicuramente considerato il padre di tutti i caffè moderni. La sua creazione risale a più di 500 anni fa, ma ancora oggi la sua fama lo precede. Infatti, il caffè è iscritto dall'UNESCO nella lista dei patrimoni culturali immateriali dell'umanità. La lettura del destino nel caffè turco, chiamata anche caffeomanzia, è una pratica tradizionale molto meticolosa in cui si interpreta il futuro osservando i fondi di caffè rimasti nella tazza dopo che quest'ultima è stata bevuta e capovolta. Si tratta di una pratica sociale, capace di coniugare mistero e divertimento, felicità e tristezza; un vero momento di convivialità e di speranza. Una regola fondamentale è non mescolare il caffè una volta versato nella tazzina per evitare di rovinare la \"schiuma\" in superficie, considerata un elemento di pregio.\n\nPerche' conta: Il caffè turco non è solo una bevanda: è un gesto sociale, un tempo lento, una scusa per fermarsi e parlare. Anche i fondi fanno parte dell’esperienza.",
+      "informazioni": "Il caffè turco racchiude in sé secoli e secoli di storia e può essere sicuramente considerato il padre di tutti i caffè moderni. La sua creazione risale a più di 500 anni fa, ma ancora oggi la sua fama lo precede. Infatti, il caffè è iscritto dall'UNESCO nella lista dei patrimoni culturali immateriali dell'umanità. La lettura del destino nel caffè turco, chiamata anche caffeomanzia, è una pratica tradizionale molto meticolosa in cui si interpreta il futuro osservando i fondi di caffè rimasti nella tazza dopo che quest'ultima è stata bevuta e capovolta. Si tratta di una pratica sociale, capace di coniugare mistero e divertimento, felicità e tristezza; un vero momento di convivialità e di speranza. Una regola fondamentale è non mescolare il caffè una volta versato nella tazzina per evitare di rovinare la \"schiuma\" in superficie, considerata un elemento di pregio.",
       "slug": "031-degustazione-lenta",
       "tema_principale": "caffe-turco",
       "temi_secondari": [
@@ -1906,7 +1906,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto della tazza capovolta o dei fondi",
       "nome_sequenza": "Caffeomanti in erba",
       "successiva": null,
-      "informazioni": "Il caffè turco racchiude in sé secoli e secoli di storia e può essere sicuramente considerato il padre di tutti i caffè moderni. La sua creazione risale a più di 500 anni fa, ma ancora oggi la sua fama lo precede. Infatti, il caffè è iscritto dall'UNESCO nella lista dei patrimoni culturali immateriali dell'umanità. La lettura del destino nel caffè turco, chiamata anche caffeomanzia, è una pratica tradizionale molto meticolosa in cui si interpreta il futuro osservando i fondi di caffè rimasti nella tazza dopo che quest'ultima è stata bevuta e capovolta. Si tratta di una pratica sociale, capace di coniugare mistero e divertimento, felicità e tristezza; un vero momento di convivialità e di speranza. Una regola fondamentale è non mescolare il caffè una volta versato nella tazzina per evitare di rovinare la \"schiuma\" in superficie, considerata un elemento di pregio.\n\nPerche' conta: La caffeomanzia non serve tanto a predire davvero il futuro quanto a trasformare il caffè in racconto condiviso. Il divertimento sta nell’interpretazione, non nella certezza.",
+      "informazioni": "Il caffè turco racchiude in sé secoli e secoli di storia e può essere sicuramente considerato il padre di tutti i caffè moderni. La sua creazione risale a più di 500 anni fa, ma ancora oggi la sua fama lo precede. Infatti, il caffè è iscritto dall'UNESCO nella lista dei patrimoni culturali immateriali dell'umanità. La lettura del destino nel caffè turco, chiamata anche caffeomanzia, è una pratica tradizionale molto meticolosa in cui si interpreta il futuro osservando i fondi di caffè rimasti nella tazza dopo che quest'ultima è stata bevuta e capovolta. Si tratta di una pratica sociale, capace di coniugare mistero e divertimento, felicità e tristezza; un vero momento di convivialità e di speranza. Una regola fondamentale è non mescolare il caffè una volta versato nella tazzina per evitare di rovinare la \"schiuma\" in superficie, considerata un elemento di pregio.",
       "slug": "032-leggi-i-fondi",
       "tema_principale": "caffe-turco",
       "temi_secondari": [
@@ -1969,7 +1969,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del simit",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il simit, traducibile in italiano come ciambella di sesamo è una pasta lievitata a forma di ciambella con semi di sesamo sulla crosta.\n\nPerche' conta: Il Simit è stato inventato circa 500 anni fa nell'impero ottomano e da allora si è diffuso nei Balcani. Il viaggiatore del 17 ° secolo Evliya Çelebi scrisse che a Istanbul c'erano 70 panetterie di simit negli anni '30 del 1600.",
+      "informazioni": "Il simit, traducibile in italiano come ciambella di sesamo è una pasta lievitata a forma di ciambella con semi di sesamo sulla crosta.",
       "slug": "033-passione-street-food",
       "tema_principale": "simit",
       "temi_secondari": [
@@ -2030,7 +2030,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del dolce",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il baklava è un dessert ricco di zucchero (o miele) e frutta secca originario dell'odierna Turchia. Era uno dei dolci più popolari della cucina ottomana. La storia del baklava non è ben documentata. È stata rivendicata da molti gruppi etnici, ma molto probabilmente si tratta di un piatto turco proveniente dall'Asia Centrale, sviluppato nella sua forma attuale nelle cucine imperiali del Palazzo di Topkapı.\n\nPerche' conta: Il Sultano era solito donare vassoi di baklava ai giannizzeri il 15 del mese di Ramadan in una processione cerimoniale chiamata Baklava Alayi",
+      "informazioni": "Il baklava è un dessert ricco di zucchero (o miele) e frutta secca originario dell'odierna Turchia. Era uno dei dolci più popolari della cucina ottomana. La storia del baklava non è ben documentata. È stata rivendicata da molti gruppi etnici, ma molto probabilmente si tratta di un piatto turco proveniente dall'Asia Centrale, sviluppato nella sua forma attuale nelle cucine imperiali del Palazzo di Topkapı.",
       "slug": "034-qualcosa-di-dolce",
       "tema_principale": "baklava",
       "temi_secondari": [
@@ -2094,7 +2094,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del piatto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il manti è un tipo di pasta ripiena tipico della cucina turca, delle cucine caucasiche e dell'Asia centrale della cucina uigura e della cucina russa. Consistono in ravioli ripieni di carne di agnello, cavallo o manzo macinata e speziata che vengono bolliti o cotti al vapore. Dimensioni e forma dei Manti variano da luogo a luogo. I manti sono strettamente imparentati etimologicamente ai mantou cinesi ma assomigliano molto di più ai jiaozi, al Buuz mongolo, al Momo nepalese e al Mandu coreano. Nella cucina turca moderna, i manti sono tipicamente serviti conditi con yogurt e aglio, speziati con pepe rosso in polvere e burro fuso e conditi con sumac macinato e/o menta secca.\n\nPerche' conta: Un tipo popolare di manti turchi è conosciuto come Kayseri mantısı, una particolarità culturale di Kayseri, città dell'Anatolia centrale. Il mantı di Kayseri è piccolo e viene servito con yogurt, burro fuso e condito con menta secca e pepe di Aleppo in scaglie",
+      "informazioni": "Il manti è un tipo di pasta ripiena tipico della cucina turca, delle cucine caucasiche e dell'Asia centrale della cucina uigura e della cucina russa. Consistono in ravioli ripieni di carne di agnello, cavallo o manzo macinata e speziata che vengono bolliti o cotti al vapore. Dimensioni e forma dei Manti variano da luogo a luogo. I manti sono strettamente imparentati etimologicamente ai mantou cinesi ma assomigliano molto di più ai jiaozi, al Buuz mongolo, al Momo nepalese e al Mandu coreano. Nella cucina turca moderna, i manti sono tipicamente serviti conditi con yogurt e aglio, speziati con pepe rosso in polvere e burro fuso e conditi con sumac macinato e/o menta secca.",
       "slug": "035-il-raviolo-turco",
       "tema_principale": "manti",
       "temi_secondari": [
@@ -2157,7 +2157,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Togliersi le scarpe prima di entrare in casa è una tradizione sulla quale i turchi non transigono. In ogni casa turca si mettono sempre a disposizione degli ospiti, delle ciabatte di ogni misura. Solitamente, all’ingresso di ogni casa c’è un mobiletto per contenerle, mentre le proprie scarpe rimangono quasi sempre fuori dall’abitazione.\n\nPerche' conta: Poiché nelle case turche è comune sedersi su tappeti o divani bassi, mantenere il pavimento immacolato è essenziale. L'usanza deriva anche dalla pratica islamica di pregare su tappeti che devono restare puri da contaminazioni esterne.",
+      "informazioni": "Togliersi le scarpe prima di entrare in casa è una tradizione sulla quale i turchi non transigono. In ogni casa turca si mettono sempre a disposizione degli ospiti, delle ciabatte di ogni misura. Solitamente, all’ingresso di ogni casa c’è un mobiletto per contenerle, mentre le proprie scarpe rimangono quasi sempre fuori dall’abitazione.",
       "slug": "036-la-soglia",
       "tema_principale": "casa-e-ospitalita",
       "temi_secondari": [
@@ -2218,7 +2218,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Nella tradizione turca, prima del matrimonio, la sposa prepara il caffè per lo sposo e glielo serve aggiungendoci il sale al posto dello zucchero. Il caffè salato serve a testare la pazienza e il vero amore dell'uomo: se lo beve senza lamentarsi, dimostra di essere pronto ad affrontare le difficoltà della vita coniugale. La futura sposa prepara il caffè turco per tutti, ma mette il sale al posto dello zucchero nella tazzina del pretendente.  Il rito si svolge durante la visita dei genitori dello sposo a casa della sposa, un momento formale e tradizionale.\n\nPerche' conta: Nella tradizione turca la sposa può servire allo sposo un caffè con il sale al posto dello zucchero. Oggi il gesto è ricordato soprattutto come prova simbolica di pazienza e disponibilità.",
+      "informazioni": "Nella tradizione turca, prima del matrimonio, la sposa prepara il caffè per lo sposo e glielo serve aggiungendoci il sale al posto dello zucchero. Il caffè salato serve a testare la pazienza e il vero amore dell'uomo: se lo beve senza lamentarsi, dimostra di essere pronto ad affrontare le difficoltà della vita coniugale. La futura sposa prepara il caffè turco per tutti, ma mette il sale al posto dello zucchero nella tazzina del pretendente.  Il rito si svolge durante la visita dei genitori dello sposo a casa della sposa, un momento formale e tradizionale.",
       "id_originale": "036",
       "slug": "036b-il-caffe-salato-dello-sposo",
       "tema_principale": "caffe-salato",
@@ -2283,7 +2283,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il termine turchese deriva da turquoise in francese antico, che significa letteralmente \"turco\". La pietra preziosa, originaria della Persia, arrivava in Europa attraverso le rotte commerciali controllate dai Turchi Ottomani, portando gli europei a chiamarla \"pietra turca\".\n\nPerche' conta: Il nome della pietra è stato poi utilizzato nel XVI secolo (primo uso registrato nel 1573) per descrivere l'omonima sfumatura ciano-verde. I turchi chiamano il colore turchese turkuaz, adattando il prestito francese.",
+      "informazioni": "Il termine turchese deriva da turquoise in francese antico, che significa letteralmente \"turco\". La pietra preziosa, originaria della Persia, arrivava in Europa attraverso le rotte commerciali controllate dai Turchi Ottomani, portando gli europei a chiamarla \"pietra turca\".",
       "slug": "037-turchese",
       "tema_principale": "turchese",
       "temi_secondari": [
@@ -2345,7 +2345,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del prodotto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Turchia è il leader mondiale nella produzione di nocciole, coprendo circa il 65-70% dell'offerta globale. La stagione 2025/26 ha registrato una crisi produttiva, con cali dovuti a gelate e cimici asiatiche, portando a un raddoppio dei prezzi e a tensioni con grandi acquirenti come Ferrero. La produzione è concentrata lungo la regione del Mar Nero.\n\nPerche' conta: La Turchia domina da decenni la produzione mondiale di nocciole. Per questo un ingrediente che sembra semplice collega in realtà mercati globali, dolci famosi e paesaggi agricoli del Mar Nero.",
+      "informazioni": "La Turchia è il leader mondiale nella produzione di nocciole, coprendo circa il 65-70% dell'offerta globale. La stagione 2025/26 ha registrato una crisi produttiva, con cali dovuti a gelate e cimici asiatiche, portando a un raddoppio dei prezzi e a tensioni con grandi acquirenti come Ferrero. La produzione è concentrata lungo la regione del Mar Nero.",
       "slug": "038-l-oro-del-mar-nero",
       "tema_principale": "nocciole",
       "temi_secondari": [
@@ -2407,7 +2407,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto dell'oggetto acquistato",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il Gran Bazar è un immenso labirinto con oltre 4.000 negozi, dove si trovano tappeti annodati a mano, ceramiche dipinte, gioielli in oro e argento, spezie profumate, lampade in mosaico di vetro, articoli in pelle, tessuti pregiati, dolci turchi e set da caffè. È famoso anche per la vendita di prodotti artigianali, antichi e souvenir. Ricorda che il prezzo è sempre più alto del reale: spesso ti sarà offerto del tè per iniziare la trattativa. Contratta sempre con tono amichevole, quasi fosse un gioco!\n\nPerche' conta: Il Gran Bazar non è solo un posto dove comprare: è un teatro del commercio ottomano sopravvissuto nei secoli, dove il valore degli oggetti passa anche attraverso racconto, trattativa e messa in scena.",
+      "informazioni": "Il Gran Bazar è un immenso labirinto con oltre 4.000 negozi, dove si trovano tappeti annodati a mano, ceramiche dipinte, gioielli in oro e argento, spezie profumate, lampade in mosaico di vetro, articoli in pelle, tessuti pregiati, dolci turchi e set da caffè. È famoso anche per la vendita di prodotti artigianali, antichi e souvenir. Ricorda che il prezzo è sempre più alto del reale: spesso ti sarà offerto del tè per iniziare la trattativa. Contratta sempre con tono amichevole, quasi fosse un gioco!",
       "slug": "039-il-cimelio-del-bazar",
       "tema_principale": "gran-bazar",
       "temi_secondari": [
@@ -2474,7 +2474,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto del dolce",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il lokum è un prodotto dolciario fatto di amido e zucchero, di consistenza gelatinosa. Viene aromatizzato con arancia, acqua di rose, limone, pistacchi, mandorle, spezie, cannella o menta. Una variante prevede zucchero a velo o farina di cocco con cui ricoprire il tutto a fini conservativi. Comunemente rivendicato come dolce di origine turca, ha in realtà una diffusione ampia e diversificata, radicata in antichi cerimoniali e tradizioni in molti paesi del Mediterraneo orientale, che rende controversa l’attribuzione della sua invenzione a un paese o all’altro.\n\nPerche' conta: Offrire lokum è segno di accoglienza e rispetto: viene spesso servito con caffè turco o tè",
+      "informazioni": "Il lokum è un prodotto dolciario fatto di amido e zucchero, di consistenza gelatinosa. Viene aromatizzato con arancia, acqua di rose, limone, pistacchi, mandorle, spezie, cannella o menta. Una variante prevede zucchero a velo o farina di cocco con cui ricoprire il tutto a fini conservativi. Comunemente rivendicato come dolce di origine turca, ha in realtà una diffusione ampia e diversificata, radicata in antichi cerimoniali e tradizioni in molti paesi del Mediterraneo orientale, che rende controversa l’attribuzione della sua invenzione a un paese o all’altro.",
       "slug": "040-il-dolce-dell-ospitalita",
       "tema_principale": "lokum",
       "temi_secondari": [
@@ -2538,7 +2538,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "conferma del gruppo",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La lingua turca ha origini antiche, radicate nelle steppe dell'Asia Centrale (intorno ai monti Altai) e appartiene alla famiglia delle lingue turche (ramo oghuz). Evolutosi dal Proto-Turco (circa 2.500 anni fa), il turco antico è documentato dalle iscrizioni Orkhon in Mongolia (VI-VIII secolo).\n\nPerche' conta: Imparare una formula locale cambia subito il modo in cui si entra in relazione con la città. Anche una frase minima può trasformare un’interazione anonima in un piccolo scambio reale.",
+      "informazioni": "La lingua turca ha origini antiche, radicate nelle steppe dell'Asia Centrale (intorno ai monti Altai) e appartiene alla famiglia delle lingue turche (ramo oghuz). Evolutosi dal Proto-Turco (circa 2.500 anni fa), il turco antico è documentato dalle iscrizioni Orkhon in Mongolia (VI-VIII secolo).",
       "slug": "041-impara-la-lingua",
       "tema_principale": "lingua-turca",
       "temi_secondari": [
@@ -2600,7 +2600,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "I capitelli della Cisterna Basilica non sono uniformi: alcuni mostrano caratteri corinzi, altri sono più semplici e spogli. Questo conferma che molti elementi di sostegno furono recuperati da strutture precedenti.\n\nPerche' conta: La cisterna non è fatta di elementi tutti uguali. Anche nei capitelli si vede che materiali e pezzi arrivano da storie diverse: qui sotto l’ordine architettonico è anche un collage di reimpieghi.",
+      "informazioni": "I capitelli della Cisterna Basilica non sono uniformi: alcuni mostrano caratteri corinzi, altri sono più semplici e spogli. Questo conferma che molti elementi di sostegno furono recuperati da strutture precedenti.",
       "slug": "043-capitelli-d-impero",
       "tema_principale": "cisterna-basilica",
       "temi_secondari": [
@@ -2663,7 +2663,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La cisterna è oggi visitabile con un livello d’acqua molto ridotto rispetto alla sua funzione originaria. Proprio questa presenza d’acqua, insieme all’illuminazione e alle passerelle, produce i riflessi che rendono il luogo così memorabile.\n\nPerche' conta: Nella Cisterna Basilica l’acqua non serve più a rifornire la città, ma continua a trasformare il luogo: il riflesso raddoppia lo spazio e rende l’infrastruttura quasi scenografica.",
+      "informazioni": "La cisterna è oggi visitabile con un livello d’acqua molto ridotto rispetto alla sua funzione originaria. Proprio questa presenza d’acqua, insieme all’illuminazione e alle passerelle, produce i riflessi che rendono il luogo così memorabile.",
       "slug": "044-il-doppio-mondo",
       "tema_principale": "cisterna-basilica",
       "temi_secondari": [
@@ -2725,7 +2725,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Le due Meduse",
       "successiva": "047",
-      "informazioni": "Nella Cisterna Basilica le due Meduse non sono orientate allo stesso modo. Una delle due è posizionata orizzontalmente, dettaglio che ha contribuito a far nascere molte leggende sul loro significato.\n\nPerche' conta: La Medusa laterale è uno dei dettagli che rendono il luogo così perturbante. Qui un’immagine mitologica potentissima non è al centro della scena: regge in silenzio una colonna.",
+      "informazioni": "Nella Cisterna Basilica le due Meduse non sono orientate allo stesso modo. Una delle due è posizionata orizzontalmente, dettaglio che ha contribuito a far nascere molte leggende sul loro significato.",
       "slug": "046-quella-di-lato",
       "tema_principale": "cisterna-basilica",
       "temi_secondari": [
@@ -2787,7 +2787,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Le due Meduse",
       "successiva": null,
-      "informazioni": "Le Meduse della Cisterna Basilica sono due: una si trova orizzontale, l’altra capovolta. Le spiegazioni proposte variano, ma le fonti del sito sottolineano soprattutto il loro carattere di elementi riutilizzati e il forte potere evocativo che hanno assunto nel tempo.\n\nPerche' conta: La Medusa capovolta è il dettaglio che più alimenta il mistero del luogo. Non sappiamo con certezza perché sia stata sistemata così, ma proprio questa incertezza la rende memorabile.",
+      "informazioni": "Le Meduse della Cisterna Basilica sono due: una si trova orizzontale, l’altra capovolta. Le spiegazioni proposte variano, ma le fonti del sito sottolineano soprattutto il loro carattere di elementi riutilizzati e il forte potere evocativo che hanno assunto nel tempo.",
       "slug": "047-quella-capovolta",
       "tema_principale": "cisterna-basilica",
       "temi_secondari": [
@@ -2849,7 +2849,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Cisterna Basilica si distingue anche perché contiene più elementi di reimpiego rispetto ad altre grandi cisterne coperte della città. Le Meduse sono il caso più famoso di questo uso di materiali antichi in un nuovo contesto.\n\nPerche' conta: Qui il riuso non è una teoria astratta: è visibile. Un blocco scolpito per un altro contesto finisce a sorreggere una colonna in un’infrastruttura bizantina, mostrando come gli imperi costruiscano anche con i resti del passato.",
+      "informazioni": "La Cisterna Basilica si distingue anche perché contiene più elementi di reimpiego rispetto ad altre grandi cisterne coperte della città. Le Meduse sono il caso più famoso di questo uso di materiali antichi in un nuovo contesto.",
       "slug": "048-la-base-impossibile",
       "tema_principale": "cisterna-basilica",
       "temi_secondari": [
@@ -2911,7 +2911,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Trofei dell'Ippodromo",
       "successiva": "056",
-      "informazioni": "L’Obelisco di Teodosio era stato realizzato in onore del faraone Thutmose III. Fu rialzato nell’Ippodromo in età romana sotto Teodosio I e conserva ancora iscrizioni geroglifiche egizie sulle sue superfici.\n\nPerche' conta: In mezzo a Istanbul c’è un monumento che viene dall’Egitto faraonico. La piazza mostra così una stratificazione sorprendente: il cuore di Costantinopoli imperiale si è riempito di trofei e simboli arrivati da mondi diversi.",
+      "informazioni": "L’Obelisco di Teodosio era stato realizzato in onore del faraone Thutmose III. Fu rialzato nell’Ippodromo in età romana sotto Teodosio I e conserva ancora iscrizioni geroglifiche egizie sulle sue superfici.",
       "slug": "054-il-faraone-a-istanbul",
       "tema_principale": "piazza-sultanahmet",
       "temi_secondari": [
@@ -2974,7 +2974,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Trofei dell'Ippodromo",
       "successiva": "057",
-      "informazioni": "La Colonna Serpentina commemorava la vittoria di Platea del 479 a.C. e si trovava originariamente a Delfi. Delle tre teste dei serpenti non resta più la sommità: l’unica testa ritrovata è conservata oggi nel Museo Archeologico di Istanbul.\n\nPerche' conta: La Colonna Serpentina è un monumento ancora più antico dell’Ippodromo bizantino. Arriva dal santuario di Apollo a Delfi e porta a Istanbul la memoria di una vittoria greca sui Persiani, trasformata poi in trofeo imperiale.",
+      "informazioni": "La Colonna Serpentina commemorava la vittoria di Platea del 479 a.C. e si trovava originariamente a Delfi. Delle tre teste dei serpenti non resta più la sommità: l’unica testa ritrovata è conservata oggi nel Museo Archeologico di Istanbul.",
       "slug": "056-il-serpente-senza-testa",
       "tema_principale": "piazza-sultanahmet",
       "temi_secondari": [
@@ -3037,7 +3037,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Trofei dell'Ippodromo",
       "successiva": null,
-      "informazioni": "L’Obelisco Murato, all’estremità meridionale dell’antica spina dell’Ippodromo, oggi appare come una struttura in muratura. Le fonti turistiche ufficiali ricordano che un tempo aveva un rivestimento prezioso ormai perduto.\n\nPerche' conta: Nella stessa piazza convivono due idee molto diverse di monumentalità: da una parte il granito levigato di un obelisco egizio, dall’altra una struttura muraria che oggi appare spoglia ma che un tempo era molto più ricca.",
+      "informazioni": "L’Obelisco Murato, all’estremità meridionale dell’antica spina dell’Ippodromo, oggi appare come una struttura in muratura. Le fonti turistiche ufficiali ricordano che un tempo aveva un rivestimento prezioso ormai perduto.",
       "slug": "057-l-obelisco-povero",
       "tema_principale": "piazza-sultanahmet",
       "temi_secondari": [
@@ -3099,7 +3099,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Fontana Tedesca fu donata dall’imperatore tedesco Guglielmo II al sultano Abdülhamid II e alla città di Istanbul. Fu inaugurata nel 1901 ed è riconoscibile per la sua struttura ottagonale coperta da una cupola.\n\nPerche' conta: Piazza Sultanahmet non racconta solo Bizantini e Ottomani: racconta anche la diplomazia moderna. La Fontana Tedesca ricorda l’alleanza simbolica tra Germania e Impero ottomano all’inizio del Novecento.",
+      "informazioni": "La Fontana Tedesca fu donata dall’imperatore tedesco Guglielmo II al sultano Abdülhamid II e alla città di Istanbul. Fu inaugurata nel 1901 ed è riconoscibile per la sua struttura ottagonale coperta da una cupola.",
       "slug": "058-il-dono-dell-imperatore",
       "tema_principale": "piazza-sultanahmet",
       "temi_secondari": [
@@ -3162,7 +3162,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La piazza si trova nel cuore dell’area storica UNESCO di Istanbul e concentra in pochi metri monumenti bizantini, romani, ottomani e moderni. È uno dei luoghi dove la stratificazione della città si legge meglio.\n\nPerche' conta: A Sultanahmet gli strati storici non stanno separati: convivono nello stesso sguardo. Un reperto del mondo romano-orientale e una grande architettura religiosa ottomana possono entrare nella stessa immagine senza sforzo.",
+      "informazioni": "La piazza si trova nel cuore dell’area storica UNESCO di Istanbul e concentra in pochi metri monumenti bizantini, romani, ottomani e moderni. È uno dei luoghi dove la stratificazione della città si legge meglio.",
       "slug": "060-due-imperi-nello-stesso-sguardo",
       "tema_principale": "piazza-sultanahmet",
       "temi_secondari": [
@@ -3224,7 +3224,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Moschea Blu appartiene alla grande architettura ottomana classica. Il suo profilo è definito da una cupola centrale affiancata da semicupole e cupole minori, in un sistema a cascata che richiama e rielabora anche il confronto con Santa Sofia.\n\nPerche' conta: La Moschea Blu non è costruita attorno a una sola cupola isolata: la sua forma si sviluppa come una cascata di volumi. Questa struttura dà all’edificio la sua silhouette monumentale e bilanciata.",
+      "informazioni": "La Moschea Blu appartiene alla grande architettura ottomana classica. Il suo profilo è definito da una cupola centrale affiancata da semicupole e cupole minori, in un sistema a cascata che richiama e rielabora anche il confronto con Santa Sofia.",
       "slug": "061-il-cielo-a-gradoni",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -3286,7 +3286,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Moschea Blu è famosa per il vastissimo uso di ceramiche di İznik, con più di 20.000 piastrelle e decine di disegni diversi. Il blu è centrale, ma non è l’unico colore che struttura l’interno.\n\nPerche' conta: Il soprannome “Moschea Blu” semplifica molto. Le piastrelle di İznik non lavorano solo sul blu: usano anche verde, turchese, rosso e altri toni per costruire un interno molto più ricco di quanto il nome faccia immaginare.",
+      "informazioni": "La Moschea Blu è famosa per il vastissimo uso di ceramiche di İznik, con più di 20.000 piastrelle e decine di disegni diversi. Il blu è centrale, ma non è l’unico colore che struttura l’interno.",
       "slug": "062-non-e-solo-blu",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -3348,7 +3348,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le piastrelle di İznik della Moschea Blu usano ampiamente motivi floreali. Tra i più tipici della decorazione ottomana ci sono proprio i tulipani, insieme a garofani, foglie e arabeschi.\n\nPerche' conta: Nell’ornamento ottomano il tulipano non è un semplice abbellimento: è una forma disciplinata, elegante, quasi identitaria. Nella Moschea Blu compare dentro uno dei contesti più celebri della ceramica ottomana.",
+      "informazioni": "Le piastrelle di İznik della Moschea Blu usano ampiamente motivi floreali. Tra i più tipici della decorazione ottomana ci sono proprio i tulipani, insieme a garofani, foglie e arabeschi.",
       "slug": "063-un-tulipano-di-ceramica",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -3410,7 +3410,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Moschea Blu possiede un grande cortile con porticati e una composizione molto regolare. Anche questo spazio fa parte dell’esperienza architettonica complessiva del complesso imperiale.\n\nPerche' conta: Il cortile non è un semplice spazio davanti all’edificio: prepara l’ingresso, organizza il movimento e allena l’occhio alla simmetria.",
+      "informazioni": "La Moschea Blu possiede un grande cortile con porticati e una composizione molto regolare. Anche questo spazio fa parte dell’esperienza architettonica complessiva del complesso imperiale.",
       "slug": "064-la-corte-del-rito",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -3472,7 +3472,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Ahmed I avviò il progetto della Moschea Blu nel 1609, quando era molto giovane, e lo volle in una posizione simbolicamente fortissima, di fronte a Santa Sofia. La relazione visiva e politica fra i due edifici è centrale nella lettura del complesso di Sultanahmet.\n\nPerche' conta: La Moschea Blu nasce anche come gesto di confronto. Ahmed I volle una moschea imperiale capace di stare accanto a Santa Sofia senza scomparire: il dialogo tra i due edifici è parte della storia del luogo.",
+      "informazioni": "Ahmed I avviò il progetto della Moschea Blu nel 1609, quando era molto giovane, e lo volle in una posizione simbolicamente fortissima, di fronte a Santa Sofia. La relazione visiva e politica fra i due edifici è centrale nella lettura del complesso di Sultanahmet.",
       "slug": "066-il-sultano-e-il-rivale",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -3534,7 +3534,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto consentita oppure conferma del gruppo sul posto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La Moschea Blu è tuttora una moschea attiva e visitabile. La presenza di regole di accesso, momenti di preghiera e segnali legati all’uso religioso distingue nettamente il luogo da un semplice monumento storico.\n\nPerche' conta: La Moschea Blu non è solo un capolavoro storico: è ancora uno spazio religioso vivo. Questo cambia il modo in cui la si osserva, perché l’architettura qui non è separata dall’uso quotidiano.",
+      "informazioni": "La Moschea Blu è tuttora una moschea attiva e visitabile. La presenza di regole di accesso, momenti di preghiera e segnali legati all’uso religioso distingue nettamente il luogo da un semplice monumento storico.",
       "slug": "068-dentro-un-luogo-vivo",
       "tema_principale": "moschea-blu",
       "temi_secondari": [
@@ -3597,7 +3597,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le fonti turistiche ufficiali descrivono il Gran Bazar come accessibile da numerose porte, oltre venti secondo alcuni resoconti, distribuite intorno al complesso. Questo contribuisce alla sua struttura di grande mercato-labirinto.\n\nPerche' conta: Il Gran Bazar funziona come una città con confini e accessi. Le sue numerose porte non sono solo ingressi pratici: aiutano a leggere il bazar come organismo urbano separato ma connesso alla città esterna.",
+      "informazioni": "Le fonti turistiche ufficiali descrivono il Gran Bazar come accessibile da numerose porte, oltre venti secondo alcuni resoconti, distribuite intorno al complesso. Questo contribuisce alla sua struttura di grande mercato-labirinto.",
       "slug": "070-una-porta-del-bazar",
       "tema_principale": "gran-bazar",
       "temi_secondari": [
@@ -3660,7 +3660,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "conferma del gruppo",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le fonti ufficiali descrivono il Gran Bazar come un intreccio di decine di strade e passaggi coperti. Il senso di orientamento si costruisce sul posto, non solo sulla mappa.\n\nPerche' conta: Il Gran Bazar è uno dei luoghi in cui Istanbul si comporta davvero come un labirinto. Perdersi un po’ qui non è un errore: è un modo concreto per capire la scala e la logica interna del mercato.",
+      "informazioni": "Le fonti ufficiali descrivono il Gran Bazar come un intreccio di decine di strade e passaggi coperti. Il senso di orientamento si costruisce sul posto, non solo sulla mappa.",
       "slug": "077-perdersi-con-metodo",
       "tema_principale": "gran-bazar",
       "temi_secondari": [
@@ -3723,7 +3723,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le fonti turistiche ufficiali elencano tra gli oggetti più tipici del Gran Bazar lampade ornamentali, ceramiche dipinte, tessili, gioielli e articoli in pelle. La varietà merceologica è parte dell’identità del luogo.\n\nPerche' conta: Al Gran Bazar molte merci non sono solo oggetti utili: sono anche spettacolo visivo. Le lampade, in particolare, trasformano il bazar in una scena fatta di luce, colore e seduzione commerciale.",
+      "informazioni": "Le fonti turistiche ufficiali elencano tra gli oggetti più tipici del Gran Bazar lampade ornamentali, ceramiche dipinte, tessili, gioielli e articoli in pelle. La varietà merceologica è parte dell’identità del luogo.",
       "slug": "072-luce-da-bazar",
       "tema_principale": "gran-bazar",
       "temi_secondari": [
@@ -3785,7 +3785,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Le soglie del potere",
       "successiva": "084",
-      "informazioni": "Il complesso di Topkapı è organizzato per cortili successivi. La Porta della Salutazione conduce al Secondo Cortile, dove si concentrano funzioni essenziali della macchina di corte come cucine, consiglio imperiale e aree di servizio. La sua forma a due torri la rende una delle soglie più riconoscibili del palazzo.\n\nPerche' conta: A Topkapı non si entra subito. Babüsselam non è un semplice ingresso: è il filtro che separa il grande spazio esterno dal cortile dove iniziano amministrazione, protocollo e controllo.",
+      "informazioni": "Il complesso di Topkapı è organizzato per cortili successivi. La Porta della Salutazione conduce al Secondo Cortile, dove si concentrano funzioni essenziali della macchina di corte come cucine, consiglio imperiale e aree di servizio. La sua forma a due torri la rende una delle soglie più riconoscibili del palazzo.",
       "slug": "083-la-porta-delle-due-torri",
       "tema_principale": "topkapi",
       "temi_secondari": [
@@ -3850,7 +3850,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Le soglie del potere",
       "successiva": null,
-      "informazioni": "La Porta della Felicità segna il passaggio dal Secondo al Terzo Cortile, area più interna e selettiva del complesso. Dietro questa soglia si trovano ambienti legati alla presenza del sultano, come la sala delle udienze e altre funzioni della sfera più riservata della corte.\n\nPerche' conta: Se Babüsselam introduce al governo, Babüssaade introduce alla vicinanza del sultano. La gerarchia del palazzo si capisce meglio con i piedi che con una data: ogni soglia restringe accesso, ruolo e distanza dal centro del potere.",
+      "informazioni": "La Porta della Felicità segna il passaggio dal Secondo al Terzo Cortile, area più interna e selettiva del complesso. Dietro questa soglia si trovano ambienti legati alla presenza del sultano, come la sala delle udienze e altre funzioni della sfera più riservata della corte.",
       "slug": "084-la-soglia-del-sultano",
       "tema_principale": "topkapi",
       "temi_secondari": [
@@ -3914,7 +3914,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "A Topkapı iscrizioni e monogrammi non servono solo a decorare. Rendono visibile la presenza del sovrano nello spazio costruito e trasformano porte, fontane e facciate in superfici di legittimazione politica.\n\nPerche' conta: Nel mondo ottomano il potere non si mostrava solo con troni e spade. Si mostrava anche come segno grafico: la tughra è firma, emblema e autorità compressi in un’unica forma.",
+      "informazioni": "A Topkapı iscrizioni e monogrammi non servono solo a decorare. Rendono visibile la presenza del sovrano nello spazio costruito e trasformano porte, fontane e facciate in superfici di legittimazione politica.",
       "slug": "086-il-monogramma-del-sovrano",
       "tema_principale": "topkapi",
       "temi_secondari": [
@@ -3978,7 +3978,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La parte più alta e aperta del complesso permette di capire che Topkapı è un palazzo costruito per guardare e farsi vedere. Le terrazze e i padiglioni del settore più interno sfruttano la posizione del promontorio affacciato sulle acque di Istanbul.\n\nPerche' conta: Topkapı non è stato messo qui per caso. Il palazzo occupa un punto che domina le acque e la penisola storica: residenza, osservatorio e dichiarazione strategica nello stesso luogo.",
+      "informazioni": "La parte più alta e aperta del complesso permette di capire che Topkapı è un palazzo costruito per guardare e farsi vedere. Le terrazze e i padiglioni del settore più interno sfruttano la posizione del promontorio affacciato sulle acque di Istanbul.",
       "slug": "087-il-palazzo-sul-promontorio",
       "tema_principale": "topkapi",
       "temi_secondari": [
@@ -4042,7 +4042,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il Mısır Çarşısı è storicamente legato al complesso della Yeni Cami. Questo rapporto non è solo storico ma ancora spazialmente leggibile: il bazar vive accanto alla moschea e ne condivide il contesto monumentale e commerciale.\n\nPerche' conta: Il Bazar delle Spezie non è un mercato nato da solo. La sua posizione accanto alla Yeni Cami fa capire che commercio, rendita e vita religiosa facevano parte dello stesso sistema urbano ottomano.",
+      "informazioni": "Il Mısır Çarşısı è storicamente legato al complesso della Yeni Cami. Questo rapporto non è solo storico ma ancora spazialmente leggibile: il bazar vive accanto alla moschea e ne condivide il contesto monumentale e commerciale.",
       "slug": "089-moschea-e-mercato",
       "tema_principale": "spice-bazaar",
       "temi_secondari": [
@@ -4106,7 +4106,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Nel Mısır Çarşısı molte merci comunicano immediatamente una cultura della dispensa e della conservazione: prodotti essiccati, aromi, frutti e ingredienti pronti per entrare nella cucina quotidiana o festiva.\n\nPerche' conta: Qui il cibo non è presentato solo per essere venduto: è mostrato come tecnica di conservazione, cucina domestica e memoria materiale. Anche un’esposizione appesa racconta un modo di preparare e tenere il cibo.",
+      "informazioni": "Nel Mısır Çarşısı molte merci comunicano immediatamente una cultura della dispensa e della conservazione: prodotti essiccati, aromi, frutti e ingredienti pronti per entrare nella cucina quotidiana o festiva.",
       "slug": "091-conservati-in-vista",
       "tema_principale": "spice-bazaar",
       "temi_secondari": [
@@ -4169,7 +4169,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il bazar è noto in turco come Mısır Çarşısı ed è spesso tradotto come Egyptian Bazaar. Anche senza entrare in tutta la storia fiscale e commerciale del nome, basta leggerlo sul posto per capire che il mercato porta con sé una memoria geografica più ampia di Istanbul stessa.\n\nPerche' conta: Il nome del luogo è già una traccia storica. Chiamarlo Mısır Çarşısı, cioè Bazar Egiziano, ricorda che il commercio ottomano collegava Istanbul a circuiti molto più ampi del semplice quartiere.",
+      "informazioni": "Il bazar è noto in turco come Mısır Çarşısı ed è spesso tradotto come Egyptian Bazaar. Anche senza entrare in tutta la storia fiscale e commerciale del nome, basta leggerlo sul posto per capire che il mercato porta con sé una memoria geografica più ampia di Istanbul stessa.",
       "slug": "093-il-nome-egiziano",
       "tema_principale": "spice-bazaar",
       "temi_secondari": [
@@ -4233,7 +4233,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Nel paesaggio del Bosforo, ponti e traffico marittimo convivono come due sistemi di movimento sovrapposti. È uno dei modi più chiari in cui Istanbul mostra di essere insieme città d’acqua e metropoli infrastrutturale.\n\nPerche' conta: Dal battello i ponti non sono solo infrastrutture: sono la prova visibile che Istanbul trasforma una barriera d’acqua in una rete di connessioni continue tra lati diversi della città.",
+      "informazioni": "Nel paesaggio del Bosforo, ponti e traffico marittimo convivono come due sistemi di movimento sovrapposti. È uno dei modi più chiari in cui Istanbul mostra di essere insieme città d’acqua e metropoli infrastrutturale.",
       "slug": "097-il-ponte-sopra-la-rotta",
       "tema_principale": "bosforo-crociera",
       "temi_secondari": [
@@ -4297,7 +4297,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Rumeli Hisarı e Anadolu Hisarı rendono visibile la logica militare dello stretto. Il Bosforo non era soltanto un paesaggio magnifico: era una rotta da sorvegliare, chiudere e dominare.\n\nPerche' conta: Dal Bosforo la conquista non sembra più solo un fatto da libro di storia. Le fortezze mostrano che controllare Istanbul significava prima di tutto controllare il passaggio d’acqua.",
+      "informazioni": "Rumeli Hisarı e Anadolu Hisarı rendono visibile la logica militare dello stretto. Il Bosforo non era soltanto un paesaggio magnifico: era una rotta da sorvegliare, chiudere e dominare.",
       "slug": "098-le-due-fortezze-dello-stretto",
       "tema_principale": "bosforo-crociera",
       "temi_secondari": [
@@ -4364,7 +4364,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Palazzi come Dolmabahçe o Beylerbeyi mostrano bene una logica tipica del Bosforo: usare la riva come vetrina politica. Dal battello questa idea è molto più chiara che dalla strada, perché l’acqua restituisce l’edificio come facciata continua.\n\nPerche' conta: Sul Bosforo il potere ottomano non si limitava a occupare terra: si metteva in scena verso l’acqua. Le facciate di riva funzionano come simboli visibili a chi arriva, passa o osserva dallo stretto.",
+      "informazioni": "Palazzi come Dolmabahçe o Beylerbeyi mostrano bene una logica tipica del Bosforo: usare la riva come vetrina politica. Dal battello questa idea è molto più chiara che dalla strada, perché l’acqua restituisce l’edificio come facciata continua.",
       "slug": "099-la-facciata-del-potere",
       "tema_principale": "bosforo-crociera",
       "temi_secondari": [
@@ -4427,7 +4427,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le ville di riva del Bosforo sono tra gli elementi più caratteristici del paesaggio abitato di Istanbul. Dal battello si legge bene la loro logica: facciate aperte verso l’acqua, approdi privati e rapporto diretto con lo stretto.\n\nPerche' conta: Sul Bosforo l’abitare cambia forma. Gli yalı raccontano una cultura della riva in cui la casa non guarda semplicemente il mare: vive letteralmente sul bordo dell’acqua.",
+      "informazioni": "Le ville di riva del Bosforo sono tra gli elementi più caratteristici del paesaggio abitato di Istanbul. Dal battello si legge bene la loro logica: facciate aperte verso l’acqua, approdi privati e rapporto diretto con lo stretto.",
       "slug": "100-la-casa-che-tocca-il-mare",
       "tema_principale": "bosforo-crociera",
       "temi_secondari": [
@@ -4490,7 +4490,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "La cerniera di Galata",
       "successiva": null,
-      "informazioni": "Il Ponte di Galata collega il lato di Eminönü con Karaköy e Beyoğlu attraverso il Corno d’Oro. La Torre di Galata, poco più in alto nel quartiere, nasce invece come elemento fortificato e di avvistamento. Visti insieme, questi due elementi rendono leggibile una parte essenziale della geografia storica di Istanbul.\n\nPerche' conta: In pochi metri Istanbul mostra due modi diversi di dominare lo spazio: il ponte collega e fa passare, la torre osserva e segnala. Uno è orizzontale, l’altra verticale, ma raccontano la stessa città di traffici e controllo.",
+      "informazioni": "Il Ponte di Galata collega il lato di Eminönü con Karaköy e Beyoğlu attraverso il Corno d’Oro. La Torre di Galata, poco più in alto nel quartiere, nasce invece come elemento fortificato e di avvistamento. Visti insieme, questi due elementi rendono leggibile una parte essenziale della geografia storica di Istanbul.",
       "slug": "101-orizzontale-e-verticale",
       "tema_principale": "galata",
       "temi_secondari": [
@@ -4556,7 +4556,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il ponte attuale ha una struttura a due livelli ed è anche una macchina tecnica complessa, con grande sezione mobile per il traffico marittimo. Questa doppia natura – infrastruttura e spazio urbano – è una delle sue caratteristiche più interessanti.\n\nPerche' conta: Il Ponte di Galata non è solo un attraversamento: è una piccola sezione di città sovrapposta. Sopra si passa, sotto si sosta, si mangia e si guarda l’acqua.",
+      "informazioni": "Il ponte attuale ha una struttura a due livelli ed è anche una macchina tecnica complessa, con grande sezione mobile per il traffico marittimo. Questa doppia natura – infrastruttura e spazio urbano – è una delle sue caratteristiche più interessanti.",
       "slug": "103-il-ponte-a-due-piani",
       "tema_principale": "galata-bridge",
       "temi_secondari": [
@@ -4621,7 +4621,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le immagini di pescatori affiancati sul Ponte di Galata sono considerate una delle icone visive di Istanbul. Il luogo funziona come punto di passaggio, ma anche come spazio dove si resta, si osserva l’acqua e si misura il ritmo della città.\n\nPerche' conta: Sul Ponte di Galata la pesca non è solo attività economica o passatempo: è una scena urbana ripetuta, riconoscibile e quasi rituale. Il ponte è anche questo: un palco quotidiano della città.",
+      "informazioni": "Le immagini di pescatori affiancati sul Ponte di Galata sono considerate una delle icone visive di Istanbul. Il luogo funziona come punto di passaggio, ma anche come spazio dove si resta, si osserva l’acqua e si misura il ritmo della città.",
       "slug": "104-la-fila-dei-pescatori",
       "tema_principale": "galata-bridge",
       "temi_secondari": [
@@ -4686,7 +4686,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Una tradizione molto nota lega la torre al racconto di Hezarfen Ahmed Çelebi, che secondo la memoria ottomana avrebbe tentato un volo dal suo culmine verso Üsküdar. Nel gioco questa storia va trattata come leggenda urbana colta, non come fatto storico pienamente certo.\n\nPerche' conta: La storia di Hezarfen Ahmed Çelebi appartiene più alla memoria narrativa della città che alla certezza documentaria assoluta. Ma proprio per questo la torre funziona bene come luogo di leggenda: basta guardarla contro il cielo per capire perché Istanbul abbia affidato a questo punto il sogno del volo.",
+      "informazioni": "Una tradizione molto nota lega la torre al racconto di Hezarfen Ahmed Çelebi, che secondo la memoria ottomana avrebbe tentato un volo dal suo culmine verso Üsküdar. Nel gioco questa storia va trattata come leggenda urbana colta, non come fatto storico pienamente certo.",
       "slug": "106-da-qui-potrebbe-iniziare-una-leggenda",
       "tema_principale": "galata-tower",
       "temi_secondari": [
@@ -4750,7 +4750,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Dalla piazza al boulevard",
       "successiva": null,
-      "informazioni": "Il Monumento alla Repubblica, inaugurato nel 1928, è uno dei segni più riconoscibili di Taksim. Le fonti ufficiali turistiche lo descrivono come cuore simbolico della piazza e come riferimento alla fondazione della Repubblica turca.\n\nPerche' conta: Taksim non è solo un punto di incontro: è uno spazio in cui la Turchia moderna si mette in scena. Il Monumento alla Repubblica trasforma la piazza in un luogo civico prima ancora che turistico.",
+      "informazioni": "Il Monumento alla Repubblica, inaugurato nel 1928, è uno dei segni più riconoscibili di Taksim. Le fonti ufficiali turistiche lo descrivono come cuore simbolico della piazza e come riferimento alla fondazione della Repubblica turca.",
       "slug": "107-la-piazza-della-repubblica",
       "tema_principale": "taksim-istiklal",
       "temi_secondari": [
@@ -4815,7 +4815,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Dalla piazza al boulevard",
       "successiva": null,
-      "informazioni": "Il tram Taksim–Tünel percorre circa 1,6 km lungo İstiklal ed è stato reintrodotto nel 1990 dopo la pedonalizzazione della via. Oggi è uno dei simboli più riconoscibili di questo asse urbano.\n\nPerche' conta: Il tram nostalgico non è un semplice oggetto fotogenico: serve a rendere visibile che İstiklal è una strada storica, pedonale e teatrale, dove il movimento è parte dell’identità del luogo.",
+      "informazioni": "Il tram Taksim–Tünel percorre circa 1,6 km lungo İstiklal ed è stato reintrodotto nel 1990 dopo la pedonalizzazione della via. Oggi è uno dei simboli più riconoscibili di questo asse urbano.",
       "slug": "108-il-tram-che-apre-la-strada",
       "tema_principale": "taksim-istiklal",
       "temi_secondari": [
@@ -4880,7 +4880,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Le colline delle comunità",
       "successiva": "114",
-      "informazioni": "Le fonti ufficiali descrivono il Fener Greek High School come uno degli edifici più spettacolari della zona, noto come Red School per i suoi mattoni rossi e per la sua silhouette quasi fortificata sul Golden Horn.\n\nPerche' conta: A Fener la memoria di una comunità non è nascosta: domina il quartiere dall’alto. Il cosiddetto Red School sembra quasi un castello e rende immediatamente visibile il peso storico della presenza greco-ortodossa.",
+      "informazioni": "Le fonti ufficiali descrivono il Fener Greek High School come uno degli edifici più spettacolari della zona, noto come Red School per i suoi mattoni rossi e per la sua silhouette quasi fortificata sul Golden Horn.",
       "slug": "113-il-castello-rosso-sul-corno-d-oro",
       "tema_principale": "fener-balat",
       "temi_secondari": [
@@ -4945,7 +4945,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Le fonti ufficiali presentano Fener come storico fulcro della comunità greco-ortodossa di Istanbul e collocano qui il Patriarcato e la Chiesa patriarcale di San Giorgio/Aya Yorgi.\n\nPerche' conta: Fener non è solo un quartiere antico: è un centro istituzionale vivo. Qui la memoria ortodossa non sopravvive come rovina, ma come presenza organizzata e riconoscibile ancora oggi.",
+      "informazioni": "Le fonti ufficiali presentano Fener come storico fulcro della comunità greco-ortodossa di Istanbul e collocano qui il Patriarcato e la Chiesa patriarcale di San Giorgio/Aya Yorgi.",
       "slug": "115-il-segno-del-patriarcato",
       "tema_principale": "fener-balat",
       "temi_secondari": [
@@ -5010,7 +5010,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Fener e Balat sono quartieri ancora riconoscibili per le loro case storiche a bay window, sopravvissute alla sostituzione diffusa con cemento e vetro che ha trasformato altre aree di Istanbul.\n\nPerche' conta: Le case di Fener e Balat non colpiscono solo per i colori. I bovindi raccontano un modo di abitare, guardare la strada e costruire vicinanza urbana che qui è rimasto leggibile più che in molte altre zone della città.",
+      "informazioni": "Fener e Balat sono quartieri ancora riconoscibili per le loro case storiche a bay window, sopravvissute alla sostituzione diffusa con cemento e vetro che ha trasformato altre aree di Istanbul.",
       "slug": "116-la-facciata-con-il-bovindo",
       "tema_principale": "fener-balat",
       "temi_secondari": [
@@ -5076,7 +5076,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Dove passava l'impero",
       "successiva": "120",
-      "informazioni": "La Porta Imperiale è la più grande di Santa Sofia ed era riservata all’imperatore e al suo seguito. È uno dei punti in cui la liturgia e la gerarchia politica dell’Impero bizantino diventano ancora leggibili nello spazio.\n\nPerche' conta: Santa Sofia non era un edificio neutro: anche l’ingresso era gerarchico. La Porta Imperiale traduceva il potere in percorso, separando il passaggio dell’imperatore da quello degli altri.",
+      "informazioni": "La Porta Imperiale è la più grande di Santa Sofia ed era riservata all’imperatore e al suo seguito. È uno dei punti in cui la liturgia e la gerarchia politica dell’Impero bizantino diventano ancora leggibili nello spazio.",
       "slug": "119-la-soglia-dell-imperatore",
       "tema_principale": "santa-sofia",
       "temi_secondari": [
@@ -5140,7 +5140,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "Dove passava l'impero",
       "successiva": null,
-      "informazioni": "La mappa ufficiale del sito identifica l’Omphalion come il luogo delle incoronazioni imperiali. È uno dei dettagli più forti di Santa Sofia perché trasforma un motivo pavimentale in uno spazio politico preciso.\n\nPerche' conta: A Santa Sofia il potere non passava solo da troni e mosaici: passava anche dal pavimento. L’Omphalion è il punto in cui la cerimonia imperiale toccava letteralmente terra.",
+      "informazioni": "La mappa ufficiale del sito identifica l’Omphalion come il luogo delle incoronazioni imperiali. È uno dei dettagli più forti di Santa Sofia perché trasforma un motivo pavimentale in uno spazio politico preciso.",
       "slug": "120-il-pavimento-delle-incoronazioni",
       "tema_principale": "santa-sofia",
       "temi_secondari": [
@@ -5204,7 +5204,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La scheda del Comune di Üsküdar ricorda che la Mihrimah Sultan Mosque è nota anche come Iskele Mosque, cioè moschea del molo. È uno dei casi più chiari in cui edificio religioso e infrastruttura di attraversamento convivono nello stesso punto.\n\nPerche' conta: A Üsküdar la moschea non domina una collina astratta: accoglie il passaggio. La Mihrimah Sultan Camii è legata alla vita dei traghetti e alla soglia tra terra e acqua.",
+      "informazioni": "La scheda del Comune di Üsküdar ricorda che la Mihrimah Sultan Mosque è nota anche come Iskele Mosque, cioè moschea del molo. È uno dei casi più chiari in cui edificio religioso e infrastruttura di attraversamento convivono nello stesso punto.",
       "slug": "128-la-moschea-del-molo",
       "tema_principale": "ortakoy-uskudar-kuzguncuk",
       "temi_secondari": [
@@ -5266,7 +5266,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il Comune di Üsküdar presenta la Şemsi Paşa Mosque come una delle opere più pittoresche di Sinan proprio per la sua posizione sulla riva e per il rapporto organico con il paesaggio del Bosforo.\n\nPerche' conta: Şemsi Paşa è una moschea piccola, ma fortissima come posizione. Qui il genio non è nella scala: è nel modo in cui Sinan incastra edificio, giardino e shoreline in un unico gesto.",
+      "informazioni": "Il Comune di Üsküdar presenta la Şemsi Paşa Mosque come una delle opere più pittoresche di Sinan proprio per la sua posizione sulla riva e per il rapporto organico con il paesaggio del Bosforo.",
       "slug": "129-sinan-contro-il-mare",
       "tema_principale": "ortakoy-uskudar-kuzguncuk",
       "temi_secondari": [
@@ -5328,7 +5328,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il Balıkçılar Çarşısı è un mercato animato vicino al molo, dove convivono pesce, spezie, pane, frutta e prodotti secchi.\n\nPerche' conta: Il mercato vicino al molo racconta un’Üsküdar quotidiana, non solo monumentale. Qui la riva è fatta anche di provviste, voci, dispensa e scambi pratici.",
+      "informazioni": "Il Balıkçılar Çarşısı è un mercato animato vicino al molo, dove convivono pesce, spezie, pane, frutta e prodotti secchi.",
       "slug": "130-non-e-solo-un-mercato-del-pesce",
       "tema_principale": "ortakoy-uskudar-kuzguncuk",
       "temi_secondari": [
@@ -5389,7 +5389,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Il Comune di Üsküdar descrive il Kuzguncuk Bostanı come un’area di circa 17 dönüm con orti, frutteto, percorsi e spazi comuni. Insieme alle case sullo sfondo, il bostan rende il quartiere immediatamente riconoscibile.\n\nPerche' conta: Kuzguncuk è speciale perché non conserva solo facciate. Conserva anche un’idea di quartiere in cui l’agricoltura urbana è ancora visibile dentro la città costruita.",
+      "informazioni": "Il Comune di Üsküdar descrive il Kuzguncuk Bostanı come un’area di circa 17 dönüm con orti, frutteto, percorsi e spazi comuni. Insieme alle case sullo sfondo, il bostan rende il quartiere immediatamente riconoscibile.",
       "slug": "131-l-orto-nel-quartiere",
       "tema_principale": "ortakoy-uskudar-kuzguncuk",
       "temi_secondari": [
@@ -5450,7 +5450,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "GoTürkiye presenta Kuzguncuk come un quartiere di case ottomane in legno del XIX secolo, molto riconoscibile proprio per le facciate colorate e compatte lungo le strade del bosforo asiatico.\n\nPerche' conta: Le case di Kuzguncuk non sono interessanti solo perché 'carine'. La sequenza di legno, colore e facciate ravvicinate costruisce l’identità del quartiere molto più di un singolo monumento.",
+      "informazioni": "GoTürkiye presenta Kuzguncuk come un quartiere di case ottomane in legno del XIX secolo, molto riconoscibile proprio per le facciate colorate e compatte lungo le strade del bosforo asiatico.",
       "slug": "132-tre-colori-di-kuzguncuk",
       "tema_principale": "ortakoy-uskudar-kuzguncuk",
       "temi_secondari": [
@@ -5511,7 +5511,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "UNESCO descrive la Süleymaniye come un complesso con caravanserraglio, medrese, scuola medica, biblioteca, hamam, hospice e tombe imperiali. È uno dei motivi per cui viene considerata un esempio supremo di insieme monumentale ottomano.\n\nPerche' conta: La grandezza imperiale della Süleymaniye non sta solo nella cupola. Sta anche nel fatto che la moschea faceva parte di un sistema completo di istruzione, assistenza, ospitalità e memoria dinastica.",
+      "informazioni": "UNESCO descrive la Süleymaniye come un complesso con caravanserraglio, medrese, scuola medica, biblioteca, hamam, hospice e tombe imperiali. È uno dei motivi per cui viene considerata un esempio supremo di insieme monumentale ottomano.",
       "slug": "135-non-e-solo-una-moschea",
       "tema_principale": "suleymaniye",
       "temi_secondari": [
@@ -5575,7 +5575,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "GoTürkiye indica gli archi rosso-bianchi come uno dei tratti distintivi dell’interno della moschea. Sono un dettaglio perfetto per leggere la Süleymaniye non solo come monumento enorme, ma come opera raffinata di composizione.\n\nPerche' conta: L’interno della Süleymaniye non colpisce solo per la scala. Colpisce anche per il modo in cui colore, ritmo e simmetria trasformano una struttura in linguaggio visivo.",
+      "informazioni": "GoTürkiye indica gli archi rosso-bianchi come uno dei tratti distintivi dell’interno della moschea. Sono un dettaglio perfetto per leggere la Süleymaniye non solo come monumento enorme, ma come opera raffinata di composizione.",
       "slug": "137-rosso-e-bianco-dentro-l-impero",
       "tema_principale": "suleymaniye",
       "temi_secondari": [
@@ -5637,7 +5637,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "GoTürkiye segnala davanti al complesso le tombe del sultano e della sua consorte. Questo rende il sito leggibile anche come spazio funerario imperiale, non soltanto come moschea monumentale.\n\nPerche' conta: La Süleymaniye non celebra solo la preghiera. Celebra anche la memoria dinastica. Qui il complesso imperiale continua dopo la morte del sovrano, trasformando il luogo in una geografia del potere e del ricordo.",
+      "informazioni": "GoTürkiye segnala davanti al complesso le tombe del sultano e della sua consorte. Questo rende il sito leggibile anche come spazio funerario imperiale, non soltanto come moschea monumentale.",
       "slug": "138-davanti-al-sultano-e-alla-sua-consorte",
       "tema_principale": "suleymaniye",
       "temi_secondari": [
@@ -5702,7 +5702,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "La calligrafia islamica è una delle principali forme artistiche perché la rappresentazione figurativa è spesso limitata nei contesti religiosi.\n\nPerche' conta: Nell’arte islamica la scrittura è anche immagine: la calligrafia sostituisce spesso le figure e diventa elemento artistico centrale.",
+      "informazioni": "La calligrafia islamica è una delle principali forme artistiche perché la rappresentazione figurativa è spesso limitata nei contesti religiosi.",
       "slug": "203-scrittura-che-e-immagine",
       "tema_principale": "calligrafia",
       "temi_secondari": [
@@ -5764,7 +5764,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "racconto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Molte storie urbane continuano a vivere grazie al racconto diretto tra persone.\n\nPerche' conta: Le leggende di Istanbul sopravvivono soprattutto grazie alla trasmissione orale.",
+      "informazioni": "Molte storie urbane continuano a vivere grazie al racconto diretto tra persone.",
       "slug": "306-il-luogo-che-racconta-storie",
       "tema_principale": "tradizione-orale",
       "temi_secondari": [
@@ -5824,7 +5824,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto+racconto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Non è una notizia storica verificabile ma una leggenda molto adatta a spiegare la sacralizzazione simbolica della moschea.\n\nPerche' conta: Secondo una leggenda ottomana, il Profeta indicò in sogno a Solimano dove e come costruire la Süleymaniye; il giorno dopo Sinan descrisse la stessa disposizione, rivelando di aver condiviso quella visione.",
+      "informazioni": "Non è una notizia storica verificabile ma una leggenda molto adatta a spiegare la sacralizzazione simbolica della moschea.",
       "slug": "607-il-sogno-visto-in-due",
       "tema_principale": "suleymaniye",
       "temi_secondari": [
@@ -5926,7 +5926,7 @@ window.MISSIONI_V3_BACKEND = {
       },
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Gli usi imprevisti degli oggetti urbani mostrano come Istanbul venga adattata ogni giorno da chi la abita. Il riuso spontaneo rende visibile una città pragmatica, flessibile e creativa.\n\nPerche' conta: La città reale viene continuamente reinterpretata da chi la vive.",
+      "informazioni": "Gli usi imprevisti degli oggetti urbani mostrano come Istanbul venga adattata ogni giorno da chi la abita. Il riuso spontaneo rende visibile una città pragmatica, flessibile e creativa.",
       "temi_secondari": [
         "spazio-pubblico",
         "adattamento-urbano"

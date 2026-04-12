@@ -206,10 +206,10 @@ p {
   min-height: 100svh;
   min-height: 100dvh;
   margin: 0 auto;
-  padding: calc(var(--safe-top) + 0.35rem) 0 calc(var(--safe-bottom) + 7.5rem);
+  padding: calc(var(--safe-top) + 0.35rem) 0 calc(var(--safe-bottom) + 2rem);
   color: var(--text-1);
   scroll-padding-top: calc(var(--safe-top) + 5.5rem);
-  scroll-padding-bottom: calc(var(--safe-bottom) + 7rem);
+  scroll-padding-bottom: calc(var(--safe-bottom) + 2rem);
 }
 
 .game-shell__viewport {
@@ -225,10 +225,6 @@ p {
 
 .game-shell--narrative {
   padding-bottom: calc(var(--safe-bottom) + 2rem);
-}
-
-.game-shell--narrative .shell-footer {
-  display: none;
 }
 
 .game-shell--narrative .shell-header__nav {
@@ -357,6 +353,10 @@ p {
     var(--shadow-soft),
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.shell-header__bar--landing .shell-header__nav {
+  display: none !important;
 }
 
 .shell-header__bar::before {
@@ -810,6 +810,21 @@ p {
 .overlay__card,
 .ia-overlay__card {
   width: min(560px, 100%);
+  max-height: calc(100svh - 2rem);
+  overflow: auto;
+}
+
+.ia-overlay__card .narrative-card {
+  max-height: calc(100svh - 2rem);
+  overflow: hidden;
+}
+
+.ia-overlay__card .narrative-card__text {
+  max-height: min(52svh, 420px);
+  overflow: auto;
+  padding-right: 0.25rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 .onboarding-overlay {

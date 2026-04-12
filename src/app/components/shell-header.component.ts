@@ -10,7 +10,7 @@ import { MissionStateService } from '../services/mission-state.service';
   imports: [RouterLink, RouterLinkActive],
   template: `
     <header class="shell-header">
-      <div class="shell-header__bar">
+      <div class="shell-header__bar" [class.shell-header__bar--landing]="landingRoute()">
         <a class="brand" routerLink="/">
           <span class="brand__kicker">{{ t('angular.shellHeader.brandKicker', 'Secret Companion') }}</span>
           <span class="brand__title">{{ t('angular.shellHeader.brandTitle', 'Istanbul Adventure') }}</span>
@@ -26,17 +26,15 @@ import { MissionStateService } from '../services/mission-state.service';
         </nav>
 
         <div class="shell-header__tail">
-          @if (narrativeRoute()) {
-            <button
-              type="button"
-              class="shell-header__menu-btn"
-              aria-haspopup="dialog"
-              [attr.aria-expanded]="pauseOpen()"
-              (click)="pauseOpen.set(true)"
-            >
-              {{ t('angular.shellHeader.menu', 'Menu') }}
-            </button>
-          }
+          <button
+            type="button"
+            class="shell-header__menu-btn"
+            aria-haspopup="dialog"
+            [attr.aria-expanded]="pauseOpen()"
+            (click)="pauseOpen.set(true)"
+          >
+            {{ t('angular.shellHeader.menu', 'Menu') }}
+          </button>
           <div class="status-pill" [attr.aria-label]="t('angular.shellHeader.currentViewPrefix', 'Vista corrente: ') + currentLabel()">
             {{ currentLabel() }}
           </div>
@@ -55,11 +53,10 @@ import { MissionStateService } from '../services/mission-state.service';
           <h2 id="pause-menu-title" class="pause-menu__title">{{ t('angular.shellHeader.pauseTitle', 'Menu di pausa') }}</h2>
           <p class="pause-menu__lead">{{ t('angular.shellHeader.pauseLead', 'Torna al hub, sfoglia l\'elenco, o riprendi da qui.') }}</p>
           <nav class="pause-menu__nav" [attr.aria-label]="t('angular.shellHeader.quickLinksAria', 'Collegamenti rapidi')">
+            <a class="pause-menu__link" routerLink="/" (click)="closePause()">{{ t('angular.shellHeader.entry', 'Ingresso') }}</a>
+            <a class="pause-menu__link" routerLink="/quiz" (click)="closePause()">{{ t('angular.shellHeader.mission0', 'Missione 0') }}</a>
             <a class="pause-menu__link" routerLink="/home" (click)="closePause()">{{ t('angular.shellHeader.hubMissions', 'Hub missioni') }}</a>
             <a class="pause-menu__link" routerLink="/missions" (click)="closePause()">{{ t('angular.shellHeader.allMissions', 'Tutte le missioni') }}</a>
-            @if (!homeUnlocked()) {
-              <a class="pause-menu__link" routerLink="/" (click)="closePause()">{{ t('angular.shellHeader.entry', 'Ingresso') }}</a>
-            }
           </nav>
           <button type="button" class="shell-header__menu-btn pause-menu__resume" (click)="closePause()">{{ t('angular.common.continue', 'Continua') }}</button>
         </section>
@@ -74,16 +71,16 @@ export class ShellHeaderComponent {
   readonly homeUnlocked = this.state.homeUnlocked;
   readonly t = (path: string, fallback: string) => this.content.t(path, fallback);
   readonly currentLabel = signal(this.homeUnlocked() ? this.t('angular.shellHeader.hubMissions', 'Hub missioni') : this.t('angular.shellHeader.entry', 'Ingresso'));
-  readonly narrativeRoute = signal(false);
+  readonly landingRoute = signal(false);
   readonly pauseOpen = signal(false);
 
   constructor() {
-    this.applyNarrativeFlag(this.router.url);
+    this.applyLandingFlag(this.router.url);
     this.updateLabel(this.router.url);
 
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event) => {
       const url = (event as NavigationEnd).urlAfterRedirects;
-      this.applyNarrativeFlag(url);
+      this.applyLandingFlag(url);
       this.updateLabel(url);
       this.pauseOpen.set(false);
     });
@@ -93,8 +90,8 @@ export class ShellHeaderComponent {
     this.pauseOpen.set(false);
   }
 
-  private applyNarrativeFlag(url: string): void {
-    this.narrativeRoute.set(url.startsWith('/story') || url.startsWith('/quiz') || url.startsWith('/mission/'));
+  private applyLandingFlag(url: string): void {
+    this.landingRoute.set(url === '/');
   }
 
   private updateLabel(url: string): void {

@@ -5,7 +5,6 @@ import { filter, map, startWith } from 'rxjs';
 import { AppToastComponent } from './components/app-toast.component';
 import { GuidedTourComponent } from './components/guided-tour.component';
 import { PrimaryButtonComponent } from './components/primary-button.component';
-import { ShellFooterComponent } from './components/shell-footer.component';
 import { ShellHeaderComponent } from './components/shell-header.component';
 import { LegacyContentService } from './services/legacy-content.service';
 import { OnboardingService } from './services/onboarding.service';
@@ -13,7 +12,7 @@ import { OnboardingService } from './services/onboarding.service';
 @Component({
   selector: 'ia-root',
   standalone: true,
-  imports: [RouterOutlet, ShellHeaderComponent, ShellFooterComponent, AppToastComponent, PrimaryButtonComponent, GuidedTourComponent],
+  imports: [RouterOutlet, ShellHeaderComponent, AppToastComponent, PrimaryButtonComponent, GuidedTourComponent],
   template: `
     <div class="app-backdrop" aria-hidden="true"></div>
     <div class="game-shell" [class.game-shell--narrative]="narrativeChrome()">
@@ -21,7 +20,6 @@ import { OnboardingService } from './services/onboarding.service';
       <main class="game-shell__viewport">
         <router-outlet />
       </main>
-      <ia-shell-footer />
     </div>
 
     @if (onboarding.showInstallTutorial()) {

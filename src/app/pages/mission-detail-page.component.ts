@@ -183,7 +183,4 @@ export class MissionDetailPageComponent {
     this.runtime.previous();
   }
 
-  sceneNext(): void {
-    this.runtime.next();
-  }
 }

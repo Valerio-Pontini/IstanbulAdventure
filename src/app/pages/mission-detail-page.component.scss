@@ -266,8 +266,7 @@
 }
 
 .mission-detail__context-trigger {
-  display: flex;
-  justify-content: center;
+  display: grid;
 }
 
 .mission-detail__objective-card {
@@ -312,24 +311,34 @@
 }
 
 .mission-detail__context-btn {
-  min-height: 44px;
-  padding: 0.5rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-gold);
+  min-height: 52px;
+  width: 100%;
+  padding: 0.8rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 162, 74, 0.68);
   color: var(--accent-ivory);
-  background: rgba(191, 151, 79, 0.1);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  background:
+    radial-gradient(circle at 12% -30%, rgba(255, 224, 153, 0.28), transparent 48%),
+    linear-gradient(160deg, rgba(191, 151, 79, 0.3), rgba(79, 140, 135, 0.18));
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
   transition:
+    box-shadow var(--transition-base),
     background var(--transition-base),
     border-color var(--transition-base);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 233, 183, 0.12) inset;
 }
 
 .mission-detail__context-btn:hover {
-  background: rgba(191, 151, 79, 0.18);
+  border-color: var(--accent-gold);
+  background:
+    radial-gradient(circle at 12% -30%, rgba(255, 224, 153, 0.36), transparent 48%),
+    linear-gradient(160deg, rgba(191, 151, 79, 0.42), rgba(79, 140, 135, 0.24));
 }
 
 .mission-detail__scene-nav {
