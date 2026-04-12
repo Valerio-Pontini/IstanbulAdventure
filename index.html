@@ -55,8 +55,17 @@
 
         const here = window.location.pathname;
         const alreadyAtBase = here === base || here === `${base}index.html`;
+        const reloadKey = 'istanbulAdventure.forceReloadDone';
+
         if (!alreadyAtBase) {
           window.location.replace(target);
+          return;
+        }
+
+        if (!sessionStorage.getItem(reloadKey)) {
+          sessionStorage.setItem(reloadKey, '1');
+          window.location.replace(target);
+          return;
         }
       })();
     </script>
