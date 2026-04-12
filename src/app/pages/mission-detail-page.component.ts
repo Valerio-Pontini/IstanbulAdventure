@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, untracked } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { buildMissionNarrativeScript } from '../content/mission.narrative';
 import { DialogueLayerComponent } from '../components/dialogue-layer.component';
@@ -121,8 +121,8 @@ export class MissionDetailPageComponent {
       }
       const revealed = mission.isSequential ? this.activeObjectiveIndex() + 1 : mission.objectives.length;
       const script = buildMissionNarrativeScript(mission, revealed);
-      const previousId = this.runtime.script()?.id ?? null;
-      const previousFlat = previousId ? this.runtime.flatBeatIndex() : 0;
+      const previousId = untracked(() => this.runtime.script()?.id ?? null);
+      const previousFlat = untracked(() => (previousId ? this.runtime.flatBeatIndex() : 0));
       this.runtime.loadScript(script);
       if (previousId === script.id) {
         this.runtime.restoreToFlatIndex(previousFlat);
