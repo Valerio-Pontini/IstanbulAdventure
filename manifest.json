@@ -1,6 +1,6 @@
 {
   "name": "Istanbul Adventure",
-  "short_name": "Istanbul",
+  "short_name": "Istanbul Adventure",
   "description": "Web app narrativa mobile-first per vivere Missione 0 di Istanbul Adventure.",
   "start_url": "./index.html",
   "scope": "./",
