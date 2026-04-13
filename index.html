@@ -35,7 +35,7 @@
       <p>
         <a id="manual-link-primary" href="/IstanbulAdventure/">Apri app</a>
         ·
-        <a id="manual-link-secondary" href="/IstanbulAdventure/dist/istanbul-adventure/browser/">Apri build locale</a>
+        <a id="manual-link-secondary" href="/IstanbulAdventure/index.html">Apri index</a>
       </p>
     </div>
     <script>
@@ -46,15 +46,13 @@
         const status = document.getElementById('status-line');
         const candidates = [
           `${base}?v=${version}`,
-          `${base}index.html?v=${version}`,
-          `${base}dist/istanbul-adventure/browser/?v=${version}`,
-          `${base}dist/istanbul-adventure/browser/index.html?v=${version}`
+          `${base}index.html?v=${version}`
         ];
 
         const primary = document.getElementById('manual-link-primary');
         const secondary = document.getElementById('manual-link-secondary');
         if (primary) primary.href = candidates[0];
-        if (secondary) secondary.href = candidates[2];
+        if (secondary) secondary.href = `${base}index.html?v=${version}`;
 
         try {
           if ('serviceWorker' in navigator) {
