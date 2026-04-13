@@ -30,10 +30,32 @@
   <body>
     <div class="card">
       <p>Caricamento della versione aggiornata in corso...</p>
-      <p>Se non avviene automaticamente, <a id="manual-link" href="/IstanbulAdventure/">apri qui</a>.</p>
+      <p id="status-line">Reindirizzamento automatico in preparazione...</p>
+      <p>Se non avviene automaticamente, prova uno di questi link:</p>
+      <p>
+        <a id="manual-link-primary" href="/IstanbulAdventure/">Apri app</a>
+        ·
+        <a id="manual-link-secondary" href="/IstanbulAdventure/dist/istanbul-adventure/browser/">Apri build locale</a>
+      </p>
     </div>
     <script>
       (async () => {
+        const base = '/IstanbulAdventure/';
+        const version = Date.now().toString();
+        const retryKey = 'istanbulAdventure.redirectAttempt';
+        const status = document.getElementById('status-line');
+        const candidates = [
+          `${base}?v=${version}`,
+          `${base}index.html?v=${version}`,
+          `${base}dist/istanbul-adventure/browser/?v=${version}`,
+          `${base}dist/istanbul-adventure/browser/index.html?v=${version}`
+        ];
+
+        const primary = document.getElementById('manual-link-primary');
+        const secondary = document.getElementById('manual-link-secondary');
+        if (primary) primary.href = candidates[0];
+        if (secondary) secondary.href = candidates[2];
+
         try {
           if ('serviceWorker' in navigator) {
             const regs = await navigator.serviceWorker.getRegistrations();
@@ -45,28 +67,27 @@
           }
         } catch (_) {}
 
-        const base = '/IstanbulAdventure/';
-        const version = Date.now().toString();
-        const target = `${base}?v=${version}`;
-        const manual = document.getElementById('manual-link');
-        if (manual) {
-          manual.href = target;
+        let attempt = Number(sessionStorage.getItem(retryKey) || '0');
+        if (!Number.isFinite(attempt) || attempt < 0) {
+          attempt = 0;
+        }
+        const target = candidates[Math.min(attempt, candidates.length - 1)];
+        sessionStorage.setItem(retryKey, String(attempt + 1));
+
+        if (status) {
+          status.textContent = `Tentativo ${Math.min(attempt + 1, candidates.length)} di ${candidates.length}...`;
         }
 
-        const here = window.location.pathname;
-        const alreadyAtBase = here === base || here === `${base}index.html`;
-        const reloadKey = 'istanbulAdventure.forceReloadDone';
-
-        if (!alreadyAtBase) {
-          window.location.replace(target);
+        // Stop after the last known target to avoid infinite loops.
+        if (attempt >= candidates.length) {
+          if (status) {
+            status.textContent = 'Reindirizzamento automatico non riuscito: apri uno dei link qui sopra.';
+          }
+          sessionStorage.removeItem(retryKey);
           return;
         }
 
-        if (!sessionStorage.getItem(reloadKey)) {
-          sessionStorage.setItem(reloadKey, '1');
-          window.location.replace(target);
-          return;
-        }
+        window.location.replace(target);
       })();
     </script>
   </body>
