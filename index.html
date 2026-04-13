@@ -42,16 +42,12 @@
       (async () => {
         const base = '/IstanbulAdventure/';
         const version = Date.now().toString();
-        const retryKey = 'istanbulAdventure.redirectAttempt';
         const status = document.getElementById('status-line');
-        const candidates = [
-          `${base}?v=${version}`,
-          `${base}index.html?v=${version}`
-        ];
+        const target = `${base}?v=${version}`;
 
         const primary = document.getElementById('manual-link-primary');
         const secondary = document.getElementById('manual-link-secondary');
-        if (primary) primary.href = candidates[0];
+        if (primary) primary.href = target;
         if (secondary) secondary.href = `${base}index.html?v=${version}`;
 
         try {
@@ -65,25 +61,7 @@
           }
         } catch (_) {}
 
-        let attempt = Number(sessionStorage.getItem(retryKey) || '0');
-        if (!Number.isFinite(attempt) || attempt < 0) {
-          attempt = 0;
-        }
-        const target = candidates[Math.min(attempt, candidates.length - 1)];
-        sessionStorage.setItem(retryKey, String(attempt + 1));
-
-        if (status) {
-          status.textContent = `Tentativo ${Math.min(attempt + 1, candidates.length)} di ${candidates.length}...`;
-        }
-
-        // Stop after the last known target to avoid infinite loops.
-        if (attempt >= candidates.length) {
-          if (status) {
-            status.textContent = 'Reindirizzamento automatico non riuscito: apri uno dei link qui sopra.';
-          }
-          sessionStorage.removeItem(retryKey);
-          return;
-        }
+        if (status) status.textContent = 'Reindirizzamento in corso...';
 
         window.location.replace(target);
       })();
