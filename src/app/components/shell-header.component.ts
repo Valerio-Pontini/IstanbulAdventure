@@ -51,7 +51,7 @@ import { MissionStateService } from '../services/mission-state.service';
       >
         <section class="pause-menu ia-overlay__card">
           <h2 id="pause-menu-title" class="pause-menu__title">{{ t('angular.shellHeader.pauseTitle', 'Menu di pausa') }}</h2>
-          <p class="pause-menu__lead">{{ t('angular.shellHeader.pauseLead', 'Torna al hub, sfoglia l\'elenco, o riprendi da qui.') }}</p>
+          <p class="pause-menu__lead">{{ t('angular.shellHeader.pauseLead', "Torna al hub, sfoglia l'elenco, o riprendi da qui.") }}</p>
           <nav class="pause-menu__nav" [attr.aria-label]="t('angular.shellHeader.quickLinksAria', 'Collegamenti rapidi')">
             <a class="pause-menu__link" routerLink="/result" (click)="closePause()">{{ t('angular.shellHeader.reviewMission0', 'Rivedi Missione 0') }}</a>
             <a class="pause-menu__link" routerLink="/home" (click)="closePause()">{{ t('angular.shellHeader.hubMissions', 'Hub missioni') }}</a>
