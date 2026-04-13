@@ -524,7 +524,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "La torre delle leggende",
       "successiva": "011",
-      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
+      "informazioni": "La Torre della Fanciulla è legata a due celebri leggende. Secondo la prima, un sultano (il cui nome non viene tramandato) aveva appreso da una profezia che sua figlia sarebbe morta a causa del morso di un serpente. Per proteggerla, la fece rinchiudere in una torre costruita su un isolotto nel Bosforo, lontana da ogni pericolo. Tuttavia, un giorno un serpente nascosto in un cesto di frutta raggiunse la torre e la morse, compiendo così il destino predetto. La seconda leggenda è quella di Ero e Leandro. Ero viveva nella torre e ogni notte accendeva una luce per guidare il suo amato Leandro, che attraversava il mare per raggiungerla. Una notte, però, la luce si spense a causa del vento, e Leandro, perdendo l’orientamento tra le onde, annegò. Alla vista del corpo dell’amato, anche Ero si tolse la vita. Entrambe le storie, pur non storicamente documentate, evocano temi universali come l’inevitabilità del destino e la tragicità dell’amore, contribuendo al fascino misterioso della torre.",
       "slug": "010-non-si-sfugge-dal-destino",
       "tema_principale": "torre-della-fanciulla",
       "temi_secondari": [
@@ -590,7 +590,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": "La torre delle leggende",
       "successiva": null,
-      "informazioni": "La Torre della Fanciulla di Istanbul, in turco Kız Kulesi, è uno dei simboli più riconoscibili della città: sorge su un piccolo isolotto all’ingresso meridionale del Bosforo, a circa 200 metri dalla costa di Üsküdar, sul lato asiatico. La struttura che vediamo oggi deriva soprattutto dalla fase bizantina e ottomana: nel XII secolo fu usata come torre difensiva e collegata alla riva con una catena di controllo marittimo; in età ottomana ebbe anche funzioni di faro, posto di guardia e, in alcune fasi, di isolamento sanitario. Dopo il recente restauro, ha riaperto al pubblico nel 2023.",
+      "informazioni": "La Torre della Fanciulla è legata a due celebri leggende. Secondo la prima, un sultano (il cui nome non viene tramandato) aveva appreso da una profezia che sua figlia sarebbe morta a causa del morso di un serpente. Per proteggerla, la fece rinchiudere in una torre costruita su un isolotto nel Bosforo, lontana da ogni pericolo. Tuttavia, un giorno un serpente nascosto in un cesto di frutta raggiunse la torre e la morse, compiendo così il destino predetto. La seconda leggenda è quella di Ero e Leandro. Ero viveva nella torre e ogni notte accendeva una luce per guidare il suo amato Leandro, che attraversava il mare per raggiungerla. Una notte, però, la luce si spense a causa del vento, e Leandro, perdendo l’orientamento tra le onde, annegò. Alla vista del corpo dell’amato, anche Ero si tolse la vita. Entrambe le storie, pur non storicamente documentate, evocano temi universali come l’inevitabilità del destino e la tragicità dell’amore, contribuendo al fascino misterioso della torre.",
       "slug": "011-la-luce-dell-amore",
       "tema_principale": "torre-della-fanciulla",
       "temi_secondari": [
@@ -4686,7 +4686,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Una tradizione molto nota lega la torre al racconto di Hezarfen Ahmed Çelebi, che secondo la memoria ottomana avrebbe tentato un volo dal suo culmine verso Üsküdar. Nel gioco questa storia va trattata come leggenda urbana colta, non come fatto storico pienamente certo.",
+      "informazioni": "Una tradizione molto nota lega la torre al racconto di Hezarfen Ahmed Çelebi, che secondo la memoria ottomana avrebbe tentato un volo dal suo culmine verso Üsküdar.",
       "slug": "106-da-qui-potrebbe-iniziare-una-leggenda",
       "tema_principale": "galata-tower",
       "temi_secondari": [
@@ -5824,7 +5824,7 @@ window.MISSIONI_V3_BACKEND = {
       "mod_completamento": "foto+racconto",
       "nome_sequenza": null,
       "successiva": null,
-      "informazioni": "Non è una notizia storica verificabile ma una leggenda molto adatta a spiegare la sacralizzazione simbolica della moschea.",
+      "informazioni": "Secondo una tradizione leggendaria, il sultano Solimano il Magnifico e il suo architetto Mimar Sinan avrebbero fatto lo stesso sogno prima della costruzione della Moschea di Solimano. Nel sogno appariva il profeta Maometto, che indicava il luogo preciso in cui edificare la moschea e ne suggeriva anche la forma e le proporzioni ideali. Quando i due si incontrarono e si raccontarono la visione, scoprirono con stupore che coincideva perfettamente; interpretarono così il sogno come un segno divino che legittimava e guidava la realizzazione dell’opera. Sebbene non esistano prove storiche di questo episodio, la leggenda ha un forte valore simbolico: esalta l’armonia tra potere politico e ispirazione spirituale e presenta l’architettura della moschea come frutto di una volontà superiore.",
       "slug": "607-il-sogno-visto-in-due",
       "tema_principale": "suleymaniye",
       "temi_secondari": [

@@ -449,7 +449,7 @@ window.APP_TEXT = {
                 "nextId": "e_7"
               },
               {
-                "label": "Cerchi di capire quando è stato scotruito",
+                "label": "Cerchi di capire quando è stato costruito",
                 "nextId": "a_7"
               },
               {
